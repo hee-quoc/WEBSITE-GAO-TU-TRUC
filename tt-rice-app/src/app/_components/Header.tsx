@@ -7,14 +7,14 @@ import Button from '~/app/_components/ui/Button';
 
 const Header: React.FC = () => {
   return (
-    <header className="bg-white shadow-sm">
+    <header className="bg-green-lightest shadow-sm ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-18">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/">
               <Image
-                src="/favicon.ico"
+                src="/header_logo.png"
                 alt="Tu Truc Logo"
                 width={150}
                 height={40}
@@ -41,10 +41,10 @@ const Header: React.FC = () => {
 
           {/* Contact Button */}
           <div className="flex items-center">
-            <Button variant="secondary" size="medium" className="flex items-center gap-2">
-              <span>Liên hệ</span>
+            <Button variant="secondary" size="medium" className="flex items-center gap-2 border-green-normal">
+              <span>Nhắn tin</span>
               <Image
-                src="/favicon.ico"
+                src="/img_icon_wheat.svg"
                 alt="Wheat Icon"
                 width={20}
                 height={20}

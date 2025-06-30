@@ -6,7 +6,7 @@ export function Testimonial(){
         content: 'Làm lúc bao nhiêu năm nay, tôi hiểu rõ từng hạt gạo mình làm ra. Từ lúc gieo mạ đến ngày thu hoạch, đều tự tay chăm chút. Thành ra, bao năm nay tôi chỉ ăn mỗi gạo Tư Trúc, vì tôi biết chắc từng hạt cơm sạch sẽ, tử tế như chính công sức mình bỏ vào.',
         author: 'Anh Năm Tiến (37 tuổi)',
         position: 'Nông dân Long Điền',
-        avatar: '/images/img_ellipse_15.png'
+        avatar: '/img_ellipse_15.png'
     };
     return (
         <section className="py-20 bg-white">
@@ -19,7 +19,7 @@ export function Testimonial(){
             </div>
             <div className="bg-white border border-green-light-1 rounded-2xl p-8">
               <div className="flex gap-8 mb-8">
-                <Image src="/images/img_.svg" alt="Quote" width={56} height={39} />
+                <Image src="/img_.svg" alt="Quote" width={56} height={39} />
                 <p className="text-gray-light leading-relaxed flex-1">
                   {testimonial.content}
                 </p>
@@ -41,7 +41,7 @@ export function Testimonial(){
                 </div>
               </div>
               <div className="text-center">
-                <Image src="/images/img_pagination_blue_gray_100_01.svg" alt="Pagination" width={78} height={18} />
+                <Image src="/img_pagination_blue_gray_100_01.svg" alt="Pagination" width={78} height={18} />
               </div>
             </div>
           </div>

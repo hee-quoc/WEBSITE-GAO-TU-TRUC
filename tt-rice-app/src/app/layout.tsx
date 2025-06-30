@@ -5,6 +5,7 @@ import { Geist } from "next/font/google";
 import Header from "~/app/_components/Header";
 import Footer from "~/app/_components/Footer";
 import { TRPCReactProvider } from "~/trpc/react";
+import { FloatingSocialLinks }from "~/app/_components/ui/FloatingSocialLinks"
 import Image from "next/image";
 
 export const metadata: Metadata = {
@@ -30,6 +31,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <FloatingSocialLinks/>
         </TRPCReactProvider>
         
       </body>

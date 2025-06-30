@@ -73,7 +73,7 @@ export function ContactSection(){
             <div className="relative">
               <div className="relative">
                 <Image
-                  src="/images/img_group_918.png"
+                  src="/img_group_918.png"
                   alt="Contact Illustration"
                   width={813}
                   height={498}
@@ -81,7 +81,7 @@ export function ContactSection(){
                 />
                 <div className="absolute top-0 right-0">
                   <Image
-                    src="/images/img_gao_lai_sua_1.png"
+                    src="/img_gao_lai_sua_1.png"
                     alt="Rice Product"
                     width={240}
                     height={374}
@@ -89,7 +89,7 @@ export function ContactSection(){
                 </div>
                 <div className="absolute bottom-0 right-0">
                   <Image
-                    src="/images/img_d744c6c61e_1.png"
+                    src="/img_d744c6c61e_1.png"
                     alt="Rice Product"
                     width={257}
                     height={209}
