@@ -21,7 +21,7 @@ export function ProductsSection({ products }: ProductsSectionProps){
               <div className="mb-6">
                 <Image
                   // 5. Use product.imageUrl and provide a fallback if it's null
-                  src={product.imageUrl ?? '/images/default-rice-placeholder.webp'}
+                  src={product.imageUrl ?? '/default-rice-placeholder.webp'}
                   alt={product.name}
                   width={250}
                   height={200}
@@ -46,20 +46,20 @@ export function ProductsSection({ products }: ProductsSectionProps){
           <div className="mt-16 text-center">
             <h3 className="text-xl font-medium text-blue-dark mb-8">Các chứng nhận</h3>
             <div className="flex justify-center items-center gap-8 flex-wrap">
-              <Image src="/images/img_group_928.svg" alt="Certification" width={150} height={131} />
+              <Image src="/img_group_928.svg" alt="Certification" width={150} height={131} />
               <div className="w-22 h-22 bg-white rounded-full flex items-center justify-center">
-                <Image src="/images/img_7bc2e0f1871f0fcb76c75a55bf9e946a_1.png" alt="Certification" width={66} height={63} />
+                <Image src="/img_7bc2e0f1871f0fcb76c75a55bf9e946a_1.png" alt="Certification" width={66} height={63} />
               </div>
               <div className="w-22 h-22 bg-white rounded-full flex items-center justify-center">
-                <Image src="/images/img_logoocopcuachuongtrinhocopquocgia1_1.png" alt="Certification" width={88} height={36} />
+                <Image src="/img_logoocopcuachuongtrinhocopquocgia1_1.png" alt="Certification" width={88} height={36} />
               </div>
               <div className="w-22 h-22 bg-white rounded-full flex items-center justify-center">
-                <Image src="/images/img_image_39.png" alt="Certification" width={88} height={51} />
+                <Image src="/img_image_39.png" alt="Certification" width={88} height={51} />
               </div>
               <div className="w-22 h-22 bg-white rounded-full flex items-center justify-center">
-                <Image src="/images/img_d565e8067f134e55d8999f227ee551ee_1.png" alt="Certification" width={70} height={58} />
+                <Image src="/img_d565e8067f134e55d8999f227ee551ee_1.png" alt="Certification" width={70} height={58} />
               </div>
-              <Image src="/images/img_group_929_light_green_a700.svg" alt="Certification" width={150} height={131} />
+              <Image src="/img_group_929_light_green_a700.svg" alt="Certification" width={150} height={131} />
             </div>
           </div>
         </div>

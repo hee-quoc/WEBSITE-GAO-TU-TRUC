@@ -20,7 +20,7 @@ export function StatisticSection(){
             </div>
             <div>
               <Image
-                src="/images/img_rectangle_3.png"
+                src="/img_rectangle_3.png"
                 alt="Rice Field"
                 width={587}
                 height={327}
@@ -32,7 +32,7 @@ export function StatisticSection(){
             {/* Left Statistics */}
             <div className="bg-cream rounded-2xl overflow-hidden relative">
               <Image
-                src="/images/img_image_104.png"
+                src="/img_image_104.png"
                 alt="Farmers"
                 fill
                 className="object-cover"
@@ -75,7 +75,7 @@ export function StatisticSection(){
               </div>
               <div className="rounded-2xl p-8 relative overflow-hidden">
                 <Image
-                  src="/images/img__1.png"
+                  src="/img__1.png"
                   alt="Environment"
                   fill
                   className="object-cover"
