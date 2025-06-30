@@ -1,9 +1,11 @@
 import "~/styles/globals.css";
-
+// import '~/styles/index.css';
 import { type Metadata } from "next";
 import { Geist } from "next/font/google";
-
+import Header from "~/app/_components/Header";
+import Footer from "~/app/_components/Footer";
 import { TRPCReactProvider } from "~/trpc/react";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "gaotutruc",
@@ -22,7 +24,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geist.variable}`}>
       <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <TRPCReactProvider>
+          <Header />
+          <main className="flex-grow"> {/* 1. Add a <main> tag for content */}
+            {children}
+          </main>
+          <Footer />
+        </TRPCReactProvider>
+        
       </body>
     </html>
   );

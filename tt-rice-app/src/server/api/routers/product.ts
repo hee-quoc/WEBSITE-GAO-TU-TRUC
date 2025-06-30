@@ -29,7 +29,17 @@ export const productRouter = createTRPCRouter({
 
       return product;
     }),
-
+  getAll: publicProcedure.query(({ ctx }) => {
+    // ctx.db is the Prisma Client instance.
+    // .product refers to the Product model in your schema.prisma.
+    // .findMany() is the Prisma method to retrieve all records.
+    return ctx.db.product.findMany({
+      // It's good practice to order the results for consistency.
+      orderBy: {
+        createdAt: "desc", // Show the newest products first
+      },
+    });
+  }),
   getLatest: publicProcedure.query(async ({ ctx }) => {
     const product = await ctx.db.product.findFirst({
       orderBy: { createdAt: "desc" },
