@@ -14,7 +14,7 @@ Follow these steps to set up your local development environment.
 
 ### 1. Prerequisites
 
-*   [Node.js](https://nodejs.org/en/) (v18 or later)
+*   [Node.js](https://nodejs.org/en/) (v22.17.0)
 *   [Docker](https://www.docker.com/products/docker-desktop/) (for running the PostgreSQL database)
 
 ### 2. Setup and Installation
