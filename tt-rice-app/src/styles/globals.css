@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap');
 @import "tailwindcss";
+
 
 @layer theme, base, components, utilities;
 
@@ -11,5 +13,5 @@
   --color-green-dark: #556B2F ;    
   --color-blue-dark: #1E3A8A ;      
   --color-blue-medium: #2563EB ;
-  --color-green-normal: #6D9127 ; 
+  --color-green-normal: #6D9127 ;
 }
