@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
 @import "tailwindcss";
+
+
 
 
 @layer theme, base, components, utilities;
@@ -14,4 +17,11 @@
   --color-blue-dark: #1E3A8A ;      
   --color-blue-medium: #2563EB ;
   --color-green-normal: #6D9127 ;
+ 
+}
+
+@base {
+  .font-fz-poppins {
+    font-family: 'Poppins', sans-serif;
+  }
 }
