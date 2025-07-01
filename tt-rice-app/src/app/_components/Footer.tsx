@@ -56,83 +56,71 @@ export default function Footer() {
   ];
 
   return (
-    // The main footer container with a relative position to place the wave image
-    <footer className="relative bg-green-normal text-white pt-20 pb-10">
+    <footer className="relative text-white">
       
-      {/* The decorative wavy top border */}
-      <div className="absolute top-0 left-0 w-full h-auto">
-        {/* We move it up by half its height to make it "bleed" off the top */}
-        <Image
-          src="/footer_header.svg"
-          alt="Footer decoration"
-          width={1440} 
-          height={143}  
-          className="w-full object-cover -translate-y-1/2"
-        />
-      </div>
-
-      {/* Main content grid */}
-      <div className="container mx-auto px-4 relative z-10">
-        {/* We now define a 12-column grid on large screens */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-10 gap-x-8 gap-y-12">
-
-          {/* Column 1: Logo and Contact Info - Spans 3 of the 12 columns */}
-          <div className="lg:col-span-2">
-            <div className="flex flex-col items-start space-y-6">
-              <Link href="/">
-                <Image
-                  src="/logo_white.svg"
-                  alt="Tu Truc Logo"
-                  width={150}
-                  height={75}
-                />
-              </Link>
-            </div>
-          </div>
-
-          {/* Column 2: Company Info - Spans 4 of the 12 columns */}
-          <div className="lg:col-span-4">
-            <h3 className="font-bold text-lg mb-6 font-alegreya-sans-sans-serif">Sản phẩm của công ty TNHH Tư Trúc</h3>
-            <div className="space-y-4">
-              {contactInfo.map((item, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <span className="mt-1 flex-shrink-0">{item.icon}</span>
-                  <p className="text-sm">{item.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Column 3: Information Links - Spans 2 of the 12 columns */}
-          <div className="lg:col-span-2">
-            <h3 className="font-bold text-lg mb-6 font-alegreya-sans-sans-serif">Thông tin</h3>
-            <ul className="space-y-4">
-              {infoLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="hover:underline text-sm">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 4: Support Links - Spans 3 of the 12 columns */}
-          <div className="lg:col-span-2">
-            <h3 className="font-bold text-lg mb-6 font-alegreya-sans-sans-serif">Hỗ trợ</h3>
-            <ul className="space-y-4">
-              {supportLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="hover:underline text-sm">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
+        <div className="">
+          <Image
+            src="/footer_header.svg"
+            alt="Footer decoration"
+            width={1440} 
+            height={143}  
+            className="w-full"
+          />
         </div>
-      </div>
+        <div className='bg-green-normal pb-10'>
+          <div className="container m-auto px-4 relative z-10  ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-10 gap-x-8 gap-y-12">
+              <div className="lg:col-span-2">
+                <div className="flex flex-col items-start space-y-6">
+                  <Link href="/">
+                    <Image
+                      src="/logo_white.svg"
+                      alt="Tu Truc Logo"
+                      width={150}
+                      height={75}
+                    />
+                  </Link>
+                </div>
+              </div>
+              <div className="lg:col-span-4">
+                <h3 className="font-bold text-lg mb-6 font-alegreya-sans-sans-serif">Sản phẩm của công ty TNHH Tư Trúc</h3>
+                <div className="space-y-4">
+                  {contactInfo.map((item, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <span className="mt-1 flex-shrink-0">{item.icon}</span>
+                      <p className="text-sm">{item.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="lg:col-span-2">
+                <h3 className="font-bold text-lg mb-6 font-alegreya-sans-sans-serif">Thông tin</h3>
+                <ul className="space-y-4">
+                  {infoLinks.map((link) => (
+                    <li key={link.href}>
+                      <Link href={link.href} className="hover:underline text-sm">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="lg:col-span-2">
+                <h3 className="font-bold text-lg mb-6 font-alegreya-sans-sans-serif">Hỗ trợ</h3>
+                <ul className="space-y-4">
+                  {supportLinks.map((link) => (
+                    <li key={link.href}>
+                      <Link href={link.href} className="hover:underline text-sm">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
     </footer>
   );
 }
