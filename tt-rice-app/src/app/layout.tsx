@@ -24,10 +24,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${geist.variable}`}>
-      <body>
+      <body className="flex min-h-screen flex-col">
         <TRPCReactProvider>
           <Header />
-          <main className="flex-grow"> {/* 1. Add a <main> tag for content */}
+          <main className="flex-grow"> 
             {children}
           </main>
           <Footer />

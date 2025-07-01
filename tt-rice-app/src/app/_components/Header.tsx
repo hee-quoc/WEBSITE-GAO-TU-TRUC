@@ -50,7 +50,7 @@ const Header: React.FC = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <Link href="#about" className="text-dark-gray hover:text-green-normal transition-colors">
+            <Link href="/about" className="text-dark-gray hover:text-green-normal transition-colors">
               Về chúng tôi
             </Link>
             <Link href="#products" className="text-dark-gray hover:text-green-normal transition-colors">
@@ -72,9 +72,9 @@ const Header: React.FC = () => {
             <Button
               variant="secondary"
               size="medium"
-              className="flex items-center gap-2 border-green-normal rounded-full"
+              className="flex items-center gap-2 border-green-normal rounded-full text-green-normal"
             >
-              <span>Nhắn tin</span>
+              <span>Liên hệ</span>
               <Image src="/img_icon_wheat.svg" alt="Wheat Icon" width={20} height={20} />
             </Button>
           </div>
@@ -113,10 +113,10 @@ const Header: React.FC = () => {
               <Button
                 variant="secondary"
                 size="medium"
-                className="flex items-center gap-2 border-green-normal rounded-full w-fit"
+                className="flex items-center gap-2 border-green-normal rounded-full w-fit text-green-normal"
                 onClick={toggleMenu}
               >
-                <span>Nhắn tin</span>
+                <span>Liên hệ</span>
                 <Image src="/img_icon_wheat.svg" alt="Wheat Icon" width={20} height={20} />
               </Button>
             </nav>
