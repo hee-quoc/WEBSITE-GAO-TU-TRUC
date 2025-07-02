@@ -75,10 +75,25 @@ const Header: React.FC = () => {
             <Button
               variant="secondary"
               size="medium"
-              className="flex items-center gap-2 border-green-normal rounded-full text-green-normal"
+              className=" group flex items-center gap-2 border-green-normal rounded-full text-green-normal hover:bg-green-dark hover:text-white"
             >
-              <span>Liên hệ</span>
-              <Image src="/img_icon_wheat.svg" alt="Wheat Icon" width={20} height={20} />
+              <span>Nhắn tin</span>
+              <Image 
+                src="/img_icon_wheat.svg" 
+                alt="Wheat Icon" 
+                width={20} 
+                height={20} 
+                className="block group-hover:hidden" // Show by default, hide on hover
+              />
+
+              {/* Hover Icon: Hidden by default, visible when the group is hovered */}
+              <Image 
+                src="/icon_wheat_white.svg" // The new white icon
+                alt="Wheat Icon Hover" 
+                width={20} 
+                height={20} 
+                className="hidden group-hover:block" // Hide by default, show on hover
+              />
             </Button>
           </div>
         </div>
@@ -123,11 +138,25 @@ const Header: React.FC = () => {
               <Button
                 variant="secondary"
                 size="medium"
-                className="flex items-center gap-2 border-green-normal rounded-full w-fit text-green-normal"
-                onClick={toggleMenu}
+                className="w-[121px] h-[48px] group flex items-center gap-2 border-green-normal rounded-full text-green-normal hover:bg-green-dark hover:text-white"
               >
-                <span>Liên hệ</span>
-                <Image src="/img_icon_wheat.svg" alt="Wheat Icon" width={20} height={20} />
+                <span className='flex-shrink-0'>Nhắn tin</span>
+                <Image 
+                  src="/img_icon_wheat.svg" 
+                  alt="Wheat Icon" 
+                  width={20} 
+                  height={20} 
+                  className="block group-hover:hidden" // Show by default, hide on hover
+                />
+
+                {/* Hover Icon: Hidden by default, visible when the group is hovered */}
+                <Image 
+                  src="/icon_wheat_white.svg" // The new white icon
+                  alt="Wheat Icon Hover" 
+                  width={20} 
+                  height={20} 
+                  className="hidden group-hover:block" // Hide by default, show on hover
+                />
               </Button>
               
             </nav>

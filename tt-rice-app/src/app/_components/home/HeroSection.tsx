@@ -52,8 +52,7 @@ export function HeroSection() {
                   className="
                     absolute left-1/2 -translate-x-1/2 translate-y-1/2
                     z-10 flex items-center gap-2 bg-green-normal 
-                    hover:scale-105
-                    hover:bg-green-normal
+                    hover:bg-green-dark
                     transition-colors  
                     duration-200 
                     rounded-full
@@ -61,10 +60,11 @@ export function HeroSection() {
                 >
                   <span>Khám phá sản phẩm</span>
                   <Image
-                    src="/Icon wheat.svg"
+                    src="/icon_wheat_white.svg"
                     alt="Wheat Icon"
                     width={20}
                     height={20}
+                    className="w-5 h-5 object-contain"
                   />
                 </Button>
               </div>

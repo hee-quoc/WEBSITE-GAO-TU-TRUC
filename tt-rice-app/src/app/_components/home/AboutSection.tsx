@@ -20,7 +20,7 @@ export function AboutSection() {
           >
             <span className="flex items-center gap-2">
               Tìm hiểu thêm
-              <Image src="/Icon wheat.svg" alt="icon" width={20} height={20} />
+              <Image src="/icon_wheat_white.svg" alt="icon" width={20} height={20} />
             </span>
           </Button>
         </div>

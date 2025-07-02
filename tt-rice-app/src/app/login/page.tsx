@@ -111,7 +111,7 @@ export default function ContactSection() {
                                     {/* --- New: Show loading text --- */}
                                     {isLoading ? 'Đang xử lý...' : 'Đăng nhập'}
                                     <Image
-                                        src="/Icon wheat.svg"
+                                        src="/icon_wheat_white.svg"
                                         alt="Wheat Icon"
                                         width={20}
                                         height={20}
