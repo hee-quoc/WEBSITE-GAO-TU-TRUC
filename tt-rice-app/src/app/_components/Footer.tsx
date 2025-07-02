@@ -86,7 +86,7 @@ export default function Footer() {
                 <h3 className="font-alegreya-sans font-bold text-lg mb-6 font-alegreya-sans-sans-serif">Sản phẩm của công ty TNHH Tư Trúc</h3>
                 <div className="space-y-4">
                   {contactInfo.map((item, index) => (
-                    <div key={index} className="font-poppins flex items-start gap-3">
+                    <div key={index} className="font-fz-poppins flex items-start gap-3">
                       <span className="mt-1 flex-shrink-0">{item.icon}</span>
                       <p className="text-sm">{item.text}</p>
                     </div>
@@ -98,7 +98,7 @@ export default function Footer() {
                 <ul className="space-y-4">
                   {infoLinks.map((link) => (
                     <li key={link.href}>
-                      <Link href={link.href} className=" font-poppins hover:underline text-sm">
+                      <Link href={link.href} className=" font-fz-poppins hover:underline text-sm">
                         {link.label}
                       </Link>
                     </li>
@@ -110,7 +110,7 @@ export default function Footer() {
                 <ul className="space-y-4">
                   {supportLinks.map((link) => (
                     <li key={link.href}>
-                      <Link href={link.href} className="font-poppins hover:underline text-sm">
+                      <Link href={link.href} className="font-fz-poppins hover:underline text-sm">
                         {link.label}
                       </Link>
                     </li>
