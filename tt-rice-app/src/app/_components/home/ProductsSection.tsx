@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import type { Product } from '@prisma/client';
+import RiceList from '../utils/RiceList';
 interface ProductsSectionProps {
   products: Product[];
 }
@@ -7,15 +8,29 @@ export function ProductsSection({ products }: ProductsSectionProps){
     return (
         <section className="py-20 bg-green-lightest">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold text-blue-dark mb-6">
+          <div
+            className="mx-auto mb-16 text-center space-y-3"
+            style={{ width: '639px', height: '169px', marginTop: '96px' }}
+          >
+            <h2
+              className="font-bold text-[56px] leading-[100%] text-center font-alegreya-sans-sans-serif"
+              style={{
+                color: '#0A5B89',
+              }}
+            >
               Mang tinh hoa vào từng bữa cơm Việt
             </h2>
-            <p className="text-2xl text-green-medium">
+            <p
+              className="text-[32px] font-normal leading-[140%] text-center font-alegreya-sans-sans-serif"
+              style={{
+                color: '#00A86B', 
+              }}
+            >
               Các sản phẩm có tại Tư Trúc
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <RiceList/>
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             {products.map((product) => (
             <div key={product.id} className="text-center">
               <div className="mb-6">
@@ -33,12 +48,12 @@ export function ProductsSection({ products }: ProductsSectionProps){
               </h3>
             </div>
           ))}
-          </div>
+          </div> */}
           <div className="text-center space-y-6">
-            <p className="text-gray-light leading-relaxed max-w-4xl mx-auto">
+            <p className="mx-auto text-[16px] font-normal leading-[140%] text-center text-gray-600 max-w-4xl font-fzpoppins-sans-sans-serif">
               Tư Trúc tin rằng gạo không chỉ là lương thực để no bụng, mà còn là thức quà để thưởng, để nghiệm, và để tự hào.
             </p>
-            <p className="text-gray-light leading-relaxed max-w-4xl mx-auto">
+            <p className="mx-auto text-[16px] font-normal leading-[140%] text-center text-gray-600 max-w-4xl font-fzpoppins-sans-sans-serif">
               Mỗi hạt gạo Tư Trúc đều được tinh chọn từ giống lúa chất lượng, canh tác theo quy trình nghiệm ngặt, thu hoạch đúng vụ, và được sàng lọc kỹ lưỡng từ đội ngũ công nhân nhiều năm kinh nghiệm bằng cả chuyên môn lẫn tâm huyết - để đem chất lượng hạt gạo ổn định, hương vị thuần khiết và ngọt lành từ đồng nội đến bữa cơm Việt.
             </p>
           </div>
