@@ -10,16 +10,11 @@ import { StatisticSection } from "./_components/home/StatisticsSection";
 import { ContactSection } from "./_components/home/ContactSection";
 import { api, HydrateClient } from "~/trpc/server";
 export default async function Home() {
-  //const hello = await api.product.hello({ text: "from tRPC" });
-
-  //void api.product.getLatest.prefetch();
-  const products = await api.product.getAll();
   return (
     <HydrateClient>
-      
         <HeroSection />
         <AboutSection />
-        <ProductsSection products={products} />
+        <ProductsSection />
         <PartnerSection />
         <StatisticSection/>
         <Testimonial/>

@@ -22,7 +22,7 @@ enum Role {
 
 model User {
   id        String   @id @default(cuid())
-  email     String   @unique // Using email as the unique identifier for login
+  username     String   @unique // Using email as the unique identifier for login
   password  String   // IMPORTANT: This should always be a HASHED password, never plaintext.
 
   role      Role     @default(ADMIN) // The default role for any new user is ADMIN.
