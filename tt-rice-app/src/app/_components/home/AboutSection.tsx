@@ -1,76 +1,114 @@
-
 import Image from 'next/image';
 import Button from '../ui/Button';
+
 export function AboutSection() {
-    return (
-        <section className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute left-32 bottom-0">
-          <Image src="/favicon.ico" alt="Decorative" width={442} height={68} />
-        </div>
-        <div className="absolute right-32 top-20">
-          <Image src="/favicon.ico" alt="Decorative" width={183} height={68} />
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold text-blue-dark mb-6">
-              Hành trình nâng tầm giá trị gạo Việt
-            </h2>
-            <p className="text-2xl text-gray-light mb-8">
-              Câu chuyện truyền cảm hứng từ Tư Trúc
-            </p>
-            <Button size="large">
+  return (
+    <section className="bg-white overflow-hidden">
+      <div className="relative w-[1440px] h-[1458px] mx-auto">
+
+        {/* Header */}
+        <div className="absolute top-[80px] left-1/2 transform -translate-x-1/2 text-center z-10 w-full">
+          <h2 className="text-[56px] leading-[1] font-bold text-blue-dark mb-6 max-w-[573px] mx-auto text-center">
+            Hành trình nâng tầm giá trị gạo Việt
+          </h2>
+          <p className="text-[32px] leading-[1.4] font-normal text-gray-light mb-8 max-w-[573px] mx-auto text-center">
+            Câu chuyện truyền cảm hứng từ Tư Trúc
+          </p>
+          <Button
+            size="large"
+            className="bg-green-normal hover:bg-green-dark text-white transition-all duration-300 rounded-full px-5 py-3.5"
+          >
+            <span className="flex items-center gap-2">
               Tìm hiểu thêm
-            </Button>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="text-center">
-                <Image
-                  src="/favicon.ico"
-                  alt="Tu Truc Story"
-                  width={249}
-                  height={249}
-                  className="mx-auto mb-6"
-                />
-                <p className="text-slate leading-relaxed">
-                  Câu chuyện về Tư Trúc bắt đầu từ hơn 3 thập kỉ trước tại một nhà máy xay xát lúa, với một niềm tự hào về việc giữ gìn nền văn minh lúa nước ngàn năm và nâng tầm, lan tỏa giá trị của hạt ngọc thực đến với mỗi người Việt
-                </p>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="relative">
-                <Image
-                  src="/favicon.ico"
-                  alt="Rice Field Illustration"
-                  width={506}
-                  height={573}
-                  className="w-full h-auto"
-                />
-                {/* Decorative elements */}
-                <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-green-primary rounded-full border-8 border-green-light-2"></div>
-                <div className="absolute top-3/4 left-1/3 w-3 h-3 bg-green-primary rounded-full border-8 border-green-light-2"></div>
-                <div className="absolute bottom-1/4 right-1/3 w-3 h-3 bg-green-primary rounded-full border-8 border-green-light-2"></div>
-              </div>
-            </div>
-          </div>
-          <div className="mt-16 text-center">
-            <Image
-              src="/favicon.ico"
-              alt="Tu Truc Heritage"
-              width={300}
-              height={300}
-              className="mx-auto mb-8"
-            />
-            <p className="text-slate leading-relaxed max-w-4xl mx-auto">
-              Với Tư Trúc, gạo là kết tinh từ sự ưu ái của thiên nhiên, từ đôi bàn tay cần mẫn của người nông dân và công nhân nhà máy, từ những giá trị luôn bền bỉ theo thời gian.
-            </p>
-          </div>
-          <div className="mt-12 text-center">
-            <p className="text-slate leading-relaxed max-w-4xl mx-auto">
-              Chỉnh vì lẽ đó, suốt hành trình phát triển, bên cạnh việc không ngừng nâng cấp chất lượng sản phẩm và hiện đại hóa hệ thống máy móc, Tư Trúc vẫn luôn đặt trọng tâm vào việc tôn vinh thức quà tinh túy này - để mỗi hạt gạo không chỉ là một phần không thể thiếu của gian bếp, mà còn trở thành ký ức, nguồn cội, văn hóa và bản sắc Việt
-            </p>
-          </div>
+              <Image src="/Icon wheat.svg" alt="icon" width={20} height={20} />
+            </span>
+          </Button>
         </div>
-      </section>
-    )
+
+        {/* Cloud decorative */}
+        <div className="absolute top-[421.75px] right-[41.95px] w-[183px] h-[70px] z-10">
+          <Image src="/cloud.svg" alt="Cloud" width={183} height={70} />
+        </div>
+        {/* Eclip1 */}
+        <Image
+          src="/Ellipse 12.svg"
+          alt="Green dot"
+          width={32}
+          height={32}
+          className="absolute top-[509px] left-[659px] z-10"
+        />
+        {/* Eclip2 */}
+        <Image
+          src="/Ellipse 12.svg"
+          alt="Green dot"
+          width={32}
+          height={32}
+          className="absolute top-[660px] left-[843px] z-10"
+        />
+
+        {/* Eclip3 */}
+        <Image
+          src="/Ellipse 12.svg"
+          alt="Green dot"
+          width={32}
+          height={32}
+          className="absolute top-[914px] left-[345px] z-10"
+        />
+
+
+        {/* Decorative line (block 4) */}
+        <div className="absolute top-[519.5px] left-[357.25px] w-[502px] h-[566px] z-0">
+          <Image src="/line.svg" alt="Decorative line" width={502} height={566} />
+        </div>
+
+        {/* Block 1: Nhà máy */}
+        <div className="absolute top-[352px] left-[119px] w-[571px] flex flex-col items-center gap-[20px] text-center z-10">
+          <Image
+            src="/Group 930.svg"
+            alt="Tu Truc Story"
+            width={249}
+            height={249}
+            className="mb-5"
+          />
+          <p className="text-slate text-base font-normal leading-[1.4] max-w-[457px]">
+            Câu chuyện về Tư Trúc bắt đầu từ hơn 3 thập kỉ trước tại một nhà máy xay xát lúa, với một niềm tự hào về việc giữ gìn nền văn minh lúa nước ngàn năm và nâng tầm, lan tỏa giá trị của hạt ngọc thực đến với mỗi người Việt
+          </p>
+        </div>
+
+        {/* Block 2: Nông dân */}
+        <div className="absolute top-[494px] right-[127px] w-[490px] text-center flex flex-col items-center z-10">
+          <Image
+            src="/Group 929.svg"
+            alt="Rice Field"
+            width={250}
+            height={250}
+            className="mb-5"
+          />
+          <p className="text-slate text-base font-normal leading-[1.4]">
+            Với Tư Trúc, gạo là kết tinh từ sự ưu đãi của thiên nhiên, từ đôi bàn tay cần mẫn của người nông dân và công nhân nhà máy, từ những giá trị luôn bền bỉ theo thời gian.
+          </p>
+        </div>
+
+        {/* Block 3: Hình + text "Chính vì lẽ đó" */}
+        <div className="absolute top-[848px] left-[355px] w-[716.26px] h-[359.37px] z-[1]">
+          <Image
+            src="/Layer_2.svg"
+            alt="Tu Truc Heritage"
+            width={716}
+            height={359}
+          />
+        </div>
+
+        <div
+          className="absolute text-center text-slate text-base font-normal leading-[140%] max-w-[567px] z-[3]"
+          style={{
+            top: '1244px',
+            left: '437px',
+          }}
+        >
+          Chính vì lẽ đó, suốt hành trình phát triển, bên cạnh việc không ngừng nâng cấp chất lượng sản phẩm và hiện đại hóa hệ thống máy móc, Tư Trúc vẫn luôn đặt trọng tâm vào việc tôn vinh thức quà tinh túy này – để mỗi hạt gạo không chỉ là một phần không thể thiếu của gian bếp, mà còn trở thành ký ức, nguồn cội, văn hóa và bản sắc Việt
+        </div>
+      </div>
+    </section>
+  );
 }
