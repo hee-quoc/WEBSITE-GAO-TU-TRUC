@@ -16,7 +16,17 @@ export default function ProductsPage() {
 
   const [newProduct, setNewProduct] = useState({ name: '', description: '' });
 
-  const { data: products, isLoading: isLoadingProducts } = api.product.getAll.useQuery();
+    const {
+        data,
+        fetchNextPage,
+        hasNextPage,
+        isLoading, // Changed from isLoadingProducts
+    } = api.product.getInfinite.useInfiniteQuery(
+        { limit: 12 }, // Fetch 12 items per page
+        {
+        getNextPageParam: (lastPage) => lastPage.nextCursor,
+        }
+    );
 
   const createProduct = api.product.create.useMutation({
     onSuccess: () => {
@@ -39,7 +49,10 @@ export default function ProductsPage() {
     e.preventDefault();
     createProduct.mutate(newProduct);
   };
-  
+
+
+// The 'data' object is now structured differently, so we flatten it
+const products = data?.pages.flatMap((page) => page.items);
   return (
     <main className="mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">
       <Toaster position="top-center" />
@@ -75,15 +88,11 @@ export default function ProductsPage() {
           </form>
         </Card>
       )}
-
-      {isLoadingProducts ? (
-        <p className="text-center text-slate-500">Loading products...</p>
-      ) : products?.length === 0 ? (
-        <p className="text-center text-slate-500">No products found. Add one to get started!</p>
-      ) : (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {products?.map((product) => (
-            <Card key={product.id} className="flex flex-col">
+      {isLoading && <p>Loading products...</p>}
+      
+      <div className="grid ...">
+        {products?.map((product) => (
+          <Card key={product.id} className="flex flex-col">
               <div className="flex-grow">
                 <h3 className="text-lg font-bold text-slate-900">{product.name}</h3>
                 <p className="mt-1 text-sm text-slate-600">{product.description}</p>
@@ -107,7 +116,18 @@ export default function ProductsPage() {
                 )}
               </div>
             </Card>
-          ))}
+        ))}
+      </div>
+
+      {/* Add a "Load More" button */}
+      {hasNextPage && (
+        <div className="mt-8 flex justify-center">
+          <Button
+            onClick={() => fetchNextPage()}
+            variant="secondary"
+          >
+            Load More
+          </Button>
         </div>
       )}
     </main>

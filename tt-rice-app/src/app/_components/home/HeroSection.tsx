@@ -43,7 +43,7 @@ export function HeroSection() {
             />
             <div className="relative text-center pb-20 pt-[60px] z-10">
               <div className="relative inline-block mx-auto w-full max-w-[1020px] px-4">
-                <h1 className={`md:text-6xl text-4xl font-bold leading-tight text-blue-dark sm:text-4xl lg:text-5xl font-alegreya-sans-sans-serif`}>
+                <h1 className="text-steel-blue font-alegreya-sans md:text-6xl text-4xl font-bold leading-tight text-blue-dark sm:text-4xl lg:text-6xl ">
                   Thương Hiệu Gạo<br />
                   Nâng Tầm Tinh Hoa Ngọc Thực Đất Việt
                 </h1>

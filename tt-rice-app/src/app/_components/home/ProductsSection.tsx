@@ -1,10 +1,7 @@
 import Image from 'next/image';
 import type { Product } from '@prisma/client';
 import RiceList from '../utils/RiceList';
-interface ProductsSectionProps {
-  products: Product[];
-}
-export function ProductsSection({ products }: ProductsSectionProps){
+export function ProductsSection(){
     return (
         <section className="py-20 bg-green-lightest">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -8,8 +8,7 @@
 @layer theme, base, components, utilities;
 
 @theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: "Alegreya Sans", sans-serif;
   --color-green-lightest: #EAF2DA ; 
   --color-green-light: #D5E8C0 ;    
   --color-green-medium: #7D8F69 ;    
@@ -17,7 +16,9 @@
   --color-blue-dark: #1E3A8A ;      
   --color-blue-medium: #2563EB ;
   --color-green-normal: #6D9127 ;
- 
+  --color-steel-blue: #0A5B89 ;
+  --font-alegreya-sans: "Alegreya Sans", sans-serif;
+  --font-poppins: "Poppins";
 }
 
 @base {
