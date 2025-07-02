@@ -62,6 +62,9 @@ const Header: React.FC = () => {
             <Link href="#contact" className="text-dark-gray hover:text-green-normal transition-colors">
               Liên hệ
             </Link>
+            <Link href="/login" className="text-dark-gray hover:text-green-normal transition-colors">
+              Đăng nhập
+            </Link>
           </nav>
           <div className="md:hidden flex items-center">
             <button onClick={toggleMenu} className="text-dark-gray focus:outline-none">
@@ -110,6 +113,13 @@ const Header: React.FC = () => {
               >
                 Liên hệ
               </Link>
+              <Link
+                href="/login"
+                className="text-dark-gray hover:text-green-normal transition-colors"
+                onClick={toggleMenu}
+              >
+                Đăng nhập
+              </Link>
               <Button
                 variant="secondary"
                 size="medium"
@@ -119,6 +129,7 @@ const Header: React.FC = () => {
                 <span>Liên hệ</span>
                 <Image src="/img_icon_wheat.svg" alt="Wheat Icon" width={20} height={20} />
               </Button>
+              
             </nav>
           </div>
         )}

@@ -36,3 +36,8 @@ export interface NavigationItem {
   label: string;
   href: string;
 }
+
+export interface LoginFormData {
+  username: string;
+  password: string;
+}
