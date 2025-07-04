@@ -142,3 +142,5 @@ API endpoints are managed by **tRPC**. All server-side logic lives in `src/serve
 *   `docker-compose down`: Stops the database container.
 *   `npx prisma studio`: Opens a web UI to view and edit your database.
 *   `npx prisma db push`: Pushes schema changes to the database.
+*   `sudo ufw allow 3000/tcp`: allow access from other device through ip
+*   `sudo ufw delete allow 3000/tcp`: delete rule to secure
