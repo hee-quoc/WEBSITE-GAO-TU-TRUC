@@ -53,7 +53,7 @@ const Header: React.FC = () => {
             <Link href="/about" className="text-dark-gray hover:text-green-normal transition-colors">
               Về chúng tôi
             </Link>
-            <Link href="#products" className="text-dark-gray hover:text-green-normal transition-colors">
+            <Link href="/products" className="text-dark-gray hover:text-green-normal transition-colors">
               Sản phẩm
             </Link>
             <Link href="#news" className="text-dark-gray hover:text-green-normal transition-colors">
@@ -108,7 +108,7 @@ const Header: React.FC = () => {
                 Về chúng tôi
               </Link>
               <Link
-                href="#products"
+                href="/products"
                 className="text-dark-gray hover:text-green-normal transition-colors"
                 onClick={toggleMenu}
               >

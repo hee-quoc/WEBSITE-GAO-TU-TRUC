@@ -27,9 +27,6 @@ model User {
 
   role      Role     @default(ADMIN) // The default role for any new user is ADMIN.
 
-  // A list of all products this user has created.
-  products  Product[]
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -38,13 +35,11 @@ model Product {
   id          String   @id @default(cuid())
   name        String   @unique // Each type of rice should have a unique name
   description String?  // Optional detailed description of the rice
-  imageUrl    String?  // Optional URL to the product image
+  svgContent  String?  @db.Text
+  svgFilename String?
+  tags        String[] @default([])
 
-  // Relation to the User who created this product.
-  // This helps track who added or last updated an item.
   authorId    String
-  author      User     @relation(fields: [authorId], references: [id])
-
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
