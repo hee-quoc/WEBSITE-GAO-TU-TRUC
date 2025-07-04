@@ -14,11 +14,11 @@ const RiceCard: React.FC<RiceCardProps> = ({ image, hoverImage, label }) => {
 
   return (
     <div
-      className="w-[274px] h-[342px] pt-[20px] pb-[20px] flex flex-col items-center cursor-pointer"
+      className="w-full sm:w-[274px] h-auto pt-5 pb-5 flex flex-col items-center cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="w-[274px] h-[274px] flex items-center justify-center">
+      <div className="w-full sm:w-[274px] h-[274px] flex items-center justify-center">
         <Image
           src={isHovered ? hoverImage : image}
           alt={label}
@@ -28,8 +28,8 @@ const RiceCard: React.FC<RiceCardProps> = ({ image, hoverImage, label }) => {
         />
       </div>
       <p
-        className="w-[274px] h-[28px] text-[20px] font-medium leading-[140%] text-center"
-        style={{ fontFamily: 'Alegreya Sans, sans-serif' }}
+        className="w-full sm:w-[274px] h-[28px] text-[18px] sm:text-[20px] font-medium leading-[140%] text-center"
+        style={{ fontFamily: "Alegreya Sans, sans-serif" }}
       >
         {label}
       </p>

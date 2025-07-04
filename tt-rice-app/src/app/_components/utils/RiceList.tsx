@@ -10,8 +10,8 @@ const riceItems = [
 
 const RiceList = () => {
   return (
-    <div className="w-[1120px] h-[384px] pb-[42px] mx-auto">
-      <div className="flex justify-between flex-wrap">
+    <div className="w-full max-w-[1240px] mx-auto pb-10">
+      <div className="flex flex-wrap justify-center sm:justify-between gap-6">
         {riceItems.map((item, idx) => (
           <RiceCard key={idx} image={item.image} label={item.label} hoverImage={item.hoverImage} />
         ))}
