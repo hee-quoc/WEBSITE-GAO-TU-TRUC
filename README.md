@@ -46,7 +46,7 @@ Follow these steps to set up your local development environment.
 5.  **Sync the database schema:**
     This command reads the `prisma/schema.prisma` file and creates the necessary tables in your database. It also creates the default admin user.
     ```bash
-    npx prisma db push
+    npx prisma db push --force-reset
     npx prisma db seed
     ```
 
