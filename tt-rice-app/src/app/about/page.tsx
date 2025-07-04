@@ -1,18 +1,22 @@
 // src/app/about/page.tsx
 import Image from 'next/image';
+import { StorySection } from './section/StorySection';
+import { PlatformSection } from './section/PlatformSection';
+import { MileStoneSection } from './section/MileStoneSection';
+import { MissionSection } from './section/MissionSection';
+import { RiceSection } from './section/RiceSection';
+import { CommunitySection } from './section/CommunitySection';
+import { CustomerSection } from './section/CustomerSection';
 export default function AboutPage() {
     return (
-        <section className="relative min-h-screen bg-white overflow-hidden">
-            <div>
-                <div className="relative w-full h-full min-h-screen inset-0">
-                    <Image
-                        src="/about_background.svg"
-                        alt={`about Background`}
-                        fill
-                        className="object-cover"
-                    />
-                </div>
-            </div>
-        </section>
+        <div className="main-content">
+            <StorySection/>
+            <PlatformSection/>
+            <MileStoneSection/>
+            <MissionSection/>
+            <RiceSection/>
+            <CommunitySection/>
+            <CustomerSection/>
+        </div>
     );
 }

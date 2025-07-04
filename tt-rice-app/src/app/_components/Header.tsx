@@ -62,9 +62,9 @@ const Header: React.FC = () => {
             <Link href="#contact" className="text-dark-gray hover:text-green-normal transition-colors">
               Liên hệ
             </Link>
-            <Link href="/login" className="text-dark-gray hover:text-green-normal transition-colors">
+            {/* <Link href="/login" className="text-dark-gray hover:text-green-normal transition-colors">
               Đăng nhập
-            </Link>
+            </Link> */}
           </nav>
           <div className="md:hidden flex items-center">
             <button onClick={toggleMenu} className="text-dark-gray focus:outline-none">
@@ -128,13 +128,13 @@ const Header: React.FC = () => {
               >
                 Liên hệ
               </Link>
-              <Link
+              {/* <Link
                 href="/login"
                 className="text-dark-gray hover:text-green-normal transition-colors"
                 onClick={toggleMenu}
               >
                 Đăng nhập
-              </Link>
+              </Link> */}
               <Button
                 variant="secondary"
                 size="medium"
