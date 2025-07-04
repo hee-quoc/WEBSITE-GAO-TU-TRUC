@@ -60,7 +60,7 @@ export function HeroSection() {
           <Button
             size="large"
             className="
-              absolute left-1/2 -translate-x-1/2 mt-8 
+              absolute left-1/2 -translate-x-1/2 mt-2 
               z-10 flex items-center gap-2 bg-green-normal 
               hover:bg-green-dark
               transition-colors  
