@@ -1,6 +1,4 @@
 import Link from "next/link";
-
-import { LatestProduct } from "~/app/_components/product";
 import { HeroSection } from "./_components/home/HeroSection";
 import { AboutSection } from "./_components/home/AboutSection";
 import { ProductsSection } from "./_components/home/ProductsSection";
@@ -11,6 +9,7 @@ import { ContactSection } from "./_components/home/ContactSection";
 import { api, HydrateClient } from "~/trpc/server";
 export default async function Home() {
   return (
+    <main className="flex-grow"> 
     <HydrateClient>
         <HeroSection />
         <AboutSection />
@@ -20,5 +19,6 @@ export default async function Home() {
         <Testimonial/>
         <ContactSection />
     </HydrateClient>
+    </main>
   );
 }

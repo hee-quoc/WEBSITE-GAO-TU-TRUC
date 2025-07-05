@@ -35,8 +35,8 @@ model Product {
   id          String   @id @default(cuid())
   name        String   @unique // Each type of rice should have a unique name
   description String?  // Optional detailed description of the rice
-  svgContent  String?  @db.Text
-  svgFilename String?
+  imageData   Bytes?
+  imageType   String?
   tags        String[] @default([])
 
   authorId    String

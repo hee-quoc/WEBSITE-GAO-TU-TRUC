@@ -27,12 +27,10 @@ export default function RootLayout({
     <html lang="en" className={`${geist.variable}`}>
       <body className="flex min-h-screen flex-col">
         <TRPCReactProvider>
-          <Header />
-          <main className="flex-grow"> 
+          <Header />        
             <AuthProvider>
             {children}
             </AuthProvider>
-          </main>
           <Footer />
           <FloatingSocialLinks/>
         </TRPCReactProvider>

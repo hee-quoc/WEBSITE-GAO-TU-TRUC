@@ -1,135 +1,67 @@
-// src/app/products/page.tsx
-"use client";
+import { api } from "~/trpc/server";
+import { Suspense } from "react";
+import { FilteredProductList } from '~/app/_components/product/FilteredProductList';
+import Image from "next/image";
+// This page is now fully static by default, perfect for On-Demand ISR.
+// When you update a product, you will trigger the revalidation API
+// to rebuild this page with fresh data.
 
-import { useState } from "react";
-import { useSession } from "next-auth/react";
-import { api } from "~/trpc/react";
-import toast, { Toaster } from "react-hot-toast";
+export interface CategoryData {
+  name: string;
+  description: string;
+  image: string;
+}
 
-import Button from "~/app/_components/ui/Button";
-import Input from "~/app/_components/ui/Input";
-import Card from "~/app/_components/ui/Card";
+const CATEGORY_DATA: Record<string, CategoryData> = {
+  'gao-an': { name: 'Gạo ăn', description: 'Câu chuyện về Tư Trúc bắt đầu từ hơn 3 thập kỉ trước tại một nhà máy xay xát lúa, với một niềm tự hào về việc giữ gìn nền văn minh lúa nước ngàn năm và nâng tầm, lan tỏa giá trị của hạt ngọc thực đến với mỗi người Việt', image: '/img_category_decorative.png' },
+  'gao-nguyen-lieu': { name: 'Gạo nguyên liệu', description: 'Canh tác theo quy trình hữu cơ nghiêm ngặt...', image: '/img_category_decorative.png' },
+  'gao-thong-dung': { name: 'Gạo thông dụng', description: 'Giàu dinh dưỡng, chất xơ và chất chống oxy hóa...', image: '/img_category_decorative.png' },
+  'gao-cam-trau': { name: 'Cám/trấu', description: 'Hạt to tròn, dẻo thơm đặc trưng, chuyên dùng để nấu xôi...', image: '/img_category_decorative.png' },
+};
 
-export default function ProductsPage() {
-  const { data: session } = useSession();
-  const utils = api.useUtils();
-
-  const [newProduct, setNewProduct] = useState({ name: '', description: '' });
-
-    const {
-        data,
-        fetchNextPage,
-        hasNextPage,
-        isLoading, // Changed from isLoadingProducts
-    } = api.product.getInfinite.useInfiniteQuery(
-        { limit: 12 }, // Fetch 12 items per page
-        {
-        getNextPageParam: (lastPage) => lastPage.nextCursor,
-        }
-    );
-
-  const createProduct = api.product.create.useMutation({
-    onSuccess: () => {
-      toast.success("Product created!");
-      utils.product.getAll.invalidate();
-      setNewProduct({ name: '', description: '' });
-    },
-    onError: (err) => toast.error(err.message),
-  });
-
-  const deleteProduct = api.product.delete.useMutation({
-    onSuccess: () => {
-      toast.success("Product deleted!");
-      utils.product.getAll.invalidate();
-    },
-    onError: (err) => toast.error(err.message),
-  });
-
-  const handleCreateSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    createProduct.mutate(newProduct);
-  };
-
-
-// The 'data' object is now structured differently, so we flatten it
-const products = data?.pages.flatMap((page) => page.items);
+// A simple loading skeleton for the entire product list area
+function ProductListFallback() {
   return (
-    <main className="mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">
-      <Toaster position="top-center" />
-      <div className="mb-8 flex items-center justify-between">
-        <h1 className="text-3xl font-bold tracking-tight text-slate-900">Our Products</h1>
+    <div className="w-full">
+      <div className="flex flex-wrap animate-pulse items-center justify-center gap-4 mt-8">
+        <div className="h-9 w-24 rounded-full bg-gray-200"></div>
+        <div className="h-9 w-28 rounded-full bg-gray-200"></div>
+        <div className="h-9 w-32 rounded-full bg-gray-200"></div>
       </div>
-
-      {session && (
-        <Card className="mb-8">
-          <h2 className="mb-4 text-xl font-semibold text-slate-800">Add a New Product</h2>
-          <form onSubmit={handleCreateSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <Input
-                placeholder="Product Name"
-                value={newProduct.name}
-                onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
-                required
-              />
-              <Input
-                placeholder="Product Description (optional)"
-                value={newProduct.description}
-                onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })}
-              />
-            </div>
-            <div className="flex justify-end">
-              {/* <Button type="submit" isLoading={createProduct.isLoading}>
-                Create Product
-              </Button> */}
-              <Button type="submit">
-                Create Product
-              </Button>
-            </div>
-          </form>
-        </Card>
-      )}
-      {isLoading && <p>Loading products...</p>}
-      
-      <div className="grid ...">
-        {products?.map((product) => (
-          <Card key={product.id} className="flex flex-col">
-              <div className="flex-grow">
-                <h3 className="text-lg font-bold text-slate-900">{product.name}</h3>
-                <p className="mt-1 text-sm text-slate-600">{product.description}</p>
-              </div>
-              <div className="mt-4 flex items-center justify-between">
-                <p className="text-xs text-slate-500">By: {product.author.username}</p>
-                {session?.user.id === product.authorId && (
-                  <div className="flex space-x-2">
-                    <Button 
-                      
-                      onClick={() => {
-                        if (confirm("Are you sure?")) {
-                          deleteProduct.mutate({ id: product.id });
-                        }
-                      }}
-                    //   isLoading={deleteProduct.isLoading && deleteProduct.variables?.id === product.id}
-                    >
-                      Delete
-                    </Button>
-                  </div>
-                )}
-              </div>
-            </Card>
+      <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        {[...Array(4)].map((_, i) => (
+          <div key={i} className="flex flex-col items-center gap-4">
+            <div className="h-48 w-full rounded-md bg-gray-200"></div>
+            <div className="h-6 w-3/4 rounded-md bg-gray-200"></div>
+          </div>
         ))}
       </div>
+    </div>
+  );
+}
 
-      {/* Add a "Load More" button */}
-      {hasNextPage && (
-        <div className="mt-8 flex justify-center">
-          <Button
-            onClick={() => fetchNextPage()}
-            variant="secondary"
-          >
-            Load More
-          </Button>
+export default async function ProductsPage() {
+  // 1. Fetch ALL products once. The `tag` is no longer needed here.
+  const allProducts = await api.product.getAll({});
+  return (
+    <main className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <div className="mt-[43px] flex flex-col items-center">
+        <h1 className="md:text-[56px] font-bold text-steel-blue text-5xl">Sản phẩm</h1>
+      </div>
+      <div className="relative w-full h-full">
+        <Image
+          src="/img_product_background.png"
+          alt="Product Illustration"
+          width={850}
+          height={498}
+          className="absolute top-[-183px] right-[-103px] h-auto"
+        />
         </div>
-      )}
+      <Suspense fallback={<ProductListFallback />}>
+        <FilteredProductList allProducts={allProducts} categories={CATEGORY_DATA} />
+      </Suspense>
+      
+      <div className="h-20" />
     </main>
   );
 }
