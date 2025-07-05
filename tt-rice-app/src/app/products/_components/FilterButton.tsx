@@ -4,11 +4,11 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link'; // Import the Link component
 import { type CategoryData } from '~/app/products/page';
 
-interface FilterButtonsProps {
+interface FilterButtonProps {
   categories: Record<string, CategoryData>;
 }
 
-export function FilterButton({ categories }: FilterButtonsProps) {
+export function FilterButton({ categories }: FilterButtonProps) {
   // We no longer need useRouter or usePathname, Link handles it for us.
   const searchParams = useSearchParams();
   const activeTag = searchParams?.get('tag');
@@ -16,7 +16,7 @@ export function FilterButton({ categories }: FilterButtonsProps) {
   const allCategories = [{ slug: null, name: 'Tất cả' }, ...Object.entries(categories).map(([slug, data]) => ({ slug, name: data.name }))];
 
   return (
-    <div className="flex flex-wrap items-center justify-center gap-4">
+    <div className={`flex flex-wrap gap-4 ${activeTag ? 'items-center justify-center' : 'items-center justify-center sm:justify-start'}`}>
       {allCategories.map(({ slug, name }) => {
         const isActive = activeTag === slug;
         

@@ -4,6 +4,36 @@ import Image from 'next/image';
 // Define a more specific type for the props we expect.
 // The 'imageData' from a serialized Prisma 'Bytes' field is not a true Buffer on the client.
 // It's an object with a 'data' array. We must handle this structure.
+function toSlug(str: string): string {
+  if (!str) {
+    return '';
+  }
+
+  // 1. Convert to lower case
+  let slug = str.toLowerCase();
+
+  // 2. & 3. Decompose and remove diacritics
+  // 'NFD' separates combined characters into the base character and the accent
+  // /[\u0300-\u036f]/g matches all combining diacritical marks
+  slug = slug.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+  // 4. Handle the Vietnamese letter 'đ'
+  slug = slug.replace(/đ/g, 'd');
+
+  // 5. Replace spaces and consecutive spaces with a single hyphen
+  slug = slug.replace(/\s+/g, '-');
+
+  // 6. Remove all non-alphanumeric characters except the hyphen
+  slug = slug.replace(/[^a-z0-9-]/g, '');
+
+  // 7. Collapse consecutive hyphens
+  slug = slug.replace(/-+/g, '-');
+
+  // 8. Trim leading/trailing hyphens
+  slug = slug.replace(/^-+|-+$/g, '');
+
+  return slug;
+}
 interface ProductCardProps {
   product: Product;
 }
@@ -38,7 +68,10 @@ export function ProductCard({ product }: ProductCardProps) {
   }, [product.imageData, product.imageType, product.name]);
 
   return (
-    <div className="flex flex-col items-center gap-4 h-[378px]">
+    <div className="flex flex-col items-center gap-4 md:h-[378px] md:w-[278]" key={product.name}
+            onClick={() => {
+              window.location.href = `/products/${toSlug(product.name)}`;
+            }}>
       {imageUrl ? (
         // Use a standard <img> tag with the Data URL as its source.
         <Image
@@ -55,7 +88,7 @@ export function ProductCard({ product }: ProductCardProps) {
           <span className="text-gray-500">No Image</span>
         </div>
       )}
-      <h3 className="text-[20px] text-center font-medium text-steel-blue">{product.name}</h3>
+      <h3 className="text-[20px] text-center font-medium text-steel-blue pb-1 hover:underline">{product.name}</h3>
     </div>
   );
 }

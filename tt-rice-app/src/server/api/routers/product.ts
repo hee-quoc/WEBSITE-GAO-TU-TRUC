@@ -133,4 +133,27 @@ export const productRouter = createTRPCRouter({
         where: { id: input.id },
       });
     }),
-});
+    getAllSlugs: publicProcedure.query(async ({ ctx }) => {
+      const products = await ctx.db.product.findMany({
+        select: {
+          slug: true,
+        },
+      });
+      return products;
+    }),
+
+    /**
+     * Fetches a single product by its unique slug.
+     * Used by getStaticProps to get the data for a specific page.
+     */
+    getBySlug: publicProcedure
+      .input(z.object({ slug: z.string() }))
+      .query(async ({ ctx, input }) => {
+        const product = await ctx.db.product.findUnique({
+          where: {
+            slug: input.slug,
+          },
+        });
+        return product;
+      }),
+  });

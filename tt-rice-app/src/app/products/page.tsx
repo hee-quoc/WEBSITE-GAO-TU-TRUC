@@ -1,6 +1,7 @@
 import { api } from "~/trpc/server";
 import { Suspense } from "react";
-import { FilteredProductList } from '~/app/_components/product/FilteredProductList';
+import { FilteredProductList } from '~/app/products/_components/FilteredProductList';
+import { FilterButton } from "./_components/FilterButton";
 import Image from "next/image";
 // This page is now fully static by default, perfect for On-Demand ISR.
 // When you update a product, you will trigger the revalidation API
@@ -20,47 +21,64 @@ const CATEGORY_DATA: Record<string, CategoryData> = {
 };
 
 // A simple loading skeleton for the entire product list area
-function ProductListFallback() {
+function FilterButtonsFallback() {
   return (
-    <div className="w-full">
-      <div className="flex flex-wrap animate-pulse items-center justify-center gap-4 mt-8">
-        <div className="h-9 w-24 rounded-full bg-gray-200"></div>
-        <div className="h-9 w-28 rounded-full bg-gray-200"></div>
-        <div className="h-9 w-32 rounded-full bg-gray-200"></div>
-      </div>
-      <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-        {[...Array(4)].map((_, i) => (
-          <div key={i} className="flex flex-col items-center gap-4">
-            <div className="h-48 w-full rounded-md bg-gray-200"></div>
-            <div className="h-6 w-3/4 rounded-md bg-gray-200"></div>
-          </div>
-        ))}
-      </div>
+    <div className="mt-8 flex flex-wrap animate-pulse items-center justify-center gap-4 md:justify-start">
+      <div className="h-9 w-24 rounded-full bg-gray-200"></div>
+      <div className="h-9 w-28 rounded-full bg-gray-200"></div>
     </div>
   );
 }
 
-export default async function ProductsPage() {
-  // 1. Fetch ALL products once. The `tag` is no longer needed here.
+export default async function ProductsPage({
+  searchParams,
+}: {
+  searchParams: { tag?: string };
+}) {
   const allProducts = await api.product.getAll({});
+  const {tag} = await searchParams;
+
   return (
-    <main className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-      <div className="mt-[43px] flex flex-col items-center">
-        <h1 className="md:text-[56px] font-bold text-steel-blue text-5xl">Sản phẩm</h1>
-      </div>
-      <div className="relative w-full h-full">
+    // Set main container to relative for background image positioning
+    <main className="relative mx-auto max-w-screen-xl overflow-hidden px-4 sm:px-6 lg:px-8">
+      
+      {/* Conditionally render the large background image for the default view */}
+      {!tag && (
         <Image
           src="/img_product_background.png"
-          alt="Product Illustration"
+          alt="Product background illustration"
           width={850}
           height={498}
-          className="absolute top-[-183px] right-[-103px] h-auto"
+          className="absolute -right-16 top-0 -z-10 h-auto w-2/3 max-w-[850px] lg:-right-24"
+          priority
         />
+      )}
+
+      {/* Dynamic Header Section */}
+      <div className={`mt-[43px] flex flex-col ${
+          // If a tag is active, center everything. Otherwise, center on mobile but align left on larger screens.
+          tag ? 'items-center' : 'items-center md:items-start md:pl-10'
+        }`}
+      >
+        <h1 className="text-5xl font-bold text-steel-blue md:text-[56px]">Sản phẩm</h1>
+
+        {/* Filter Buttons Wrapper */}
+        <div className="relative z-10 mt-8 w-full">
+          {/* Conditionally render the small decorative lines for the filtered view */}
+          {tag && (
+            <div className="absolute inset-x-0 top-0 -z-10 -mt-4 hidden h-32 w-full items-center justify-center overflow-hidden lg:flex">
+              <div className="h-full w-64 bg-[url('/images/decorative-lines.svg')] bg-contain bg-center bg-no-repeat opacity-50"></div>
+            </div>
+          )}
+          <Suspense fallback={<FilterButtonsFallback />}>
+            <FilterButton categories={CATEGORY_DATA} />
+          </Suspense>
         </div>
-      <Suspense fallback={<ProductListFallback />}>
-        <FilteredProductList allProducts={allProducts} categories={CATEGORY_DATA} />
-      </Suspense>
+      </div>
       
+      {/* Product list remains a client component, but no longer contains the buttons */}
+      <FilteredProductList allProducts={allProducts} categories={CATEGORY_DATA} />
+
       <div className="h-20" />
     </main>
   );

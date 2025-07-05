@@ -6,7 +6,36 @@ import path from 'path';
 
 const prisma = new PrismaClient();
 
+function toSlug(str: string): string {
+  if (!str) {
+    return '';
+  }
 
+  // 1. Convert to lower case
+  let slug = str.toLowerCase();
+
+  // 2. & 3. Decompose and remove diacritics
+  // 'NFD' separates combined characters into the base character and the accent
+  // /[\u0300-\u036f]/g matches all combining diacritical marks
+  slug = slug.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+  // 4. Handle the Vietnamese letter 'đ'
+  slug = slug.replace(/đ/g, 'd');
+
+  // 5. Replace spaces and consecutive spaces with a single hyphen
+  slug = slug.replace(/\s+/g, '-');
+
+  // 6. Remove all non-alphanumeric characters except the hyphen
+  slug = slug.replace(/[^a-z0-9-]/g, '');
+
+  // 7. Collapse consecutive hyphens
+  slug = slug.replace(/-+/g, '-');
+
+  // 8. Trim leading/trailing hyphens
+  slug = slug.replace(/^-+|-+$/g, '');
+
+  return slug;
+}
 async function main() {
   console.log('Start seeding ...');
 
@@ -28,7 +57,28 @@ async function main() {
   const productsData = [
     {
       name: 'Gạo ST25 Thượng Hạng',
-      description: 'Được mệnh danh là gạo ngon nhất thế giới, hạt dài, trắng trong, không bạc bụng.',
+      description: `
+    <p>Được mệnh danh là gạo ngon nhất thế giới, hạt dài, trắng trong, không bạc bụng, khi nấu cho cơm dẻo, thơm mùi lá dứa tự nhiên, ăn rất hấp dẫn.</p>
+    <div style="text-align: center; font-weight: bold; margin-top: 1rem; margin-bottom: 0.5rem;">Hàm lượng dinh dưỡng trong 01kg</div>
+    <table class="table-auto border-collapse border border-slate-400 w-full">
+      <thead>
+        <tr>
+          <th class="border border-slate-300 p-2">Thành phần</th>
+          <th class="border border-slate-300 p-2">Giá trị</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border border-slate-300 p-2">Đạm (Protein)</td>
+          <td class="border border-slate-300 p-2">> 65g</td>
+        </tr>
+        <tr>
+          <td class="border border-slate-300 p-2">Tinh bột (Carbohydrate)</td>
+          <td class="border border-slate-300 p-2">> 750g</td>
+        </tr>
+      </tbody>
+    </table>
+  `,
       imageFilename: 'img_eat_rice.png',
       imageType: 'image/png',
       tag:["gao-an"],
@@ -108,6 +158,7 @@ async function main() {
         imageData: imageDataBuffer, // Store the raw image data
         imageType: productData.imageType, // Store the MIME type
         authorId: adminUser.id,
+        slug: toSlug(productData.name),
       },
     });
   }
