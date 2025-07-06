@@ -76,7 +76,6 @@ export function ProductCard({ product }: ProductCardProps) {
   const imageUrl = useMemo(() => {
     // 1. Guard against missing image data or type information.
     if (!product.imageData || !product.imageType) {
-      console.error("data null");
       return null;
     }
 
