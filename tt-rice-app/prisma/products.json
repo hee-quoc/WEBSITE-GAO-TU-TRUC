@@ -1,0 +1,346 @@
+[
+  {
+    name: 'Gạo ST25 Thượng Hạng',
+    description: `
+      <p>Được mệnh danh là gạo ngon nhất thế giới, hạt dài, trắng trong, không bạc bụng, khi nấu cho cơm dẻo, thơm mùi lá dứa tự nhiên, ăn rất hấp dẫn.</p>
+      <div class="text-center font-bold mt-4 mb-2">Hàm lượng dinh dưỡng trong 01kg</div>
+      <table class="table-auto border-collapse border border-slate-400 w-full">
+        <thead>
+          <tr>
+            <th class="border border-slate-300 p-2">Thành phần</th>
+            <th class="border border-slate-300 p-2">Giá trị</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-300 p-2">Đạm (Protein)</td>
+            <td class="border border-slate-300 p-2">> 65g</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-2">Tinh bột (Carbohydrate)</td>
+            <td class="border border-slate-300 p-2">> 750g</td>
+          </tr>
+        </tbody>
+      </table>
+    `,
+    imageFilename: 'img_eat_rice.png',
+    imageType: 'image/png',
+    tags: ['gao-an'],
+    companyBrand: "Khác",
+    SKU:"XHSVT",
+  },
+  {
+    name: 'Gạo Lứt Huyết Rồng',
+    description: `
+      <p>Gạo Lứt Huyết Rồng, với lớp cám giàu dinh dưỡng, mang lại hương vị thơm ngon, dẻo nhẹ, là lựa chọn lý tưởng cho những ai yêu thích lối sống lành mạnh. Loại gạo này hỗ trợ sức khỏe tim mạch, tiêu hóa và kiểm soát đường huyết.</p>
+      <div class="text-center font-bold mt-4 mb-2">Hàm lượng dinh dưỡng trong 01kg</div>
+      <table class="table-auto border-collapse border border-slate-400 w-full">
+        <thead>
+          <tr>
+            <th class="border border-slate-300 p-2">Thành phần</th>
+            <th class="border border-slate-300 p-2">Giá trị</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-300 p-2">Đạm (Protein)</td>
+            <td class="border border-slate-300 p-2">> 80g</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-2">Tinh bột (Carbohydrate)</td>
+            <td class="border border-slate-300 p-2">> 700g</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-2">Chất xơ (Fiber)</td>
+            <td class="border border-slate-300 p-2">> 35g</td>
+          </tr>
+        </tbody>
+      </table>
+    `,
+    imageFilename: 'img_eat_rice.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-suc-khoe'],
+    companyBrand: "Khác",
+    SKU:"XHSVT",
+  },
+  {
+    name: 'Gạo Nếp Cái Hoa Vàng',
+    description: `
+      <p>Gạo Nếp Cái Hoa Vàng nổi bật với hạt gạo tròn, dẻo thơm, mang hương vị truyền thống đặc trưng. Loại nếp này là nguyên liệu hoàn hảo cho xôi, chè, bánh chưng, bánh tét, đậm chất văn hóa Việt.</p>
+      <div class="text-center font-bold mt-4 mb-2">Hàm lượng dinh dưỡng trong 01kg</div>
+      <table class="table-auto border-collapse border border-slate-400 w-full">
+        <thead>
+          <tr>
+            <th class="border border-slate-300 p-2">Thành phần</th>
+            <th class="border border-slate-300 p-2">Giá trị</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-300 p-2">Đạm (Protein)</td>
+            <td class="border border-slate-300 p-2">> 60g</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-2">Tinh bột (Carbohydrate)</td>
+            <td class="border border-slate-300 p-2">> 780g</td>
+          </tr>
+        </tbody>
+      </table>
+    `,
+    imageFilename: 'img_eat_rice.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-thong-dung'],
+    companyBrand: "Khác",
+    SKU:"XHSVT",
+  },
+  {
+    name: 'Gạo Tấm Dẻo',
+    description: `
+      <p>Gạo Tấm Dẻo là đặc sản miền Nam, với hạt gạo nhỏ, mềm dẻo, thơm ngon, lý tưởng cho món cơm tấm sườn bì chả trứ danh. Loại gạo này mang đến trải nghiệm ẩm thực đậm chất Việt Nam.</p>
+      <div class="text-center font-bold mt-4 mb-2">Hàm lượng dinh dưỡng trong 01kg</div>
+      <table class="table-auto border-collapse border border-slate-400 w-full">
+        <thead>
+          <tr>
+            <th class="border border-slate-300 p-2">Thành phần</th>
+            <th class="border border-slate-300 p-2">Giá trị</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-300 p-2">Đạm (Protein)</td>
+            <td class="border border-slate-300 p-2">> 60g</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-2">Tinh bột (Carbohydrate)</td>
+            <td class="border border-slate-300 p-2">> 770g</td>
+          </tr>
+        </tbody>
+      </table>
+    `,
+    imageFilename: 'img_eat_rice.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-nguyen-lieu'],
+    companyBrand: "Khác",
+    SKU:"XHSVT",
+  },
+  {
+    name: 'Gạo Hữu Cơ Hoa Sữa',
+    description: `
+      <p>Gạo Hữu Cơ Hoa Sữa được canh tác theo tiêu chuẩn hữu cơ nghiêm ngặt, không sử dụng hóa chất hay thuốc trừ sâu, mang đến hạt gạo tinh khiết, an toàn, phù hợp cho mọi thành viên trong gia đình, đặc biệt là trẻ nhỏ và người lớn tuổi.</p>
+      <div class="text-center font-bold mt-4 mb-2">Hàm lượng dinh dưỡng trong 01kg</div>
+      <table class="table-auto border-collapse border border-slate-400 w-full">
+        <thead>
+          <tr>
+            <th class="border border-slate-300 p-2">Thành phần</th>
+            <th class="border border-slate-300 p-2">Giá trị</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-300 p-2">Đạm (Protein)</td>
+            <td class="border border-slate-300 p-2">> 70g</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-2">Tinh bột (Carbohydrate)</td>
+            <td class="border border-slate-300 p-2">> 740g</td>
+          </tr>
+        </tbody>
+      </table>
+    `,
+    imageFilename: 'img_eat_rice.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-huu-co'],
+    companyBrand: "Khác",
+    SKU:"XHSVT",
+  },
+  {
+    name: 'Gạo Nhật Japonica',
+    description: `
+      <p>Gạo Nhật Japonica với hạt gạo tròn, dẻo, vị ngọt thanh, là lựa chọn hoàn hảo cho các món ăn Nhật Bản như sushi, cơm cuộn, hoặc cơm hộp bento. Hạt gạo giữ được độ bóng và kết cấu đặc trưng sau khi nấu.</p>
+      <div class="text-center font-bold mt-4 mb-2">Hàm lượng dinh dưỡng trong 01kg</div>
+      <table class="table-auto border-collapse border border-slate-400 w-full">
+        <thead>
+          <tr>
+            <th class="border border-slate-300 p-2">Thành phần</th>
+            <th class="border border-slate-300 p-2">Giá trị</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-300 p-2">Đạm (Protein)</td>
+            <td class="border border-slate-300 p-2">> 60g</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-2">Tinh bột (Carbohydrate)</td>
+            <td class="border border-slate-300 p-2">> 780g</td>
+          </tr>
+        </tbody>
+      </table>
+    `,
+    imageFilename: 'img_eat_rice.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-thong-dung'],
+    companyBrand: "Khác",
+    SKU:"XHSVT",
+  },
+  {
+    name: 'Gạo Sạch Vua Gạo',
+    description: `
+      <p>Gạo Sạch Vua Gạo được sản xuất và kiểm định theo tiêu chuẩn nghiêm ngặt, đảm bảo không dư lượng thuốc trừ sâu, mang đến hạt gạo sạch, an toàn, phù hợp cho mọi bữa ăn gia đình và các món ăn chế biến đa dạng.</p>
+      <div class="text-center font-bold mt-4 mb-2">Hàm lượng dinh dưỡng trong 01kg</div>
+      <table class="table-auto border-collapse border border-slate-400 w-full">
+        <thead>
+          <tr>
+            <th class="border border-slate-300 p-2">Thành phần</th>
+            <th class="border border-slate-300 p-2">Giá trị</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-300 p-2">Đạm (Protein)</td>
+            <td class="border border-slate-300 p-2">> 65g</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-2">Tinh bột (Carbohydrate)</td>
+            <td class="border border-slate-300 p-2">> 750g</td>
+          </tr>
+        </tbody>
+      </table>
+    `,
+    imageFilename: 'img_eat_rice.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-cam-trau', 'gao-nguyen-lieu'],
+    companyBrand: "Khác",
+    SKU:"XHSVT",
+  },
+  {
+    name: 'Gạo Thơm Lài Miên',
+    description: `
+      <p>Gạo Thơm Lài Miên, giống gạo đặc sản từ Campuchia, nổi bật với hương thơm tự nhiên và hạt gạo mềm dẻo. Loại gạo này lý tưởng cho cơm trắng hoặc các món ăn cần sự tinh tế, mang đến trải nghiệm ẩm thực độc đáo.</p>
+      <div class="text-center font-bold mt-4 mb-2">Hàm lượng dinh dưỡng trong 01kg</div>
+      <table class="table-auto border-collapse border border-slate-400 w-full">
+        <thead>
+          <tr>
+            <th class="border border-slate-300 p-2">Thành phần</th>
+            <th class="border border-slate-300 p-2">Giá trị</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-300 p-2">Đạm (Protein)</td>
+            <td class="border border-slate-300 p-2">> 65g</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-2">Tinh bột (Carbohydrate)</td>
+            <td class="border border-slate-300 p-2">> 760g</td>
+          </tr>
+        </tbody>
+      </table>
+    `,
+    imageFilename: 'img_eat_rice.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-cam-trau'],
+    companyBrand: "Khác",
+    SKU:"XHSVT",
+  },
+]
+
+
+[
+  {
+    name: 'Gạo Lúa Tôm ST25 Tư Trúc',
+    description: `
+      <div class="content">
+        <p>Gạo sạch Tư Trúc - Gạo ST25 nổi tiếng với hạt gạo thon dài, trắng trong. Khi nấu, cơm dẻo mềm, có mùi thơm đặc trưng của lá dứa và cốm non, vị ngọt đậm đà. Đây là giống gạo được ưa chuộng bởi hương vị thơm ngon và giá trị dinh dưỡng cao, thích hợp cho mọi bữa ăn gia đình.</p><div style="--prim-hover-color: #0055F2; text-align: center;">Hàm lượng dinh dưỡng trong 01kg&nbsp;</div><table class="table table-bordered" style="--prim-hover-color: #0055F2; width: 867.292px;"><tbody style="--prim-hover-color: #0055F2;"><tr style="--prim-hover-color: #0055F2;"><td style="--prim-hover-color: #0055F2;">Đạm &gt; 60g</td><td style="--prim-hover-color: #0055F2;">Chất béo (Lipid) &lt;2g</td></tr><tr style="--prim-hover-color: #0055F2;"><td style="--prim-hover-color: #0055F2;">Tinh bột (Cacbonhydrat) &gt; 720g</td><td style="--prim-hover-color: #0055F2;">Vitamin B1 &lt; 100&nbsp;<span style="font-family: sans-serif; --prim-hover-color: #0055F2; color: rgb(32, 33, 34); font-size: 16px; text-align: start;">μg</span></td></tr><tr style="--prim-hover-color: #0055F2;"><td style="--prim-hover-color: #0055F2;"><span style="--prim-hover-color: #0055F2; text-align: left;">Chất xơ (Fiber) &gt; 3g</span></td><td style="--prim-hover-color: #0055F2;">Cholestorol = 0 g</td></tr></tbody></table><p style="--prim-hover-color: #0055F2;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Chỉ tiêu chất lượng</p><p style="--prim-hover-color: #0055F2;"></p><table class="table table-bordered" style="--prim-hover-color: #0055F2; width: 867.292px;"><tbody style="--prim-hover-color: #0055F2;"><tr style="--prim-hover-color: #0055F2;"><td style="--prim-hover-color: #0055F2;">Độ ẩm &lt; 14%&nbsp; &nbsp; &nbsp;</td><td style="--prim-hover-color: #0055F2;">Tấm &lt; 5%</td></tr></tbody></table><p style="--prim-hover-color: #0055F2;"><br style="--prim-hover-color: #0055F2;"></p>
+    </div>
+    `,
+    imageFilename: 'lua_tom.png',
+    imageType: 'image/png',
+    tags: ['gao-an'],
+    companyBrand: "Thương hiệu",
+    SKU:"VN09",
+  },
+  {
+    name: 'Gạo Lài hoa',
+    description: `
+      <div class="content">
+        <p>&nbsp;Gạo Lài hoa sở hữu hạt gạo trắng trong như hoa lài, mang đến hương thơm thanh khiết, dịu nhẹ khi nấu. Cơm có độ mềm xốp vừa phải, vị ngọt thanh tao. Đây là lựa chọn lý tưởng cho những ai yêu thích hương vị nhẹ nhàng, tinh tế trong từng hạt cơm.</p><div style="--prim-hover-color: #0055F2; text-align: center;">Hàm lượng dinh dưỡng trong 01kg&nbsp;</div><table class="table table-bordered" style="--prim-hover-color: #0055F2; width: 867.292px;"><tbody style="--prim-hover-color: #0055F2;"><tr style="--prim-hover-color: #0055F2;"><td style="--prim-hover-color: #0055F2;">Đạm &gt; 60g</td><td style="--prim-hover-color: #0055F2;">Chất béo (Lipid) &lt;2g</td></tr><tr style="--prim-hover-color: #0055F2;"><td style="--prim-hover-color: #0055F2;">Tinh bột (Cacbonhydrat) &gt; 720g</td><td style="--prim-hover-color: #0055F2;">Vitamin B1 &lt; 100&nbsp;<span style="font-family: sans-serif; --prim-hover-color: #0055F2; color: rgb(32, 33, 34); font-size: 16px; text-align: start;">μg</span></td></tr><tr style="--prim-hover-color: #0055F2;"><td style="--prim-hover-color: #0055F2;"><span style="--prim-hover-color: #0055F2; text-align: left;">Chất xơ (Fiber) &gt; 3g</span></td><td style="--prim-hover-color: #0055F2;">Cholestorol = 0 g</td></tr></tbody></table><p style="--prim-hover-color: #0055F2;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Chỉ tiêu chất lượng</p><p style="--prim-hover-color: #0055F2;"></p><table class="table table-bordered" style="--prim-hover-color: #0055F2; width: 867.292px;"><tbody style="--prim-hover-color: #0055F2;"><tr style="--prim-hover-color: #0055F2;"><td style="--prim-hover-color: #0055F2;">Độ ẩm &lt; 14%&nbsp; &nbsp; &nbsp;</td><td style="--prim-hover-color: #0055F2;">Tấm &lt; 5%</td></tr></tbody></table><p style="--prim-hover-color: #0055F2;"><br style="--prim-hover-color: #0055F2;"></p>
+      </div>
+    `,
+    imageFilename: 'lai_hoa.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-thong-dung'],
+    companyBrand: "Thương hiệu",
+    SKU:"M8S4",
+  },
+  {
+    name: 'Gạo Lài sữa',
+    description: `
+      <div class="content">
+        <p>Gạo Lài sữa có hạt gạo màu trắng sữa đặc trưng. Khi nấu, cơm dẻo mềm, có vị ngọt nhẹ và hương thơm thoang thoảng như sữa. Đây là giống gạo đặc biệt, không chỉ ngon miệng mà còn cung cấp nhiều dưỡng chất, phù hợp với cả người lớn và trẻ em.</p><div style="--prim-hover-color: #0055F2; text-align: center;">Hàm lượng dinh dưỡng trên 01kg&nbsp;</div><table class="table table-bordered" style="--prim-hover-color: #0055F2; width: 867.292px;"><tbody style="--prim-hover-color: #0055F2;"><tr style="--prim-hover-color: #0055F2;"><td style="--prim-hover-color: #0055F2;">Đạm &gt; 60g</td><td style="--prim-hover-color: #0055F2;">Chất béo (Lipid) &lt;2g</td></tr><tr style="--prim-hover-color: #0055F2;"><td style="--prim-hover-color: #0055F2;">Tinh bột (Cacbonhydrat) &gt; 720g</td><td style="--prim-hover-color: #0055F2;">Vitamin B1 &lt; 100&nbsp;<span style="font-family: sans-serif; --prim-hover-color: #0055F2; color: rgb(32, 33, 34); font-size: 16px; text-align: start;">μg</span></td></tr><tr style="--prim-hover-color: #0055F2;"><td style="--prim-hover-color: #0055F2;"><span style="--prim-hover-color: #0055F2; text-align: left;">Chất xơ (Fiber) &gt; 3g</span></td><td style="--prim-hover-color: #0055F2;">Cholestorol = 0 g</td></tr></tbody></table><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Chỉ tiêu chất lượng</p><p style="--prim-hover-color: #0055F2;"></p><table class="table table-bordered" style="--prim-hover-color: #0055F2; width: 867.292px;"><tbody style="--prim-hover-color: #0055F2;"><tr style="--prim-hover-color: #0055F2;"><td style="--prim-hover-color: #0055F2;">Độ ẩm &lt; 14%&nbsp; &nbsp; &nbsp;</td><td style="--prim-hover-color: #0055F2;">Tấm &lt; 5%</td></tr></tbody></table><p style="--prim-hover-color: #0055F2;"><br style="--prim-hover-color: #0055F2;"></p><p style="box-sizing: border-box; font-family: &quot;Plus Jakarta Sans&quot;, sans-serif; --prim-color: #0070F2; --prim-hover-color: #0055F2; margin-top: 0px; margin-bottom: 1rem; line-height: 28px; font-weight: 500;"></p>
+    </div>
+    `,
+    imageFilename: 'lai_sua.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-nguyen-lieu'],
+    companyBrand: "Thương hiệu",
+    SKU:"GGX4",
+  },
+  {
+    name: 'Gạo Hương sen',
+    description: `
+      <div class="content">
+        <p><p style="text-align: center; ">Gạo Hương sen mang đến trải nghiệm ẩm thực độc đáo với hương thơm thoang thoảng của lá sen tự nhiên. Hạt gạo thon dài, khi nấu cơm có độ dẻo vừa phải, không quá khô cũng không quá nát. Đây là sự lựa chọn thú vị để làm mới bữa ăn gia đình bạn, gợi nhớ đến những cánh đồng sen bát ngát.</p><p></p><div style="text-align: center;">Hàm lượng dinh dưỡng trên 01kg&nbsp;</div><table class="table table-bordered"><tbody><tr><td>Đạm &gt; 60g</td><td>Chất béo (Lipid) &lt;2g</td></tr><tr><td>Tinh bột (Cacbonhydrat) &gt; 720g</td><td>Vitamin B1 &lt; 100&nbsp;<span style="color: rgb(32, 33, 34); font-family: sans-serif; font-size: 16px; text-align: start;">μg</span></td></tr><tr><td><span style="text-align: left;">Chất xơ (Fiber) &gt; 3g</span></td><td>Cholestorol &lt; 0 g</td></tr></tbody></table>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Chỉ tiêu chất lượng</p><table class="table table-bordered"><tbody><tr><td>Độ ẩm &lt; 14%&nbsp; &nbsp; &nbsp;</td><td>Tấm &lt; 5%</td></tr></tbody></table><p><p><br></p><p><br></p></p>
+    </div>
+    `,
+    imageFilename: 'huong_sen.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-nguyen-lieu'],
+    companyBrand: "Thương hiệu",
+    SKU:"9J0Z",
+  },
+  {
+    name: 'Gạo ST25',
+    description: `
+      <div class="content">
+        <p data-start="203" data-end="489">Gạo ST25 là giống gạo đặc sản cao cấp của Việt Nam, với hương thơm tự nhiên, vị ngọt thanh và độ dẻo vừa phải, ST25 từng vinh dự đạt <strong data-start="425" data-end="472">giải Nhất “Gạo ngon nhất thế giới” năm 2019</strong> tại Philippines.</p><p>
+        </p><ul data-start="491" data-end="751">
+        <li data-start="491" data-end="544">
+        <p data-start="493" data-end="544"><strong data-start="493" data-end="506">Loại gạo:</strong> Gạo trắng hạt dài, thon, trắng trong.</p>
+        </li>
+        <li data-start="545" data-end="613">
+        <p data-start="547" data-end="613"><strong data-start="547" data-end="560">Hương vị:</strong> Thơm nhẹ mùi lá dứa đặc trưng, ngọt dịu sau khi nấu.</p>
+        </li>
+        <li data-start="614" data-end="673">
+        <p data-start="616" data-end="673"><strong data-start="616" data-end="627">Độ dẻo:</strong> Dẻo mềm nhưng không dính, cơm nguội vẫn ngon.</p></li></ul>
+      </div>
+    `,
+    imageFilename: 'img_st25.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-thong-dung'],
+    companyBrand: "Khác",
+    SKU:"RZUXB",
+  },
+  {
+    name: 'Gạo Tẻ 504',
+    description: `
+      <div class="content">
+        <p data-start="200" data-end="478">Gạo Tẻ 504 (IR50404) là giống gạo ngắn ngày, năng suất cao. Đây là loại gạo <strong data-start="325" data-end="339">thông dụng</strong>, phù hợp với nhu cầu ăn uống hằng ngày của đại đa số gia đình Việt Nam và được nhiều quán ăn, bếp công nghiệp, nhà hàng bình dân tin dùng.</p><p>
+        </p><ul data-start="480" data-end="752">
+        <li data-start="480" data-end="536">
+        <p data-start="482" data-end="536"><strong data-start="482" data-end="495">Loại gạo:</strong> Hạt trung bình, hơi bạc bụng, trắng đục.</p>
+        </li>
+        <li data-start="537" data-end="586">
+        <p data-start="539" data-end="586"><strong data-start="539" data-end="552">Hương vị:</strong> Nhẹ, ít thơm, cơm có vị hơi ngọt.</p>
+        </li>
+        <li data-start="587" data-end="655">
+        <p data-start="589" data-end="655"><strong data-start="589" data-end="600">Độ dẻo:</strong> Thấp – cơm tơi, dễ xới, thích hợp ăn liền sau khi nấu.</p></li></ul>
+      </div>
+    `,
+    imageFilename: 'te_504.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-thong-dung'],
+    companyBrand: "Khác",
+    SKU:"XHSVT",
+  }
+];

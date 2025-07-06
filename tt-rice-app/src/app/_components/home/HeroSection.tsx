@@ -48,9 +48,6 @@ export function HeroSection() {
           </div>
         ))}
       </div>
-
-      {/* --- FOREGROUND STATIC CONTENT --- */}
-      {/* 3. The slogan is now outside the map, rendered only once and centered by the parent section. */}
       <div id="hero-slogan" className="relative text-center z-10">
         <div className="relative inline-block mx-auto w-full max-w-[1020px] px-4">
           <h1 className="text-steel-blue font-alegreya-sans md:text-6xl text-4xl font-bold leading-tight text-blue-dark sm:text-4xl lg:text-6xl ">

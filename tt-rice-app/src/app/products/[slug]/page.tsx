@@ -14,7 +14,8 @@ type ProductPageProps = {
 
 // Fetch data for metadata (unchanged)
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const product = await db.product.findUnique({ where: { slug: params.slug }, select: { name: true, description: true } });
+  const {slug}=await params;
+  const product = await db.product.findUnique({ where: { slug: slug }, select: { name: true, description: true } });
   if (!product) return { title: 'Product Not Found' };
   return { title: `${product.name} | Gạo Store`, description: product.description?.substring(0, 150) ?? '' };
 }
@@ -70,26 +71,27 @@ export default async function ProductPage({ params }: ProductPageProps) {
           {/* Main Content (9 columns on desktop) */}
           <div className="col-span-12 md:col-span-9">
             {/* --- Top section with Image and Info --- */}
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 md:h-[480px]">
               {/* Image Gallery */}
-              <div className="h-full w-auto flex items-center justify-center">
-                <ProductImage
-                  imageData={product.imageData}
-                  imageType={product.imageType}
+              <div className="h-auto w-full flex items-center justify-center hover:scale-110">
+                <ProductImage 
+                  imageData={product.imageData} 
+                  imageType={product.imageType} 
                   alt={product.name}
                   width={300}
                   height={400}
+                  imageUrl={product.imageUrl}
                 />
               </div>
 
               {/* Product Info */}
               <div className="flex flex-col">
-                <h1 className="text-3xl font-bold text-gray-900">{product.name}</h1>
+                <h1 className="text-3xl font-bold text-gray-900 font-fz-poppins">{product.name}</h1>
                 
                 {/* Placeholder for SKU/Brand if you add them later */}
                 <div className="mt-4 text-sm text-gray-500">
-                  <p>Thương hiệu: <span className="font-semibold text-gray-700 font-fz-poppins">Thương hiệu</span></p>
-                  <p>SKU: <span className="font-semibold text-gray-700 font-fz-poppins">M8S4</span></p>
+                  <p className="font-semibold">Thương hiệu: <span className="italic font-fz-poppins">{product.companyBrand}</span></p>
+                  <p className="font-semibold">SKU: <span className="italic  font-fz-poppins">{product.SKU}</span></p>
                 </div>
                 
                 <div className="mt-6 rounded-lg bg-gray-50 p-4">
@@ -129,15 +131,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <h2 className="text-2xl font-bold text-center">Sản phẩm liên quan</h2>
           <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {relatedProducts.map((related) => (
-              <Link href={`/products/${related.slug}`} key={related.id} className="h-100 group block rounded-lg border p-4 text-center transition hover:shadow-lg hover:scale-110">
+              <Link href={`/products/${related.slug}`} key={related.id} className="h-full group block rounded-lg border p-4 text-center transition hover:shadow-lg hover:scale-110">
                 <div className="relative h-auto w-full flex rounded item-center justify-center">
-                   <ProductImage 
+                  <div className="relative">
+                    <ProductImage 
                       imageData={related.imageData} 
                       imageType={related.imageType} 
                       alt={related.name}
                       width={300}
                       height={400}
+                      imageUrl={related.imageUrl}
                     />
+                  </div>
+                   
                 </div>
                 <h3 className="mt-4 font-semibold text-gray-800 group-hover:text-blue-600 font-fz-poppins">{related.name}</h3>
               </Link>
@@ -151,12 +157,17 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
 
 // Helper component for rendering an image (unchanged from before)
-const ProductImage = ({imageData, imageType, alt, width, height}: {imageData: Uint8Array | null; imageType: string | null; alt: string; width: number; height: number;}) => {
+const ProductImage = ({imageData, imageType, alt, width, height,imageUrl}: {imageData: Uint8Array | null; imageType: string | null; alt: string; width: number; height: number;imageUrl:string;}) => {
   if (!imageData || !imageType) {
     return (
-      <div className="flex h-full w-full items-center justify-center rounded-lg bg-gray-200 text-gray-500">
-        No Image
-      </div>
+      <Image
+        src={imageUrl}
+        alt="Product image"
+        width={300} // Setting dimensions is good for layout stability
+        height={400}
+        className="rounded-md object-cover w-auto h-full "
+        loading="lazy" // Crucial for performance with many images
+      />
     );
   }
   const base64String = Buffer.from(imageData).toString('base64');
@@ -165,7 +176,7 @@ const ProductImage = ({imageData, imageType, alt, width, height}: {imageData: Ui
       const base64Image = `data:${imageType};base64,${base64String}`;
    
   return (
-    <div className="relative">
+    
       <Image
         src={base64Image}
         alt={alt}
@@ -174,6 +185,6 @@ const ProductImage = ({imageData, imageType, alt, width, height}: {imageData: Ui
         className="rounded-md object-cover "
         loading="lazy" // Crucial for performance with many images
       />
-    </div>
+    
   );
 };
