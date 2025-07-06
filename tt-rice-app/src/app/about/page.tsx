@@ -9,7 +9,7 @@ import { CommunitySection } from './section/CommunitySection';
 import { CustomerSection } from './section/CustomerSection';
 export default function AboutPage() {
     return (
-        <div className="main-content">
+        <main className="flex-grow"> 
             <StorySection/>
             <PlatformSection/>
             <MileStoneSection/>
@@ -17,6 +17,6 @@ export default function AboutPage() {
             <RiceSection/>
             <CommunitySection/>
             <CustomerSection/>
-        </div>
+        </main>
     );
 }
