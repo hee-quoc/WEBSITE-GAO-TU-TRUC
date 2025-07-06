@@ -80,12 +80,6 @@ export default async function ProductsPage({
 
         {/* Filter Buttons Wrapper */}
         <div className="relative z-10 mt-8 w-full">
-          {/* Conditionally render the small decorative lines for the filtered view */}
-          {tag && (
-            <div className="absolute inset-x-0 top-0 -z-10 -mt-4 hidden h-32 w-full items-center justify-center overflow-hidden lg:flex">
-              <div className="h-full w-64 bg-[url('/images/decorative-lines.svg')] bg-contain bg-center bg-no-repeat opacity-50"></div>
-            </div>
-          )}
           <Suspense fallback={<FilterButtonsFallback />}>
             <FilterButton categories={CATEGORY_DATA} />
           </Suspense>

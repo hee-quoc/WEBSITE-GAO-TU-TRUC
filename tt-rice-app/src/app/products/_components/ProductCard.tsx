@@ -113,11 +113,16 @@ export function ProductCard({ product }: ProductCardProps) {
         />
       ) : (
         // Fallback UI if there is no image
-        <div className="flex h-48 w-full items-center justify-center rounded-md bg-gray-200">
-          <span className="text-gray-500">No Image</span>
-        </div>
+        <Image
+          src={product.imageUrl}
+          alt={product.name}
+          width={278} // Setting dimensions is good for layout stability
+          height={302}
+          className="h-auto w-full rounded-md object-cover"
+          loading="lazy" // Crucial for performance with many images
+        />
       )}
-      <h3 className="text-[20px] text-center font-medium text-steel-blue pb-1 hover:underline">{product.name}</h3>
+      <h3 className="text-[20px] text-center font-medium text-steel-blue pb-1 hover:underline font-fz-poppins">{product.name}</h3>
     </div>
   );
 }

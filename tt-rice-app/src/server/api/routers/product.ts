@@ -6,6 +6,36 @@ import {
   publicProcedure,
 } from "~/server/api/trpc";
 import { TRPCError } from "@trpc/server";
+function toSlug(str: string): string {
+  if (!str) {
+    return '';
+  }
+
+  // 1. Convert to lower case
+  let slug = str.toLowerCase();
+
+  // 2. & 3. Decompose and remove diacritics
+  // 'NFD' separates combined characters into the base character and the accent
+  // /[\u0300-\u036f]/g matches all combining diacritical marks
+  slug = slug.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+  // 4. Handle the Vietnamese letter 'đ'
+  slug = slug.replace(/đ/g, 'd');
+
+  // 5. Replace spaces and consecutive spaces with a single hyphen
+  slug = slug.replace(/\s+/g, '-');
+
+  // 6. Remove all non-alphanumeric characters except the hyphen
+  slug = slug.replace(/[^a-z0-9-]/g, '');
+
+  // 7. Collapse consecutive hyphens
+  slug = slug.replace(/-+/g, '-');
+
+  // 8. Trim leading/trailing hyphens
+  slug = slug.replace(/^-+|-+$/g, '');
+
+  return slug;
+}
 async function triggerRevalidation() {
   const revalidateUrl = new URL('/api/revalidate', process.env.NEXT_PUBLIC_APP_URL);
   
@@ -79,14 +109,16 @@ export const productRouter = createTRPCRouter({
       z.object({
         name: z.string().min(1, "Name is required"),
         description: z.string().optional(),
-        imageUrl: z.string().url().optional(),
+        SKU: z.string().min(1, "SKU is required"),
       })
     )
     .mutation(({ ctx, input }) => {
       triggerRevalidation();
+      const slug = toSlug(input.name);
       return ctx.db.product.create({
         data: {
           ...input,
+          slug: slug,
           authorId: ctx.session.user.id, // Associate with the logged-in user
         },
       });
