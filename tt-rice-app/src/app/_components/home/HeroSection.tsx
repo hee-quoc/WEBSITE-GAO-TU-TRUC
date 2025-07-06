@@ -84,7 +84,7 @@ export function HeroSection() {
 
       {/* --- UI CONTROLS (ARROWS & DOTS) --- */}
       {/* These remain unchanged as they were already positioned correctly with z-index. */}
-      <div className="absolute left-4 top-60 transform -translate-y-1/2 z-20">
+      <div className="absolute left-4 top-60 md:top-2/5 transform -translate-y-1/2 z-20">
         <button
           onClick={handlePrev}
           className="w-9 h-9 bg-white-transparent border border-green-light-2 rounded-full flex items-center justify-center shadow-lg hover:bg-green-normal transition-colors"
@@ -92,7 +92,7 @@ export function HeroSection() {
           <Image src="/img_arrowleft.svg" alt="Previous" width={16} height={16} />
         </button>
       </div>
-      <div className="absolute right-4 top-60 transform -translate-y-1/2 z-20">
+      <div className="absolute right-4 top-60 md:top-2/5 transform -translate-y-1/2 z-20">
         <button
           onClick={handleNext}
           className="w-9 h-9 bg-white-transparent border border-green-light-2 rounded-full flex items-center justify-center shadow-lg hover:bg-green-normal transition-colors"

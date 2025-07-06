@@ -14,10 +14,26 @@ export interface CategoryData {
 }
 
 const CATEGORY_DATA: Record<string, CategoryData> = {
-  'gao-an': { name: 'Gạo ăn', description: 'Câu chuyện về Tư Trúc bắt đầu từ hơn 3 thập kỉ trước tại một nhà máy xay xát lúa, với một niềm tự hào về việc giữ gìn nền văn minh lúa nước ngàn năm và nâng tầm, lan tỏa giá trị của hạt ngọc thực đến với mỗi người Việt', image: '/img_category_decorative.png' },
-  'gao-nguyen-lieu': { name: 'Gạo nguyên liệu', description: 'Canh tác theo quy trình hữu cơ nghiêm ngặt...', image: '/img_category_decorative.png' },
-  'gao-thong-dung': { name: 'Gạo thông dụng', description: 'Giàu dinh dưỡng, chất xơ và chất chống oxy hóa...', image: '/img_category_decorative.png' },
-  'gao-cam-trau': { name: 'Cám/trấu', description: 'Hạt to tròn, dẻo thơm đặc trưng, chuyên dùng để nấu xôi...', image: '/img_category_decorative.png' },
+  'gao-an': {
+    name: 'Gạo ăn',
+    description: 'Câu chuyện về Tư Trúc bắt đầu từ hơn 3 thập kỉ trước tại một nhà máy xay xát lúa, với một niềm tự hào về việc giữ gìn nền văn minh lúa nước ngàn năm và nâng tầm, lan tỏa giá trị của hạt ngọc thực đến với mỗi người Việt',
+    image: '/img_category_decorative.png',
+  },
+  'gao-nguyen-lieu': {
+    name: 'Gạo nguyên liệu',
+    description: 'Được tuyển chọn từ những giống lúa chất lượng cao, gạo nguyên liệu của Tư Trúc là nền tảng cho các sản phẩm chế biến tinh tế, giữ trọn hương vị tự nhiên và giá trị dinh dưỡng, phục vụ những món ăn đậm đà bản sắc Việt.',
+    image: '/img_category_decorative.png',
+  },
+  'gao-thong-dung': {
+    name: 'Gạo thông dụng',
+    description: 'Gạo thông dụng của Tư Trúc mang đến sự tiện lợi và chất lượng cho bữa cơm gia đình hàng ngày, với hạt gạo dẻo thơm, giàu dinh dưỡng, là lựa chọn hoàn hảo cho mọi nhà bếp Việt Nam.',
+    image: '/img_category_decorative.png',
+  },
+  'gao-cam-trau': {
+    name: 'Cám/trấu',
+    description: 'Sản phẩm cám và trấu từ Tư Trúc, được sản xuất từ quy trình xay xát hiện đại, giữ lại độ tinh khiết và giá trị dinh dưỡng, lý tưởng cho chăn nuôi, làm phân bón hữu cơ hoặc các ứng dụng truyền thống.',
+    image: '/img_category_decorative.png',
+  },
 };
 
 // A simple loading skeleton for the entire product list area

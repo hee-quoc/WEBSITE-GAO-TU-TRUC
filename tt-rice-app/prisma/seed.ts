@@ -55,85 +55,235 @@ async function main() {
   });
 
   const productsData = [
-    {
-      name: 'Gạo ST25 Thượng Hạng',
-      description: `
-    <p>Được mệnh danh là gạo ngon nhất thế giới, hạt dài, trắng trong, không bạc bụng, khi nấu cho cơm dẻo, thơm mùi lá dứa tự nhiên, ăn rất hấp dẫn.</p>
-    <div style="text-align: center; font-weight: bold; margin-top: 1rem; margin-bottom: 0.5rem;">Hàm lượng dinh dưỡng trong 01kg</div>
-    <table class="table-auto border-collapse border border-slate-400 w-full">
-      <thead>
-        <tr>
-          <th class="border border-slate-300 p-2">Thành phần</th>
-          <th class="border border-slate-300 p-2">Giá trị</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="border border-slate-300 p-2">Đạm (Protein)</td>
-          <td class="border border-slate-300 p-2">> 65g</td>
-        </tr>
-        <tr>
-          <td class="border border-slate-300 p-2">Tinh bột (Carbohydrate)</td>
-          <td class="border border-slate-300 p-2">> 750g</td>
-        </tr>
-      </tbody>
-    </table>
-  `,
-      imageFilename: 'img_eat_rice.png',
-      imageType: 'image/png',
-      tag:["gao-an"],
-    },
-    {
-      name: 'Gạo Lứt Huyết Rồng',
-      description: 'Giàu dinh dưỡng, chất xơ và chất chống oxy hóa, tốt cho sức khỏe tim mạch.',
-      imageFilename: 'img_eat_rice.png',
-      imageType: 'image/png',
-      tag:["gao-an"],
-    },
-    {
-      name: 'Gạo Nếp Cái Hoa Vàng',
-      description: 'Hạt to tròn, dẻo thơm đặc trưng, chuyên dùng để nấu xôi, chè, làm bánh.',
-      imageFilename: 'img_eat_rice.png',
-      imageType: 'image/png',
-      tag:["gao-an","gao-thong-dung"],
-    },
-    {
-      name: 'Gạo Tấm Dẻo',
-      description: 'Loại gạo tấm đặc sản, mềm dẻo, rất thích hợp để nấu cơm tấm sườn bì chả.',
-      imageFilename: 'img_eat_rice.png',
-      imageType: 'image/png',
-      tag:["gao-an","gao-nguyen-lieu"],
-    },
-    {
-      name: 'Gạo Hữu Cơ Hoa Sữa',
-      description: 'Canh tác theo quy trình hữu cơ nghiêm ngặt, không hóa chất, an toàn cho cả gia đình.',
-      imageFilename: 'img_eat_rice.png',
-      imageType: 'image/png',
-      tag:["gao-an"],
-    },
-    {
-      name: 'Gạo Nhật Japonica',
-      description: 'Hạt gạo tròn, dẻo, vị ngọt nhẹ, lý tưởng để làm sushi và các món ăn Nhật Bản.',
-      imageFilename: 'img_eat_rice.png',
-      imageType: 'image/png',
-      tag:["gao-an","gao-thong-dung"],
-    },
-    {
-      name: 'Gạo Sạch Vua Gạo',
-      description: 'Gạo sạch được kiểm định chất lượng, đảm bảo không có dư lượng thuốc trừ sâu.',
-      imageFilename: 'img_eat_rice.png',
-      imageType: 'image/png',
-      tag:["gao-an","gao-cam-trau","gao-nguyen-lieu"],
-    },
-    {
-      name: 'Gạo Thơm Lài Miên',
-      description: 'Giống gạo của Campuchia với hương thơm tự nhiên và độ mềm dẻo tuyệt vời.',
-      imageFilename: 'img_eat_rice.png',
-      imageType: 'image/png',
-      tag:["gao-an","gao-cam-trau"],
-
-    },
-  ];
+  {
+    name: 'Gạo ST25 Thượng Hạng',
+    description: `
+      <p>Được mệnh danh là gạo ngon nhất thế giới, hạt dài, trắng trong, không bạc bụng, khi nấu cho cơm dẻo, thơm mùi lá dứa tự nhiên, ăn rất hấp dẫn.</p>
+      <div class="text-center font-bold mt-4 mb-2">Hàm lượng dinh dưỡng trong 01kg</div>
+      <table class="table-auto border-collapse border border-slate-400 w-full">
+        <thead>
+          <tr>
+            <th class="border border-slate-300 p-2">Thành phần</th>
+            <th class="border border-slate-300 p-2">Giá trị</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-300 p-2">Đạm (Protein)</td>
+            <td class="border border-slate-300 p-2">> 65g</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-2">Tinh bột (Carbohydrate)</td>
+            <td class="border border-slate-300 p-2">> 750g</td>
+          </tr>
+        </tbody>
+      </table>
+    `,
+    imageFilename: 'img_eat_rice.png',
+    imageType: 'image/png',
+    tags: ['gao-an'],
+  },
+  {
+    name: 'Gạo Lứt Huyết Rồng',
+    description: `
+      <p>Gạo Lứt Huyết Rồng, với lớp cám giàu dinh dưỡng, mang lại hương vị thơm ngon, dẻo nhẹ, là lựa chọn lý tưởng cho những ai yêu thích lối sống lành mạnh. Loại gạo này hỗ trợ sức khỏe tim mạch, tiêu hóa và kiểm soát đường huyết.</p>
+      <div class="text-center font-bold mt-4 mb-2">Hàm lượng dinh dưỡng trong 01kg</div>
+      <table class="table-auto border-collapse border border-slate-400 w-full">
+        <thead>
+          <tr>
+            <th class="border border-slate-300 p-2">Thành phần</th>
+            <th class="border border-slate-300 p-2">Giá trị</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-300 p-2">Đạm (Protein)</td>
+            <td class="border border-slate-300 p-2">> 80g</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-2">Tinh bột (Carbohydrate)</td>
+            <td class="border border-slate-300 p-2">> 700g</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-2">Chất xơ (Fiber)</td>
+            <td class="border border-slate-300 p-2">> 35g</td>
+          </tr>
+        </tbody>
+      </table>
+    `,
+    imageFilename: 'img_eat_rice.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-suc-khoe'],
+  },
+  {
+    name: 'Gạo Nếp Cái Hoa Vàng',
+    description: `
+      <p>Gạo Nếp Cái Hoa Vàng nổi bật với hạt gạo tròn, dẻo thơm, mang hương vị truyền thống đặc trưng. Loại nếp này là nguyên liệu hoàn hảo cho xôi, chè, bánh chưng, bánh tét, đậm chất văn hóa Việt.</p>
+      <div class="text-center font-bold mt-4 mb-2">Hàm lượng dinh dưỡng trong 01kg</div>
+      <table class="table-auto border-collapse border border-slate-400 w-full">
+        <thead>
+          <tr>
+            <th class="border border-slate-300 p-2">Thành phần</th>
+            <th class="border border-slate-300 p-2">Giá trị</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-300 p-2">Đạm (Protein)</td>
+            <td class="border border-slate-300 p-2">> 60g</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-2">Tinh bột (Carbohydrate)</td>
+            <td class="border border-slate-300 p-2">> 780g</td>
+          </tr>
+        </tbody>
+      </table>
+    `,
+    imageFilename: 'img_eat_rice.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-thong-dung'],
+  },
+  {
+    name: 'Gạo Tấm Dẻo',
+    description: `
+      <p>Gạo Tấm Dẻo là đặc sản miền Nam, với hạt gạo nhỏ, mềm dẻo, thơm ngon, lý tưởng cho món cơm tấm sườn bì chả trứ danh. Loại gạo này mang đến trải nghiệm ẩm thực đậm chất Việt Nam.</p>
+      <div class="text-center font-bold mt-4 mb-2">Hàm lượng dinh dưỡng trong 01kg</div>
+      <table class="table-auto border-collapse border border-slate-400 w-full">
+        <thead>
+          <tr>
+            <th class="border border-slate-300 p-2">Thành phần</th>
+            <th class="border border-slate-300 p-2">Giá trị</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-300 p-2">Đạm (Protein)</td>
+            <td class="border border-slate-300 p-2">> 60g</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-2">Tinh bột (Carbohydrate)</td>
+            <td class="border border-slate-300 p-2">> 770g</td>
+          </tr>
+        </tbody>
+      </table>
+    `,
+    imageFilename: 'img_eat_rice.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-nguyen-lieu'],
+  },
+  {
+    name: 'Gạo Hữu Cơ Hoa Sữa',
+    description: `
+      <p>Gạo Hữu Cơ Hoa Sữa được canh tác theo tiêu chuẩn hữu cơ nghiêm ngặt, không sử dụng hóa chất hay thuốc trừ sâu, mang đến hạt gạo tinh khiết, an toàn, phù hợp cho mọi thành viên trong gia đình, đặc biệt là trẻ nhỏ và người lớn tuổi.</p>
+      <div class="text-center font-bold mt-4 mb-2">Hàm lượng dinh dưỡng trong 01kg</div>
+      <table class="table-auto border-collapse border border-slate-400 w-full">
+        <thead>
+          <tr>
+            <th class="border border-slate-300 p-2">Thành phần</th>
+            <th class="border border-slate-300 p-2">Giá trị</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-300 p-2">Đạm (Protein)</td>
+            <td class="border border-slate-300 p-2">> 70g</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-2">Tinh bột (Carbohydrate)</td>
+            <td class="border border-slate-300 p-2">> 740g</td>
+          </tr>
+        </tbody>
+      </table>
+    `,
+    imageFilename: 'img_eat_rice.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-huu-co'],
+  },
+  {
+    name: 'Gạo Nhật Japonica',
+    description: `
+      <p>Gạo Nhật Japonica với hạt gạo tròn, dẻo, vị ngọt thanh, là lựa chọn hoàn hảo cho các món ăn Nhật Bản như sushi, cơm cuộn, hoặc cơm hộp bento. Hạt gạo giữ được độ bóng và kết cấu đặc trưng sau khi nấu.</p>
+      <div class="text-center font-bold mt-4 mb-2">Hàm lượng dinh dưỡng trong 01kg</div>
+      <table class="table-auto border-collapse border border-slate-400 w-full">
+        <thead>
+          <tr>
+            <th class="border border-slate-300 p-2">Thành phần</th>
+            <th class="border border-slate-300 p-2">Giá trị</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-300 p-2">Đạm (Protein)</td>
+            <td class="border border-slate-300 p-2">> 60g</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-2">Tinh bột (Carbohydrate)</td>
+            <td class="border border-slate-300 p-2">> 780g</td>
+          </tr>
+        </tbody>
+      </table>
+    `,
+    imageFilename: 'img_eat_rice.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-thong-dung'],
+  },
+  {
+    name: 'Gạo Sạch Vua Gạo',
+    description: `
+      <p>Gạo Sạch Vua Gạo được sản xuất và kiểm định theo tiêu chuẩn nghiêm ngặt, đảm bảo không dư lượng thuốc trừ sâu, mang đến hạt gạo sạch, an toàn, phù hợp cho mọi bữa ăn gia đình và các món ăn chế biến đa dạng.</p>
+      <div class="text-center font-bold mt-4 mb-2">Hàm lượng dinh dưỡng trong 01kg</div>
+      <table class="table-auto border-collapse border border-slate-400 w-full">
+        <thead>
+          <tr>
+            <th class="border border-slate-300 p-2">Thành phần</th>
+            <th class="border border-slate-300 p-2">Giá trị</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-300 p-2">Đạm (Protein)</td>
+            <td class="border border-slate-300 p-2">> 65g</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-2">Tinh bột (Carbohydrate)</td>
+            <td class="border border-slate-300 p-2">> 750g</td>
+          </tr>
+        </tbody>
+      </table>
+    `,
+    imageFilename: 'img_eat_rice.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-cam-trau', 'gao-nguyen-lieu'],
+  },
+  {
+    name: 'Gạo Thơm Lài Miên',
+    description: `
+      <p>Gạo Thơm Lài Miên, giống gạo đặc sản từ Campuchia, nổi bật với hương thơm tự nhiên và hạt gạo mềm dẻo. Loại gạo này lý tưởng cho cơm trắng hoặc các món ăn cần sự tinh tế, mang đến trải nghiệm ẩm thực độc đáo.</p>
+      <div class="text-center font-bold mt-4 mb-2">Hàm lượng dinh dưỡng trong 01kg</div>
+      <table class="table-auto border-collapse border border-slate-400 w-full">
+        <thead>
+          <tr>
+            <th class="border border-slate-300 p-2">Thành phần</th>
+            <th class="border border-slate-300 p-2">Giá trị</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-300 p-2">Đạm (Protein)</td>
+            <td class="border border-slate-300 p-2">> 65g</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-300 p-2">Tinh bột (Carbohydrate)</td>
+            <td class="border border-slate-300 p-2">> 760g</td>
+          </tr>
+        </tbody>
+      </table>
+    `,
+    imageFilename: 'img_eat_rice.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-cam-trau'],
+  },
+];
 
   console.log('Seeding products...');
 
@@ -154,7 +304,7 @@ async function main() {
       create: {
         name: productData.name,
         description: productData.description,
-        tags: productData.tag,
+        tags: productData.tags,
         imageData: imageDataBuffer, // Store the raw image data
         imageType: productData.imageType, // Store the MIME type
         authorId: adminUser.id,

@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import type { Product } from '@prisma/client';
 import Image from 'next/image';
 // Define a more specific type for the props we expect.
@@ -39,8 +39,40 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  // useMemo will create the Data URL only when the product image data changes.
-  // This is an important optimization to prevent re-calculating on every render.
+  
+  const [isClicked, setIsClicked] = useState(false);
+  useEffect(() => {
+    // We only want to set a timer if the card has been clicked.
+    if (isClicked) {
+      // 1. Set a timer for 5000 milliseconds (5 seconds).
+      const timerId = setTimeout(() => {
+        // 2. After 5 seconds, set 'isClicked' back to false.
+        setIsClicked(false);
+        console.log("Card re-enabled.");
+      }, 5000);
+      return () => {
+        clearTimeout(timerId);
+      };
+    }
+  }, [isClicked]);
+  const handleClick = () => {
+    // 2. If already clicked, do nothing.
+    if (isClicked) {
+      console.log('Action is temporarily disabled.');
+      return;
+    }
+
+    // 3. Set state to true to begin the "disabled" period
+    setIsClicked(true);
+
+    // 4. Perform the navigation
+    window.location.href = `/products/${toSlug(product.name)}`;
+
+    // 5. Set a timer to re-enable the click after 5 seconds
+    // Note: Since navigation happens immediately, the user won't see this.
+    // This pattern is more visibly useful for actions that DON'T navigate away,
+    // like adding to a cart. But the logic is sound.
+  };
   const imageUrl = useMemo(() => {
     // 1. Guard against missing image data or type information.
     if (!product.imageData || !product.imageType) {
@@ -68,10 +100,7 @@ export function ProductCard({ product }: ProductCardProps) {
   }, [product.imageData, product.imageType, product.name]);
 
   return (
-    <div className="flex flex-col items-center gap-4 md:h-[378px] md:w-[278]" key={product.name}
-            onClick={() => {
-              window.location.href = `/products/${toSlug(product.name)}`;
-            }}>
+    <div className="flex flex-col items-center gap-4 md:h-[378px] md:w-[278] hover:scale-110" key={product.name} onClick={handleClick}>
       {imageUrl ? (
         // Use a standard <img> tag with the Data URL as its source.
         <Image

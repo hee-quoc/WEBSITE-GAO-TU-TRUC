@@ -34,11 +34,11 @@ const BreadcrumbBanner = ({ productName }: { productName: string }) => {
       style={{ backgroundImage: `url(${bannerImageUrl})` }}
     >
       <div className="container mx-auto bg-black/30 p-4 text-center backdrop-blur-sm">
-        <h2 className="text-4xl font-bold">{productName}</h2>
+        <h2 className="text-4xl font-bold font-fz-poppins">{productName}</h2>
         <ul className="mt-4 flex justify-center space-x-2 text-lg">
-          <li><Link href="/" className="hover:underline">Trang chủ</Link></li>
+          <li><Link href="/" className="hover:underline font-fz-poppins">Trang chủ</Link></li>
           <li><span>/</span></li>
-          <li><span className="font-semibold">{productName}</span></li>
+          <li><span className="font-semibold font-fz-poppins">{productName}</span></li>
         </ul>
       </div>
     </div>
@@ -47,7 +47,7 @@ const BreadcrumbBanner = ({ productName }: { productName: string }) => {
 
 // --- Main Page Component ---
 export default async function ProductPage({ params }: ProductPageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   const product = await api.product.getBySlug({ slug });
 
   // Fetch a few related products to show at the bottom
@@ -60,7 +60,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
     notFound();
   }
 
-  const productUrl = `https://your-domain.com/products/${product.slug}`; // Replace with your actual domain
 
   return (
     <main>
@@ -73,11 +72,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
             {/* --- Top section with Image and Info --- */}
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
               {/* Image Gallery */}
-              <div className="w-full">
+              <div className="h-full w-auto flex items-center justify-center">
                 <ProductImage
                   imageData={product.imageData}
                   imageType={product.imageType}
                   alt={product.name}
+                  width={300}
+                  height={400}
                 />
               </div>
 
@@ -87,13 +88,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 
                 {/* Placeholder for SKU/Brand if you add them later */}
                 <div className="mt-4 text-sm text-gray-500">
-                  <p>Thương hiệu: <span className="font-semibold text-gray-700">Thương hiệu</span></p>
-                  <p>SKU: <span className="font-semibold text-gray-700">M8S4</span></p>
+                  <p>Thương hiệu: <span className="font-semibold text-gray-700 font-fz-poppins">Thương hiệu</span></p>
+                  <p>SKU: <span className="font-semibold text-gray-700 font-fz-poppins">M8S4</span></p>
                 </div>
                 
                 <div className="mt-6 rounded-lg bg-gray-50 p-4">
-                  <p className="text-lg font-semibold">Giá: <span className="text-red-600">Liên hệ</span></p>
-                  <p className="mt-2 text-gray-700">Vui lòng liên hệ để biết thêm chi tiết</p>
+                  <p className="text-lg font-semibold">Giá: <span className="text-red-600 font-fz-poppins">Liên hệ</span></p>
+                  <p className="mt-2 text-gray-700 font-fz-poppins">Vui lòng liên hệ để biết thêm chi tiết</p>
                 </div>
 
                  {/* Add to Cart button or Contact button */}
@@ -106,7 +107,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
 
             {/* --- Tabs section --- */}
-            <ProductTabs descriptionHtml={product.description} productUrl={productUrl} />
+            <ProductTabs descriptionHtml={product.description} />
           </div>
 
           {/* Sidebar (3 columns on desktop, hidden on mobile) */}
@@ -115,9 +116,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <h2 className="text-xl font-bold">Danh mục</h2>
               <ul className="mt-4 space-y-2">
                 {/* This would be dynamically generated */}
-                <li><a href="#" className="hover:text-blue-600">Gạo Thơm</a></li>
-                <li><a href="#" className="hover:text-blue-600">Gạo Dẻo</a></li>
-                <li><a href="#" className="hover:text-blue-600">Gạo Lứt</a></li>
+                <li><a href="#" className="hover:text-blue-600 font-fz-poppins">Gạo Thơm</a></li>
+                <li><a href="#" className="hover:text-blue-600 font-fz-poppins">Gạo Dẻo</a></li>
+                <li><a href="#" className="hover:text-blue-600 font-fz-poppins">Gạo Lứt</a></li>
               </ul>
             </div>
           </aside>
@@ -128,11 +129,17 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <h2 className="text-2xl font-bold text-center">Sản phẩm liên quan</h2>
           <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {relatedProducts.map((related) => (
-              <Link href={`/products/${related.slug}`} key={related.id} className="h-100 group block rounded-lg border p-4 text-center transition hover:shadow-lg">
-                <div className="relative h-auto w-full overflow-hidden rounded item-center justify-center">
-                   <ProductImage imageData={related.imageData} imageType={related.imageType} alt={related.name}/>
+              <Link href={`/products/${related.slug}`} key={related.id} className="h-100 group block rounded-lg border p-4 text-center transition hover:shadow-lg hover:scale-110">
+                <div className="relative h-auto w-full flex rounded item-center justify-center">
+                   <ProductImage 
+                      imageData={related.imageData} 
+                      imageType={related.imageType} 
+                      alt={related.name}
+                      width={300}
+                      height={400}
+                    />
                 </div>
-                <h3 className="mt-4 font-semibold text-gray-800 group-hover:text-blue-600">{related.name}</h3>
+                <h3 className="mt-4 font-semibold text-gray-800 group-hover:text-blue-600 font-fz-poppins">{related.name}</h3>
               </Link>
             ))}
           </div>
@@ -144,7 +151,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
 
 // Helper component for rendering an image (unchanged from before)
-const ProductImage = ({imageData, imageType, alt}: {imageData: Uint8Array | null; imageType: string | null; alt: string;}) => {
+const ProductImage = ({imageData, imageType, alt, width, height}: {imageData: Uint8Array | null; imageType: string | null; alt: string; width: number; height: number;}) => {
   if (!imageData || !imageType) {
     return (
       <div className="flex h-full w-full items-center justify-center rounded-lg bg-gray-200 text-gray-500">
@@ -158,13 +165,13 @@ const ProductImage = ({imageData, imageType, alt}: {imageData: Uint8Array | null
       const base64Image = `data:${imageType};base64,${base64String}`;
    
   return (
-    <div className="relative h-full w-full item-center justify-center">
+    <div className="relative">
       <Image
         src={base64Image}
         alt={alt}
-        width={278} // Setting dimensions is good for layout stability
-        height={302}
-        className="rounded-md object-cover"
+        width={width} // Setting dimensions is good for layout stability
+        height={height}
+        className="rounded-md object-cover "
         loading="lazy" // Crucial for performance with many images
       />
     </div>
