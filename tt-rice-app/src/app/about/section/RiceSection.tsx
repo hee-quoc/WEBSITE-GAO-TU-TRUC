@@ -3,86 +3,116 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import type { ContactFormData } from "~/app/types/Types";
+const steps = [
+  {
+    img: '/gao_step1.svg',
+    title: 'Gieo trồng & Chăm sóc',
+    desc: 'Được thực hiện bởi những nông dân lành nghề, tuân thủ kỹ thuật và quy chuẩn chất lượng khắt khe.',
+  },
+  {
+    img: '/gao_step2.svg',
+    title: 'Thu hoạch & Tinh chọn',
+    desc: 'Lúa chín được thu hoạch đúng thời điểm, kiểm tra chất lượng đầu vào trước khi đưa về nhà máy.',
+  },
+  {
+    img: '/gao_step3.svg',
+    title: 'Sấy lúa đạt chuẩn độ ẩm <14%',
+    desc: 'Áp dụng công nghệ sấy hiện đại để kiểm soát độ ẩm tối ưu, bảo toàn chất lượng hạt gạo.',
+  },
+  {
+    img: '/gao_step4.svg',
+    title: 'Xay xát & Sàng lọc',
+    desc: 'Quy trình xay xát, tách tạp chất và sàng lọc, đảm bảo từng hạt gạo đạt chuẩn đồng đều.',
+  },
+  {
+    img: '/gao_step5.svg',
+    title: 'Đóng gói & Phân phối',
+    desc: 'Thành phẩm được đóng gói tỉ mỉ với quy trình hiện đại, được vận chuyển nhanh chóng đến khắp mọi miền.',
+  },
+];
 
 export function RiceSection() {
   return (
     <section className="pt-20 pb-5 bg-[#6C9126]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div>
-              <h2 className="text-[56px] sm:text-[80px] md:text-5xl font-bold mb-2 font-alegreya-sans" style={{color:" #0A5B89"}}>
-                Ươm hạt gạo, <br /> nuôi mạch nguồn Việt Nam
-              </h2>
-              <p className="text-[32px] sm:text-[32px] text-gray-light mb-4 font-alegreya-sans" style={{color:"#667085"}}>
-                Những giá trị mà hạt gạo Tư Trúc đã mang lại
-              </p>
+        <div className="bg-[#f9f9f3] relative flex flex-col justify-center mx-auto py-16 px-8 rounded-3xl border border-green-200 max-w-[1296px]">
+          {/* Title */}
+          <div className="flex flex-col text-center mb-12 items-center">
+            <h2 className="font-alegreya-sans text-[56px] md:text-[56px] font-bold text-[#1e3a5f] mb-2 max-w-[542px]">
+              Hạt gạo Việt từ ruộng đồng đến bàn ăn
+            </h2>
+            <p className="font-alegreya-sans text-[32px]" style={{color:"#667085"}}>
+              Hành trình thương hiệu đưa sản phẩm đến người tiêu dùng
+            </p>
+          </div>
+          {/* Process Line - place above dots */}
+        <div className="absolute top-[50%] left-[10%]  z-0 w-full flex justify-center">
+          <Image
+            src="/step_line.svg"
+            alt="process_line"
+            width={873}
+            height={370}
+            className="pointer-events-none"
+          />
+        </div>
+          {/* Steps */}
+          <div className="flex flex-col z-10">
+            {/* Top Row - 3 Steps */}
+            <div className="flex flex-col items-center sm:flex-row justify-center gap-22">
+              {steps.slice(0, 3).map((step, index) => (
+                <div key={index} className="flex flex-col items-center text-center max-w-[256px] h-[345px] ">
+                  <Image src={step.img} alt={step.title} width={80} height={80} className="mb-4 min-h-[190px] min-w-[176px]" />
+                  <span className="relative mb-4">
+                    <span className="block w-3 h-3 bg-[#6D9127] rounded-full"></span>
+                    <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 border-[7px] border-[#D2DDBC] rounded-full"></span>
+                  </span>
+                  <h3 className="text-[20px] font-semibold text-green-800 mb-1 font-alegreya-sans" >{step.title}</h3>
+                  <p className="text-[16px] max-w-[216px] min-h-[88px] font-fz-poppins" style={{color:"#5C6578"}}>{step.desc}</p>
+                </div>
+              ))}
             </div>
-          <div className="grid grid-cols-1 lg:grid-cols-[42%_58%] gap-8">
-            {/* Left Statistics */}
-            <div className="bg-[#F4F3EA] rounded-[16px] overflow-hidden relative w-full h-auto lg:w-[495px] lg:h-[642px]">
-              <Image
-                src="/img_image_104.png"
-                alt="Farmers"
-                fill
-                className="object-cover"
-              />
-              <div className="relative z-10 p-6 sm:p-10 text-white">
-                <div className="mb-8">
-                  <div className="text-5xl sm:text-6xl font-bold mb-4 text-white font-alegreya-sans">&gt;300</div>
-                  <p className="text-white font-fz-poppins">
-                    Hộ nông dân tại các vùng canh tác đang<br />
-                    hợp tác cùng Tư Trúc
-                  </p>
+              
+            {/* Bottom Row - 2 Steps */}
+            <div className="flex flex-col items-center sm:flex-row justify-center gap-16">
+              {steps.slice(3).map((step, index) => (
+                <div key={index} className="flex flex-col items-center text-center max-w-[256px] h-[345px]">
+                  <Image src={step.img} alt={step.title} width={80} height={80} className="mb-4 min-h-[190px] min-w-[176px]" />
+                  <span className="relative mb-4">
+                    <span className="block w-3 h-3 bg-[#6D9127] rounded-full"></span>
+                    <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 border-[7px] border-[#D2DDBC] rounded-full"></span>
+                  </span>
+                  <h3 className="text-[20px] font-semibold text-green-800 mb-1 font-alegreya-sans">{step.title}</h3>
+                  <p className="text-[16px] font-fz-poppins" style={{color:"#5C6578"}}>{step.desc}</p>
                 </div>
-                <div>
-                  <div className="text-5xl sm:text-6xl font-bold mb-4 text-white font-alegreya-sans">10%</div>
-                  <p className="text-white font-fz-poppins">
-                    Thu nhập bình quân tăng 10% nhờ thu mua<br />
-                    ổn định & giá thu cao hơn thị trường
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Statistics */}
-            <div className="flex flex-col gap-8 w-full">
-              {/* >100 & 70% */}
-              <div className="bg-[#6D9127] rounded-[16px] px-6 sm:px-10 py-[37px] text-white w-full lg:w-[605px] h-auto lg:h-[311px]">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <div className="text-5xl sm:text-6xl font-bold mb-4 font-alegreya-sans">&gt;100</div>
-                    <p className="text-green-lightest-1 font-fz-poppins">
-                      Trên 100 HA diện tích được<br />
-                      áp dụng quy trình canh tác sạch, không hóa chất độc hại...
-                    </p>
-                  </div>
-                  <div>
-                    <div className="text-5xl sm:text-6xl font-bold mb-4 font-alegreya-sans">70%</div>
-                    <p className="text-green-lightest-1 font-fz-poppins">
-                      Giảm 70% lượng thuốc bảo vệ thực phẩm hữu so với canh tác truyền thống
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* 100% */}
-              <div className="rounded-[16px] px-6 sm:px-10 py-10 relative overflow-hidden bg-cover bg-center w-full lg:w-[605px] h-auto lg:h-[311px]">
-                <Image
-                  src="/img__1.png"
-                  alt="Environment"
-                  fill
-                  className="object-cover rounded-[16px]"
-                />
-                <div className="relative z-10 text-white">
-                  <div className="text-5xl sm:text-6xl font-bold mb-4 font-alegreya-sans">100%</div>
-                  <p className="text-green-lightest-2 font-fz-poppins">
-                    Tận dụng 100% phụ phẩm (trấu, cám, tro..) tái chế làm phân bón hữu cơ và thức ăn chăn nuôi. Góp phần giảm<br />
-                    chất thải và gìn giữ môi trường
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
+        <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-8 max-w-[1122px] mx-auto py-16 px-4">
+        {/* Left Column: Title and Paragraph */}
+        <div className="w-full md:w-2/3 relative pb-16 ">
+          <div className="absolute -top-2 -left-4 md:-left-10 w-10 md:w-14 h-8 md:h-10  opacity-50 pointer-events-none">
+            <Image src="/quote_gray.svg" alt="Quote" width={56} height={39} />
+          </div>
+
+          <p className="text-[20px] text-white text-justify leading-relaxed font-alegreya-sans">
+            Với nhiều người, gạo chỉ đơn thuần là lương thực để no bụng. Nhưng với Tư Trúc, đó là kết tinh của đất trời hào phóng, đôi tay cần mẫn của người nông dân, sự kỹ lưỡng, chỉn chu trong từng công đoạn của người công nhân và hơn hết, đó còn là niềm tự hào về nền văn minh lúa nước ngàn đời.
+          </p>
+        </div>
+
+        {/* Right Column: Image */}
+        <div className="w-full md:w-1/3 flex justify-center relative min-h-[240px] md:min-h-[auto]">
+          <Image
+            src="/women_eat_rice.svg"
+            alt="Women eat rice"
+            width={300}
+            height={226}
+            className="md:absolute md:top-[-150px] z-10 "
+          />
+        </div>
+      </div>
     </section>
   );
 }
+
+
+ 

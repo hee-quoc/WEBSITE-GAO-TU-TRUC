@@ -68,7 +68,7 @@ export function MissionSection() {
       <div className="flex justify-center flex-col md:flex-row items-start  max-w-[1122px] mx-auto  py-8  "> 
             {/* Left Column: Title */}
             <div className="w-full md:w-1/3 text-center md:text-left">
-              <h2 className="text-blue-900 text-2xl sm:text-3xl md:text-4xl font-bold leading-snug">
+              <h2 className="font-alegreya-sans text-blue-900 text-[56px] font-bold leading-snug">
                 Sứ mệnh <br className="hidden sm:block" />
                 tôn vinh <br className="hidden sm:block" />
                 hạt ngọc thực
@@ -77,17 +77,16 @@ export function MissionSection() {
 
             {/* Right Column: Content */}
           <div className="w-full md:w-2/3 relative">
-            <h3 className="text-gray-700 text-lg sm:text-xl md:text-2xl font-medium mb-4">
+            <h3 className="font-alegreya-sans text-gray-700 text-[32px]  sm:text-xl md:text-[32px] font-medium mb-4">
               Giá trị của hạt gạo qua lăng kính của Từ Trúc
             </h3>
 
             <div className="relative">
               {/* Quote image placed behind paragraph */}
-              <div className="absolute -top-2 -left-3 w-14 h-10  opacity-30 pointer-events-none">
+              <div className="absolute -top-2 -left-10 w-14 h-10  opacity-30 pointer-events-none">
               <Image src="/img_.svg" alt="Quote" width={56} height={39} />
               </div>
-
-              <p className="text-gray-600 text-justify leading-relaxed">
+              <p className="font-fz-poppins text-[16px] sm:text-xl md:text-[16px] text-gray-600 text-justify leading-relaxed max-w-[741px]">
                 Với nhiều người, gạo chỉ đơn thuần là lương thực để no bụng. Nhưng với Từ Trúc, đó là kết tinh của đất trời hào phóng,
                 đôi tay cần mẫn của người nông dân, sự kỹ lưỡng, chỉn chu trong từng công đoạn của người công nhân và hơn hết,
                 đó còn là niềm tự hào về nền văn minh lúa nước ngàn đời!
@@ -96,20 +95,24 @@ export function MissionSection() {
           </div>
         </div>
         <div className="relative bg-cover bg-center text-white overflow-hidden rounded-[16px] mx-auto w-full max-w-[1122px] h-[509px] md:h-[509px] opacity-100">
-          <div className={`flex flex-col inset-0 backdrop-blur-sm w-full h-full items-center text-center px-4 py-6 md:px-12 md:py-12 transition-opacity duration-1000 `}
+          <div className={`flex flex-col justify-between inset-0 backdrop-blur-sm w-full h-full items-center text-center px-4 py-6 md:px-12 md:py-12 transition-opacity duration-1000 `}
           style={{ backgroundImage: `url(${backgroundImages[index]})` ,
                   transition: "opacity 0.8s ease-in-out",
                   opacity: fade ? 100 : 0,
                   
           }} >
-            <div>
-              <p className="text-sm font-medium tracking-wide text-yellow-400 uppercase mb-2">
-                Tầm nhìn | Vision
-              </p>
-             <h2 className={`text-lg sm:text-xl md:text-2xl font-semibold mb-4 max-w-[90%] transition-opacity duration-700 ${fade ? 'opacity-100' : 'opacity-0'}`}>
+            <div className="flex flex-col items-center">
+              <div className="flex flex-row">
+                <Image src="/vision_right_icon.svg" alt="Quote" width={18} height={8} />
+                <p className="font-fz-poppins text-sm font-medium tracking-wide uppercase  px-2" style={{color:"#89A751"}}>
+                  Tầm nhìn | Vision
+                </p>
+                <Image src="/vision_left_icon.svg" alt="Quote" width={18} height={8} />
+              </div>
+             <h2 className={`font-alegreya-sans text-[32px] sm:text-[16px] md:text-[32px] font-semibold mb-4 max-w-[549px] transition-opacity duration-700 ${fade ? 'opacity-100' : 'opacity-0'}`} style={{color:"#0A5B89"}}>
                 {textContent[index]?.heading}
               </h2>
-              <p className={`text-white text-sm md:text-base max-w-[90%] mb-6 transition-opacity duration-700 ${fade ? 'opacity-100' : 'opacity-0'}`}>
+              <p className={`font-fz-poppins text-white text-[16px] sm:text-[8px] md:text-[16px] max-w-[90%] mb-6 transition-opacity duration-700 ${fade ? 'opacity-100' : 'opacity-0'}`} style={{color:"#5C6578"}}>
                 {textContent[index]?.paragraph}
               </p>
             </div>
