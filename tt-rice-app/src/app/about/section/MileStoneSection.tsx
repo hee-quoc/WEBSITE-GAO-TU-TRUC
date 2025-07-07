@@ -193,6 +193,40 @@ export function MileStoneSection() {
           />
         </div>
 
+        {/* 4 hình trang trí thêm */}
+        <Image
+          src="/milestone/hinh-lua.svg"
+          alt="Decor 1"
+          width={45}
+          height={70}
+          className="absolute"
+          style={{ top: 491, left: 976 }}
+        />
+        <Image
+          src="/milestone/hinh-lua.svg"
+          alt="Decor 2"
+          width={45}
+          height={70}
+          className="absolute"
+          style={{ top: 422, left: 1000 }}
+        />
+        <Image
+          src="/milestone/hinh-lua.svg"
+          alt="Decor 3"
+          width={45}
+          height={70}
+          className="absolute"
+          style={{ top: 808, left: 267 }}
+        />
+        <Image
+          src="/milestone/hinh-lua.svg"
+          alt="Decor 4"
+          width={45}
+          height={70}
+          className="absolute"
+          style={{ top: 874, left: 320 }}
+        />
+
         {/* Tiêu đề */}
         <div className="absolute top-[40px] left-1/2 -translate-x-1/2 text-center">
           <h2 className="text-[40px] md:text-[56px] font-bold text-[#005B94] font-fz leading-tight">
