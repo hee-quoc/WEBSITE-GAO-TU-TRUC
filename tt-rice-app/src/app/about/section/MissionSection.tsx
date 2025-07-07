@@ -5,7 +5,7 @@ import React, { useState , useEffect} from "react";
 const backgroundImages = [
   '/vision_background.png',
   '/vision_background_2.png',
-  '/vision_background.png',
+  // '/vision_background.png',
 ]; // Add your actual image paths here (place in public folder)
 
 const textContent = [
@@ -19,11 +19,11 @@ const textContent = [
     paragraph:
       'Tư Trúc không chỉ nâng tầm giá trị hạt gạo Việt, mà còn gìn giữ di sản lúa nước ngàn đời - nơi hội tụ tinh hoa đất trời, bàn tay người nông dân và tri thức khoa học, để gửi trao vào từng bữa ăn.',
   },
-  {
-    heading: 'Mở rộng xuất khẩu ra thị trường quốc tế',
-    paragraph:
-      'Đưa sản phẩm gạo Việt chất lượng cao vươn xa hơn trên bản đồ thế giới, xây dựng thương hiệu uy tín trong mắt người tiêu dùng toàn cầu.',
-  },
+  // {
+  //   heading: 'Mở rộng xuất khẩu ra thị trường quốc tế',
+  //   paragraph:
+  //     'Đưa sản phẩm gạo Việt chất lượng cao vươn xa hơn trên bản đồ thế giới, xây dựng thương hiệu uy tín trong mắt người tiêu dùng toàn cầu.',
+  // },
 ];
 
 
@@ -62,6 +62,9 @@ export function MissionSection() {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
+  if (index == 2){
+    setIndex(0)
+  }
   return (
     <section className="pt-20 pb-5 bg-white">
       <div className="flex justify-center flex-col md:flex-row items-start  max-w-[1122px] mx-auto  py-8  "> 

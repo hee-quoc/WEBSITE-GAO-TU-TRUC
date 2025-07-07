@@ -21,7 +21,7 @@ const steps = [
   {
     img: '/gao_step4.svg',
     title: 'Xay xát & Sàng lọc',
-    desc: 'Quy trình xay xát, tách tạp chất và sàng lọc, đảm bảo từng hạt gạo đạt chuẩn đồng đều.',
+    desc: 'Tiến hành xay xát, tách tạp chất và sàng lọc, đảm bảo từng hạt gạo đạt chuẩn đồng đều',
   },
   {
     img: '/gao_step5.svg',
@@ -94,7 +94,7 @@ export function RiceSection() {
           </div>
 
           <p className="text-[20px] text-white text-justify leading-relaxed font-alegreya-sans">
-            Với nhiều người, gạo chỉ đơn thuần là lương thực để no bụng. Nhưng với Tư Trúc, đó là kết tinh của đất trời hào phóng, đôi tay cần mẫn của người nông dân, sự kỹ lưỡng, chỉn chu trong từng công đoạn của người công nhân và hơn hết, đó còn là niềm tự hào về nền văn minh lúa nước ngàn đời.
+            Mỗi chén cơm ấm hiện diện trong từng bữa ăn đều là kết tinh từ sự hào phóng của <br />thiên nhiên trù phú, và sự tận tụy của những người lao động thầm lặng.
           </p>
         </div>
 

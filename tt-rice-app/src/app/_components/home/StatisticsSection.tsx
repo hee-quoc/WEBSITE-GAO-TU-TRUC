@@ -72,16 +72,17 @@ export function StatisticSection(){
               <div className="relative z-10 p-6 sm:p-10 text-white">
                 <div className="mb-8">
                   <div className="text-5xl sm:text-6xl font-bold mb-4 text-white font-alegreya-sans">&gt;300</div>
-                  <p className="text-white font-fz-poppins">
-                    Hộ nông dân tại các vùng canh tác đang<br />
+                  <p className="text-white text-[16px] font-fz-poppins opacity-80">
+                    hộ nông dân tại các vùng canh tác<br /> đang
                     hợp tác cùng Tư Trúc
                   </p>
                 </div>
                 <div>
-                  <div className="text-5xl sm:text-6xl font-bold mb-4 text-white font-alegreya-sans">10%</div>
-                  <p className="text-white font-fz-poppins">
-                    Thu nhập bình quân tăng 10% nhờ thu mua<br />
-                    ổn định & giá thu cao hơn thị trường
+                  <div className="text-5xl sm:text-6xl font-bold mb-4 text-white font-alegreya-sans"> <svg className="inline-block w-12 h-12 sm:w-12 sm:h-12 align-middle mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 6L19 13H5L12 6Z" fill="#FFB000" stroke="#FFB000" strokeWidth="2" strokeLinejoin="round"/> {/* Triangle up icon */}
+                  </svg>10%</div>
+                  <p className="text-[16px] font-fz-poppins opacity-80">
+                    tổng thu nhập bình quân của dân địa phương,<br /> nhờ quy trình thu mua ổn định & giá thu mua<br /> cao hơn thị trường
                   </p>
                 </div>
               </div>
@@ -94,15 +95,17 @@ export function StatisticSection(){
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <div className="text-5xl sm:text-6xl font-bold mb-4 font-alegreya-sans">&gt;100</div>
-                    <p className="text-green-lightest-1 font-fz-poppins">
-                      Trên 100 HA diện tích được<br />
-                      áp dụng quy trình canh tác sạch, không hóa chất độc hại...
+                    <p className="text-[16px] font-fz-poppins">
+                      ha diện tích được áp dụng quy<br /> trình canh tác sạch, không hóa<br /> chất độc hại,... để cho ra dòng<br /> sản phẩm sạch mỗi năm
                     </p>
                   </div>
                   <div>
-                    <div className="text-5xl sm:text-6xl font-bold mb-4 font-alegreya-sans">70%</div>
-                    <p className="text-green-lightest-1 font-fz-poppins">
-                      Giảm 70% lượng thuốc bảo vệ thực phẩm hữu so với canh tác truyền thống
+                    <div className="text-5xl sm:text-6xl font-bold mb-4 font-alegreya-sans"><svg className="inline-block w-12 h-12 sm:w-12 sm:h-12 align-middle mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* Added stroke and stroke-width for border */}
+                    <path d="M12 18L5 11H19L12 18Z" fill="#FFB000" stroke="#FFB000" strokeWidth="2" strokeLinejoin="round"/>
+                  </svg>70%</div>
+                    <p className="text-[16px] font-fz-poppins">
+                      lượng thuốc bảo vệ thực vật<br /> so với phương pháp canh tác<br /> truyền thống
                     </p>
                   </div>
                 </div>
@@ -118,9 +121,8 @@ export function StatisticSection(){
                 />
                 <div className="relative z-10 text-white">
                   <div className="text-5xl sm:text-6xl font-bold mb-4 font-alegreya-sans">100%</div>
-                  <p className="text-green-lightest-2 font-fz-poppins">
-                    Tận dụng 100% phụ phẩm (trấu, cám, tro..) tái chế làm phân bón hữu cơ và thức ăn chăn nuôi. Góp phần giảm<br />
-                    chất thải và gìn giữ môi trường
+                  <p className="text-[16px] font-fz-poppins opacity-80 max-w-[251px]" style={{color:"#FBFFF2"}}>
+                    phụ phẩm (trấu, cám, tro...) được tái chế làm phân bón hữu cơ và thức ăn chăn nuôi, góp phần giảm phát thải và gìn giữ môi trường
                   </p>
                 </div>
               </div>

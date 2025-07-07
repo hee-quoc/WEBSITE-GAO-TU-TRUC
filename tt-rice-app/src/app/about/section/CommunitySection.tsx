@@ -11,8 +11,8 @@ export function CommunitySection() {
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[56px] text-center font-bold mb-4  font-alegreya-sans" style={{ color: "#0A5B89" }}> {/* Adjusted font sizes for better responsiveness */}
               Giá trị gửi trao đến cộng đồng
             </h2>
-            <p className="text-[16px] sm:text-[16px] text-center text-gray-light mb-8 sm:mb-12 font-alegreya-sans" style={{ color: "#667085" }}> {/* Adjusted font sizes and margin */}
-              Thấu hiểu giá trị của đất lành, nước mát và bàn tay người lao động trong hành trình nuôi dưỡng hạt gạo Việt, Tư Trúc luôn đặt trọn tâm huyết vào việc bảo vệ hệ sinh thái canh tác, nâng cao giá trị nghề nông và cải thiện đời sống người lao động.
+            <p className="max-w-[732px] text-[16px] sm:text-[16px] text-center text-gray-light mb-8 sm:mb-12 font-fz-poppins" style={{ color: "#667085" }}> {/* Adjusted font sizes and margin */}
+              Thấu hiểu giá trị của đất lành, nước mát và bàn tay người lao động trong hành trình nuôi<br /> dưỡng hạt gạo Việt, Tư Trúc luôn đặt trọn tâm huyết vào việc bảo vệ hệ sinh thái canh tác,<br /> nâng cao giá trị nghề nông và cải thiện đời sống người lao động.
             </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-[42%_58%] gap-6 sm:gap-8 mt-6 sm:mt-10"> {/* Adjusted gap and margin-top */}
@@ -25,25 +25,29 @@ export function CommunitySection() {
                 className="object-cover"
                 />
               <div className="relative z-10 p-6 sm:p-10 w-full pt-10"> {/* Removed bg-gradient-to-t and text-white */}
-                <div className="max-w-[194px] mb-6 sm:mb-8"> {/* Adjusted margin-bottom */}
-                  <div className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2 sm:mb-4 font-alegreya-sans" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>300</div> {/* Changed text color to #6D9127 */}
-                  <p className="text-[16px] sm:text-[16px] font-fz-poppins" style={{ color: "#667085" }}> {/* Changed text color to #667085 */}
-                    Hộ nông dân địa phương đồng hành ổn định
+                <div className="max-w-[194px] mb-6 sm:mb-4"> {/* Adjusted margin-bottom */}
+                  <div className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2 sm:mb-4 font-alegreya-sans" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>30</div> {/* Changed text color to #6D9127 */}
+                  <p className="text-[16px] sm:text-[16px] font-fz-poppins opacity-80" style={{ color: "#667085" }}> {/* Changed text color to #667085 */}
+                    Hộ nông dân địa phương đồng hành lâu dài
                   </p>
                 </div>
                 <div className="max-w-[194px] mb-6 sm:mb-8"> {/* Adjusted margin-bottom */}
                   <div className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2 sm:mb-4 font-alegreya-sans" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>40</div> {/* Changed text color to #6D9127 */}
-                  <p className="text-sm sm:text-base font-fz-poppins" style={{ color: "#667085" }}> {/* Changed text color to #667085 */}
+                  <p className="text-sm sm:text-base font-fz-poppins opacity-80" style={{ color: "#667085" }}> {/* Changed text color to #667085 */}
                     Công nhân có việc làm ổn định tại nhà máy
                   </p>
                 </div>
                 <div>
-                  <div className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2 sm:mb-4 font-alegreya-sans" style={{ color: "#6D9127" }}>10%</div> {/* Changed text color to #6D9127 */}
-                  <p className="text-sm sm:text-base font-fz-poppins" style={{ color: "#667085" }}> {/* Changed text color to #667085 */}
+                  <div className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2 sm:mb-4 font-alegreya-sans" style={{ color: "#6D9127" }}> 
+                    <svg className="inline-block w-12 h-12 sm:w-12 sm:h-12 align-middle mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 6L19 13H5L12 6Z" fill="#FFB000" stroke="#FFB000" strokeWidth="2" strokeLinejoin="round"/> {/* Triangle up icon */}
+                    </svg>10%
+                  </div> {/* Changed text color to #6D9127 */}
+                  <p className="text-sm sm:text-base font-fz-poppins opacity-80" style={{ color: "#667085" }}> {/* Changed text color to #667085 */}
                     Thu nhập bình quân
                   </p>
                 </div>
-                <p className="text-[16px] max-w-[194px] sm:text-[16px] mt-6 sm:mt-8 font-fz-poppins" style={{ color: "#667085" }}> {/* Changed text color to #667085 */}
+                <p className="text-sm sm:text-base mt-6 sm:mt-8 " style={{ color: "#667085" }}> {/* Changed text color to #667085 */}
                   Tư Trúc trực tiếp thu mua lúa từ hàng ngàn hộ nông dân, đảm bảo đầu ra ổn định, thu nhập bền vững.<br />Song song đó, thường hiệu chủ trong đào tạo, chuyển giao kỹ thuật và ứng dụng công nghệ cho đội ngũ công nhân bản địa, giúp người lao động nâng cao tay nghề, tiếp cận tri thức mới nhưng vẫn gìn giữ nghề lúa nước truyền thống.
                 </p>
               </div>
@@ -65,8 +69,8 @@ export function CommunitySection() {
                     {/* Added stroke and stroke-width for border */}
                     <path d="M12 18L5 11H19L12 18Z" fill="#FFB000" stroke="#FFB000" strokeWidth="2" strokeLinejoin="round"/>
                   </svg>70%</div>
-                    <p className="text-green-lightest-1 font-fz-poppins opacity-80"style={{ color: "#EFF0F2" }} >
-                      lượng thuốc bảo vệ thực vật
+                    <p className="text-sm text-green-lightest-1 font-fz-poppins opacity-80"style={{ color: "#EFF0F2" }} >
+                      lượng thuốc bảo <br /> vệ thực vật
                     </p>
                   </div>
                 </div>
@@ -93,7 +97,7 @@ export function CommunitySection() {
                 />
                 <div className="relative z-10 text-white">
                   <div className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2 sm:mb-4 font-alegreya-sans">100%</div> {/* Adjusted font sizes */}
-                  <p className="text-sm sm:text-base text-white font-fz-poppins opacity-80" style={{color:"#EFF0F2"}}> {/* Adjusted font sizes */}
+                  <p className="text-sm sm:text-sm text-white font-fz-poppins opacity-80" style={{color:"#EFF0F2"}}> {/* Adjusted font sizes */}
                     Phụ phẩm tái chế phục vụ chăn nuôi & <br /> canh tác bền vững
                   </p>
                   <p className="max-w-[345px] text-xs sm:text-sm mt-4 text-white font-fz-poppins" style={{color:"#EFF0F2"}}> {/* Adjusted font sizes and margin-top */}
