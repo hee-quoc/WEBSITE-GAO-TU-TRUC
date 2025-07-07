@@ -1,21 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap');
 @import "tailwindcss";
-
-
-
 
 @layer theme, base, components, utilities;
 
+html {
+  scrollbar-gutter: stable;
+}
 @font-face {
   font-family: "Fz Poppins";
   src: url("/fonts/FzPoppins/FZ-Poppins-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-}
-
-html {
-  scrollbar-gutter: stable;
 }
 
 @font-face {
@@ -29,6 +24,53 @@ html {
 @font-face {
   font-family: "Fz Poppins";
   src: url("/fonts/FzPoppins/FZ-Poppins-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("/fonts/Alegreya_Sans/AlegreyaSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("/fonts/Alegreya_Sans/AlegreyaSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("/fonts/Alegreya_Sans/AlegreyaSans-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alegreya";
+  src: url("/fonts/Alegreya/static/Alegreya-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alegreya";
+  src: url("/fonts/Alegreya/static/Alegreya-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alegreya";
+  src: url("/fonts/Alegreya/static/Alegreya-Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
