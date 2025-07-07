@@ -1,6 +1,33 @@
+'use client'
+
 import Image from "next/image"
 import Button from "../ui/Button"
+import { useState,useEffect } from 'react';
+
 export function StatisticSection(){
+  const [isClicked, setIsClicked] = useState(false);
+        useEffect(() => {
+          if (isClicked) {
+            // 1. Set a timer for 5000 milliseconds (5 seconds).
+            const timerId = setTimeout(() => {
+              // 2. After 5 seconds, set 'isClicked' back to false.
+              setIsClicked(false);
+              console.log("Card re-enabled.");
+            }, 5000);
+            return () => {
+              clearTimeout(timerId);
+            };
+          }
+        }, [isClicked]);
+        const handleClick = () => {
+          if (isClicked) {
+            console.log('Action is temporarily disabled.');
+            return;
+          }
+      
+          setIsClicked(true);
+          window.location.href = "/about";
+        };
     return (
         <section className="pt-20 pb-5 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -15,6 +42,7 @@ export function StatisticSection(){
               <Button
                 size="large"
                 className="bg-green-normal hover:bg-green-dark text-white transition-all duration-300 rounded-full px-5 py-3.5"
+                onClick={handleClick}
               >
                 <span className="flex items-center gap-2">
                   Xem thêm

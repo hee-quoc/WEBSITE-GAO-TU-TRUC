@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Button from '../ui/Button';
 import { motion } from 'framer-motion';
+import { useState,useEffect } from 'react';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -17,6 +18,29 @@ const fadeInUp = {
 };
 
 export function AboutSection() {
+  const [isClicked, setIsClicked] = useState(false);
+      useEffect(() => {
+        if (isClicked) {
+          // 1. Set a timer for 5000 milliseconds (5 seconds).
+          const timerId = setTimeout(() => {
+            // 2. After 5 seconds, set 'isClicked' back to false.
+            setIsClicked(false);
+            console.log("Card re-enabled.");
+          }, 5000);
+          return () => {
+            clearTimeout(timerId);
+          };
+        }
+      }, [isClicked]);
+      const handleClick = () => {
+        if (isClicked) {
+          console.log('Action is temporarily disabled.');
+          return;
+        }
+    
+        setIsClicked(true);
+        window.location.href = "/about";
+      };
   return (
     <section className="bg-white overflow-hidden">
       <div className="relative w-[1440px] h-[1458px] mx-auto">
@@ -39,6 +63,7 @@ export function AboutSection() {
           <Button
             size="small"
             className="bg-green-normal hover:bg-green-dark text-white transition-all duration-300 rounded-full px-5 py-3.5"
+            onClick={handleClick}
           >
             <span className="flex items-center gap-2">
               Tìm hiểu thêm

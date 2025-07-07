@@ -1,12 +1,12 @@
 
 "use client"; 
 
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import Image from 'next/image';
 import Button from '../ui/Button';
 
 const slides = [
-  { id: 0, imageSrc: "/image_hero.svg" },
+  { id: 0, imageSrc: "/images/home/img_hero_background3.svg" },
   { id: 1, imageSrc: "/images/home/img_hero_background2.svg" },
   { id: 2, imageSrc: "/images/home/img_hero_background3.svg" },
   { id: 3, imageSrc: "/image_hero.svg" },
@@ -24,7 +24,29 @@ export function HeroSection() {
     const newIndex = currentIndex === slides.length - 1 ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
   };
-
+  const [isClicked, setIsClicked] = useState(false);
+    useEffect(() => {
+      if (isClicked) {
+        // 1. Set a timer for 5000 milliseconds (5 seconds).
+        const timerId = setTimeout(() => {
+          // 2. After 5 seconds, set 'isClicked' back to false.
+          setIsClicked(false);
+          console.log("Card re-enabled.");
+        }, 5000);
+        return () => {
+          clearTimeout(timerId);
+        };
+      }
+    }, [isClicked]);
+    const handleClick = () => {
+      if (isClicked) {
+        console.log('Action is temporarily disabled.');
+        return;
+      }
+  
+      setIsClicked(true);
+      window.location.href = "/products";
+    };
   return (
     // 1. The main section is now a flex container to center the foreground content.
     <section className="relative min-h-screen bg-white overflow-hidden flex justify-center pt-[44px]">
@@ -66,6 +88,7 @@ export function HeroSection() {
               text-sm      
               md:text-base
             "
+            onClick={handleClick}
           >
             <span className='flex-shrink-0'>Khám phá sản phẩm</span>
             <Image
