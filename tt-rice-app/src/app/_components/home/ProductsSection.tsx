@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import type { Product } from '@prisma/client';
 import RiceList from '../utils/RiceList';
 export function ProductsSection(){
     return (
@@ -30,26 +29,6 @@ export function ProductsSection(){
             Mỗi hạt gạo Tư Trúc đều được tinh chọn từ giống lúa chất lượng, canh tác theo quy trình nghiệm ngặt, thu hoạch đúng vụ, và được sàng lọc kỹ lưỡng từ đội ngũ công nhân nhiều năm kinh nghiệm bằng cả chuyên môn lẫn tâm huyết - để đem chất lượng hạt gạo ổn định, hương vị thuần khiết và ngọt lành từ đồng nội đến bữa cơm Việt.
           </p>
         </div>
-
-        {/* <div className="mt-16 text-center">
-          <h3 className="text-xl font-medium text-blue-dark mb-8">Các chứng nhận</h3>
-          <div className="flex justify-center items-center gap-6 sm:gap-8 flex-wrap px-4">
-            <Image src="/img_group_928.svg" alt="Certification" width={150} height={131} />
-            <div className="w-22 h-22 bg-white rounded-full flex items-center justify-center">
-              <Image src="/img_7bc2e0f1871f0fcb76c75a55bf9e946a_1.png" alt="Certification" width={66} height={63} />
-            </div>
-            <div className="w-22 h-22 bg-white rounded-full flex items-center justify-center">
-              <Image src="/img_logoocopcuachuongtrinhocopquocgia1_1.png" alt="Certification" width={88} height={36} />
-            </div>
-            <div className="w-22 h-22 bg-white rounded-full flex items-center justify-center">
-              <Image src="/img_image_39.png" alt="Certification" width={88} height={51} />
-            </div>
-            <div className="w-22 h-22 bg-white rounded-full flex items-center justify-center">
-              <Image src="/img_d565e8067f134e55d8999f227ee551ee_1.png" alt="Certification" width={70} height={58} />
-            </div>
-            <Image src="/img_group_929_light_green_a700.svg" alt="Certification" width={150} height={131} />
-          </div>
-        </div> */}
          <div className="mt-16 text-center overflow-x-auto scrollbar-hide">
           <h3 className="text-xl font-medium text-blue-dark mb-8">Các chứng nhận</h3>
           <div className="flex flex-nowrap justify-start items-center gap-4 sm:gap-6 md:gap-8 px-4 w-max mx-auto">

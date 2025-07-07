@@ -1,5 +1,4 @@
 // src/app/about/page.tsx
-import Image from 'next/image';
 import { StorySection } from './section/StorySection';
 import { PlatformSection } from './section/PlatformSection';
 import { MileStoneSection } from './section/MileStoneSection';

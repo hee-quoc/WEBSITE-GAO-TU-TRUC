@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import React, { useState , useEffect} from "react";
-import type { ContactFormData } from "~/app/types/Types";
 const backgroundImages = [
   '/about_glass_background.jpg',
   '/about_glass_background.jpg',

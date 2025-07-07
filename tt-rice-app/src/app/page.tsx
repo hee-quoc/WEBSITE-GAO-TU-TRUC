@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { HeroSection } from "./_components/home/HeroSection";
 import { AboutSection } from "./_components/home/AboutSection";
 import { ProductsSection } from "./_components/home/ProductsSection";
@@ -6,7 +5,7 @@ import { PartnerSection } from "./_components/home/PartnerSection";
 import { Testimonial } from "./_components/home/TestinomialSection";
 import { StatisticSection } from "./_components/home/StatisticsSection";
 import { ContactSection } from "./_components/home/ContactSection";
-import { api, HydrateClient } from "~/trpc/server";
+import { HydrateClient } from "~/trpc/server";
 export default async function Home() {
   return (
     <main className="flex-grow"> 

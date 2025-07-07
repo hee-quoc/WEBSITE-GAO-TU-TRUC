@@ -7,7 +7,6 @@ import Footer from "~/app/_components/Footer";
 import { TRPCReactProvider } from "~/trpc/react";
 import { FloatingSocialLinks }from "~/app/_components/ui/FloatingSocialLinks"
 import AuthProvider from "~/app/_components/AuthProvider";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "gaotutruc",

@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, BookOpen, Phone, Mail } from 'lucide-react'; // Using lucide-react for icons
 
 export default function Footer() {
   const contactInfo = [
