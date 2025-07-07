@@ -29,6 +29,17 @@
   font-style: italic;
   font-display: swap;
 }
+@layer utilities {
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .no-scrollbar::-webkit-scrollbar {
+          display: none;
+      }
+     /* Hide scrollbar for IE, Edge and Firefox */
+      .no-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+    }
+  }
 
 @theme {
   --font-sans: "Alegreya Sans", sans-serif;
@@ -36,11 +47,15 @@
   --color-green-light: #D5E8C0 ;    
   --color-green-medium: #7D8F69 ;    
   --color-green-dark: #556B2F ;    
+  --color-green-600: #628423;
   --color-blue-dark: #1E3A8A ;      
   --color-blue-medium: #2563EB ;
   --color-green-normal: #6D9127 ;
   --color-steel-blue: #0A5B89 ;
+  --color-blue-normal: #667085;
+  --color-blue-normal-active: #525A6A;
   --color-gray: #525A6A;
   --font-alegreya-sans: "Alegreya Sans", sans-serif;
   --font-fz-poppins: "Fz Poppins";
+  --font-alegreya: "Alegreya";
 }
