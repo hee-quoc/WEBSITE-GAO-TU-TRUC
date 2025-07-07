@@ -37,7 +37,7 @@ model Product {
   description   String?  // Optional detailed description of the rice
   imageData     Bytes?
   imageType     String?
-  imageUrl      String?
+  imageUrl      String 
   tags          String[] @default([])
   slug          String   @unique
   authorId      String
