@@ -182,7 +182,7 @@ async function main() {
     `,
     imageFilename: 'lai_hoa.png',
     imageType: 'image/png',
-    tags: ['gao-an', 'gao-thong-dung'],
+    tags: ['gao-an'],
     companyBrand: "Thương hiệu",
     SKU:"M8S4",
     imageUrl:"https://omweb-prod.s3.ap-southeast-1.amazonaws.com/58/nhamaygaotutruc/product/lai_hoa.png"
@@ -248,7 +248,7 @@ async function main() {
     `,
     imageFilename: 'lai_sua.png',
     imageType: 'image/png',
-    tags: ['gao-an', 'gao-nguyen-lieu'],
+    tags: ['gao-an'],
     companyBrand: "Thương hiệu",
     SKU:"GGX4",
     imageUrl:"https://omweb-prod.s3.ap-southeast-1.amazonaws.com/58/nhamaygaotutruc/product/lai_sua.png"
@@ -314,7 +314,7 @@ async function main() {
     `,
     imageFilename: 'huong_sen.png',
     imageType: 'image/png',
-    tags: ['gao-an', 'gao-nguyen-lieu'],
+    tags: ['gao-an'],
     companyBrand: "Thương hiệu",
     SKU:"9J0Z",
     imageUrl:"https://omweb-prod.s3.ap-southeast-1.amazonaws.com/58/nhamaygaotutruc/product/huong_sen.png"
@@ -348,7 +348,7 @@ async function main() {
     `,
     imageFilename: 'img_st25.png',
     imageType: 'image/png',
-    tags: ['gao-an', 'gao-thong-dung'],
+    tags: ['gao-an'],
     companyBrand: "Khác",
     SKU:"RZUXB",
     imageUrl:"https://omweb-prod.s3.ap-southeast-1.amazonaws.com/58/nhamaygaotutruc/products/st25.png"
@@ -381,7 +381,7 @@ async function main() {
     `,
     imageFilename: 'te_504.png',
     imageType: 'image/png',
-    tags: ['gao-an', 'gao-thong-dung'],
+    tags: ['gao-thong-dung'],
     companyBrand: "Khác",
     SKU:"XHSVT",
     imageUrl:"https://omweb-prod.s3.ap-southeast-1.amazonaws.com/58/nhamaygaotutruc/product/te_504.png"

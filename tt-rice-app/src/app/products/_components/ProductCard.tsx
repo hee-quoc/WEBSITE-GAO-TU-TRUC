@@ -42,7 +42,6 @@ export function ProductCard({ product }: ProductCardProps) {
   
   const [isClicked, setIsClicked] = useState(false);
   useEffect(() => {
-    // We only want to set a timer if the card has been clicked.
     if (isClicked) {
       // 1. Set a timer for 5000 milliseconds (5 seconds).
       const timerId = setTimeout(() => {
@@ -56,22 +55,13 @@ export function ProductCard({ product }: ProductCardProps) {
     }
   }, [isClicked]);
   const handleClick = () => {
-    // 2. If already clicked, do nothing.
     if (isClicked) {
       console.log('Action is temporarily disabled.');
       return;
     }
 
-    // 3. Set state to true to begin the "disabled" period
     setIsClicked(true);
-
-    // 4. Perform the navigation
     window.location.href = `/products/${toSlug(product.name)}`;
-
-    // 5. Set a timer to re-enable the click after 5 seconds
-    // Note: Since navigation happens immediately, the user won't see this.
-    // This pattern is more visibly useful for actions that DON'T navigate away,
-    // like adding to a cart. But the logic is sound.
   };
   const imageUrl = useMemo(() => {
     // 1. Guard against missing image data or type information.
