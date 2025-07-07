@@ -6,17 +6,44 @@ import path from 'path';
 
 const prisma = new PrismaClient();
 
+function toSlug(str: string): string {
+  if (!str) {
+    return '';
+  }
+
+  // 1. Convert to lower case
+  let slug = str.toLowerCase();
+
+  // 2. & 3. Decompose and remove diacritics
+  // 'NFD' separates combined characters into the base character and the accent
+  // /[\u0300-\u036f]/g matches all combining diacritical marks
+  slug = slug.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+  // 4. Handle the Vietnamese letter 'đ'
+  slug = slug.replace(/đ/g, 'd');
+
+  // 5. Replace spaces and consecutive spaces with a single hyphen
+  slug = slug.replace(/\s+/g, '-');
+
+  // 6. Remove all non-alphanumeric characters except the hyphen
+  slug = slug.replace(/[^a-z0-9-]/g, '');
+
+  // 7. Collapse consecutive hyphens
+  slug = slug.replace(/-+/g, '-');
+
+  // 8. Trim leading/trailing hyphens
+  slug = slug.replace(/^-+|-+$/g, '');
+
+  return slug;
+}
 async function main() {
   console.log('Start seeding ...');
 
   const username = 'admin';
-  const defaultPassword = 'password'; // The administrator will change this
+  const defaultPassword = 'password';
 
-  // Hash the default password before storing it
   const hashedPassword = await hash(defaultPassword, 12);
 
-  // Use `upsert` to create the user only if they don't exist
-  // This makes the seed script safe to run multiple times.
   const adminUser = await prisma.user.upsert({
     where: { username: username },
     update: {},
@@ -26,84 +53,369 @@ async function main() {
       role: 'ADMIN',
     },
   });
+
   const productsData = [
-    {
-      name: 'Gạo ST25 Thượng Hạng',
-      description: 'Được mệnh danh là gạo ngon nhất thế giới, hạt dài, trắng trong, không bạc bụng.',
-      tags: ['premium', 'long-grain', 'fragrant'],
-      svgFilename: 'img_eat_rice.svg',
-    },
-    {
-      name: 'Gạo Lứt Huyết Rồng',
-      description: 'Giàu dinh dưỡng, chất xơ và chất chống oxy hóa, tốt cho sức khỏe tim mạch.',
-      tags: ['healthy', 'brown-rice', 'high-fiber'],
-      svgFilename: 'img_eat_rice.svg',
-    },
-    {
-      name: 'Gạo Nếp Cái Hoa Vàng',
-      description: 'Hạt to tròn, dẻo thơm đặc trưng, chuyên dùng để nấu xôi, chè, làm bánh.',
-      tags: ['sticky-rice', 'traditional'],
-      svgFilename: 'img_eat_rice.svg',
-    },
-    {
-      name: 'Gạo Tấm Dẻo',
-      description: 'Loại gạo tấm đặc sản, mềm dẻo, rất thích hợp để nấu cơm tấm sườn bì chả.',
-      tags: ['broken-rice', 'specialty'],
-      svgFilename: 'img_eat_rice.svg',
-    },
-    {
-      name: 'Gạo Hữu Cơ Hoa Sữa',
-      description: 'Canh tác theo quy trình hữu cơ nghiêm ngặt, không hóa chất, an toàn cho cả gia đình.',
-      tags: ['organic', 'safe', 'family'],
-      svgFilename: 'img_eat_rice.svg',
-    },
-    {
-      name: 'Gạo Nhật Japonica',
-      description: 'Hạt gạo tròn, dẻo, vị ngọt nhẹ, lý tưởng để làm sushi và các món ăn Nhật Bản.',
-      tags: ['sushi-rice', 'japanese-style'],
-      svgFilename: 'img_eat_rice.svg',
-    },
-    {
-      name: 'Gạo Sạch Vua Gạo',
-      description: 'Gạo sạch được kiểm định chất lượng, đảm bảo không có dư lượng thuốc trừ sâu.',
-      tags: ['clean', 'certified'],
-      svgFilename: 'img_eat_rice.svg',
-    },
-    {
-      name: 'Gạo Thơm Lài Miên',
-      description: 'Giống gạo của Campuchia với hương thơm tự nhiên và độ mềm dẻo tuyệt vời.',
-      tags: ['fragrant', 'cambodian'],
-      svgFilename: 'img_eat_rice.svg',
-    },
-  ];
+  {
+    name: 'Gạo Lúa Tôm ST25 Tư Trúc',
+    description: `
+      <div class="content mx-auto w-full ">
+        <p class="text-gray-800 mb-4">
+          Gạo sạch Tư Trúc - Gạo ST25 nổi tiếng với hạt gạo thon dài, trắng trong. Khi nấu, cơm dẻo mềm, có mùi thơm đặc trưng của lá dứa và cốm non, vị ngọt đậm đà. Đây là giống gạo được ưa chuộng bởi hương vị thơm ngon và giá trị dinh dưỡng cao, thích hợp cho mọi bữa ăn gia đình.
+        </p>
+        <div class="text-center  mb-4">
+          Hàm lượng dinh dưỡng trong 01kg
+        </div>
+        <div class="flex justify-between mb-4">
+          <table class="w-2/3 border-collapse border border">
+            <tbody>
+              <tr class="border border">
+                <td class="border border p-2">Đạm > 60g</td>
+              </tr>
+              <tr class="border border">
+                <td class="border border p-2">Tinh bột (Cacbonhydrat) > 720g</td>
+              </tr>
+              <tr class="border border">
+                <td class="border border p-2">Chất xơ (Fiber) > 3g</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="w-1/3 border-collapse border border">
+            <tbody>
+              <tr class="border border">
+                <td class="border border p-2">Chất béo (Lipid) < 2g</td>
+              </tr>
+              <tr class="border border">
+                <td class="border border p-2">Vitamin B1 < 100 μg</td>
+              </tr>
+              <tr class="border border">
+                <td class="border border p-2">Cholesterol = 0 g</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center mb-4">
+          Chỉ tiêu chất lượng
+        </div>
+        <div class="flex justify-between">
+          <table class="w-2/3 border-collapse border border">
+            <tbody>
+              <tr class="border border">
+                <td class="border border p-2">Độ ẩm < 14%</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="w-1/3 border-collapse border border">
+            <tbody>
+              <tr class="border border">
+                <td class="border border p-2">Tấm < 5%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `,
+    imageFilename: 'img_eat_rice.png',
+    imageType: 'image/png',
+    tags: ['gao-an'],
+    companyBrand: "Thương hiệu",
+    SKU:"VN09",
+    imageUrl:"https://omweb-prod.s3.ap-southeast-1.amazonaws.com/58/nhamaygaotutruc/product/lua_tom.png"
+  },
+  {
+    name: 'Gạo Lài hoa',
+    description: `
+      <div class="content mx-auto w-full ">
+        <p class="text-gray-800 mb-4">
+          Gạo Lài hoa sở hữu hạt gạo trắng trong như hoa lài, mang đến hương thơm thanh khiết, dịu nhẹ khi nấu. Cơm có độ mềm xốp vừa phải, vị ngọt thanh tao. Đây là lựa chọn lý tưởng cho những ai yêu thích hương vị nhẹ nhàng, tinh tế trong từng hạt cơm.
+        </p>
+        <div class="text-center  mb-4">
+          Hàm lượng dinh dưỡng trong 01kg
+        </div>
+        <div class="flex justify-between mb-4">
+          <table class="w-2/3 border-collapse border border">
+            <tbody>
+              <tr class="border border">
+                <td class="border border p-2">Đạm > 60g</td>
+              </tr>
+              <tr class="border border">
+                <td class="border border p-2">Tinh bột (Cacbonhydrat) > 720g</td>
+              </tr>
+              <tr class="border border">
+                <td class="border border p-2">Chất xơ (Fiber) > 3g</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="w-1/3 border-collapse border border">
+            <tbody>
+              <tr class="border border">
+                <td class="border border p-2">Chất béo (Lipid) < 2g</td>
+              </tr>
+              <tr class="border border">
+                <td class="border border p-2">Vitamin B1 < 100 μg</td>
+              </tr>
+              <tr class="border border">
+                <td class="border border p-2">Cholesterol = 0 g</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center mb-4">
+          Chỉ tiêu chất lượng
+        </div>
+        <div class="flex justify-between">
+          <table class="w-2/3 border-collapse border border">
+            <tbody>
+              <tr class="border border">
+                <td class="border border p-2">Độ ẩm < 14%</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="w-1/3 border-collapse border border">
+            <tbody>
+              <tr class="border border">
+                <td class="border border p-2">Tấm < 5%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `,
+    imageFilename: 'lai_hoa.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-thong-dung'],
+    companyBrand: "Thương hiệu",
+    SKU:"M8S4",
+    imageUrl:"https://omweb-prod.s3.ap-southeast-1.amazonaws.com/58/nhamaygaotutruc/product/lai_hoa.png"
+  },
+  {
+    name: 'Gạo Lài sữa',
+    description: `
+      <div class="content mx-auto w-full ">
+        <p class="text-gray-800 mb-4">
+          Gạo Lài sữa có hạt gạo màu trắng sữa đặc trưng. Khi nấu, cơm dẻo mềm, có vị ngọt nhẹ và hương thơm thoang thoảng như sữa. Đây là giống gạo đặc biệt, không chỉ ngon miệng mà còn cung cấp nhiều dưỡng chất, phù hợp với cả người lớn và trẻ em.
+        </p>
+        <div class="text-center  mb-4">
+          Hàm lượng dinh dưỡng trong 01kg
+        </div>
+        <div class="flex justify-between mb-4">
+          <table class="w-2/3 border-collapse border border">
+            <tbody>
+              <tr class="border border">
+                <td class="border border p-2">Đạm > 60g</td>
+              </tr>
+              <tr class="border border">
+                <td class="border border p-2">Tinh bột (Cacbonhydrat) > 720g</td>
+              </tr>
+              <tr class="border border">
+                <td class="border border p-2">Chất xơ (Fiber) > 3g</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="w-1/3 border-collapse border border">
+            <tbody>
+              <tr class="border border">
+                <td class="border border p-2">Chất béo (Lipid) < 2g</td>
+              </tr>
+              <tr class="border border">
+                <td class="border border p-2">Vitamin B1 < 100 μg</td>
+              </tr>
+              <tr class="border border">
+                <td class="border border p-2">Cholesterol = 0 g</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center mb-4">
+          Chỉ tiêu chất lượng
+        </div>
+        <div class="flex justify-between">
+          <table class="w-2/3 border-collapse border border">
+            <tbody>
+              <tr class="border border">
+                <td class="border border p-2">Độ ẩm < 14%</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="w-1/3 border-collapse border border">
+            <tbody>
+              <tr class="border border">
+                <td class="border border p-2">Tấm < 5%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `,
+    imageFilename: 'lai_sua.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-nguyen-lieu'],
+    companyBrand: "Thương hiệu",
+    SKU:"GGX4",
+    imageUrl:"https://omweb-prod.s3.ap-southeast-1.amazonaws.com/58/nhamaygaotutruc/product/lai_sua.png"
+  },
+  {
+    name: 'Gạo Hương sen',
+    description: `
+      <div class="content mx-auto w-full ">
+        <p class="text-gray-800 mb-4">
+          Gạo Hương sen mang đến trải nghiệm ẩm thực độc đáo với hương thơm thoang thoảng của lá sen tự nhiên. Hạt gạo thon dài, khi nấu cơm có độ dẻo vừa phải, không quá khô cũng không quá nát. Đây là sự lựa chọn thú vị để làm mới bữa ăn gia đình bạn, gợi nhớ đến những cánh đồng sen bát ngát.
+        </p>
+        <div class="text-center  mb-4">
+          Hàm lượng dinh dưỡng trong 01kg
+        </div>
+        <div class="flex justify-between mb-4">
+          <table class="w-2/3 border-collapse border border">
+            <tbody>
+              <tr class="border border">
+                <td class="border border p-2">Đạm > 60g</td>
+              </tr>
+              <tr class="border border">
+                <td class="border border p-2">Tinh bột (Cacbonhydrat) > 720g</td>
+              </tr>
+              <tr class="border border">
+                <td class="border border p-2">Chất xơ (Fiber) > 3g</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="w-1/3 border-collapse border border">
+            <tbody>
+              <tr class="border border">
+                <td class="border border p-2">Chất béo (Lipid) < 2g</td>
+              </tr>
+              <tr class="border border">
+                <td class="border border p-2">Vitamin B1 < 100 μg</td>
+              </tr>
+              <tr class="border border">
+                <td class="border border p-2">Cholesterol = 0 g</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center mb-4">
+          Chỉ tiêu chất lượng
+        </div>
+        <div class="flex justify-between">
+          <table class="w-2/3 border-collapse border border">
+            <tbody>
+              <tr class="border border">
+                <td class="border border p-2">Độ ẩm < 14%</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="w-1/3 border-collapse border border">
+            <tbody>
+              <tr class="border border">
+                <td class="border border p-2">Tấm < 5%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `,
+    imageFilename: 'huong_sen.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-nguyen-lieu'],
+    companyBrand: "Thương hiệu",
+    SKU:"9J0Z",
+    imageUrl:"https://omweb-prod.s3.ap-southeast-1.amazonaws.com/58/nhamaygaotutruc/product/huong_sen.png"
+  },
+  {
+    name: 'Gạo ST25',
+    description: `
+      <div class="content mx-auto w-full  font-fz-poppins">
+        <p class=" mb-4">
+          Gạo ST25 là giống gạo đặc sản cao cấp của Việt Nam, với hương thơm tự nhiên, vị ngọt thanh và độ dẻo vừa phải, ST25 từng vinh dự đạt 
+          <strong>giải Nhất “Gạo ngon nhất thế giới” năm 2019</strong> tại Philippines.
+        </p>
+        <ul class="pl-5 space-y-2">
+          <li>
+            <p>
+              <strong>Loại gạo:</strong> Gạo trắng hạt dài, thon, trắng trong.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Hương vị:</strong> Thơm nhẹ mùi lá dứa đặc trưng, ngọt dịu sau khi nấu.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Độ dẻo:</strong> Dẻo mềm nhưng không dính, cơm nguội vẫn ngon.
+            </p>
+          </li>
+        </ul>
+      </div>
+    `,
+    imageFilename: 'img_st25.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-thong-dung'],
+    companyBrand: "Khác",
+    SKU:"RZUXB",
+    imageUrl:"https://omweb-prod.s3.ap-southeast-1.amazonaws.com/58/nhamaygaotutruc/products/st25.png"
+  },
+  {
+    name: 'Gạo Tẻ 504',
+    description: `
+      <div class="content mx-auto w-full ">
+        <p class=" mb-4">
+          Gạo Tẻ 504 (IR50404) là giống gạo ngắn ngày, năng suất cao. Đây là loại gạo <strong>thông dụng</strong>, phù hợp với nhu cầu ăn uống hằng ngày của đại đa số gia đình Việt Nam và được nhiều quán ăn, bếp công nghiệp, nhà hàng bình dân tin dùng.
+        </p>
+        <ul class="pl-5 space-y-2">
+          <li>
+            <p>
+              <strong>Loại gạo:</strong> Hạt trung bình, hơi bạc bụng, trắng đục.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Hương vị:</strong> Nhẹ, ít thơm, cơm có vị hơi ngọt.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Độ dẻo:</strong> Thấp – cơm tơi, dễ xới, thích hợp ăn liền sau khi nấu.
+            </p>
+          </li>
+        </ul>
+      </div>
+    `,
+    imageFilename: 'te_504.png',
+    imageType: 'image/png',
+    tags: ['gao-an', 'gao-thong-dung'],
+    companyBrand: "Khác",
+    SKU:"XHSVT",
+    imageUrl:"https://omweb-prod.s3.ap-southeast-1.amazonaws.com/58/nhamaygaotutruc/product/te_504.png"
+  }
+];
 
   console.log('Seeding products...');
 
-  // Loop through the product data and create each product
   for (const productData of productsData) {
-    const svgPath = path.join(process.cwd(), 'public', productData.svgFilename);
-    let svgContent = null;
+    // Read the image file into a Buffer
+    // const imagePath = path.join(process.cwd(), 'public','images','products', productData.imageFilename);
+    // let imageDataBuffer: Buffer | null = null;
+    // try {
+    //   imageDataBuffer = fs.readFileSync(imagePath);
+    // } catch (error) {
+    //   console.log(error)
+    //   console.warn(`Could not read image for ${productData.name}. Image will be null.`);
+    // }
 
-    try {
-      // Read the SVG file content as a string
-      svgContent = fs.readFileSync(svgPath, 'utf-8');
-      console.log(`Successfully read ${productData.svgFilename}`);
-    } catch (error) {
-      // If a file is missing, we log a warning but don't stop the seed process
-      console.warn(`Warning: Could not read file for ${productData.name} at ${svgPath}. SVG content will be null.`);
-    }
-
-    // Use `upsert` for products to make the seed script re-runnable
     await prisma.product.upsert({
       where: { name: productData.name },
-      update: {}, // Don't update anything if the product already exists
+      update: {}, // We'll just create, assuming seed is the source of truth
       create: {
         name: productData.name,
         description: productData.description,
         tags: productData.tags,
-        svgContent: svgContent,
-        svgFilename: productData.svgFilename,
-        authorId: adminUser.id, // Associate the product with the admin user
+        imageData: null, // Store the raw image data
+        imageType: productData.imageType, // Store the MIME type
+        authorId: adminUser.id,
+        companyBrand: productData.companyBrand,
+        SKU: productData.SKU,
+        slug: toSlug(productData.name),
+        imageUrl: productData.imageUrl,
+        
       },
     });
   }

@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Fz Poppins";
-  src: url("/fonts/FzPoppins/FZ Poppins-Regular.ttf") format("truetype");
+  src: url("/fonts/FzPoppins/FZ-Poppins-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "Fz Poppins";
-  src: url("/fonts/FzPoppins/Fz Poppins-Bold.ttf") format("truetype");
+  src: url("/fonts/FzPoppins/FZ-Poppins-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: "Fz Poppins";
-  src: url("/fonts/FzPoppins/Fz Poppins-Italic.ttf") format("truetype");
+  src: url("/fonts/FzPoppins/FZ-Poppins-Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -54,6 +54,7 @@
   --color-steel-blue: #0A5B89 ;
   --color-blue-normal: #667085;
   --color-blue-normal-active: #525A6A;
+  --color-gray: #525A6A;
   --font-alegreya-sans: "Alegreya Sans", sans-serif;
   --font-fz-poppins: "Fz Poppins";
   --font-alegreya: "Alegreya";

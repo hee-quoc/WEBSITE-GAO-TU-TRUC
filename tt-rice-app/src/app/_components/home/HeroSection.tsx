@@ -7,8 +7,8 @@ import Button from '../ui/Button';
 
 const slides = [
   { id: 0, imageSrc: "/image_hero.svg" },
-  { id: 1, imageSrc: "/image_hero.svg" },
-  { id: 2, imageSrc: "/image_hero.svg" },
+  { id: 1, imageSrc: "/images/home/img_hero_background2.svg" },
+  { id: 2, imageSrc: "/images/home/img_hero_background3.svg" },
   { id: 3, imageSrc: "/image_hero.svg" },
 ];
 
@@ -48,9 +48,6 @@ export function HeroSection() {
           </div>
         ))}
       </div>
-
-      {/* --- FOREGROUND STATIC CONTENT --- */}
-      {/* 3. The slogan is now outside the map, rendered only once and centered by the parent section. */}
       <div id="hero-slogan" className="relative text-center z-10">
         <div className="relative inline-block mx-auto w-full max-w-[1020px] px-4">
           <h1 className="text-steel-blue font-alegreya-sans md:text-6xl text-4xl font-bold leading-tight text-blue-dark sm:text-4xl lg:text-6xl ">
@@ -84,7 +81,7 @@ export function HeroSection() {
 
       {/* --- UI CONTROLS (ARROWS & DOTS) --- */}
       {/* These remain unchanged as they were already positioned correctly with z-index. */}
-      <div className="absolute left-4 top-60 transform -translate-y-1/2 z-20">
+      <div className="absolute left-4 top-60 md:top-2/5 transform -translate-y-1/2 z-20">
         <button
           onClick={handlePrev}
           className="w-9 h-9 bg-white-transparent border border-green-light-2 rounded-full flex items-center justify-center shadow-lg hover:bg-green-normal transition-colors"
@@ -92,7 +89,7 @@ export function HeroSection() {
           <Image src="/img_arrowleft.svg" alt="Previous" width={16} height={16} />
         </button>
       </div>
-      <div className="absolute right-4 top-60 transform -translate-y-1/2 z-20">
+      <div className="absolute right-4 top-60 md:top-2/5 transform -translate-y-1/2 z-20">
         <button
           onClick={handleNext}
           className="w-9 h-9 bg-white-transparent border border-green-light-2 rounded-full flex items-center justify-center shadow-lg hover:bg-green-normal transition-colors"

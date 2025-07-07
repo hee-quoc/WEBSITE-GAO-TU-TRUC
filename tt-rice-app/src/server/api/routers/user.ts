@@ -8,6 +8,7 @@ import {
 } from "~/server/api/trpc";
 import { TRPCError } from "@trpc/server";
 
+
 export const userRouter = createTRPCRouter({
   updateProfile: protectedProcedure
     .input(
@@ -41,7 +42,7 @@ export const userRouter = createTRPCRouter({
         where: { id: ctx.session.user.id },
         data: dataToUpdate,
       });
-
+      
       return {
         success: true,
         message: "Profile updated successfully.",
