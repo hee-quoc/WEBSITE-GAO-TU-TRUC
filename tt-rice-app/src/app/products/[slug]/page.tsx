@@ -157,18 +157,20 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
 
 // Helper component for rendering an image (unchanged from before)
-const ProductImage = ({imageData, imageType, alt, width, height,imageUrl}: {imageData: Uint8Array | null; imageType: string | null; alt: string; width: number; height: number;imageUrl:string;}) => {
+const ProductImage = ({imageData, imageType, alt, width, height,imageUrl}: {imageData: Uint8Array | null; imageType: string | null; alt: string; width: number; height: number;imageUrl:string | null;}) => {
   if (!imageData || !imageType) {
+    const image= imageUrl ?? '/favicon.ico';
     return (
-      <Image
-        src={imageUrl}
-        alt="Product image"
-        width={300} // Setting dimensions is good for layout stability
-        height={400}
-        className="rounded-md object-cover w-auto h-full "
-        loading="lazy" // Crucial for performance with many images
-      />
-    );
+        <Image
+          src={image}
+          alt="Product image"
+          width={300} // Setting dimensions is good for layout stability
+          height={400}
+          className="rounded-md object-cover w-auto h-full "
+          loading="lazy" // Crucial for performance with many images
+        />
+      );
+    
   }
   const base64String = Buffer.from(imageData).toString('base64');
       
