@@ -9,7 +9,7 @@ import { api } from '~/trpc/server';
 import { ProductTabs } from '../_components/ProductTabs';
 
 type ProductPageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 // Fetch data for metadata (unchanged)
