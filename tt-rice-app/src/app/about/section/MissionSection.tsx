@@ -3,9 +3,9 @@
 import Image from "next/image";
 import React, { useState , useEffect} from "react";
 const backgroundImages = [
-  '/about_glass_background.jpg',
-  '/about_glass_background.jpg',
-  '/about_glass_background.jpg',
+  '/vision_background.png',
+  '/vision_background_2.png',
+  '/vision_background.png',
 ]; // Add your actual image paths here (place in public folder)
 
 const textContent = [
@@ -15,9 +15,9 @@ const textContent = [
       'Từ Trúc hướng đến việc củng cố vị thế tại thị trường Đông Nam Bộ, và vươn mình trở thành "thương hiệu quốc dân" - có mặt trong mỗi căn bếp Việt, trở thành biểu tượng cho chất lượng và sự an tâm trong từng bữa ăn.',
   },
   {
-    heading: 'Phát triển sản phẩm thân thiện với môi trường',
+    heading: "Lan toả tinh hoa gạo Việt\ntừ cánh đồng đến bàn ăn",
     paragraph:
-      'Từ Trúc cam kết bảo vệ môi trường thông qua quy trình sản xuất sạch, giảm thiểu tác động và hướng tới một tương lai bền vững cho ngành nông nghiệp Việt Nam.',
+      'Tư Trúc không chỉ nâng tầm giá trị hạt gạo Việt, mà còn gìn giữ di sản lúa nước ngàn đời - nơi hội tụ tinh hoa đất trời, bàn tay người nông dân và tri thức khoa học, để gửi trao vào từng bữa ăn.',
   },
   {
     heading: 'Mở rộng xuất khẩu ra thị trường quốc tế',
@@ -35,15 +35,15 @@ const coreValues = [
   },
   {
     title: 'Vững chất lượng sản phẩm',
-    description: '...',
+    description: 'Không ngừng nghiên cứu, ứng dụng khoa học - công nghệ để tạo ra những sản phẩm gạo đạt chất lượng ổn định, tối ưu hương vị và dinh dưỡng.',
   },
   {
     title: 'Vững cân bằng môi trường',
-    description: '...',
+    description: 'Kiên trì với mô hình sản xuất tuần hoàn, tiết kiệm tài nguyên, giảm thiểu phát thải, tái chế phụ phẩm - bảo vệ hệ sinh thái bền vững lâu dài.',
   },
   {
     title: 'Vững lan toả giá trị văn hoá',
-    description: '...',
+    description: 'Lan tỏa câu chuyện hạt gạo Việt - kết tinh từ đất mẹ, từ bàn tay người Việt, lưu giữ và tôn vinh nền văn minh lúa nước ngàn đời.',
   },
   // Thêm các giá trị khác tương tự
 ];
@@ -66,7 +66,7 @@ export function MissionSection() {
     <section className="pt-20 pb-5 bg-white">
       <div className="flex justify-center flex-col md:flex-row items-start  max-w-[1122px] mx-auto  py-8  "> 
             {/* Left Column: Title */}
-            <div className="w-full md:w-1/3 text-center md:text-left">
+            <div className="w-full md:w-1/2 text-center md:text-left">
               <h2 className="font-alegreya-sans text-blue-900 text-[56px] font-bold leading-snug">
                 Sứ mệnh <br className="hidden sm:block" />
                 tôn vinh <br className="hidden sm:block" />
@@ -75,20 +75,20 @@ export function MissionSection() {
             </div>
 
             {/* Right Column: Content */}
-          <div className="w-full md:w-2/3 relative">
-            <h3 className="font-alegreya-sans text-gray-700 text-[32px]  sm:text-xl md:text-[32px] font-medium mb-4">
+          <div className="w-full md:w-1/2 relative">
+            <h3 className="font-alegreya-sans text-[32px]  sm:text-xl md:text-[32px] font-medium mb-4" style={{color:"#667085"}}>
               Giá trị của hạt gạo qua lăng kính của Từ Trúc
             </h3>
 
             <div className="relative">
               {/* Quote image placed behind paragraph */}
-              <div className="absolute -top-2 -left-10 w-14 h-10  opacity-30 pointer-events-none">
-              <Image src="/img_.svg" alt="Quote" width={56} height={39} />
+              <div className="absolute -top-2 -left-11 w-14 h-10  opacity-30 pointer-events-none">
+              <Image src="/img_.svg" alt="Quote" width={34} height={24} />
               </div>
               <p className="font-fz-poppins text-[16px] sm:text-xl md:text-[16px] text-gray-600 text-justify leading-relaxed max-w-[741px]">
-                Với nhiều người, gạo chỉ đơn thuần là lương thực để no bụng. Nhưng với Từ Trúc, đó là kết tinh của đất trời hào phóng,
-                đôi tay cần mẫn của người nông dân, sự kỹ lưỡng, chỉn chu trong từng công đoạn của người công nhân và hơn hết,
-                đó còn là niềm tự hào về nền văn minh lúa nước ngàn đời!
+                Với nhiều người, gạo chỉ đơn thuần là lương thực để no bụng. <br /> Nhưng với Từ Trúc, đó là kết tinh của đất trời hào phóng,<br />
+                đôi tay cần mẫn của người nông dân, sự kỹ lưỡng, chỉn chu <br /> trong từng công đoạn của người công nhân và hơn hết,<br />
+                đó còn là niềm tự hào về nền văn minh lúa nước ngàn đời.
               </p>
             </div>
           </div>
@@ -108,10 +108,17 @@ export function MissionSection() {
                 </p>
                 <Image src="/vision_left_icon.svg" alt="Quote" width={18} height={8} />
               </div>
-             <h2 className={`font-alegreya-sans text-[32px] sm:text-[16px] md:text-[32px] font-semibold mb-4 max-w-[549px] transition-opacity duration-700 ${fade ? 'opacity-100' : 'opacity-0'}`} style={{color:"#0A5B89"}}>
-                {textContent[index]?.heading}
+             <h2 className={`font-alegreya-sans text-[32px] sm:text-[16px] md:text-[32px]  mb-4 max-w-[549px] transition-opacity duration-700 ${fade ? 'opacity-100' : 'opacity-0'}`} style={{color:"#0A5B89"}}>
+                {textContent[index]?.heading
+                  ? textContent[index].heading.split('\n').map((line, i, arr) => (
+                      <React.Fragment key={i}>
+                        {line}
+                        {i !== arr.length - 1 && <br />}
+                      </React.Fragment>
+                    ))
+                  : null}
               </h2>
-              <p className={`font-fz-poppins text-white text-[16px] sm:text-[8px] md:text-[16px] max-w-[90%] mb-6 transition-opacity duration-700 ${fade ? 'opacity-100' : 'opacity-0'}`} style={{color:"#5C6578"}}>
+              <p className={`max-w-[595px] font-fz-poppins  text-white text-[16px] sm:text-[8px] md:text-[16px] max-w-[90%] mb-6 transition-opacity duration-700 ${fade ? 'opacity-100' : 'opacity-0'}`} style={{color:"#5C6578"}}>
                 {textContent[index]?.paragraph}
               </p>
             </div>

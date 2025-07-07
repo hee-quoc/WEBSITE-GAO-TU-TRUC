@@ -5,18 +5,25 @@ import { useState } from 'react';
 const testimonials: Testimonial[] = [
     {
         id: '1',
-        content: 'Làm lúc bao nhiêu năm nay, tôi hiểu rõ từng hạt gạo mình làm ra. Từ lúc gieo mạ đến ngày thu hoạch, đều tự tay chăm chút. Thành ra, bao năm nay tôi chỉ ăn mỗi gạo Tư Trúc, vì tôi biết chắc từng hạt cơm sạch sẽ, tử tế như chính công sức mình bỏ vào.',
+        content: 'Làm lúa bao nhiêu năm nay, tôi hiểu rõ từng hạt gạo mình làm ra. Từ lúc gieo mạ đến ngày thu hoạch, đều tự tay chăm chút. Thành ra, bao năm nay tôi chỉ ăn mỗi gạo Tư Trúc, vì tôi biết chắc từng hạt cơm sạch sẽ, tử tế như chính công sức mình bỏ vào. ',
         author: 'Anh Năm Tiến (37 tuổi)',
         position: 'Nông dân Long Điền',
         avatar: '/img_ellipse_15.png'
     },
     {
       id: '2',
-      content: 'Tôi đã chọn Tư Trúc vì sự an tâm về chất lượng và quy trình canh tác sạch...',
-      author: 'Chị Hoa (45 tuổi)',
-      position: 'Tiểu thương chợ Bến Thành',
-      avatar: '/img_ellipse_15.png',
-  },
+      content: 'Nhà tui 3 người thì hết 2 người là đang làm việc cho xưởng này rồi: tui thì vận hành máy móc, vợ tui kiểm kho hàng. Thằng con tui thì mới thi đại học, tính ra toàn bộ học phí mười mấy năm của nó đều đến từ mấy nồi cơm thơm nóng của bà con hết đó chớ!',
+      author: 'Anh Long (37 tuổi)',
+      position: 'Công nhân nhà máy Tư Trúc',
+      avatar: '/anh_long_testinomial.png',
+    },
+    {
+      id: '3',
+      content: 'Hơn 30 năm gắn bó cùng hạt gạo, tôi luôn nghĩ: “Hạt cơm mình bán ra, cuối cùng cũng sẽ có ngày quay về mâm cơm nhà mình”. Nên mỗi mẻ gạo, tôi coi như làm cho chính người thân mình ăn vậy. Sạch, thật, tử tế, chỉ cần vậy, rồi khách hàng sẽ tự cảm nhận…',
+      author: 'Bà Tư (58 tuổi)',
+      position: 'Chủ nhà máy Tư Trúc',
+      avatar: '/ba_tu_testinomial.png',
+    },
 ];
 export function Testimonial(){
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -36,7 +43,7 @@ export function Testimonial(){
             {/* Testimonial Content */}
             <div className="bg-white border rounded-2xl p-4 sm:p-6 lg:p-8 flex flex-col gap-6" style={{ borderColor: '#E9F2DA' }}>
               {/* Testimonial Text + Avatar */}
-              <div className="flex flex-col md:flex-row gap-6 lg:gap-8">
+              <div className="flex flex-col md:flex-row gap-4 lg:gap-4 ">
                 {/* Quote Icon */}
                 <div className="flex-shrink-0 md:flex-[0.25]" >
                   <Image src="/img_.svg" alt="Quote" width={56} height={39} />
@@ -44,7 +51,7 @@ export function Testimonial(){
 
                 {/* Content Text */}
                 <div className="flex flex-col md:flex-[3]">
-                  <p className="text-sm sm:text-base md:text-lg font-fz-poppins text-gray-light leading-relaxed flex-1" style={{color:"#667085"}}>
+                  <p className="text-sm sm:text-base md:text-lg font-fz-poppins text-gray-light leading-relaxed flex-1 border-r-2 pr-4 border-[#E8EAED] " style={{color:"#667085"}}>
                     {testimonial.content}
                   </p>
                   {/* Pagination */}
@@ -72,7 +79,7 @@ export function Testimonial(){
                 </div>
 
                 {/* Divider and Avatar */}
-                <div className="flex flex-col items-center gap-4 md:flex-[1]">
+                <div className="flex flex-col items-center gap-4 md:flex-[1] min-w-[256px]">
                   <Image
                     src={testimonial.avatar}
                     alt={testimonial.author}
@@ -81,10 +88,10 @@ export function Testimonial(){
                     className="rounded-full"
                   />
                   <div className="text-center">
-                    <h4 className="text-sm sm:text-base md:text-lg font-bold font-alegreya-sans text-blue-dark mb-1" style={{color:"#0A5B89"}}>
+                    <h4 className="text-[20px] sm:text-[20px] md:text-lg font-bold font-alegreya-sans text-blue-dark mb-1" style={{color:"#0A5B89"}}>
                       {testimonial.author}
                     </h4>
-                    <p className="text-xs sm:text-sm text-gray-muted font-alegreya-sans "style={{color:"#5C6578"}}>
+                    <p className="text-[16px] sm:text-[16px] text-gray-muted font-alegreya-sans opacity-60 "style={{color:"#5C6578"}}>
                       {testimonial.position}
                     </p>
                   </div>
