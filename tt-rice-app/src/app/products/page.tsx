@@ -49,7 +49,7 @@ function FilterButtonsFallback() {
 export default async function ProductsPage({
   searchParams,
 }: {
-  searchParams: { tag?: string };
+  searchParams: Promise<{ tag?: string }>;
 }) {
   const allProducts = await api.product.getAll({});
   const {tag} = await searchParams;
