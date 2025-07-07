@@ -14,6 +14,10 @@
   font-display: swap;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 @font-face {
   font-family: "Fz Poppins";
   src: url("/fonts/FzPoppins/FZ-Poppins-Bold.ttf") format("truetype");
