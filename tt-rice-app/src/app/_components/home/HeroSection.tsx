@@ -7,8 +7,8 @@ import Button from '../ui/Button';
 
 const slides = [
   { id: 0, imageSrc: "/image_hero.svg" },
-  { id: 1, imageSrc: "/image_hero.svg" },
-  { id: 2, imageSrc: "/image_hero.svg" },
+  { id: 1, imageSrc: "/images/home/img_hero_background2.svg" },
+  { id: 2, imageSrc: "/images/home/img_hero_background3.svg" },
   { id: 3, imageSrc: "/image_hero.svg" },
 ];
 
