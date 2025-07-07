@@ -6,17 +6,7 @@ import type { ContactFormData } from "~/app/types/Types";
 
 export function PlatformSection() {
   return (
-    <section className="relative min-h-screen bg-white overflow-hidden">
-        <div>
-            <div className="relative w-full h-full min-h-screen inset-0">
-                <Image
-                    src="/about_background.svg"
-                    alt={`about Background`}
-                    fill
-                    className="object-cover"
-                />
-            </div>
-        </div>
+    <section className="pt-20 pb-5 bg-[#6C9126]">
     </section>
   );
 }
