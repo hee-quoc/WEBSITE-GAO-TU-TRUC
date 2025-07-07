@@ -157,12 +157,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
 
 // Helper component for rendering an image (unchanged from before)
-const ProductImage = ({imageData, imageType, alt, width, height,imageUrl}: {imageData: Uint8Array | null; imageType: string | null; alt: string; width: number; height: number;imageUrl:string | null;}) => {
+const ProductImage = ({imageData, imageType, alt, width, height,imageUrl}: {imageData: Uint8Array | null; imageType: string | null; alt: string; width: number; height: number;imageUrl:string;}) => {
   if (!imageData || !imageType) {
-    const image= imageUrl ?? '/favicon.ico';
     return (
         <Image
-          src={image}
+          src={imageUrl}
           alt="Product image"
           width={300} // Setting dimensions is good for layout stability
           height={400}

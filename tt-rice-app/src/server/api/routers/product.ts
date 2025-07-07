@@ -110,10 +110,11 @@ export const productRouter = createTRPCRouter({
         name: z.string().min(1, "Name is required"),
         description: z.string().optional(),
         SKU: z.string().min(1, "SKU is required"),
+        imageUrl: z.string().min(1, "Image url is required"),
       })
     )
     .mutation(({ ctx, input }) => {
-      triggerRevalidation();
+      void triggerRevalidation();
       const slug = toSlug(input.name);
       return ctx.db.product.create({
         data: {
@@ -143,7 +144,7 @@ export const productRouter = createTRPCRouter({
       if (product?.authorId !== ctx.session.user.id) {
         throw new TRPCError({ code: "FORBIDDEN" });
       }
-      triggerRevalidation();
+      void triggerRevalidation();
       return ctx.db.product.update({
         where: { id },
         data: dataToUpdate,
@@ -160,7 +161,7 @@ export const productRouter = createTRPCRouter({
       if (product?.authorId !== ctx.session.user.id) {
         throw new TRPCError({ code: "FORBIDDEN" });
       }
-      triggerRevalidation();
+      void triggerRevalidation();
       return ctx.db.product.delete({
         where: { id: input.id },
       });

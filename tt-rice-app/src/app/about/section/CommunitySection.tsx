@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
-import type { ContactFormData } from "~/app/types/Types";
+import React from "react";
 
 export function CommunitySection() {
   return (

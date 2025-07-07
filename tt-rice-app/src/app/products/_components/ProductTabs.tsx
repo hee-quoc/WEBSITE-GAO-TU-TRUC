@@ -1,8 +1,6 @@
 // src/app/products/[slug]/_components/ProductTabs.tsx
 'use client';
 
-import { useState } from 'react';
-
 type ProductTabsProps = {
   descriptionHtml: string | null;
 };

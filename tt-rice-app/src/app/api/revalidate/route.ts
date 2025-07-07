@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
-
+interface RevalidateBody {
+  path: string;
+}
 // This is our secret API route to trigger on-demand revalidation
 export async function POST(request: NextRequest) {
   // 1. Get the secret token from the request headers
@@ -12,7 +14,7 @@ export async function POST(request: NextRequest) {
   }
 
   // 3. Get the path to revalidate from the request body
-  const body = await request.json();
+  const body = await request.json() as RevalidateBody;
   const path = body.path;
 
   if (!path) {

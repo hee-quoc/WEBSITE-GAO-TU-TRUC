@@ -65,7 +65,7 @@ export function StorySection() {
             Từ năm 1988, với khởi nguồn từ nhà máy xay xát nhỏ tại Bà Rịa - Vũng Tàu, Tư Trúc đã đặt những viên gạch đầu tiên trên hành trình xây dựng thương hiệu gạo mang đậm giá trị Việt. Việc chủ động vùng nguyên liệu, đầu tư xây dựng nhà máy và quy trình trồng trọt - sản xuất nghiêm ngặt ngay từ những ngày đầu đã trở thành nền tảng vững chắc đưa doanh nghiệp đến với vị thế là đơn vị cung cấp gạo lớn nhất Bà Rịa - Vũng Tàu.
           </p>
           <p className="text-blue-normal-active leading-7 font-fz-poppins">
-            Sau hơn 30 năm, Tư Trúc tiếp tục mở rộng quy mô, hoàn thiện công nghệ, đào tạo đội ngũ và nâng tầm giá trị "hạt ngọc thực" đất Việt - kết tinh giữa thiên nhiên, bàn tay con người và bản sắc văn hóa Việt Nam.
+            Sau hơn 30 năm, Tư Trúc tiếp tục mở rộng quy mô, hoàn thiện công nghệ, đào tạo đội ngũ và nâng tầm giá trị &quot;hạt ngọc thực&quot; đất Việt - kết tinh giữa thiên nhiên, bàn tay con người và bản sắc văn hóa Việt Nam.
           </p>
 
           {/* ✅ Business fields */}
