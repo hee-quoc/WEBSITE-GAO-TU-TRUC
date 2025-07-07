@@ -115,8 +115,6 @@ export function StorySection() {
           </div>
         </div>
       </div>
-
-      {/* ✅ Positioned illustrations */}
       <div className="absolute top-0 left-0 w-full h-full z-10">
         {/* Hạt kim cương */}
         <div
