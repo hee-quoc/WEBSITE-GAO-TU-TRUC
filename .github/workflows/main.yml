@@ -9,7 +9,10 @@ jobs:
   deploy:
     # UPDATED: Specify the exact Ubuntu version for the runner
     runs-on: ubuntu-24.04
-
+    defaults:
+      run:
+        # Replace 'WEBSITE-GAO-TU-TRUC' with the actual name of your sub-directory
+        working-directory: ./tt-rice-app
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
