@@ -136,7 +136,7 @@ export function AboutSection() {
             Câu chuyện về Tư Trúc bắt đầu từ{" "}
             <span style={{ fontWeight: 700, color: "#525A6A" }}> hơn 30 năm trước, một nhà máy xay xát lúa</span>, với{" "}
             <span style={{ fontWeight: 700, color: "#525A6A" }}>một niềm tự hào về việc giữ gìn nền văn minh lúa nước ngàn năm</span> và{" "}
-            <span style={{ fontWeight: 700, color: "#525A6A" }}>nâng tầm, lan tỏa giá trị của hạt ngọc thực đến với mỗi người Việt</span>.
+            <span style={{ fontWeight: 700, color: "#525A6A" }}>nâng tầm, lan tỏa giá trị "hạt ngọc thực"</span> đến với mỗi người Việt{" "}
           </p>
         </motion.div>
 

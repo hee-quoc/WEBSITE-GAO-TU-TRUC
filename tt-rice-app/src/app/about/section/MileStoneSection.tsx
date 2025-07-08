@@ -88,7 +88,8 @@ const milestoneBlocks = [
     },
     text: {
       year: "2000s",
-      content: "Mở rộng và tự chủ vùng trồng. Nâng cao trang thiết bị máy móc, quy trình sản xuất và năng lực đội ngũ nhân công",
+      content:
+        "Mở rộng và tự chủ vùng trồng. Nâng cao trang thiết bị máy móc, quy trình sản xuất và năng lực đội ngũ nhân công",
       top: 210,
       left: 10,
       yearFontSize: "20px",
@@ -154,7 +155,8 @@ const milestoneBlocks = [
     },
     text: {
       year: "2020s",
-      content: "Lan tỏa giá trị hạt gạo Việt, gắn kết bảo vệ môi trường, nâng đời sống nông dân – công nhân. Hướng đến vị thế là nhà cung cấp gạo hàng đầu Đông Nam Bộ",
+      content:
+        "Lan tỏa giá trị hạt gạo Việt, gắn kết bảo vệ môi trường, nâng đời sống nông dân – công nhân. Hướng đến vị thế là nhà cung cấp gạo hàng đầu Đông Nam Bộ",
       top: 210,
       left: 0,
       yearFontSize: "20px",
@@ -175,7 +177,7 @@ export function MileStoneSection() {
   return (
     <section className="relative z-30 bg-[#FAFDF2] overflow-hidden py-[40px]">
       <div className="relative mx-auto" style={{ width: "1440px", height: "1149px" }}>
-        {/* Đường nối timeline – chính giữa section */}
+        {/* Đường nối timeline */}
         <div
           className="absolute pointer-events-none -z-10 left-1/2"
           style={{
@@ -193,39 +195,11 @@ export function MileStoneSection() {
           />
         </div>
 
-        {/* 4 hình trang trí thêm */}
-        <Image
-          src="/milestone/hinh-lua.svg"
-          alt="Decor 1"
-          width={45}
-          height={70}
-          className="absolute"
-          style={{ top: 491, left: 976 }}
-        />
-        <Image
-          src="/milestone/hinh-lua.svg"
-          alt="Decor 2"
-          width={45}
-          height={70}
-          className="absolute"
-          style={{ top: 422, left: 1000 }}
-        />
-        <Image
-          src="/milestone/hinh-lua.svg"
-          alt="Decor 3"
-          width={45}
-          height={70}
-          className="absolute"
-          style={{ top: 808, left: 267 }}
-        />
-        <Image
-          src="/milestone/hinh-lua.svg"
-          alt="Decor 4"
-          width={45}
-          height={70}
-          className="absolute"
-          style={{ top: 874, left: 320 }}
-        />
+        {/* Trang trí */}
+        <Image src="/milestone/hinh-lua.svg" alt="Decor 1" width={45} height={70} className="absolute" style={{ top: 491, left: 976 }} />
+        <Image src="/milestone/hinh-lua.svg" alt="Decor 2" width={45} height={70} className="absolute" style={{ top: 422, left: 1000 }} />
+        <Image src="/milestone/hinh-lua.svg" alt="Decor 3" width={45} height={70} className="absolute" style={{ top: 808, left: 267 }} />
+        <Image src="/milestone/hinh-lua.svg" alt="Decor 4" width={45} height={70} className="absolute" style={{ top: 874, left: 320 }} />
 
         {/* Tiêu đề */}
         <div className="absolute top-[40px] left-1/2 -translate-x-1/2 text-center">
@@ -248,7 +222,6 @@ export function MileStoneSection() {
               width: item.style.width,
               height: item.style.height,
               padding: item.style.padding,
-              position: "absolute",
             }}
           >
             {/* Hình lớn */}
@@ -287,20 +260,29 @@ export function MileStoneSection() {
               />
             </div>
 
-            {/* Năm và nội dung */}
+            {/* Text (Năm + Nội dung) */}
             <div
               className="absolute text-center"
               style={{ top: item.text.top, left: item.text.left, right: 0 }}
             >
               <p
-                className="text-[#6D6D6D] font-alegreya"
-                style={{ fontSize: item.text.yearFontSize }}
+                style={{
+                  fontSize: item.text.yearFontSize,
+                  color: "#4D671B",
+                  fontFamily: "Alegreya Sans",
+                  fontWeight: 600,
+                }}
               >
                 {item.text.year}
               </p>
               <p
-                className="text-[#0C3A2D] font-medium font-alegreya leading-[1.6] max-w-[100%]"
-                style={{ fontSize: item.text.contentFontSize }}
+                style={{
+                  fontSize: item.text.contentFontSize,
+                  color: "#5C6578",
+                  fontFamily: "Fz Poppins",
+                  fontWeight: 400,
+                  lineHeight: "1.6",
+                }}
               >
                 {item.text.content}
               </p>
