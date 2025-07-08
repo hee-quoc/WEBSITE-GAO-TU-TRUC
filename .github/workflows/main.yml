@@ -7,11 +7,9 @@ on:
 
 jobs:
   deploy:
-    # UPDATED: Specify the exact Ubuntu version for the runner
     runs-on: ubuntu-24.04
     defaults:
       run:
-        # Replace 'WEBSITE-GAO-TU-TRUC' with the actual name of your sub-directory
         working-directory: ./tt-rice-app
     services:
       postgres:
@@ -74,21 +72,10 @@ jobs:
           username: ${{ secrets.DROPLET_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # Navigate to the app directory on the server
             cd ${{ secrets.DROPLET_APP_PATH }}
-            
             echo "Running post-deployment commands..."
-            
-            # Install production dependencies based on package-lock.json
             npm install --omit=dev
-            
-            # Apply any new database migrations
             npx prisma migrate deploy
-            
-            # Reload the application with PM2 for zero-downtime
             pm2 reload my-t3-app
-            
-            # Save the current process list
             pm2 save
-            
             echo "Deployment to Droplet successful!"
