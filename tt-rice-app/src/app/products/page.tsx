@@ -22,11 +22,8 @@ const CATEGORY_DATA: Record<string, CategoryData> = {
   },
   'gao-nguyen-lieu': {
     name: 'Gạo nguyên liệu',
-    description: `<p>Gạo nguyên liệu chế biến thực phẩm - dòng gạo chuyên dụng được chọn lọc kỹ về hàm lượng tinh bột, độ tấm và độ ẩm, dùng để làm bún tươi, bánh phở, bánh tráng và các món truyền thống khác.</p>
-
-<p>Các dòng gạo Siêu Cà Mau, Ấn Độ và Q5 - thuộc nhóm gạo nguyên liệu, gạo có hạt thon vừa hoặc hơi tròn, màu trắng đục, chắc, khô, ít tạp chất để dễ xay thành bột mịn mà không bị vữa. Mỗi lô gạo được chọn lọc kỹ lưỡng, không pha trộn giống, không xử lý hương - đảm bảo độ thuần nhất, ổn định trong từng mẻ sản xuất.</p>
-
-<p>Thành phẩm sau chế biến (bún, bánh) đạt độ dai vừa phải, không bở, có độ trong, độ trắng và dẻo tự nhiên, giúp món ăn ngon hơn mà không cần phụ gia tạo dai, phù hợp cho các cơ sở sản xuất thực phẩm và các doanh nghiệp thực phẩm theo hướng truyền thống, sạch và tối ưu chi phí.</p>
+    description: `<p>Gạo nguyên liệu là dòng gạo chuyên dụng được chọn lọc kỹ về hàm lượng tinh bột, độ tấm và độ ẩm, dùng để làm bún tươi, bánh phở, bánh tráng và các món truyền thống khác.</p> 
+    <p>Gạo có hạt thon vừa hoặc hơi tròn, màu trắng đục, chắc, khô, ít tạp chất để dễ xay thành bột mịn mà không bị vữa. Gạo được chọn lọc kỹ lưỡng, không pha trộn giống, không xử lý hương - đảm bảo độ thuần nhất, ổn định trong từng mẻ sản xuất. Thành phẩm sau chế biến đạt độ dai vừa phải, không bở, có độ trong, độ trắng và dẻo tự nhiên, không cần phụ gia tạo dai.</p>
 `,
     image: '/images/products/Graphic.svg',
   },
@@ -43,15 +40,8 @@ const CATEGORY_DATA: Record<string, CategoryData> = {
   },
   'gao-cam-trau': {
     name: 'Cám/trấu',
-    description: `<p>Tại Tư Trúc, không chỉ hạt gạo được chăm chút, mà phụ phẩm từ xay xát như cám và trấu cũng được tận dụng tối đa, góp phần phát triển mô hình sản xuất nông nghiệp tuần hoàn, không lãng phí.</p>
-
-<p><strong>Cám gạo:</strong> Nguyên liệu quý trong sản xuất dầu cám gạo - thành phần cao cấp cho thực phẩm và mỹ phẩm.</p>
-
-
-<p><strong>Trấu:</strong> Nguyên liệu được ứng dụng linh hoạt trong nhiều hoạt động sản xuất và đời sống - từ nhiên liệu đốt lò, sấy nông sản, đến ủ phân hữu cơ, làm giá thể trồng cây, lót chuồng chăn nuôi, hoặc tái chế thành củi trấu, gạch không nung, ván ép sinh học.</p>
-
-
-<p>Nhờ khả năng tái sử dụng linh hoạt, trấu và cám không chỉ giúp giảm rác thải, mà còn tạo thêm giá trị kinh tế, và là một phần của hệ sinh thái nông nghiệp tuần hoàn.</p>
+    description: `<p>Tại Tư Trúc, không chỉ hạt gạo được chăm chút, mà phụ phẩm từ xay xát như cám và trấu cũng được tận dụng tối đa, góp phần phát triển mô hình sản xuất nông nghiệp tuần hoàn, không lãng phí:</p>
+    <p> Cám gạo có thể dùng để sản xuất dầu cám gạo cho thực phẩm và mỹ phẩm; Trấu được ứng dụng trong sản xuất và đời sống - từ nhiên liệu đốt lò, sấy nông sản, đến ủ phân hữu cơ, làm giá thể trồng cây, lót chuồng chăn nuôi, hoặc tái chế thành củi trấu, gạch không nung, ván ép sinh học.</p>
 `,
     image: '/images/products/Graphic.svg',
   },
