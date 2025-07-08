@@ -24,7 +24,14 @@ export function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Cảm ơn bạn đã gửi thông tin! Chúng tôi sẽ liên hệ lại sớm nhất.");
+
+    const subject = encodeURIComponent("Liên hệ đặt hàng & tư vấn từ website");
+    const body = encodeURIComponent(
+      `Họ và tên: ${formData.name}\nEmail: ${formData.email}\nĐiện thoại: ${formData.phone}\nGhi chú: ${formData.message}`
+    );
+
+    window.location.href = `mailto:contact@tutruc.com?subject=${subject}&body=${body}`;
+
     setFormData({ name: "", email: "", phone: "", message: "" });
   };
 
@@ -93,18 +100,11 @@ export function ContactSection() {
           {/* Right: Decorative images */}
           <div className="relative w-full h-full">
             <Image
-              src="/Group 918.svg"
+              src="/Group 7.svg"
               alt="Contact Illustration"
-              width={850}
-              height={498}
+              width={900}
+              height={646}
               className="absolute top-[183px] left-[-103px] h-auto"
-            />
-            <Image
-              src="/Frame 327.svg"
-              alt="Rice Product"
-              width={550}
-              height={605}
-              className="absolute top-[96px] right-[60px]"
             />
           </div>
         </div>
