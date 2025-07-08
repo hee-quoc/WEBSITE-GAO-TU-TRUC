@@ -31,10 +31,7 @@ const CATEGORY_DATA: Record<string, CategoryData> = {
     name: 'Gạo thông dụng',
     description: `
     <p>Gạo công nghiệp Tư Trúc là sự lựa chọn phổ biến cho các bếp ăn tập thể nhờ độ ổn định, giá hợp lý và phù hợp với nhiều đối tượng.</p>
-
-<p>Các dòng gạo Dẻo Bầu, 504, Xương Gà - thuộc nhóm chuyên dùng cho suất ăn công nghiệp, có đặc điểm dễ nấu, chín nhanh, cơm nở đều. Từng hạt gạo được kiểm soát chặt chẽ từ đầu vào đến thành phẩm, không pha tạp, không tẩm hương nhân tạo - đảm bảo chất lượng đồng đều và ổn định mỗi lần nấu.</p>
-
-<p>Khi nấu chín, cơm giữ được độ mềm hoặc độ tơi tuỳ từng loại, dễ ăn, phù hợp cho các suất ăn quy mô lớn như nhà máy, trường học, bệnh viện hay căn - tin doanh nghiệp.</p>
+<p>Từng hạt gạo được kiểm soát chặt chẽ từ đầu vào đến thành phẩm, không pha tạp, không tẩm hương nhân tạo - đảm bảo chất lượng đồng đều và ổn định mỗi lần nấu. Khi chín, cơm giữ được độ mềm hoặc độ tơi tuỳ từng loại, dễ ăn, phù hợp cho các suất ăn quy mô lớn như nhà máy, trường học, bệnh viện hay căn - tin doanh nghiệp.</P>
 `,
     image: '/images/products/Graphic.svg',
   },
