@@ -1,0 +1,66 @@
+name: Deploy to DigitalOcean Droplet
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    # UPDATED: Specify the exact Ubuntu version for the runner
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # UPDATED: Specify the exact Node.js version
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.17.0'
+
+      - name: Create .env file for build process
+        run: echo "${{ secrets.DOT_ENV }}" > .env
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Application
+        run: npm run build
+
+      - name: Sync files to Droplet
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.DROPLET_HOST }}
+          REMOTE_USER: ${{ secrets.DROPLET_USER }}
+          SOURCE: "/"
+          TARGET: ${{ secrets.DROPLET_APP_PATH }}
+          EXCLUDE: "/.git/, /.github/, /node_modules/"
+
+      - name: Run Post-Deployment Commands on Droplet
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DROPLET_HOST }}
+          username: ${{ secrets.DROPLET_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # Navigate to the app directory on the server
+            cd ${{ secrets.DROPLET_APP_PATH }}
+            
+            echo "Running post-deployment commands..."
+            
+            # Install production dependencies based on package-lock.json
+            npm install --omit=dev
+            
+            # Apply any new database migrations
+            npx prisma migrate deploy
+            
+            # Reload the application with PM2 for zero-downtime
+            pm2 reload my-t3-app
+            
+            # Save the current process list
+            pm2 save
+            
+            echo "Deployment to Droplet successful!"
