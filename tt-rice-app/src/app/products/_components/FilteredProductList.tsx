@@ -14,6 +14,9 @@ interface FilteredProductListProps {
   allProducts: Product[];
   categories: Record<string, CategoryData>;
 }
+const ProductDescription = ({ htmlContent }: { htmlContent: string }) => {
+  return <div className="text-blue-500 font-fz-poppins leading-relaxed" dangerouslySetInnerHTML={{ __html: htmlContent }} />;
+};
 
 export function FilteredProductList({ allProducts, categories }: FilteredProductListProps) {
   const searchParams = useSearchParams();
@@ -43,23 +46,24 @@ export function FilteredProductList({ allProducts, categories }: FilteredProduct
       </div>
 
       {selectedCategory && (
-        <section className="mt-20 rounded-lg bg-green-lightest p-6 sm:mt-20 lg:h-[384px] lg:p-8">
-          <div className="grid h-full grid-cols-1 items-center gap-12 lg:grid-cols-2">
-            <div className="flex flex-col gap-4">
-              <h2 className="text-3xl font-bold text-gray">{selectedCategory.name}</h2>
-              <p className="text-gray font-fz-poppins leading-relaxed">{selectedCategory.description}</p>
+        <section className="mt-20 rounded-lg bg-green-lightest sm:mt-20 lg:h-full">
+          <div className="grid h-full grid-cols-1 items-center  lg:grid-cols-2">
+            <div className="flex flex-col lg:p-4 ">
+              <h2 className="text-[56px] font-bold text-steel-blue">{selectedCategory.name}</h2>
+              <ProductDescription htmlContent={selectedCategory.description} />
             </div>
-            <div className="relative flex h-full w-auto items-center justify-center">
+            <div className="relative flex h-full w-full items-center justify-end">
               <Image 
                 src={selectedCategory.image} 
                 alt={`${selectedCategory.name} decorative image`}
-                width={408} 
-                height={320}
-                className="h-full w-auto object-contain"
+                fill 
+                className="absolute object-cover object-right h-full w-auto"
+                sizes="(max-width: 1024px) 100vw, 50vw" 
               />
             </div>
           </div>
         </section>
+        
       )}
     </div>
   );

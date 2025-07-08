@@ -373,7 +373,7 @@ async function main() {
           </li>
           <li>
             <p>
-              <strong>Độ dẻo:</strong> Thấp – cơm tơi, dễ xới, thích hợp ăn liền sau khi nấu.
+              <strong>Độ dẻo:</strong> Thấp - cơm tơi, dễ xới, thích hợp ăn liền sau khi nấu.
             </p>
           </li>
         </ul>
