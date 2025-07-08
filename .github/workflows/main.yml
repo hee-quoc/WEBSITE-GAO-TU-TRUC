@@ -13,6 +13,21 @@ jobs:
       run:
         # Replace 'WEBSITE-GAO-TU-TRUC' with the actual name of your sub-directory
         working-directory: ./tt-rice-app
+    services:
+      postgres:
+        image: postgres:16 # Use the same major version as your production DB
+        env:
+          POSTGRES_USER: prisma
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: testdb
+        # We need a health check to ensure the DB is ready before we use it
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -28,9 +43,26 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-
+      - name: Prepare temporary database
+        # IMPORTANT: We override the DATABASE_URL to point to our service container
+        env:
+          DATABASE_URL: postgresql://prisma:password@localhost:5432/testdb
+        run: |
+          npx prisma migrate deploy
+          npx prisma db seed
+        
       - name: Build Application
-        run: npm run build
+        env:
+          DATABASE_URL: postgresql://prisma:password@localhost:5432/testdb
+          # Also include your REAL .env secrets if the build needs them for other reasons
+          # For example, if you have NEXT_PUBLIC_... variables
+          DOT_ENV_CONTENT: ${{ secrets.DOT_ENV }}
+        run: |
+          # Create the .env file from the production secret
+          printf "%s" "$DOT_ENV_CONTENT" > .env
+          # Override the DATABASE_URL within that .env file for the build
+          echo "\nDATABASE_URL=${DATABASE_URL}" >> .env
+          npm run build
 
       - name: Sync files to Droplet
         uses: easingthemes/ssh-deploy@main
