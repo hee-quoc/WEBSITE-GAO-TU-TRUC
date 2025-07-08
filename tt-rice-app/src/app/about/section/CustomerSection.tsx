@@ -7,19 +7,26 @@ import type { Testimonial } from "~/app/types/Types"
 
 const testimonials: Testimonial[] = [
     {
-        id: '1',
-        content: 'Làm lúc bao nhiêu năm nay, tôi hiểu rõ từng hạt gạo mình làm ra. Từ lúc gieo mạ đến ngày thu hoạch, đều tự tay chăm chút. Thành ra, bao năm nay tôi chỉ ăn mỗi gạo Tư Trúc, vì tôi biết chắc từng hạt cơm sạch sẽ, tử tế như chính công sức mình bỏ vào.',
-        author: 'Anh Năm Tiến (37 tuổi)',
-        position: 'Nông dân Long Điền',
-        avatar: '/img_ellipse_15.png'
+      id: '1',
+      content: 'Gạo Tư Trúc nấu lên thơm nhẹ, hạt dẻo tơi đều, để nguội vẫn không hề khô cứng. Ăn vào lại thấy nhớ cái vị cơm ngày xưa - cái vị ngọt lành, mộc mạc mà giờ chẳng dễ tìm. Bây giờ nhờ có Tư Trúc, tôi mới có thể tìm lại được cái ngon giản dị ấy trong bữa ăn gia đình mỗi ngày.',
+      author: 'Chị Mai',
+      position: 'Nội trợ',
+      avatar: '/chi_mai_story.png'
     },
     {
       id: '2',
-      content: 'Tôi đã chọn Tư Trúc vì sự an tâm về chất lượng và quy trình canh tác sạch...',
-      author: 'Chị Hoa (45 tuổi)',
-      position: 'Tiểu thương chợ Bến Thành',
-      avatar: '/img_ellipse_15.png',
-  },
+      content: 'Tui đứng bếp trong căn tin bệnh viện cũng mấy chục năm rồi. Điều quan trọng nhất của của mỗi suất ăn là phải đủ chất, sạch sẽ, ngon miệng, để các y bác sĩ và bệnh nhân ăn no, đủ sức chống lại bệnh tật chứ. Mà tui nói thiệt là từ ngày đổi qua gạo Tư Trúc thấy  bệnh nhân và các nhân viên y tế ăn uống ngon miệng hơn,  nên bản thân cũng thấy an tâm hơn hẳn.',
+      author: 'Cô Sáu',
+      position: 'Bếp trưởng căn tin bệnh viện',
+      avatar: '/cosau_story.png',
+   },
+   {
+      id: '3',
+      content: 'Làm thì mệt đó, nhưng mà bữa trưa lúc nào cũng có cơm ngon, nóng hổi, dẻo thơm, nên mấy anh em ai ai cũng vui bụng.  Một năm 12 tháng 4 mùa ăn cơm ở đây riết thấy quen miệng luôn, hổm bị bệnh nghỉ ở nhà mà tự nhiên tới trưa là thấy nhớ nhớ  cơm phần ở công ty…',
+      author: 'Anh Cường',
+      position: 'Công nhân khu công nghiệp',
+      avatar: '/anh_cuong_story.png',
+    },
 ];
 export function CustomerSection() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -38,7 +45,7 @@ export function CustomerSection() {
             <Image src="/img_.svg" alt="Quote" width={56} height={39} />
           </div>
           <div className="py-6">
-            <p className="text-sm sm:text-base md:text-lg font-fz-poppins text-gray-light leading-relaxed flex-1" style={{color:"#667085"}}>
+            <p className="max-w-[566px] text-[16px] sm:text-[8px] md:text-[16px] font-fz-poppins text-gray-light leading-relaxed flex-1" style={{color:"#667085"}}>
               {testimonial.content}
             </p>
           </div>

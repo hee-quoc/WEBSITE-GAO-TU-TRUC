@@ -20,18 +20,18 @@ export function PartnerSection(){
               <div className="mb-4">
                 <Image src="/img_users.svg" alt="Users" width={42} height={42} />
               </div>
-              <ul className="space-y-3 text-green-dark text-sm">
+              <ul className="space-y-1 text-green-dark text-sm">
                 <li className="flex items-start gap-2">
-                  <span className="text-green-normal text-lg">•</span>
-                  Khách hàng lẻ
+                  <span className="text-green-normal text-lg font-fz-poppins">•</span>
+                  <p className= "text-[16px] font-fz-poppins"style={{color:"#667085"}}>Khách hàng lẻ</p>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-green-normal text-lg">•</span>
-                  Mạnh thường quân
+                  <span className="text-green-normal text-lg font-fz-poppins">•</span>
+                  <p className= "text-[16px] font-fz-poppins"style={{color:"#667085"}}>Mạnh thường quân</p>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-green-normal text-lg">•</span>
-                  Nhà phân phối / Đại lý gạo
+                  <span className="text-green-normal text-lg font-fz-poppins">•</span>
+                  <p className= "text-[16px] font-fz-poppins"style={{color:"#667085"}}>Nhà phân phối / Đại lý gạo</p>
                 </li>
               </ul>
             </div>
@@ -44,22 +44,22 @@ export function PartnerSection(){
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4">
                 <ul className="space-y-3 text-green-dark text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="text-green-normal text-lg">•</span>
-                    Bếp ăn công nghiệp
+                    <span className="text-green-normal text-lg font-fz-poppins">•</span>
+                    <p className= "text-[16px] font-fz-poppins"style={{color:"#667085"}}>Bếp ăn công nghiệp</p>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green-normal text-lg">•</span>
-                    Cơ quan Nhà nước / Quân đội
+                    <span className="text-green-normal text-lg font-fz-poppins">•</span>
+                     <p className= "text-[16px] font-fz-poppins"style={{color:"#667085"}}>Cơ quan Nhà nước / Quân đội</p>
                   </li>
                 </ul>
                 <ul className="space-y-3 text-green-dark text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="text-green-normal text-lg">•</span>
-                    Bệnh viện / Trường học
+                    <span className="text-green-normal text-lg font-fz-poppins">•</span>
+                   <p className= "text-[16px] font-fz-poppins"style={{color:"#667085"}}>Bệnh viện / Trường học</p> 
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-green-normal text-lg">•</span>
-                    Nhà hàng / Quán ăn
+                    <span className="text-green-normal text-lg font-fz-poppins">•</span>
+                    <p className= "text-[16px] font-fz-poppins"style={{color:"#667085"}}>Nhà hàng / Quán ăn</p>
                   </li>
                 </ul>
               </div>
@@ -75,7 +75,7 @@ export function PartnerSection(){
                   height={24}
                   className="mr-2"
                 />
-                <span className="text-green-dark text-sm">Cơ sở sản xuất</span>
+                <span className="text-[16px] font-fz-poppins"style={{color:"#667085"}}>Cơ sở sản xuất</span>
               </div>
               <div className="w-full sm:w-[264px] h-auto sm:h-[91.5px] rounded-[16px] px-5 py-[25px] flex items-center bg-[#EDF5DC] shadow-md">
                 <Image
@@ -85,7 +85,7 @@ export function PartnerSection(){
                   height={24}
                   className="mr-2"
                 />
-                <span className="text-green-dark text-sm">Cơ sở canh tác / Khác</span>
+                <span className="text-[16px] font-fz-poppins"style={{color:"#667085"}}>Cơ sở canh tác / Khác</span>
               </div>
             </div>
           </div>

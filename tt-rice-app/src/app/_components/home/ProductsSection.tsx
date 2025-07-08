@@ -21,16 +21,16 @@ export function ProductsSection(){
 
         <RiceList />
 
-        <div className="text-center space-y-6 px-4">
-          <p className="text-[16px] leading-[140%] text-gray-600 max-w-4xl mx-auto font-fzpoppins-sans-sans-serif">
-            Tư Trúc tin rằng gạo không chỉ là lương thực để no bụng, mà còn là thức quà để thưởng, để nghiệm, và để tự hào.
+        <div className="text-center space-y-6 px-8 ">
+          <p className="text-[16px] leading-[140%] text-gray-600 px-18 mx-auto font-fz-poppins max-w-[771px]">
+            Tư Trúc tin rằng gạo không chỉ là lương thực để no bụng,<br /> mà còn là thức quà <span className='font-bold'>để thưởng, để nghiệm, và để tự hào.</span>
           </p>
-          <p className="text-[16px] leading-[140%] text-gray-600 max-w-4xl mx-auto font-fzpoppins-sans-sans-serif">
-            Mỗi hạt gạo Tư Trúc đều được tinh chọn từ giống lúa chất lượng, canh tác theo quy trình nghiệm ngặt, thu hoạch đúng vụ, và được sàng lọc kỹ lưỡng từ đội ngũ công nhân nhiều năm kinh nghiệm bằng cả chuyên môn lẫn tâm huyết - để đem chất lượng hạt gạo ổn định, hương vị thuần khiết và ngọt lành từ đồng nội đến bữa cơm Việt.
+          <p className="text-[16px] leading-[140%] text-gray-600  px-8 mx-auto font-fz-poppins max-w-[771px]">
+            Mỗi hạt gạo Tư Trúc đều được <span className='font-bold'>tinh chọn từ giống lúa chất lượng,<br /> canh tác theo quy trình nghiệm ngặt, thu hoạch đúng vụ</span>, và <br /><span className='font-bold'>được sàng lọc kỹ lưỡng từ đội ngũ công nhân nhiều năm kinh nghiệm</span><br /> bằng cả chuyên môn lẫn tâm huyết - để đem <span className='font-bold'>chất lượng hạt gạo ổn định, <br />hương vị thuần khiết và ngọt lành </span>từ đồng nội đến bữa cơm Việt.
           </p>
         </div>
          <div className="mt-16 text-center overflow-x-auto scrollbar-hide">
-          <h3 className="text-xl font-medium text-blue-dark mb-8">Các chứng nhận</h3>
+          <h3 className="text-xl font-medium text-blue-dark mb-8 font-alegreya-sans">Các chứng nhận</h3>
           <div className="flex flex-nowrap justify-start items-center gap-4 sm:gap-6 md:gap-8 px-4 w-max mx-auto">
             {/* Item 1 */}
             <div className="flex justify-center items-center flex-shrink-0">
@@ -44,46 +44,24 @@ export function ProductsSection(){
             </div>
 
             {/* Item 2 */}
-            <div className="w-14 h-14 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+            <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center flex-shrink-0">
               <Image
-                src="/img_7bc2e0f1871f0fcb76c75a55bf9e946a_1.png"
+                src="/ocop.png"
                 alt="Certification"
-                width={40}
-                height={40}
-                className="w-[32px] sm:w-[40px] h-auto"
+                width={92}
+                height={36}
+                className=" h-auto"
               />
             </div>
 
             {/* Item 3 */}
-            <div className="w-14 h-14 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+            <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center flex-shrink-0">
               <Image
-                src="/img_logoocopcuachuongtrinhocopquocgia1_1.png"
+                src="/ISO.png"
                 alt="Certification"
                 width={60}
                 height={36}
                 className="w-[50px] sm:w-[60px] h-auto"
-              />
-            </div>
-
-            {/* Item 4 */}
-            <div className="w-14 h-14 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center flex-shrink-0">
-              <Image
-                src="/img_image_39.png"
-                alt="Certification"
-                width={60}
-                height={51}
-                className="w-[50px] sm:w-[60px] h-auto"
-              />
-            </div>
-
-            {/* Item 5 */}
-            <div className="w-14 h-14 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center flex-shrink-0">
-              <Image
-                src="/img_d565e8067f134e55d8999f227ee551ee_1.png"
-                alt="Certification"
-                width={50}
-                height={50}
-                className="w-[40px] sm:w-[50px] h-auto"
               />
             </div>
 
