@@ -13,11 +13,24 @@ jobs:
       run:
         # Replace 'WEBSITE-GAO-TU-TRUC' with the actual name of your sub-directory
         working-directory: ./tt-rice-app
+    services:
+      postgres:
+        image: postgres:16 
+        env:
+          POSTGRES_USER: prisma
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: testdb
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # UPDATED: Specify the exact Node.js version
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -28,9 +41,21 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-
+      - name: Prepare temporary database
+        env:
+          DATABASE_URL: postgresql://prisma:password@localhost:5432/testdb
+        run: |
+          npx prisma migrate deploy
+          npx prisma db seed
+        
       - name: Build Application
-        run: npm run build
+        env:
+          DATABASE_URL: postgresql://prisma:password@localhost:5432/testdb
+          DOT_ENV_CONTENT: ${{ secrets.DOT_ENV }}
+        run: |
+          printf "%s" "$DOT_ENV_CONTENT" > .env
+          echo "\nDATABASE_URL=${DATABASE_URL}" >> .env
+          npm run build
 
       - name: Sync files to Droplet
         uses: easingthemes/ssh-deploy@main
