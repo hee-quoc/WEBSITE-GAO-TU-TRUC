@@ -46,7 +46,7 @@ jobs:
           DATABASE_URL: postgresql://prisma:password@localhost:5432/testdb
         run: |
           npx prisma migrate deploy
-          
+          npx prisma db seed
         
       - name: Build Application
         env:
