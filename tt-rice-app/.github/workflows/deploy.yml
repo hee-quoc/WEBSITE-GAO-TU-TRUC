@@ -7,14 +7,28 @@ on:
 
 jobs:
   deploy:
-    # UPDATED: Specify the exact Ubuntu version for the runner
     runs-on: ubuntu-24.04
-
+    defaults:
+      run:
+        working-directory: ./tt-rice-app
+    services:
+      postgres:
+        image: postgres:16 
+        env:
+          POSTGRES_USER: prisma
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: testdb
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # UPDATED: Specify the exact Node.js version
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -25,9 +39,21 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-
+      - name: Prepare temporary database
+        env:
+          DATABASE_URL: postgresql://prisma:password@localhost:5432/testdb
+        run: |
+          npx prisma migrate deploy
+          npx prisma db seed
+        
       - name: Build Application
-        run: npm run build
+        env:
+          DATABASE_URL: postgresql://prisma:password@localhost:5432/testdb
+          DOT_ENV_CONTENT: ${{ secrets.DOT_ENV }}
+        run: |
+          printf "%s" "$DOT_ENV_CONTENT" > .env
+          echo "\nDATABASE_URL=${DATABASE_URL}" >> .env
+          npm run build
 
       - name: Sync files to Droplet
         uses: easingthemes/ssh-deploy@main
@@ -35,7 +61,6 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_HOST: ${{ secrets.DROPLET_HOST }}
           REMOTE_USER: ${{ secrets.DROPLET_USER }}
-          SOURCE: "/"
           TARGET: ${{ secrets.DROPLET_APP_PATH }}
           EXCLUDE: "/.git/, /.github/, /node_modules/"
 
@@ -46,21 +71,10 @@ jobs:
           username: ${{ secrets.DROPLET_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # Navigate to the app directory on the server
             cd ${{ secrets.DROPLET_APP_PATH }}
-            
             echo "Running post-deployment commands..."
-            
-            # Install production dependencies based on package-lock.json
             npm install --omit=dev
-            
-            # Apply any new database migrations
             npx prisma migrate deploy
-            
-            # Reload the application with PM2 for zero-downtime
             pm2 reload my-t3-app
-            
-            # Save the current process list
             pm2 save
-            
             echo "Deployment to Droplet successful!"
