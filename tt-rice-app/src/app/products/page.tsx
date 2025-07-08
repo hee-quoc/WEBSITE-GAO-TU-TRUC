@@ -16,23 +16,44 @@ export interface CategoryData {
 const CATEGORY_DATA: Record<string, CategoryData> = {
   'gao-an': {
     name: 'Gạo ăn',
-    description: 'Câu chuyện về Tư Trúc bắt đầu từ hơn 3 thập kỉ trước tại một nhà máy xay xát lúa, với một niềm tự hào về việc giữ gìn nền văn minh lúa nước ngàn năm và nâng tầm, lan tỏa giá trị của hạt ngọc thực đến với mỗi người Việt',
-    image: '/img_category_decorative.png',
+    description: `<p>Tư Trúc tin rằng gạo không chỉ là lương thực để no bụng, mà còn là thức quà để thưởng, để nghiệm, và để tự hào. </p>
+    <p>Mỗi hạt gạo Tư Trúc đều được tinh chọn từ giống lúa chất lượng, canh tác theo quy trình nghiêm ngặt, thu hoạch đúng vụ, và được sàng lọc kỹ lưỡng từ đội ngũ công nhân nhiều năm kinh nghiệm bằng cả chuyên môn lẫn tâm huyết - để đem chất lượng hạt gạo ổn định, hương vị thuần khiết và ngọt lành từ đồng nội đến mỗi bữa cơm Việt. </p>`,
+    image: '/images/products/Graphic.svg',
   },
   'gao-nguyen-lieu': {
     name: 'Gạo nguyên liệu',
-    description: 'Được tuyển chọn từ những giống lúa chất lượng cao, gạo nguyên liệu của Tư Trúc là nền tảng cho các sản phẩm chế biến tinh tế, giữ trọn hương vị tự nhiên và giá trị dinh dưỡng, phục vụ những món ăn đậm đà bản sắc Việt.',
-    image: '/img_category_decorative.png',
+    description: `<p>Gạo nguyên liệu chế biến thực phẩm - dòng gạo chuyên dụng được chọn lọc kỹ về hàm lượng tinh bột, độ tấm và độ ẩm, dùng để làm bún tươi, bánh phở, bánh tráng và các món truyền thống khác.</p>
+
+<p>Các dòng gạo Siêu Cà Mau, Ấn Độ và Q5 - thuộc nhóm gạo nguyên liệu, gạo có hạt thon vừa hoặc hơi tròn, màu trắng đục, chắc, khô, ít tạp chất để dễ xay thành bột mịn mà không bị vữa. Mỗi lô gạo được chọn lọc kỹ lưỡng, không pha trộn giống, không xử lý hương - đảm bảo độ thuần nhất, ổn định trong từng mẻ sản xuất.</p>
+
+<p>Thành phẩm sau chế biến (bún, bánh) đạt độ dai vừa phải, không bở, có độ trong, độ trắng và dẻo tự nhiên, giúp món ăn ngon hơn mà không cần phụ gia tạo dai, phù hợp cho các cơ sở sản xuất thực phẩm và các doanh nghiệp thực phẩm theo hướng truyền thống, sạch và tối ưu chi phí.</p>
+`,
+    image: '/images/products/Graphic.svg',
   },
   'gao-thong-dung': {
     name: 'Gạo thông dụng',
-    description: 'Gạo thông dụng của Tư Trúc mang đến sự tiện lợi và chất lượng cho bữa cơm gia đình hàng ngày, với hạt gạo dẻo thơm, giàu dinh dưỡng, là lựa chọn hoàn hảo cho mọi nhà bếp Việt Nam.',
-    image: '/img_category_decorative.png',
+    description: `
+    <p>Gạo công nghiệp Tư Trúc là sự lựa chọn phổ biến cho các bếp ăn tập thể nhờ độ ổn định, giá hợp lý và phù hợp với nhiều đối tượng.</p>
+
+<p>Các dòng gạo Dẻo Bầu, 504, Xương Gà - thuộc nhóm chuyên dùng cho suất ăn công nghiệp, có đặc điểm dễ nấu, chín nhanh, cơm nở đều. Từng hạt gạo được kiểm soát chặt chẽ từ đầu vào đến thành phẩm, không pha tạp, không tẩm hương nhân tạo - đảm bảo chất lượng đồng đều và ổn định mỗi lần nấu.</p>
+
+<p>Khi nấu chín, cơm giữ được độ mềm hoặc độ tơi tuỳ từng loại, dễ ăn, phù hợp cho các suất ăn quy mô lớn như nhà máy, trường học, bệnh viện hay căn - tin doanh nghiệp.</p>
+`,
+    image: '/images/products/Graphic.svg',
   },
   'gao-cam-trau': {
     name: 'Cám/trấu',
-    description: 'Sản phẩm cám và trấu từ Tư Trúc, được sản xuất từ quy trình xay xát hiện đại, giữ lại độ tinh khiết và giá trị dinh dưỡng, lý tưởng cho chăn nuôi, làm phân bón hữu cơ hoặc các ứng dụng truyền thống.',
-    image: '/img_category_decorative.png',
+    description: `<p>Tại Tư Trúc, không chỉ hạt gạo được chăm chút, mà phụ phẩm từ xay xát như cám và trấu cũng được tận dụng tối đa, góp phần phát triển mô hình sản xuất nông nghiệp tuần hoàn, không lãng phí.</p>
+
+<p><strong>Cám gạo:</strong> Nguyên liệu quý trong sản xuất dầu cám gạo - thành phần cao cấp cho thực phẩm và mỹ phẩm.</p>
+
+
+<p><strong>Trấu:</strong> Nguyên liệu được ứng dụng linh hoạt trong nhiều hoạt động sản xuất và đời sống - từ nhiên liệu đốt lò, sấy nông sản, đến ủ phân hữu cơ, làm giá thể trồng cây, lót chuồng chăn nuôi, hoặc tái chế thành củi trấu, gạch không nung, ván ép sinh học.</p>
+
+
+<p>Nhờ khả năng tái sử dụng linh hoạt, trấu và cám không chỉ giúp giảm rác thải, mà còn tạo thêm giá trị kinh tế, và là một phần của hệ sinh thái nông nghiệp tuần hoàn.</p>
+`,
+    image: '/images/products/Graphic.svg',
   },
 };
 
