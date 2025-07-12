@@ -2,7 +2,7 @@ import Image from 'next/image';
 import RiceList from '../utils/RiceList';
 export function ProductsSection(){
     return (
-        <section className="py-20 bg-green-lightest">
+        <section className="pt-20 pb-10 bg-green-lightest">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-12 text-center space-y-3 max-w-[95%] sm:max-w-[639px] mt-10 sm:mt-[96px]">
           <h2
@@ -30,16 +30,16 @@ export function ProductsSection(){
           </p>
         </div>
          <div className="mt-16 text-center overflow-x-auto scrollbar-hide">
-          <h3 className="text-xl font-medium text-blue-dark mb-8 font-alegreya-sans">Các chứng nhận</h3>
-          <div className="flex flex-nowrap justify-start items-center gap-4 sm:gap-6 md:gap-8 px-4 w-max mx-auto">
+          <h3 className="text-[20px] font-medium font-alegreya-sans" style={{color:"#0A5B89"}}>Các chứng nhận</h3>
+          <div className="flex flex-nowrap justify-start items-center gap-2 sm:gap-2 md:gap-2 pl-4 pr-6 w-max mx-auto">
             {/* Item 1 */}
             <div className="flex justify-center items-center flex-shrink-0">
               <Image
                 src="/img_group_928.svg"
                 alt="Certification"
-                width={100}
-                height={100}
-                className="w-[56px] sm:w-[80px] md:w-[100px] h-auto"
+                width={132}
+                height={107}
+                className='h-[107]'
               />
             </div>
 
@@ -50,7 +50,7 @@ export function ProductsSection(){
                 alt="Certification"
                 width={92}
                 height={36}
-                className=" h-auto"
+                className='w-[92] h-[36]'
               />
             </div>
 
@@ -59,9 +59,9 @@ export function ProductsSection(){
               <Image
                 src="/ISO.png"
                 alt="Certification"
-                width={60}
-                height={36}
-                className="w-[50px] sm:w-[60px] h-auto"
+                width={70}
+                height={58}
+                className='w-[70] h-[58]'
               />
             </div>
 
@@ -70,9 +70,9 @@ export function ProductsSection(){
               <Image
                 src="/img_group_929_light_green_a700.svg"
                 alt="Certification"
-                width={100}
-                height={100}
-                className="w-[56px] sm:w-[80px] md:w-[100px] h-auto"
+                width={115}
+                height={107}
+                className='h-[107]'
               />
             </div>
           </div>

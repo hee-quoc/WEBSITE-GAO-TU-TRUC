@@ -8,7 +8,7 @@ export function CommunitySection() {
     <section className="pt-20 pb-5 bg-white">
         <div className="max-w-7xl flex flex-col items-center mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-[732px]">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[56px] text-center font-bold mb-4  font-alegreya-sans" style={{ color: "#0A5B89" }}> {/* Adjusted font sizes for better responsiveness */}
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[56px] text-center font-bold mb-4 font-alegreya-sans" style={{ color: "#0A5B89" }}> {/* Adjusted font sizes for better responsiveness */}
               Giá trị gửi trao đến cộng đồng
             </h2>
             <p className="max-w-[732px] text-[16px] sm:text-[16px] text-center text-gray-light mb-8 sm:mb-12 font-fz-poppins" style={{ color: "#667085" }}> {/* Adjusted font sizes and margin */}
@@ -17,28 +17,28 @@ export function CommunitySection() {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-[42%_58%] gap-6 sm:gap-8 mt-6 sm:mt-10"> {/* Adjusted gap and margin-top */}
             {/* Left Statistics - Image with text overlay */}
-            <div className="bg-[#F4F3EA] rounded-[16px] overflow-hidden relative w-full h-[500px] sm:h-[600px] lg:w-[495px] lg:h-[642px] flex items-end"> {/* Adjusted height for smaller screens */}
+            <div className="bg-[#F4F3EA] rounded-[16px] overflow-hidden relative w-full h-[500px] sm:h-[600px] lg:w-[495px] lg:h-[642px]"> {/* Adjusted height for smaller screens */}
               <Image
                 src="/community_about_1.png"
                 alt="Farmers_lar"
                 fill
                 className="object-cover"
                 />
-              <div className="relative z-10 p-6 sm:p-10 w-full pt-10"> {/* Removed bg-gradient-to-t and text-white */}
+              <div className="relative z-10 py-5 sm:py-5 px-6 w-full pt-2"> {/* Removed bg-gradient-to-t and text-white */}
                 <div className="max-w-[194px] mb-6 sm:mb-4"> {/* Adjusted margin-bottom */}
-                  <div className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2 sm:mb-4 font-alegreya-sans" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>30</div> {/* Changed text color to #6D9127 */}
+                  <div className="text-4xl sm:text-5xl md:text-6xl font-bold font-alegreya-sans" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>30</div> {/* Changed text color to #6D9127 */}
                   <p className="text-[16px] sm:text-[16px] font-fz-poppins opacity-80" style={{ color: "#667085" }}> {/* Changed text color to #667085 */}
                     Hộ nông dân địa phương đồng hành lâu dài
                   </p>
                 </div>
                 <div className="max-w-[194px] mb-6 sm:mb-8"> {/* Adjusted margin-bottom */}
-                  <div className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2 sm:mb-4 font-alegreya-sans" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>40</div> {/* Changed text color to #6D9127 */}
+                  <div className="text-4xl sm:text-5xl md:text-6xl font-bold font-alegreya-sans" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>40</div> {/* Changed text color to #6D9127 */}
                   <p className="text-sm sm:text-base font-fz-poppins opacity-80" style={{ color: "#667085" }}> {/* Changed text color to #667085 */}
                     Công nhân có việc làm ổn định tại nhà máy
                   </p>
                 </div>
                 <div>
-                  <div className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2 sm:mb-4 font-alegreya-sans" style={{ color: "#6D9127" }}> 
+                  <div className="text-4xl sm:text-5xl md:text-6xl font-bold font-alegreya-sans" style={{ color: "#6D9127" }}> 
                     <svg className="inline-block w-12 h-12 sm:w-12 sm:h-12 align-middle mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M12 6L19 13H5L12 6Z" fill="#FFB000" stroke="#FFB000" strokeWidth="2" strokeLinejoin="round"/> {/* Triangle up icon */}
                     </svg>10%

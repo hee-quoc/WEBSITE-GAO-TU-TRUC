@@ -8,7 +8,7 @@ const testimonials: Testimonial[] = [
         content: 'Làm lúa bao nhiêu năm nay, tôi hiểu rõ từng hạt gạo mình làm ra. Từ lúc gieo mạ đến ngày thu hoạch, đều tự tay chăm chút. Thành ra, bao năm nay tôi chỉ ăn mỗi gạo Tư Trúc, vì tôi biết chắc từng hạt cơm sạch sẽ, tử tế như chính công sức mình bỏ vào. ',
         author: 'Anh Năm Tiến (37 tuổi)',
         position: 'Nông dân Long Điền',
-        avatar: '/img_ellipse_15.png'
+        avatar: '/testinomial_nam_tien.png'
     },
     {
       id: '2',
@@ -34,11 +34,11 @@ export function Testimonial(){
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
           <div className="grid grid-cols-1 lg:grid-cols-[20%_70%] gap-8 lg:gap-12">
             {/* Title Section */}
-            <div className="text-center lg:text-left">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-green-dark font-alegreya-sans">
-                Mọi người nghĩ gì về Tư Trúc
-              </h2>
-            </div>
+            <div className="text-center lg:text-left flex flex-col justify-center">
+            <p className="font-alegreya-sans font-medium text-[56px] leading-[100%] tracking-[0%] text-green-dark max-w-[225px] max-h-[168px]">
+              Mọi người nghĩ gì về Tư Trúc
+            </p>
+          </div>
 
             {/* Testimonial Content */}
             <div className="bg-white border rounded-2xl p-4 sm:p-6 lg:p-8 flex flex-col gap-6" style={{ borderColor: '#E9F2DA' }}>

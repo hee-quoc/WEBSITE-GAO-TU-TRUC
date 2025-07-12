@@ -36,7 +36,7 @@ export function RiceSection() {
         <div className="bg-[#f9f9f3] relative flex flex-col justify-center mx-auto py-16 px-8 rounded-3xl border border-green-200 max-w-[1296px]">
           {/* Title */}
           <div className="flex flex-col text-center mb-12 items-center">
-            <h2 className="font-alegreya-sans text-[56px] md:text-[56px] font-bold text-[#1e3a5f] mb-2 max-w-[542px]">
+            <h2 className="font-alegreya-sans text-[56px] md:text-[56px] font-[700] font-bold text-[#0A5B89] mb-2 max-w-[542px] leading-[100%] tracking-[0%]">
               Hạt gạo Việt từ ruộng đồng đến bàn ăn
             </h2>
             <p className="font-alegreya-sans text-[32px]" style={{color:"#667085"}}>
@@ -44,7 +44,7 @@ export function RiceSection() {
             </p>
           </div>
           {/* Process Line - place above dots */}
-        <div className="absolute top-[50%] left-[10%]  z-0 w-full flex justify-center">
+        <div className="absolute top-[47.4%] left-[10%]  z-0 w-full flex justify-center">
           <Image
             src="/step_line.svg"
             alt="process_line"
@@ -64,8 +64,8 @@ export function RiceSection() {
                     <span className="block w-3 h-3 bg-[#6D9127] rounded-full"></span>
                     <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 border-[7px] border-[#D2DDBC] rounded-full"></span>
                   </span>
-                  <h3 className="text-[20px] font-semibold text-green-800 mb-1 font-alegreya-sans" >{step.title}</h3>
-                  <p className="text-[16px] max-w-[216px] min-h-[88px] font-fz-poppins" style={{color:"#5C6578"}}>{step.desc}</p>
+                  <h3 className="text-[20px] text-[#4D671B] font-[500]  mb-1 font-alegreya-sans" >{step.title}</h3>
+                  <p className="text-[16px] max-w-[216px] min-h-[88px] font-fz-poppins font-[400]" style={{color:"#5C6578"}}>{step.desc}</p>
                 </div>
               ))}
             </div>
@@ -79,8 +79,8 @@ export function RiceSection() {
                     <span className="block w-3 h-3 bg-[#6D9127] rounded-full"></span>
                     <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 border-[7px] border-[#D2DDBC] rounded-full"></span>
                   </span>
-                  <h3 className="text-[20px] font-semibold text-green-800 mb-1 font-alegreya-sans">{step.title}</h3>
-                  <p className="text-[16px] font-fz-poppins" style={{color:"#5C6578"}}>{step.desc}</p>
+                  <h3 className="text-[20px] text-[#4D671B] font-[500]  mb-1 font-alegreya-sans">{step.title}</h3>
+                  <p className="text-[16px] font-fz-poppins font-[400]" style={{color:"#5C6578"}}>{step.desc}</p>
                 </div>
               ))}
             </div>

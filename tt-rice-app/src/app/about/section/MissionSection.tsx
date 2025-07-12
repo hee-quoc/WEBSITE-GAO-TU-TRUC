@@ -70,9 +70,9 @@ export function MissionSection() {
       <div className="flex justify-center flex-col md:flex-row items-start  max-w-[1122px] mx-auto  py-8  "> 
             {/* Left Column: Title */}
             <div className="w-full md:w-1/2 text-center md:text-left">
-              <h2 className="font-alegreya-sans text-blue-900 text-[56px] font-bold leading-snug">
-                Sứ mệnh <br className="hidden sm:block" />
-                tôn vinh <br className="hidden sm:block" />
+              <h2 className="font-alegreya-sans font-medium text-[56px] leading-[100%] tracking-[0%] max-w-[360px] max-h-[168px] "style={{color:"#0A5B89"}}>
+                Sứ mệnh <br />
+                tôn vinh <br/>
                 hạt ngọc thực
               </h2>
             </div>
@@ -85,7 +85,7 @@ export function MissionSection() {
 
             <div className="relative">
               {/* Quote image placed behind paragraph */}
-              <div className="absolute -top-2 -left-11 w-14 h-10  opacity-30 pointer-events-none">
+              <div className="absolute  -left-11 w-14 h-10  opacity-30 pointer-events-none">
               <Image src="/img_.svg" alt="Quote" width={34} height={24} />
               </div>
               <p className="font-fz-poppins text-[16px] sm:text-xl md:text-[16px] text-gray-600 text-justify leading-relaxed max-w-[741px]">
@@ -140,7 +140,7 @@ export function MissionSection() {
         </div>
         {/* Core Values Accordion Section */}
         <div className="max-w-[1122px] mx-auto px-4 py-12 flex flex-col md:flex-row gap-6">
-          <h3 className="text-[#54585A] text-lg font-semibold md:w-1/4 font-alegreya-sans">Giá trị cốt lõi</h3>
+          <h3 className="text-[#54585A] text-[32px] font-[400] md:w-1/4 font-alegreya">Giá trị cốt lõi</h3>
           <div className="md:w-3/4 space-y-4">
             {coreValues.map((item, idx) => (
               <div key={idx} className={`border-b-1 ${idx === openIndex ? "py-8": "py-4" }`}
@@ -150,18 +150,24 @@ export function MissionSection() {
                   className="w-full flex items-start justify-between text-left text-green-900 font-semibold focus:outline-none"
                 >
                   <div className="flex items-center gap-2">
-                    <img src="/lotus.svg" alt="lotus" className="w-10 h-10" />
-                    <span className="font-alegreya-sans">{item.title}</span>
+                    <Image 
+                    src="/lotus.svg" 
+                    alt="lotus-icon"
+                    width={55}
+                    height={59}
+                    />
+                    <span className="font-alegreya-sans text-[32px] font-[400]">{item.title}</span>
                   </div>
                   <Image
                     src={openIndex === idx ? '/arrow_up.svg' : '/arrow_down.svg'}
                     alt="toggle-icon"
-                    width={12}
-                    height={5}
+                    width={16}
+                    height={9}
+                    className="pt-4"
                   />
                 </button>
                 {openIndex === idx && (
-                  <p className="mt-2 text-gray-600 text-sm md:text-base font-alegreya-sans ml-12">
+                  <p className="pl-4 mt-2 text-sm md:text-base font-fz-poppins ml-12 font-[400] text-[#5C6578]">
                     {item.description}
                   </p>
                 )}
