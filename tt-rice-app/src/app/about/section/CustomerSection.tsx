@@ -36,7 +36,7 @@ export function CustomerSection() {
     <section className="pt-20 pb-5 bg-[#FBFFF2]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 font-alegreya-sans" style={{ color: "#0A5B89" }}>
-            Hạt gạo Tư Trúc qua câu chuyện<br className="sm:hidden" /> của mỗi người dùng
+            Hạt gạo Tư Trúc qua câu chuyện <br  /> của mỗi người dùng
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl mb-8 font-alegreya-sans" style={{ color: "#667085" }}>
             Khách hàng nói gì về Tư Trúc?

@@ -46,17 +46,16 @@ const RiceCard: React.FC<RiceCardProps> = ({ image, hoverImage, label, slug }) =
         <Image
           src={isHovered ? hoverImage : image}
           alt={label}
-          width={200}
-          height={250}
+          width={274}
+          height={342}
           className="object-contain"
-        />
-      </div>
-      <p
-        className="w-full sm:w-[274px] h-[28px] text-[18px] sm:text-[20px] font-medium leading-[140%] text-center"
-        style={{ fontFamily: "Alegreya Sans, sans-serif" }}
+        /> 
+      </div> 
+      <h4
+        className="w-full sm:w-[274px] h-[28px] text-[20px] sm:text-[20px] font-[500] leading-[140%] text-center  font-alegreya-sans" style={{color: "#415717"}}
       >
         {label}
-      </p>
+      </h4>
     </div>
   );
 };

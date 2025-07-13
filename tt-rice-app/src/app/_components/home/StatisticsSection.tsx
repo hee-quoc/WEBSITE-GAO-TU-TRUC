@@ -117,7 +117,7 @@ export function StatisticSection(){
                   src="/img__1.png"
                   alt="Environment"
                   fill
-                  className="object-cover rounded-[16px]"
+                  className="object-cover scale-140  translate-x-30 transform rounded-[16px]"
                 />
                 <div className="relative z-10 text-white">
                   <div className="text-5xl sm:text-6xl font-bold mb-4 font-alegreya-sans">100%</div>
