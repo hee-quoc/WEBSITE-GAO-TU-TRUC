@@ -2,7 +2,7 @@ import Image from 'next/image';
 import RiceList from '../utils/RiceList';
 export function ProductsSection(){
     return (
-        <section className="pt-20 pb-10 bg-green-lightest">
+        <section className="pt-20 pb-10 bg-[#FBFFF2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-12 text-center space-y-3 max-w-[95%] sm:max-w-[639px] mt-10 sm:mt-[96px]">
           <h2
@@ -12,8 +12,8 @@ export function ProductsSection(){
             Mang tinh hoa vào từng bữa cơm Việt
           </h2>
           <p
-            className="text-[20px] sm:text-[32px] font-normal leading-[140%] text-center font-alegreya-sans"
-            style={{ color: "#00A86B" }}
+            className="text-[20px] sm:text-[32px] font-normal leading-[140%] text-center font-alegreya"
+            style={{ color: "#526D1D" }}
           >
             Các sản phẩm có tại Tư Trúc
           </p>

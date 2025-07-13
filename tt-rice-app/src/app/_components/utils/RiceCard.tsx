@@ -51,11 +51,11 @@ const RiceCard: React.FC<RiceCardProps> = ({ image, hoverImage, label, slug }) =
           className="object-contain"
         /> 
       </div> 
-      <p
-        className="w-full sm:w-[274px] h-[28px] text-[20px] sm:text-[20px] font-medium leading-[140%] text-center font-alegreya-sans" style={{color: "#415717"}}
+      <h4
+        className="w-full sm:w-[274px] h-[28px] text-[20px] sm:text-[20px] font-[500] leading-[140%] text-center  font-alegreya-sans" style={{color: "#415717"}}
       >
         {label}
-      </p>
+      </h4>
     </div>
   );
 };

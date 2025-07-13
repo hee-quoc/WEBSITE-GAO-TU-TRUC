@@ -12,18 +12,13 @@ const textContent = [
   {
     heading: 'Củng cố vị trí tại thị trường Đông Nam Bộ và hướng đến cung ứng gạo toàn quốc',
     paragraph:
-      'Từ Trúc hướng đến việc củng cố vị thế tại thị trường Đông Nam Bộ, và vươn mình trở thành "thương hiệu quốc dân" - có mặt trong mỗi căn bếp Việt, trở thành biểu tượng cho chất lượng và sự an tâm trong từng bữa ăn.',
+      'Tư Trúc hướng đến việc củng cố vị thế tại thị trường Đông Nam Bộ, và vươn mình \n trở thành “thương hiệu quốc dân" - có mặt trong mỗi căn bếp Việt, trở thành \n biểu tượng cho chất lượng và sự an tâm trong từng bữa ăn.',
   },
   {
     heading: "Lan toả tinh hoa gạo Việt\ntừ cánh đồng đến bàn ăn",
     paragraph:
-      'Tư Trúc không chỉ nâng tầm giá trị hạt gạo Việt, mà còn gìn giữ di sản lúa nước ngàn đời - nơi hội tụ tinh hoa đất trời, bàn tay người nông dân và tri thức khoa học, để gửi trao vào từng bữa ăn.',
+      'Tư Trúc không chỉ nâng tầm giá trị hạt gạo Việt, \n mà còn gìn giữ di sản lúa nước ngàn đời - \n nơi hội tụ tinh hoa đất trời, bàn tay người nông dân \n và tri thức khoa học, để gửi trao vào từng bữa ăn.',
   },
-  // {
-  //   heading: 'Mở rộng xuất khẩu ra thị trường quốc tế',
-  //   paragraph:
-  //     'Đưa sản phẩm gạo Việt chất lượng cao vươn xa hơn trên bản đồ thế giới, xây dựng thương hiệu uy tín trong mắt người tiêu dùng toàn cầu.',
-  // },
 ];
 
 
@@ -31,19 +26,19 @@ const coreValues = [
   {
     title: 'Vững đầu ra cho nông dân',
     description:
-      'Tôn trọng người nông dân gìn giữ nghề truyền thống; hỗ trợ kỹ thuật và công nghệ vào sản xuất, đảm bảo đầu ra ổn định, nâng cao thu nhập bền vững.',
+      'Tôn trọng người nông dân gìn giữ nghề truyền thống; hỗ trợ kỹ thuật và công nghệ \n vào sản xuất, đảm bảo đầu ra ổn định, nâng cao thu nhập bền vững.',
   },
   {
     title: 'Vững chất lượng sản phẩm',
-    description: 'Không ngừng nghiên cứu, ứng dụng khoa học - công nghệ để tạo ra những sản phẩm gạo đạt chất lượng ổn định, tối ưu hương vị và dinh dưỡng.',
+    description: 'Không ngừng nghiên cứu, ứng dụng khoa học - công nghệ để tạo ra những \n sản phẩm gạo đạt chất lượng ổn định, tối ưu hương vị và dinh dưỡng.',
   },
   {
     title: 'Vững cân bằng môi trường',
-    description: 'Kiên trì với mô hình sản xuất tuần hoàn, tiết kiệm tài nguyên, giảm thiểu phát thải, tái chế phụ phẩm - bảo vệ hệ sinh thái bền vững lâu dài.',
+    description: 'Kiên trì với mô hình sản xuất tuần hoàn, tiết kiệm tài nguyên, giảm thiểu \n phát thải, tái chế phụ phẩm - bảo vệ hệ sinh thái bền vững lâu dài.',
   },
   {
     title: 'Vững lan toả giá trị văn hoá',
-    description: 'Lan tỏa câu chuyện hạt gạo Việt - kết tinh từ đất mẹ, từ bàn tay người Việt, lưu giữ và tôn vinh nền văn minh lúa nước ngàn đời.',
+    description: 'Lan tỏa câu chuyện hạt gạo Việt - kết tinh từ đất mẹ, từ bàn tay người Việt, \n lưu giữ và tôn vinh nền văn minh lúa nước ngàn đời.',
   },
   // Thêm các giá trị khác tương tự
 ];
@@ -70,7 +65,7 @@ export function MissionSection() {
       <div className="flex justify-center flex-col md:flex-row items-start  max-w-[1122px] mx-auto  py-8  "> 
             {/* Left Column: Title */}
             <div className="w-full md:w-1/2 text-center md:text-left">
-              <h2 className="font-alegreya-sans font-medium text-[56px] leading-[100%] tracking-[0%] max-w-[360px] max-h-[168px] "style={{color:"#0A5B89"}}>
+              <h2 className="font-alegreya-sans font-[700] text-[56px] leading-[100%] tracking-[0%] max-w-[360px] max-h-[168px] "style={{color:"#0A5B89"}}>
                 Sứ mệnh <br />
                 tôn vinh <br/>
                 hạt ngọc thực
@@ -121,8 +116,14 @@ export function MissionSection() {
                     ))
                   : null}
               </h2>
-              <p className={`max-w-[595px] font-fz-poppins  text-white text-[16px] sm:text-[8px] md:text-[16px] max-w-[90%] mb-6 transition-opacity duration-700 ${fade ? 'opacity-100' : 'opacity-0'}`} style={{color:"#5C6578"}}>
-                {textContent[index]?.paragraph}
+              <p className={`max-w-[595px] font-fz-poppins  text-white text-[16px] sm:text-[8px] md:text-[16px] max-w-[664px] mb-6 transition-opacity duration-700 ${fade ? 'opacity-100' : 'opacity-0'}`} style={{color:"#5C6578"}}>
+                {textContent[index]?.paragraph.split('\n').map((line, i, arr) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    {i !== arr.length - 1 && <br />}
+                  </React.Fragment>
+                ))
+                }
               </p>
             </div>
             {/* Pagination Dots as images */}
@@ -168,7 +169,12 @@ export function MissionSection() {
                 </button>
                 {openIndex === idx && (
                   <p className="pl-4 mt-2 text-sm md:text-base font-fz-poppins ml-12 font-[400] text-[#5C6578]">
-                    {item.description}
+                    {item.description.split('\n').map((line, i, arr) => (
+                      <React.Fragment key={i}>
+                        {line}
+                        {i !== arr.length - 1 && <br />}
+                      </React.Fragment>
+                    ))}
                   </p>
                 )}
               </div>

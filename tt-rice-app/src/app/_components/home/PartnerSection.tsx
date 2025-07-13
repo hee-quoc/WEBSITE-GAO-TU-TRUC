@@ -2,7 +2,7 @@ import Image from "next/image"
 export function PartnerSection(){
 
     return (
-       <section className=" pt-10 pb-20 bg-green-lightest bg-cover bg-center bg-no-repeat">
+       <section className=" pt-10 pb-20 bg-[#FBFFF2] bg-cover bg-center bg-no-repeat">
         <div className="flex flex-col items-center">
         <div
           className="bg-cover bg-center bg-no-repeat py-8 px-4 sm:px-6 lg:px-8 rounded-2xl mx-4 sm:mx-6 lg:mx-8 max-w-[1119px] max-h-[350px]"

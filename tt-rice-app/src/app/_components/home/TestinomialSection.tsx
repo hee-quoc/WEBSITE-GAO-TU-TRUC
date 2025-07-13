@@ -32,12 +32,12 @@ export function Testimonial(){
     return (
         <section className="pb-20 pt-5 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-          <div className="grid grid-cols-1 lg:grid-cols-[20%_70%] gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-[25%_65%] gap-8 lg:gap-12">
             {/* Title Section */}
             <div className="text-center lg:text-left flex flex-col justify-center">
-            <p className="font-alegreya-sans font-medium text-[56px] leading-[100%] tracking-[0%] text-green-dark max-w-[225px] max-h-[168px]">
-              Mọi người nghĩ gì về Tư Trúc
-            </p>
+           <h2 className="font-alegreya-sans font-[500] text-[56px] sm:text-[56px] leading-[100%] tracking-[0]  text-[#526D1D]">
+            Mọi người nghĩ gì về <br /> Tư Trúc
+          </h2>
           </div>
 
             {/* Testimonial Content */}

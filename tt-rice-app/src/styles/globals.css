@@ -36,6 +36,13 @@ html {
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Alegreya Sans";
+  src: url("/fonts/Alegreya_Sans/AlegreyaSans-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 
 @font-face {
   font-family: "Alegreya Sans";
@@ -59,6 +66,8 @@ html {
   font-style: normal;
   font-display: swap;
 }
+
+
 
 @font-face {
   font-family: "Alegreya";
