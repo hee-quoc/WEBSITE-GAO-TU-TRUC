@@ -61,6 +61,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_HOST: ${{ secrets.DROPLET_HOST }}
           REMOTE_USER: ${{ secrets.DROPLET_USER }}
+          SOURCE: "." 
           TARGET: ${{ secrets.DROPLET_APP_PATH }}
           EXCLUDE: "/.git/, /.github/, /node_modules/"
 
