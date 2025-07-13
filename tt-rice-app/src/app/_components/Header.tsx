@@ -28,9 +28,7 @@ const Header: React.FC = () => {
   return (
     <header
       className={`
-        sticky top-0 z-50 w-full 
-        transition-colors duration-300 ease-in-out 
-        ${isScrolled ? 'bg-white shadow-sm' : 'bg-green-lightest'} 
+         top-0 z-50 w-full ease-in-out  fixed 
       `}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
