@@ -73,8 +73,9 @@ jobs:
           script: |
             cd ${{ secrets.DROPLET_APP_PATH }}
             echo "Running post-deployment commands..."
+            source ~/.nvm/nvm.sh
             npm install --omit=dev
             npx prisma migrate deploy
-            pm2 reload my-t3-app
+            pm2 reload tt-rice-app
             pm2 save
             echo "Deployment to Droplet successful!"
