@@ -61,6 +61,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_HOST: ${{ secrets.DROPLET_HOST }}
           REMOTE_USER: ${{ secrets.DROPLET_USER }}
+          SOURCE: "tt-rice-app/" 
           TARGET: ${{ secrets.DROPLET_APP_PATH }}
           EXCLUDE: "/.git/, /.github/, /node_modules/"
 
@@ -73,8 +74,9 @@ jobs:
           script: |
             cd ${{ secrets.DROPLET_APP_PATH }}
             echo "Running post-deployment commands..."
+            source ~/.nvm/nvm.sh
             npm install --omit=dev
             npx prisma migrate deploy
-            pm2 reload my-t3-app
+            pm2 reload tt-rice-app
             pm2 save
             echo "Deployment to Droplet successful!"
