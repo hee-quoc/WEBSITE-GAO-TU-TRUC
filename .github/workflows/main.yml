@@ -59,7 +59,7 @@ jobs:
         uses: easingthemes/ssh-deploy@main
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: 178.128.211.15
+          REMOTE_HOST: ${{ secrets.DROPLET_HOST }}
           REMOTE_USER: ${{ secrets.DROPLET_USER }}
           TARGET: ${{ secrets.DROPLET_APP_PATH }}
           EXCLUDE: "/.git/, /.github/, /node_modules/"
@@ -67,7 +67,7 @@ jobs:
       - name: Run Post-Deployment Commands on Droplet
         uses: appleboy/ssh-action@master
         with:
-          host: 178.128.211.15
+          host: ${{ secrets.DROPLET_HOST }}
           username: ${{ secrets.DROPLET_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
