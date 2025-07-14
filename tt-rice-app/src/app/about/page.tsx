@@ -10,7 +10,7 @@ export default function AboutPage() {
     return (
         <main className="flex-grow"> 
             <StorySection/>
-            <PlatformSection/>
+            <PlatformSection />
             <MileStoneSection/>
             <MissionSection/>
             <RiceSection/>

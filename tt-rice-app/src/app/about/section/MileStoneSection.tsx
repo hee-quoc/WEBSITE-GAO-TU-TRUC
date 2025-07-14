@@ -22,7 +22,7 @@ const milestoneBlocks = [
     },
     text: {
       year: "1988",
-      content: "Khởi nguồn từ nhà máy xay xát nhỏ tại Bà Rịa – Vũng Tàu",
+      content: "Khởi nguồn từ nhà máy\nxay xát nhỏ tại Bà Rịa – Vũng Tàu",
       top: 210,
       left: 0,
       yearFontSize: "20px",
@@ -55,7 +55,7 @@ const milestoneBlocks = [
     },
     text: {
       year: "1990s",
-      content: "Đầu tư sở hữu đất canh tác và mở rộng quy mô nhà máy",
+      content: "Đầu tư sở hữu đất \n canh tác và mở rộng \n quy mô nhà máy",
       top: 210,
       left: 10,
       yearFontSize: "20px",
@@ -88,8 +88,7 @@ const milestoneBlocks = [
     },
     text: {
       year: "2000s",
-      content:
-        "Mở rộng và tự chủ vùng trồng. Nâng cao trang thiết bị máy móc, quy trình sản xuất và năng lực đội ngũ nhân công",
+      content: "Mở rộng và tự chủ \n vùng trồng.\nNâng cao trang thiết bị \n máy móc, quy trình \n sản xuất và đội ngũ \n nhân công",
       top: 210,
       left: 10,
       yearFontSize: "20px",
@@ -122,9 +121,9 @@ const milestoneBlocks = [
     },
     text: {
       year: "2010s",
-      content: "Vươn lên vị trí nhà cung ứng gạo hàng đầu Bà Rịa – Vũng Tàu",
+      content: "Vươn lên vị trí nhà \n cung ứng gạo hàng đầu \n Bà Rịa – Vũng Tàu",
       top: 210,
-      left: 0,
+      left: 0, 
       yearFontSize: "20px",
       contentFontSize: "16px",
     },
@@ -156,7 +155,7 @@ const milestoneBlocks = [
     text: {
       year: "2020s",
       content:
-        "Lan tỏa giá trị hạt gạo Việt, gắn kết bảo vệ môi trường, nâng đời sống nông dân – công nhân. Hướng đến vị thế là nhà cung cấp gạo hàng đầu Đông Nam Bộ",
+        "Lan tỏa giá trị hạt gạo Việt,\n cam kết bảo vệ môi trường\nnâng đời sống nông dân -\n công nhân. Hướng đến vị thế \n là một trong những \n nhà cung cấp gạo hàng đầu Đông Nam Bộ.",
       top: 210,
       left: 0,
       yearFontSize: "20px",
@@ -187,12 +186,7 @@ export function MileStoneSection() {
             transform: "translateX(-50%)",
           }}
         >
-          <Image
-            src="/milestone/line.svg"
-            alt="Timeline Line"
-            fill
-            className="object-contain"
-          />
+          <Image src="/milestone/line.svg" alt="Timeline Line" fill className="object-contain" />
         </div>
 
         {/* Trang trí */}
@@ -282,6 +276,7 @@ export function MileStoneSection() {
                   fontFamily: "Fz Poppins",
                   fontWeight: 400,
                   lineHeight: "1.6",
+                  whiteSpace: "pre-line", // 👈 QUAN TRỌNG ĐỂ HIỂN THỊ \n
                 }}
               >
                 {item.text.content}
