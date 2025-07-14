@@ -31,10 +31,9 @@ const Header: React.FC = () => {
          top-0 z-50 w-full ease-in-out  fixed 
       `}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-8xl mx-auto">
         <div className="flex justify-between items-center h-18">
-          {/* Logo */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 pl-10 lg:pl-[159px]">
             <Link href="/">
               <Image
                 src="/logo_header.svg"
@@ -46,7 +45,6 @@ const Header: React.FC = () => {
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             <Link href="/about" className="text-dark-gray hover:text-green-normal transition-colors">
               Về chúng tôi
@@ -69,11 +67,11 @@ const Header: React.FC = () => {
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center lg:pr-[159px]">
             <Button
               variant="secondary"
               size="medium"
-              className=" group flex items-center gap-2 border-green-normal rounded-full text-green-normal hover:bg-green-dark hover:text-white"
+              className=" group flex items-center gap-2 border-green-normal rounded-full text-green-normal hover:bg-green-dark hover:text-white "
             >
               <span>Nhắn tin</span>
               <Image 
