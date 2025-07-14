@@ -4,7 +4,6 @@ import Image from "next/image";
 import React, { useRef, Fragment } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-// Chỉ chứa ảnh 2 → 5
 const scrollData = [
   {
     icon: "/platform/icon.svg",
@@ -43,14 +42,22 @@ export function PlatformSection() {
     offset: ["start start", "end end"],
   });
 
-  const transforms = scrollData.map((_, idx) => {
-    const start = idx / scrollData.length;
-    const end = (idx + 1) / scrollData.length;
-    return {
-      y: useTransform(scrollYProgress, [start, end], [50, 0]),
-      opacity: useTransform(scrollYProgress, [start, end], [0, 1]),
-    };
-  });
+  // Gọi useTransform ở top-level, không lồng trong map
+  const y0 = useTransform(scrollYProgress, [0.0, 0.25], [50, 0]);
+  const o0 = useTransform(scrollYProgress, [0.0, 0.25], [0, 1]);
+  const y1 = useTransform(scrollYProgress, [0.25, 0.5], [50, 0]);
+  const o1 = useTransform(scrollYProgress, [0.25, 0.5], [0, 1]);
+  const y2 = useTransform(scrollYProgress, [0.5, 0.75], [50, 0]);
+  const o2 = useTransform(scrollYProgress, [0.5, 0.75], [0, 1]);
+  const y3 = useTransform(scrollYProgress, [0.75, 1.0], [50, 0]);
+  const o3 = useTransform(scrollYProgress, [0.75, 1.0], [0, 1]);
+
+  const transforms = [
+    { y: y0, opacity: o0 },
+    { y: y1, opacity: o1 },
+    { y: y2, opacity: o2 },
+    { y: y3, opacity: o3 },
+  ];
 
   return (
     <section
@@ -60,7 +67,7 @@ export function PlatformSection() {
       <div className="w-full max-w-[1280px] mx-auto flex flex-col lg:flex-row items-start justify-between gap-12">
         {/* CỘT TRÁI */}
         <div className="flex-1 flex flex-col justify-start max-w-[550px] gap-8 z-10 pl-[40px] pt-[96px] pb-[99px]">
-          {/* GIỚI THIỆU (ảnh 1 tương ứng đoạn này) */}
+          {/* GIỚI THIỆU */}
           <div className="space-y-4">
             <h2 className="text-[56px] md:text-[44px] font-extrabold leading-tight text-[#005B94] font-fz">
               Nền tảng chủ động <br /> năng lực vững vàng
@@ -70,6 +77,7 @@ export function PlatformSection() {
               thương hiệu trong suốt 3 thập kỷ
             </p>
           </div>
+
           <div className="space-y-3 mt-[120px]">
             <Image
               src="/platform/icon-ngoac-kep.svg"
@@ -112,10 +120,10 @@ export function PlatformSection() {
           </div>
         </div>
 
-        {/* CỘT PHẢI – HÌNH ẢNH */}
+        {/* CỘT PHẢI */}
         <div className="flex-1 sticky top-0 min-h-[700px] flex items-start justify-center pt-[96px] pb-[99px] pr-[-30px]">
           <div className="relative w-[550px] h-[550px] rounded-xl shadow-md overflow-hidden">
-            {/* ẢNH 1 (CỐ ĐỊNH) */}
+            {/* Ảnh nền cố định */}
             <Image
               src="/platform/Mask group.svg"
               alt="Ảnh nền ban đầu"
@@ -124,8 +132,7 @@ export function PlatformSection() {
               priority
               className="object-cover object-center rounded-xl z-0"
             />
-
-            {/* ẢNH 2–5 SCROLL */}
+            {/* Ảnh scroll động */}
             {scrollData.map((item, idx) => (
               <motion.div
                 key={idx}
