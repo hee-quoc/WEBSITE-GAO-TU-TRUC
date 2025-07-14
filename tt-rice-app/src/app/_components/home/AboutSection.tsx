@@ -57,7 +57,7 @@ export function AboutSection() {
         >
           <h2
             className="text-[56px] leading-[1] font-bold mb-6 max-w-[573px] mx-auto text-center"
-            style={{ color: "#2D3E50" }}
+            style={{ color: "#0A5B89" }}
           >
             Hành trình nâng tầm giá trị gạo Việt
           </h2>
@@ -69,7 +69,7 @@ export function AboutSection() {
           </p>
           <Button
             size="small"
-            className="bg-[#36B37E] hover:bg-[#279766] text-white transition-all duration-300 rounded-full px-5 py-3.5"
+            className="bg-[#6C9126] hover:bg-[#6C9126] text-white transition-all duration-300 rounded-full px-5 py-3.5"
             onClick={handleClick}
           >
             <span className="flex items-center gap-2">

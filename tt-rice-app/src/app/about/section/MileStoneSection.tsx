@@ -7,7 +7,7 @@ const milestoneBlocks = [
   {
     id: "milestone-1988",
     bigImage: {
-      src: "/milestone/1988.svg",
+      src: "/milestone/illustrator.svg",
       width: 190,
       height: 138,
       top: 20,
@@ -40,7 +40,7 @@ const milestoneBlocks = [
   {
     id: "milestone-1990",
     bigImage: {
-      src: "/milestone/1990.svg",
+      src: "/milestone/Illustrator2.svg",
       width: 190,
       height: 138,
       top: 20,
