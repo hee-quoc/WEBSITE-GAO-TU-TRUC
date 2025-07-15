@@ -6,10 +6,8 @@ import Image from 'next/image';
 import Button from '~/app/_components/ui/Button';
 import { Menu, X } from 'lucide-react';
 import { useMediaQuery } from '../hooks/useMediaQuery';
-import { a } from 'node_modules/framer-motion/dist/types.d-D0HXPxHm';
-const mobileLogo ={alt:"Tu Truc mobile logo", width: 64, height: 35}
 
-// --- Data for Mobile Layout (Percentages calculated from your pixel values) ---
+const mobileLogo ={alt:"Tu Truc mobile logo", width: 64, height: 35}
 const desktopLogo = { alt: 'Tu Truc logo', width: 150, height: 40}
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);

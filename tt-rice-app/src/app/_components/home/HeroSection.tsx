@@ -4,15 +4,24 @@
 import { useState,useEffect } from 'react';
 import Image from 'next/image';
 import Button from '../ui/Button';
+import { useMediaQuery } from '~/app/hooks/useMediaQuery';
 
-const slides = [
-  { id: 0, imageSrc: "/images/home/img_hero_background2.svg" },
-  { id: 1, imageSrc: "/images/home/img_hero_background2.svg" },
-  { id: 2, imageSrc: "/images/home/img_hero_background2.svg" },
-  { id: 3, imageSrc: "/images/home/img_hero_background2.svg" },
+const slidesDesktop = [
+  { id: 0, imageSrc: "/images/home/img_hero_background2.svg" , width: 1440, height: 915},
+  { id: 1, imageSrc: "/images/home/img_hero_background2.svg" , width: 1440, height: 915},
+  { id: 2, imageSrc: "/images/home/img_hero_background2.svg" , width: 1440, height: 915},
+  { id: 3, imageSrc: "/images/home/img_hero_background2.svg" , width: 1440, height: 915},
+];
+const slidesMobile = [
+  { id: 0, imageSrc: "/images/home/img_hero_background_mobile.png", width: 375, height: 798 },
+  { id: 1, imageSrc: "/images/home/img_hero_background_mobile.png", width: 375, height: 798 },
+  { id: 2, imageSrc: "/images/home/img_hero_background_mobile.png", width: 375, height: 798 },
+  { id: 3, imageSrc: "/images/home/img_hero_background_mobile.png", width: 375, height: 798 },
 ];
 
 export function HeroSection() {
+  const isMobile = useMediaQuery('(max-width: 767px)');
+  const slides = isMobile ? slidesMobile : slidesDesktop;
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () => {
@@ -47,11 +56,12 @@ export function HeroSection() {
       setIsClicked(true);
       window.location.href = "/products";
     };
+    
   return (
     
-    <section className="relative w-full overflow-x-hidden">
+    <section className={`relative w-full overflow-x-hidden ${isMobile ? 'min-h-screen' : ''}`}>
       <div
-        className="flex transition-transform duration-500 ease-in-out"
+        className={`flex transition-transform duration-500 ease-in-out ${isMobile ? 'min-h-screen' : ''}`}
         style={{
           width: `${slides.length * 100}%`,
           transform: `translateX(-${(currentIndex * 100) / slides.length}%)`,
@@ -67,8 +77,8 @@ export function HeroSection() {
             <Image
               src={slide.imageSrc}
               alt={`Hero Background ${slide.id + 1}`}
-              width={1440}
-              height={915}
+              width={slide.width}
+              height={slide.height}
               priority={slide.id === 0}
               quality={85}
               sizes="100vw"
@@ -79,12 +89,17 @@ export function HeroSection() {
       </div>
         <div id="hero-slogan" className="absolute inset-0 flex top-[116px] z-10 text-center ">
             <div className="relative inline-block mx-auto w-full max-w-[1020px] px-4">
-              <h1 className="text-steel-blue md:text-6xl text-4xl font-bold leading-tight text-blue-dark sm:text-4xl lg:text-6xl top-1">
+              {isMobile?<h1 className="text-steel-blue text-[42px] font-bold leading-[96%] top-1">
+                Thương Hiệu<br /> 
+                Gạo Nâng Tầm <br />
+                Tinh Hoa Ngọc <br />
+                Thực Đất Việt
+              </h1>:<h1 className="text-steel-blue md:text-[56px] font-bold top-1 leading-[96%]">
                 Thương Hiệu Gạo<br />
                 Nâng Tầm Tinh Hoa Ngọc Thực Đất Việt
-              </h1>
+              </h1>}
               <Button
-                size="large"
+                size="medium"
                 className="
                   absolute left-1/2 -translate-x-1/2 mt-2 
                   z-10 flex items-center gap-2 bg-green-normal 
@@ -109,7 +124,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="absolute left-4 top-60 md:top-2/5 transform -translate-y-1/2 z-20">
+          <div className="absolute left-4 top-[425px] md:top-2/5 transform -translate-y-1/2 z-20">
             <button
               onClick={handlePrev}
               className="w-9 h-9 bg-white-transparent border border-green-light-2 rounded-full flex items-center justify-center shadow-lg hover:bg-green-normal transition-colors"
@@ -117,7 +132,7 @@ export function HeroSection() {
               <Image src="/img_arrowleft.svg" alt="Previous" width={16} height={16} />
             </button>
           </div>
-          <div className="absolute right-4 top-60 md:top-2/5 transform -translate-y-1/2 z-20">
+          <div className="absolute right-4 top-[425px] md:top-2/5 transform -translate-y-1/2 z-20">
             <button
               onClick={handleNext}
               className="w-9 h-9 bg-white-transparent border border-green-light-2 rounded-full flex items-center justify-center shadow-lg hover:bg-green-normal transition-colors"
