@@ -107,7 +107,7 @@ export function RiceSection() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-4 max-w-[973px] max-h-[223px] mx-auto pb-64 ">
+        <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-4 max-w-[973px] max-h-[223px] mx-auto pb-56 ">
         {/* Left Column: Title and Paragraph */}
         <div className="w-full md:basis-[56%] relative pt-64">
           <div className="absolute -top-2 -left-4 md:-left-10 w-10 md:w-14 h-8 md:h-10  opacity-50 pointer-events-none pt-64">

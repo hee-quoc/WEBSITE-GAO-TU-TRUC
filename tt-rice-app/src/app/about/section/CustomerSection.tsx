@@ -14,14 +14,14 @@ const testimonials: Testimonial[] = [
     },
     {
       id: '2',
-      content: 'Tui đứng bếp trong căn tin bệnh viện cũng mấy chục năm rồi. Điều quan trọng nhất của của mỗi suất ăn là phải đủ chất, sạch sẽ, ngon miệng, để các y bác sĩ và bệnh nhân ăn no, đủ sức chống lại bệnh tật chứ. Mà tui nói thiệt là từ ngày đổi qua gạo Tư Trúc thấy  bệnh nhân và các nhân viên y tế ăn uống ngon miệng hơn,  nên bản thân cũng thấy an tâm hơn hẳn.',
+      content: 'Tui đứng bếp trong căn tin bệnh viện cũng mấy chục năm rồi. Điều quan trọng nhất của của mỗi suất ăn là phải đủ chất, sạch sẽ, \n ngon miệng, để các y bác sĩ và bệnh nhân ăn no, đủ sức chống lại \n bệnh tật chứ. Mà tui nói thiệt là từ ngày đổi qua gạo Tư Trúc thấy \n bệnh nhân và các nhân viên y tế ăn uống ngon miệng hơn,\n nên bản thân cũng thấy an tâm hơn hẳn.',
       author: 'Cô Sáu',
       position: 'Bếp trưởng căn tin bệnh viện',
       avatar: '/cosau_story.png',
    },
    {
       id: '3',
-      content: 'Làm thì mệt đó, nhưng mà bữa trưa lúc nào cũng có cơm ngon, nóng hổi, dẻo thơm, nên mấy anh em ai ai cũng vui bụng.  Một năm 12 tháng 4 mùa ăn cơm ở đây riết thấy quen miệng luôn, hổm bị bệnh nghỉ ở nhà mà tự nhiên tới trưa là thấy nhớ nhớ  cơm phần ở công ty…',
+      content: 'Làm thì mệt đó, nhưng mà bữa trưa lúc nào cũng có cơm ngon, \n nóng hổi, dẻo thơm, nên mấy anh em ai ai cũng vui bụng.\n Một năm 12 tháng 4 mùa ăn cơm ở đây riết thấy quen miệng luôn, \n hổm bị bệnh nghỉ ở nhà mà tự nhiên tới trưa là thấy nhớ nhớ \n cơm phần ở công ty…',
       author: 'Anh Cường',
       position: 'Công nhân khu công nghiệp',
       avatar: '/anh_cuong_story.png',
@@ -105,7 +105,7 @@ export function CustomerSection() {
          /> :
     <section className="pt-20 pb-5 bg-[#FBFFF2]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 font-alegreya-sans" style={{ color: "#0A5B89" }}>
+          <h2 className="text-[56px] sm:text-4xl md:text-[56px] font-[700] mb-2 font-alegreya-sans" style={{ color: "#0A5B89" }}>
             Hạt gạo Tư Trúc qua câu chuyện <br  /> của mỗi người dùng
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl mb-8 font-alegreya-sans text-blue-normal">
@@ -115,11 +115,16 @@ export function CustomerSection() {
             <Image src="/img_.svg" alt="Quote" width={56} height={39} />
           </div>
           <div className="py-6">
-            <p className="max-w-[566px] text-[16px] sm:text-[8px] md:text-[16px] font-fz-poppins text-gray-light leading-relaxed flex-1" style={{color:"#667085"}}>
-              {testimonial.content}
+            <p className="max-w-[566px] text-[16px] sm:text-[8px] md:text-[16px] font-fz-poppins font-[400] leading-[140%] flex-1" style={{color:"#667085"}}>
+              {testimonial.content.split('\n').map((line, i, arr) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    {i !== arr.length - 1 && <br />}
+                  </React.Fragment>
+                ))}
             </p>
           </div>
-          <div className="flex flex-col items-center py-6 gap-4 md:flex-[1]">
+          <div className="flex flex-row items-center py-6 gap-4 md:flex-[1]">
             <Image
               src={testimonial.avatar}
               alt={testimonial.author}
@@ -127,11 +132,11 @@ export function CustomerSection() {
               height={56}
               className="rounded-full"
             />
-            <div className="text-center">
-              <h4 className="text-sm sm:text-base md:text-lg font-bold font-alegreya-sans text-blue-dark mb-1" style={{color:"#0A5B89"}}>
+            <div className="text-left">
+              <h4 className="text-[20px] sm:text-[20px] md:text-[20px] font-[500] font-alegreya-sans leading-[140%]  mb-1" style={{color:"#0A5B89"}}>
                 {testimonial.author}
               </h4>
-              <p className="text-xs sm:text-sm text-gray-muted font-alegreya-sans "style={{color:"#5C6578"}}>
+              <p className="text-[16px] sm:text-[16px] font-fz-poppins font-[400] opacity-60"style={{color:"#5C6578"}}>
                 {testimonial.position}
               </p>
             </div>

@@ -1,25 +1,26 @@
 "use client";
 import type { Testimonial } from "~/app/types/Types"
 import Image from "next/image"
+import React from "react";
 import { useState } from 'react';
 const testimonials: Testimonial[] = [
     {
         id: '1',
-        content: 'Làm lúa bao nhiêu năm nay, tôi hiểu rõ từng hạt gạo mình làm ra. Từ lúc gieo mạ đến ngày thu hoạch, đều tự tay chăm chút. Thành ra, bao năm nay tôi chỉ ăn mỗi gạo Tư Trúc, vì tôi biết chắc từng hạt cơm sạch sẽ, tử tế như chính công sức mình bỏ vào. ',
+        content: 'Làm lúa bao nhiêu năm nay, tôi hiểu rõ từng \n hạt gạo mình làm ra. Từ lúc gieo mạ đến \n ngày thu hoạch, đều tự tay chăm chút. \n Thành ra, bao năm nay tôi chỉ ăn mỗi gạo \n Tư Trúc, vì tôi biết chắc từng hạt cơm sạch sẽ, \n tử tế như chính công sức mình bỏ vào. ',
         author: 'Anh Năm Tiến (37 tuổi)',
         position: 'Nông dân Long Điền',
         avatar: '/testinomial_nam_tien.png'
     },
     {
       id: '2',
-      content: 'Nhà tui 3 người thì hết 2 người là đang làm việc cho xưởng này rồi: tui thì vận hành máy móc, vợ tui kiểm kho hàng. Thằng con tui thì mới thi đại học, tính ra toàn bộ học phí mười mấy năm của nó đều đến từ mấy nồi cơm thơm nóng của bà con hết đó chớ!',
+      content: 'Nhà tui 3 người thì hết 2 người là đang \n làm việc cho xưởng này rồi: tui thì \n vận hành máy móc, vợ tui kiểm kho hàng. \n Thằng con tui thì mới thi đại học, tính ra \n toàn bộ học phí mười mấy năm của nó \n đều đến từ mấy nồi cơm thơm nóng \n của bà con hết đó chớ!',
       author: 'Anh Long (37 tuổi)',
       position: 'Công nhân nhà máy Tư Trúc',
       avatar: '/anh_long_testinomial.png',
     },
     {
       id: '3',
-      content: 'Hơn 30 năm gắn bó cùng hạt gạo, tôi luôn nghĩ: “Hạt cơm mình bán ra, cuối cùng cũng sẽ có ngày quay về mâm cơm nhà mình”. Nên mỗi mẻ gạo, tôi coi như làm cho chính người thân mình ăn vậy. Sạch, thật, tử tế, chỉ cần vậy, rồi khách hàng sẽ tự cảm nhận…',
+      content: 'Hơn 30 năm gắn bó cùng hạt gạo, \n tôi luôn nghĩ: “Hạt cơm mình bán ra, \n cuối cùng cũng sẽ có ngày quay về \n mâm cơm nhà mình”. Nên mỗi mẻ gạo, \n tôi coi như làm cho chính người thân mình \n ăn vậy. Sạch, thật, tử tế, chỉ cần vậy, \n rồi khách hàng sẽ tự cảm nhận…',
       author: 'Bà Tư (58 tuổi)',
       position: 'Chủ nhà máy Tư Trúc',
       avatar: '/ba_tu_testinomial.png',
@@ -32,7 +33,7 @@ export function Testimonial(){
     return (
         <section className="pb-20 pt-5 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-          <div className="grid grid-cols-1 lg:grid-cols-[25%_65%] gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-[25%_68%] gap-4 lg:gap-6">
             {/* Title Section */}
             <div className="text-center lg:text-left flex flex-col justify-center">
            <h2 className="font-alegreya-sans font-[500] text-[56px] sm:text-[56px] leading-[100%] tracking-[0]  text-[#526D1D]">
@@ -52,7 +53,12 @@ export function Testimonial(){
                 {/* Content Text */}
                 <div className="flex flex-col md:flex-[3]">
                   <p className="text-sm sm:text-base md:text-lg font-fz-poppins text-gray-light leading-relaxed flex-1 border-r-2 pr-4 border-[#E8EAED] " style={{color:"#667085"}}>
-                    {testimonial.content}
+                    {testimonial.content.split('\n').map((line, i, arr) => (
+                      <React.Fragment key={i}>
+                        {line}
+                        {i !== arr.length - 1 && <br />}
+                      </React.Fragment>
+                    ))}
                   </p>
                   {/* Pagination */}
                   <div className="flex gap-2 mt-2 sm:mt-4">
