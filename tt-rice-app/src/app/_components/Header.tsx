@@ -5,7 +5,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Button from '~/app/_components/ui/Button';
 import { Menu, X } from 'lucide-react';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
+const mobileLogo ={alt:"Tu Truc mobile logo", width: 64, height: 35}
+const desktopLogo = { alt: 'Tu Truc logo', width: 150, height: 40}
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,29 +27,29 @@ const Header: React.FC = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
+  const isMobile = useMediaQuery('(max-width: 767px)');
+    const activeLogo = isMobile ? mobileLogo : desktopLogo;
+    const logoSrc = isMobile ? '/icon_logo_mobile.svg' : '/logo_header.svg';
   return (
     <header
       className={`
          top-0 z-50 w-full ease-in-out  fixed 
       `}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-8xl mx-auto"> 
         <div className="flex justify-between items-center h-18">
-          {/* Logo */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 pl-10 lg:pl-[159px]">
             <Link href="/">
               <Image
-                src="/logo_header.svg"
-                alt="Tu Truc Logo"
-                width={150}
-                height={40}
+                src={logoSrc}
+                alt={activeLogo.alt}
+                width={activeLogo.width}
+                height={activeLogo.height}
                 className="h-10 w-auto"
               />
             </Link>
           </div>
-
-          {/* Desktop Navigation */}
+        
           <nav className="hidden md:flex space-x-8">
             <Link href="/about" className="text-dark-gray hover:text-green-normal transition-colors">
               Về chúng tôi
@@ -69,11 +72,11 @@ const Header: React.FC = () => {
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center lg:pr-[159px]">
             <Button
               variant="secondary"
               size="medium"
-              className=" group flex items-center gap-2 border-green-normal rounded-full text-green-normal hover:bg-green-dark hover:text-white"
+              className=" group flex items-center gap-2 border-green-normal rounded-full text-green-normal hover:bg-green-dark hover:text-white "
             >
               <span>Nhắn tin</span>
               <Image 
@@ -99,7 +102,7 @@ const Header: React.FC = () => {
           <div className={`md:hidden ${isScrolled ? 'bg-white shadow-sm' : 'bg-green-lightest'} shadow-md`}>
             <nav className="flex flex-col space-y-4 px-4 py-4">
               <Link
-                href="#about"
+                href="/about"
                 className="text-dark-gray hover:text-green-normal transition-colors"
                 onClick={toggleMenu}
               >
