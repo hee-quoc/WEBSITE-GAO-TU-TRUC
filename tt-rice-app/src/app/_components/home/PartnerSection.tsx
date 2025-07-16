@@ -5,12 +5,12 @@ export function PartnerSection(){
        <section className=" pt-10 pb-20 bg-[#FBFFF2] bg-cover bg-center bg-no-repeat">
         <div className="flex flex-col items-center">
         <div
-          className="bg-cover bg-center bg-no-repeat py-8 px-4 sm:px-6 lg:px-8 rounded-2xl mx-4 sm:mx-6 lg:mx-8 max-w-[1119px] max-h-[350px]"
+          className="bg-cover bg-center bg-no-repeat py-8 px-4 sm:px-6 lg:px-8 rounded-2xl mx-4 sm:mx-6 lg:mx-8 max-w-[1119px] max-h-[774px] sm:max-h-[350px]"
           style={{ backgroundImage: 'url("/class_background.jpg")' }}
         >
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-2 sm:mb-2">
-              <h2 className="text-[32x] sm:text-[32px] font-[400] font-alegreya opacity-90" style={{color: "#F0F1F3"}}>
+              <h2 className="text-[28px] sm:text-[32px]  font-[400] font-alegreya sm:opacity-90" style={{color: "#F0F1F3"}}>
                 Đối tác và khách hàng
               </h2>
             </div>
@@ -39,7 +39,7 @@ export function PartnerSection(){
 
               {/* Bếp ăn công nghiệp */}
               <div className="flex-shrink-0 w-full sm:w-[470px] h-auto sm:h-[200px] rounded-[16px] p-6 grid grid-cols-1 bg-[#EDF5DC] shadow-md">
-                <div className="mt-2">
+                <div className="mt-2 mb-4 sm:mb-0">
                   <Image src="/img_building.svg" alt="Business" width={29} height={29} />
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4">

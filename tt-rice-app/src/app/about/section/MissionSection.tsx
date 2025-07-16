@@ -10,12 +10,12 @@ const backgroundImages = [
 
 const textContent = [
   {
-    heading: 'Củng cố vị trí tại thị trường Đông Nam Bộ và hướng đến cung ứng gạo toàn quốc',
+    heading: 'Củng cố vị trí tại thị trường Đông Nam Bộ \n và hướng đến cung ứng gạo toàn quốc',
     paragraph:
       'Tư Trúc hướng đến việc củng cố vị thế tại thị trường Đông Nam Bộ, và vươn mình \n trở thành “thương hiệu quốc dân" - có mặt trong mỗi căn bếp Việt, trở thành \n biểu tượng cho chất lượng và sự an tâm trong từng bữa ăn.',
   },
   {
-    heading: "Lan toả tinh hoa gạo Việt\ntừ cánh đồng đến bàn ăn",
+    heading: "Lan toả tinh hoa gạo Việt \ntừ cánh đồng đến bàn ăn",
     paragraph:
       'Tư Trúc không chỉ nâng tầm giá trị hạt gạo Việt, \n mà còn gìn giữ di sản lúa nước ngàn đời - \n nơi hội tụ tinh hoa đất trời, bàn tay người nông dân \n và tri thức khoa học, để gửi trao vào từng bữa ăn.',
   },
@@ -61,31 +61,31 @@ export function MissionSection() {
     setIndex(0)
   }
   return (
-    <section className="pt-20 pb-5 bg-white">
-      <div className="flex justify-center flex-col md:flex-row items-start  max-w-[1122px] mx-auto  py-8  "> 
+    <section className="pt-20 pb-5 bg-white ">
+      <div className="flex justify-center flex-col max-w-[335px] md:flex-row items-start md:max-w-[1122px] mx-auto  py-8  "> 
             {/* Left Column: Title */}
-            <div className="w-full md:w-1/2 text-center md:text-left">
-              <h2 className="font-alegreya-sans font-[700] text-[56px] leading-[100%] tracking-[0%] max-w-[360px] max-h-[168px] "style={{color:"#0A5B89"}}>
-                Sứ mệnh <br />
-                tôn vinh <br/>
+            <div className="w-full md:w-1/2 text-left sm:text-center md:text-left">
+              <h2 className="font-alegreya-sans font-[700]  leading-[100%] tracking-[0%] text-[42px] max-w-[335px] sm:max-w-[360px]:max-h-[168px]:text-[56px] "style={{color:"#0A5B89"}}>
+                Sứ mệnh <br className="hidden sm:inline"/>
+                tôn vinh <br className="hidden sm:inline"/>
                 hạt ngọc thực
               </h2>
             </div>
 
             {/* Right Column: Content */}
           <div className="w-full md:w-1/2 relative">
-            <h3 className="font-alegreya-sans text-[32px]  sm:text-xl md:text-[32px] font-medium mb-4" style={{color:"#667085"}}>
-              Giá trị của hạt gạo qua lăng kính của Từ Trúc
+            <h3 className="font-alegreya-sans text-[28px]  sm:text-[28px] md:text-[32px] font-medium mb-4" style={{color:"#667085"}}>
+              Giá trị hạt gạo qua <br className="sm:hidden"/> lăng kính của Từ Trúc
             </h3>
 
             <div className="relative">
               {/* Quote image placed behind paragraph */}
-              <div className="absolute  -left-11 w-14 h-10  opacity-30 pointer-events-none">
+              <div className="absolute -top-2 sm:-left-11 sm:top-0 w-14 h-10 opacity-30 pointer-events-none">
               <Image src="/img_.svg" alt="Quote" width={34} height={24} />
               </div>
-              <p className="font-fz-poppins text-[16px] sm:text-xl md:text-[16px] text-gray-600 text-justify leading-relaxed max-w-[741px]">
-                Với nhiều người, gạo chỉ đơn thuần là lương thực để no bụng. <br /> Nhưng với Từ Trúc, đó là kết tinh của đất trời hào phóng,<br />
-                đôi tay cần mẫn của người nông dân, sự kỹ lưỡng, chỉn chu <br /> trong từng công đoạn của người công nhân và hơn hết,<br />
+              <p className="font-fz-poppins text-[14px] text-left sm:text-xl md:text-[16px] text-gray-600 sm:text-justify leading-relaxed max-w-[741px]">
+                Với nhiều người, gạo chỉ đơn thuần là lương thực để no bụng. <br className="hidden sm:inline"/> Nhưng với Từ Trúc, đó là kết tinh của đất trời hào phóng,<br className="hidden sm:inline"/>
+                đôi tay cần mẫn của người nông dân, sự kỹ lưỡng, chỉn chu <br className="hidden sm:inline"/> trong từng công đoạn của người công nhân và hơn hết,<br className="hidden sm:inline"/>
                 đó còn là niềm tự hào về nền văn minh lúa nước ngàn đời.
               </p>
             </div>
@@ -106,21 +106,21 @@ export function MissionSection() {
                 </p>
                 <Image src="/vision_left_icon.svg" alt="Quote" width={18} height={8} />
               </div>
-             <h2 className={`font-alegreya-sans text-[32px] sm:text-[16px] md:text-[32px]  mb-4 max-w-[549px] transition-opacity duration-700 ${fade ? 'opacity-100' : 'opacity-0'}`} style={{color:"#0A5B89"}}>
+             <h2 className={`font-alegreya-sans text-[28px] leading-[100%] tracking-[0%] sm:text-[16px] md:text-[32px]  mb-4 max-w-[295px] md:max-w-[549px] transition-opacity duration-700 ${fade ? 'opacity-100' : 'opacity-0'}`} style={{color:"#0A5B89"}}>
                 {textContent[index]?.heading
                   ? textContent[index].heading.split('\n').map((line, i, arr) => (
                       <React.Fragment key={i}>
                         {line}
-                        {i !== arr.length - 1 && <br />}
+                        {i !== arr.length - 1 && <br className="hidden sm:inline"/>}
                       </React.Fragment>
                     ))
                   : null}
               </h2>
-              <p className={`max-w-[595px] font-fz-poppins  text-white text-[16px] sm:text-[8px] md:text-[16px] max-w-[664px] mb-6 transition-opacity duration-700 ${fade ? 'opacity-100' : 'opacity-0'}`} style={{color:"#5C6578"}}>
+              <p className={`max-w-[295px] md:max-w-[664px] font-fz-poppins  text-white text-[14px] sm:text-[8px] md:text-[16px]  mb-6 transition-opacity duration-700 ${fade ? 'opacity-100' : 'opacity-0'}`} style={{color:"#5C6578"}}>
                 {textContent[index]?.paragraph.split('\n').map((line, i, arr) => (
                   <React.Fragment key={i}>
                     {line}
-                    {i !== arr.length - 1 && <br />}
+                    {i !== arr.length - 1 && <br className="hidden sm:inline"/>}
                   </React.Fragment>
                 ))
                 }
@@ -141,7 +141,7 @@ export function MissionSection() {
         </div>
         {/* Core Values Accordion Section */}
         <div className="max-w-[1122px] mx-auto px-4 py-12 flex flex-col md:flex-row gap-6">
-          <h3 className="text-[#54585A] text-[32px] font-[400] md:w-1/4 font-alegreya">Giá trị cốt lõi</h3>
+          <h3 className="text-[#54585A] text-[28px] sm:text-[32px] font-[400] md:w-1/4 font-alegreya">Giá trị cốt lõi</h3>
           <div className="md:w-3/4 space-y-4">
             {coreValues.map((item, idx) => (
               <div key={idx} className={`border-b-1 ${idx === openIndex ? "py-8": "py-4" }`}
@@ -157,7 +157,7 @@ export function MissionSection() {
                     width={55}
                     height={59}
                     />
-                    <span className="font-alegreya-sans text-[32px] font-[400]">{item.title}</span>
+                    <span className="font-alegreya-sans text-[28px] w-[227px] pr-11 sm:text-[32px]:pr-0 sm:w-[606px] font-[400]">{item.title}</span>
                   </div>
                   <Image
                     src={openIndex === idx ? '/arrow_up.svg' : '/arrow_down.svg'}
@@ -168,11 +168,11 @@ export function MissionSection() {
                   />
                 </button>
                 {openIndex === idx && (
-                  <p className="pl-4 mt-2 text-sm md:text-base font-fz-poppins ml-12 font-[400] text-[#5C6578]">
+                  <p className="pl-4 mt-5 sm:mt-2 text-[14px] w-[227px] sm:w-[606px] md:text-base:text-sm font-fz-poppins ml-12 font-[400] text-[#5C6578]">
                     {item.description.split('\n').map((line, i, arr) => (
                       <React.Fragment key={i}>
                         {line}
-                        {i !== arr.length - 1 && <br />}
+                        {i !== arr.length - 1 && <br className="hidden sm:inline"/>}
                       </React.Fragment>
                     ))}
                   </p>

@@ -32,11 +32,11 @@ export function StatisticSection(){
         <section className="pt-20 pb-5 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative">
-            <div className="w-[full] pb-16">
-              <h2 className="text-[56px] sm:text-[56px] md:text-[56px] font-[700] font-alegreya-sans" style={{color:" #0A5B89"}}>
+            <div className="w-[full] pb-16 flex flex-col items-center sm:flex-none sm:items-baseline">
+              <h2 className="text-[42px] sm:text-[56px] md:text-[56px] font-[700] text-center sm:text-left font-alegreya-sans" style={{color:" #0A5B89"}}>
                 Ươm hạt gạo, <br /> nuôi mạch nguồn Việt Nam
               </h2>
-              <p className="text-[32px] sm:text-[32px] mb-2 font-alegreya" style={{color:"#667085"}}>
+              <p className="text-[28px] sm:text-[32px]  text-center sm:text-left mb-2 font-alegreya" style={{color:"#667085"}}>
                 Những giá trị mà hạt gạo Tư Trúc đã mang lại
               </p>
               <Button
@@ -50,7 +50,7 @@ export function StatisticSection(){
                 </span>
               </Button>
             </div>
-            <div className="w-[587px] h-[327px] absolute top-5.5 left-[52%]">
+            <div className="w-[587px] h-[327px] absolute top-5.5 left-[52%] hidden sm:inline">
               <Image
                 src="/img_rectangle_3.png"
                 alt="Rice Field"
@@ -62,7 +62,7 @@ export function StatisticSection(){
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-[42%_58%] gap-8">
             {/* Left Statistics */}
-            <div className="bg-[#F4F3EA] rounded-[16px] overflow-hidden relative w-full h-auto lg:w-[495px] lg:h-[642px]">
+            <div className="bg-[#F4F3EA] rounded-[16px] overflow-hidden relative w-full h-[442px] lg:w-[495px] lg:h-[642px]">
               <Image
                 src="/img_image_104.png"
                 alt="Farmers"
@@ -71,18 +71,18 @@ export function StatisticSection(){
               />
               <div className="relative z-10 px-6 sm:px-6 text-white">
                 <div className="mb-8">
-                  <p className="text-[82px] sm:text-[82px] font-[700] text-white font-alegreya-sans leading-none pt-6">&gt;300</p>
-                  <p className="text-white text-[16px] font-fz-poppins opacity-80">
+                  <p className="text-[56px] sm:text-[82px] font-[700] text-white font-alegreya-sans leading-none pt-6">&gt;300</p>
+                  <p className="text-white text-[14px] sm:text-[16px] font-fz-poppins opacity-80">
                     hộ nông dân tại các vùng canh tác<br /> đang
                     hợp tác cùng Tư Trúc
                   </p>
                 </div>
                 <div>
-                  <div className="text-[82px] sm:text-[82px] font-[700] text-white font-alegreya-sans leading-none"> <svg className="inline-block w-16 h-16 sm:w-16 sm:h-16 align-middle mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <div className="text-[56px] sm:text-[82px] font-[700] text-white font-alegreya-sans leading-none"> <svg className="inline-block w-16 h-16 sm:w-16 sm:h-16 align-middle mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 6L19 13H5L12 6Z" fill="#FFB000" stroke="#FFB000" strokeWidth="2" strokeLinejoin="round"/> {/* Triangle up icon */}
                   </svg>10%</div>
-                  <p className="text-[16px] font-fz-poppins opacity-80">
-                    tổng thu nhập bình quân của dân địa phương,<br /> nhờ quy trình thu mua ổn định & giá thu mua<br /> cao hơn thị trường
+                  <p className="text-[14px] sm:text-[16px] font-fz-poppins opacity-80">
+                    tổng thu nhập bình quân của dân địa phương,<br className="hidden sm:inline"/> nhờ quy trình thu mua ổn định & giá thu mua<br className="hidden sm:inline"/> cao hơn thị trường
                   </p>
                 </div>
               </div>
@@ -91,37 +91,37 @@ export function StatisticSection(){
             {/* Right Statistics */}
             <div className="flex flex-col gap-8 w-full">
               {/* >100 & 70% */}
-              <div className="bg-[#6D9127] rounded-[16px] px-6 sm:px-10 py-6 text-white w-full lg:w-[605px] h-auto lg:h-[311px]">
+              <div className="bg-[#6D9127] rounded-[16px] px-6 sm:px-10 py-6 text-white w-full lg:w-[605px] h-[318px] lg:h-[311px]">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <div className="text-[82px] sm:text-[82px] font-bold font-alegreya-sans leading-none">&gt;100</div>
-                    <p className="text-[16px] font-fz-poppins">
-                      ha diện tích được áp dụng quy<br /> trình canh tác sạch, không hóa<br /> chất độc hại,... để cho ra dòng<br /> sản phẩm sạch mỗi năm
+                    <div className="text-[56px] sm:text-[82px] font-bold font-alegreya-sans leading-none">&gt;100</div>
+                    <p className="text-[14px] sm:text-[16px] font-fz-poppins">
+                      ha diện tích được áp dụng quy<br className="hidden sm:inline"/> trình canh tác sạch, không hóa<br className="hidden sm:inline"/> chất độc hại,... để cho ra dòng<br className="hidden sm:inline"/> sản phẩm sạch mỗi năm
                     </p>
                   </div>
                   <div>
-                    <div className="text-[82px] sm:text-[82px] font-bold font-alegreya-sans leading-none"><svg className="inline-block w-16 h-16 sm:w-16 sm:h-18 align-middle mr-1" viewBox="0 2 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div className="text-[56px] sm:text-[82px] font-bold font-alegreya-sans leading-none"><svg className="inline-block w-16 h-16 sm:w-16 sm:h-18 align-middle mr-1" viewBox="0 2 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     {/* Added stroke and stroke-width for border */}
                     <path d="M12 18L5 11H19L12 18Z" fill="#FFB000" stroke="#FFB000" strokeWidth="2" strokeLinejoin="round"/>
                   </svg>70%</div>
-                    <p className="text-[16px] font-fz-poppins">
-                      lượng thuốc bảo vệ thực vật<br /> so với phương pháp canh tác<br /> truyền thống
+                    <p className="text-[14px] sm:text-[16px] font-fz-poppins">
+                      lượng thuốc bảo vệ thực vật<br className="hidden sm:inline"/> so với <br className=" sm:hidden"/> phương pháp canh tác<br className="hidden sm:inline"/> truyền thống
                     </p>
                   </div>
                 </div>
               </div>
 
               {/* 100% */}
-              <div className="rounded-[16px] px-6 sm:px-10 py-6 relative overflow-hidden bg-cover bg-center w-full lg:w-[605px] h-auto lg:h-[311px]">
+              <div className="rounded-[16px] px-6 sm:px-10 py-6 relative overflow-hidden bg-cover bg-center w-full lg:w-[605px] h-[331px] lg:h-[311px]">
                 <Image
                   src="/img__1.png"
                   alt="Environment"
                   fill
-                  className="object-cover scale-140  translate-x-30 transform rounded-[16px]"
+                  className=" scale-x-120 translate-x-7 sm:scale-140:translate-x-30:transform:object-cover rounded-[16px]"
                 />
-                <div className="relative z-10 text-white">
-                  <div className="text-[82px] sm:text-[82px] font-bold font-alegreya-sans leading-none">100%</div>
-                  <p className="text-[16px] font-fz-poppins opacity-80 max-w-[251px]" style={{color:"#FBFFF2"}}>
+                <div className="relative z-10 pt-[50%] sm:flex-none text-white h-full">
+                  <div className="text-[56px] sm:text-[82px] font-bold font-alegreya-sans leading-none">100%</div>
+                  <p className="text-[14px] sm:text-[16px] font-fz-poppins opacity-80 sm:opacity-80:max-w-[251px]" style={{color:"#FBFFF2"}}>
                     phụ phẩm (trấu, cám, tro...) được tái chế làm phân bón hữu cơ và thức ăn chăn nuôi, góp phần giảm phát thải và gìn giữ môi trường
                   </p>
                 </div>

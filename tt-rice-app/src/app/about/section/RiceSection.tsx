@@ -35,7 +35,7 @@ export function RiceSection() {
     <section className="pt-20 pb-5 pt-[96px] bg-[#6C9126]">
         <div className="bg-[#f9f9f3] relative flex flex-col justify-center mx-auto py-96 px-8 rounded-3xl border border-green-200 w-[1296px] h-[1296px]">
           {/* Title */}
-          <div className="flex flex-col text-center mb-12 items-center">
+          <div className="flex flex-col text-center mb-12 items-center hidden md:inline">
             <h2 className="font-alegreya-sans text-[56px] md:text-[56px] font-[700] font-bold text-[#0A5B89] mb-2 max-w-[542px] leading-[100%] tracking-[0%]">
               Hạt gạo Việt từ ruộng đồng đến bàn ăn
             </h2>

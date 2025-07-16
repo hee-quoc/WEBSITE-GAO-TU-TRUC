@@ -2,7 +2,8 @@
 import type { Testimonial } from "~/app/types/Types"
 import Image from "next/image"
 import React from "react";
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+
 const testimonials: Testimonial[] = [
     {
         id: '1',
@@ -28,7 +29,32 @@ const testimonials: Testimonial[] = [
 ];
 export function Testimonial(){
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const testimonial = testimonials[currentIndex];
+  useEffect(() => {
+      const container = scrollRef.current;
+      if (!container) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const index = Number(entry.target.getAttribute('data-index'));
+              setCurrentIndex(index);
+            }
+          });
+        },
+        {
+          root: container,
+          threshold: 0.6, // 60% hiển thị mới tính là active
+        }
+      );
+
+      const children = container.querySelectorAll('[data-index]');
+      children.forEach((el) => observer.observe(el));
+
+      return () => observer.disconnect();
+    }, []);
   if (!testimonial) return ""; 
     return (
         <section className="pb-20 pt-5 bg-white">
@@ -36,15 +62,59 @@ export function Testimonial(){
           <div className="grid grid-cols-1 lg:grid-cols-[25%_68%] gap-4 lg:gap-6">
             {/* Title Section */}
             <div className="text-center lg:text-left flex flex-col justify-center">
-           <h2 className="font-alegreya-sans font-[500] text-[56px] sm:text-[56px] leading-[100%] tracking-[0]  text-[#526D1D]">
+           <h2 className="font-alegreya-sans font-[500] text-[36px] sm:text-[56px] leading-[100%] tracking-[0]  text-[#526D1D]">
             Mọi người nghĩ gì về <br /> Tư Trúc
           </h2>
           </div>
-
-            {/* Testimonial Content */}
-            <div className="bg-white border rounded-2xl p-4 sm:p-6 lg:p-8 flex flex-col gap-6" style={{ borderColor: '#E9F2DA' }}>
+          
+          <div className="bg-white sm:border rounded-2xl p-4 sm:p-6 lg:p-8 flex flex-col gap-6" style={{ borderColor: '#E9F2DA' }}>
+            {/* Mobile */}
+             <div ref={scrollRef} className="block lg:hidden overflow-x-auto scroll-smooth scrollbar-hide -mx-4 px-4">
+              <div className="flex gap-4 w-max">
+                {testimonials.map((testimonial, index) => (
+                  <div
+                    key={testimonial.id}
+                    data-index={index}
+                    className="w-[297px] min-h-[395px] sm:w-[320px] flex-shrink-0 bg-white border rounded-xl p-4 flex flex-col gap-4"
+                    style={{ borderColor: '#E9F2DA' }}
+                  >
+                     <div className="flex-shrink-0 md:flex-[0.25]" >
+                        <Image src="/img_.svg" alt="Quote" width={56} height={39} />
+                    </div>
+                    <div className="text-sm sm:text-base font-fz-poppins leading-relaxed break-words" style={{ color: '#667085' }}>
+                      {testimonial.content.split('\n').map((line, i, arr) => (
+                        <React.Fragment key={i}>
+                          {line}
+                          {i !== arr.length - 1 && <br className="hidden sm:inline" />}
+                        </React.Fragment>
+                      ))}
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Image src={testimonial.avatar} alt={testimonial.author} width={40} height={40} className="rounded-full" />
+                      <div>
+                        <h4 className="text-[16px] font-bold font-alegreya-sans text-blue-dark" style={{ color: '#0A5B89' }}>{testimonial.author}</h4>
+                        <p className="text-[14px] text-gray-muted font-alegreya-sans opacity-60" style={{ color: '#5C6578' }}>{testimonial.position}</p>
+                      </div>
+                    </div>
+                    <div className="flex justify-center gap-2 mt-4">
+                      {testimonials.map((item, idx) => (
+                        <Image
+                          key={idx}
+                          src={idx === currentIndex ? '/Pagination_current.svg' : '/Pagination.svg'}
+                          alt={item.author}
+                          width={18}
+                          height={8}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+              {/* Testimonial Content */}
+              {/* Desktop */}
               {/* Testimonial Text + Avatar */}
-              <div className="flex flex-col md:flex-row gap-4 lg:gap-4 ">
+              <div className="hidden lg:flex flex-col md:flex-row gap-4 lg:gap-4 ">
                 {/* Quote Icon */}
                 <div className="flex-shrink-0 md:flex-[0.25]" >
                   <Image src="/img_.svg" alt="Quote" width={56} height={39} />

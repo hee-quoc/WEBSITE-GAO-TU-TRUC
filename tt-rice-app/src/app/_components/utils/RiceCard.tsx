@@ -42,7 +42,7 @@ const RiceCard: React.FC<RiceCardProps> = ({ image, hoverImage, label, slug }) =
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleClick}
     >
-      <div className="w-full sm:w-[274px] h-[274px] flex items-center justify-center">
+      <div className="w-full sm:w-[274px] h-[273px] flex items-center justify-center">
         <Image
           src={isHovered ? hoverImage : image}
           alt={label}
