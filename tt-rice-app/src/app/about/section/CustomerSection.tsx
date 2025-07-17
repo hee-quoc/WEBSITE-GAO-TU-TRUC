@@ -95,8 +95,8 @@ function MobileCard({ testimonial, setCurrentIndex, currentIndex }: MobileCardPr
 export function CustomerSection() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const testimonial = testimonials[currentIndex];
-  if (!testimonial) return ""; 
   const isMobile = useMediaQuery("(max-width: 767px)");
+  if (!testimonial) return null; 
   return (
     isMobile ? <MobileCard
         testimonial={testimonial}
