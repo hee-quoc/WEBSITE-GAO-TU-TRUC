@@ -30,7 +30,7 @@ const scrollData = [
     icon: "/platform/icon.svg",
     title: ["Uy tín hàng đầu,", "đồng hành dài lâu"],
     content:
-      "Với bề dày kinh nghiệm trong ngành lúa gạo, <br /> Tư Trúc đã trở thành đối tác tin cậy lâu năm <br /> của nhiều doanh nghiệp trong và ngoài nước, <br />khẳng định vững chắc vị thế uy tín hàng đầu trên thị trường.",
+      "Với bề dày kinh nghiệm trong ngành lúa gạo, <br /> Tư Trúc đã trở thành đối tác tin cậy lâu năm <br /> của nhiều doanh nghiệp trong và ngoài nước, <br />khẳng định vững chắc vị thế uy tín hàng đầu <br /> trên thị trường.",
     image: "/platform/4.svg",
   },
 ];
@@ -86,8 +86,8 @@ export function PlatformSection() {
               height={39}
             />
             <p className="text-[#005B94] text-[20px] leading-relaxed font-medium font-fz">
-              Suốt hơn 3 thập kỷ, Tư Trúc bền bỉ xây dựng nền tảng sản xuất chủ động,
-              kiểm soát toàn diện từ chất lượng đến sản lượng, luôn sẵn sàng đồng hành lâu dài
+              Suốt hơn 3 thập kỷ, Tư Trúc bền bỉ xây dựng nền tảng sản xuất <br /> chủ động,
+              kiểm soát toàn diện từ chất lượng đến sản lượng, <br /> luôn sẵn sàng đồng hành lâu dài
               cùng các đối tác chiến lược
             </p>
           </div>
@@ -103,7 +103,7 @@ export function PlatformSection() {
                   height={40}
                   className="mb-4"
                 />
-                <h3 className="text-[#628423] text-[32px] font-fz font-regular leading-snug">
+                <h3 className="text-[#628423] text-[32px] font-fz font-regular leading-[1]">
                   {item.title.map((line, i) => (
                     <Fragment key={i}>
                       {line}
@@ -112,7 +112,7 @@ export function PlatformSection() {
                   ))}
                 </h3>
                 <p
-                  className="text-[#667085] text-[16px] leading-relaxed font-fz mt-3"
+                  className="text-[#667085] text-[16px] leading-[1.4] font-fz-poppins font-[400] mt-3"
                   dangerouslySetInnerHTML={{ __html: item.content }}
                 />
               </div>

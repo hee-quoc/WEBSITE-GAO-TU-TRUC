@@ -42,10 +42,23 @@ export function AboutSection() {
     window.location.href = "/about";
   };
 
+const closingParagraph = (
+  <p className="font-fz-poppins font-[400] text-[16px] leading-[1.4] text-[#334155] max-w-[800px] text-center">
+    Chính vì lẽ đó, suốt hành trình phát triển, bên cạnh việc{" "}
+    <span style={{ fontWeight: 700, color: "#525A6A" }}>
+      không ngừng nâng cấp chất lượng sản phẩm và hiện đại hóa hệ thống máy móc
+    </span>,<br />
+    Tư Trúc vẫn luôn đặt trọng tâm việc <span style={{ fontWeight: 700, color: "#525A6A" }}> tôn vinh thức quà tinh túy</span> này {" "}
+    – <br />
+    để mỗi hạt gạo không chỉ là một phần không thể thiếu của gian bếp {" "} <br />
+    mà còn trở thành{" "}
+      ký ức, nguồn cội, văn hóa và bản sắc Việt.
+  </p>
+);
+
   return (
     <section className="bg-white overflow-hidden">
       <div className="relative w-[1440px] h-[1458px] mx-auto">
-
         {/* Header */}
         <motion.div
           custom={0}
@@ -132,12 +145,23 @@ export function AboutSection() {
             height={249}
             className="mb-5"
           />
-          <p className="text-base font-normal leading-[1.4] max-w-[457px]" style={{ color: "#334155" }}>
-            Câu chuyện về Tư Trúc bắt đầu từ{" "}
-            <span style={{ fontWeight: 700, color: "#525A6A" }}> hơn 30 năm trước, một nhà máy xay xát lúa</span>, với{" "}
-            <span style={{ fontWeight: 700, color: "#525A6A" }}>một niềm tự hào về việc giữ gìn nền văn minh lúa nước ngàn năm</span> và{" "}
-            <span style={{ fontWeight: 700, color: "#525A6A" }}>nâng tầm, lan tỏa giá trị &quot;hạt ngọc thực&quot;</span> đến với mỗi người Việt{" "}
-          </p>
+          <div className="font-fz-poppins font-[400] text-[16px] leading-[1.2] max-w-[530px]" style={{ color: "#525A6A" }}>
+            <p>
+              Câu chuyện của Tư Trúc bắt đầu từ{" "}
+              <span style={{ fontWeight: 700, color: "#525A6A" }}>hơn 30 năm trước,</span>
+            </p>
+            <p>
+              nơi vùng đất <span style={{ fontWeight: 700, color: "#525A6A" }}>Hòa Long màu mỡ,</span> tại một{" "}
+              <span style={{ fontWeight: 700, color: "#525A6A" }}>nhà máy xay xát lúa</span>
+            </p>
+            <p>
+              <span style={{ fontWeight: 700, color: "#525A6A" }}>nhỏ bé </span> nhưng mang trong mình{" "}
+              <span style={{ fontWeight: 700, color: "#525A6A" }}>
+                một sứ mệnh lớn lao – nâng tầm và lan tỏa giá trị “hạt ngọc thực”
+              </span>{" "}
+              đến với mỗi con người đất Việt.
+            </p>
+          </div>
         </motion.div>
 
         {/* Block 2: Nông dân */}
@@ -156,13 +180,26 @@ export function AboutSection() {
             height={250}
             className="mb-5"
           />
-          <p className="text-base font-normal leading-[1.4]" style={{ color: "#334155" }}>
-            Với Tư Trúc, gạo là kết tinh từ{" "}
-            <span style={{ fontWeight: 700, color: "#525A6A" }}>sự ưu đãi của thiên nhiên</span>, từ{" "}
-            <span style={{ fontWeight: 700, color: "#525A6A" }}>đôi bàn tay cần mẫn của người nông dân</span> và {" "} 
-            <span style={{ fontWeight: 700, color: "#525A6A" }}> công nhân nhà máy, </span> từ{" "} 
-            <span style={{ fontWeight: 700, color: "#525A6A" }}> những giá trị luôn bền bỉ theo thời gian. </span>
-          </p>
+          <div className="font-fz-poppins leading-[1.4] font-[400] text-[16px] text-[#525A6A] max-w-[530px]">
+            <p>
+              Với Tư Trúc, gạo là kết tinh từ{" "}
+              <span style={{ fontWeight: 700, color: "#525A6A" }}>sự ưu đãi của thiên nhiên</span>, từ{" "}
+            </p>
+            <p>
+              <span style={{ fontWeight: 700, color: "#525A6A" }}>
+                đôi bàn tay cần mẫn của người nông dân
+              </span>{" "}
+              và{" "}
+              <span style={{ fontWeight: 700, color: "#525A6A" }}>công nhân</span>,
+            </p>
+            <p>
+              <span style={{ fontWeight: 700, color: "#525A6A" }}>nhà máy, </span>
+              từ{" "}
+              <span style={{ fontWeight: 700, color: "#525A6A" }}>
+                những giá trị luôn bền bỉ theo thời gian.
+              </span>
+            </p>
+          </div>
         </motion.div>
 
         {/* Block 3: Hình ảnh */}
@@ -189,19 +226,14 @@ export function AboutSection() {
           whileInView="visible"
           variants={fadeInUp}
           viewport={{ once: true, amount: 0.2 }}
-          className="absolute text-center text-base font-normal leading-[140%] max-w-[567px] z-[3]"
+          className="absolute text-center max-w-[567px] z-[3] leading-[1.4]"
           style={{
             top: "1244px",
             left: "437px",
             color: "#334155",
           }}
         >
-          Chính vì lẽ đó, suốt hành trình phát triển, bên cạnh việc{" "}
-          <span style={{ fontWeight: 700, color: "#525A6A" }}>không ngừng nâng cấp </span>{" "}
-          <span style={{ fontWeight: 700, color: "#525A6A" }}>chất lượng sản phẩm và hiện đại hóa hệ thống máy móc</span>, Tư Trúc vẫn luôn đặt trọng tâm{" "}
-          <span style={{ fontWeight: 700, color: "#525A6A" }}>việc tôn vinh thức quà tinh túy</span> này - để mỗi hạt gạo không chỉ là một phần không thể thiếu của gian bếp, mà còn trở thành ký ức, nguồn cội, văn hóa và bản sắc Việt {" "}
-          {/* <span style={{ fontWeight: 700, color: "#525A6A" }}>một phần không thể thiếu của gian bếp</span>, mà còn trở thành{" "}
-          <span style={{ fontWeight: 700, color: "#525A6A" }}>ký ức, nguồn cội, văn hóa và bản sắc Việt</span>. */}
+          {closingParagraph}
         </motion.div>
       </div>
     </section>
