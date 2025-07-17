@@ -62,7 +62,7 @@ export function StatisticSection(){
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-[42%_58%] gap-8">
             {/* Left Statistics */}
-            <div className="bg-[#F4F3EA] rounded-[16px] overflow-hidden relative w-full h-[442px] lg:w-[495px] lg:h-[642px]">
+            <div className="bg-[#F4F3EA] rounded-[16px] overflow-hidden relative w-full h-[442px] lg:w-full lg:h-[642px]">
               <Image
                 src="/img_image_104.png"
                 alt="Farmers"
@@ -89,7 +89,7 @@ export function StatisticSection(){
             </div>
 
             {/* Right Statistics */}
-            <div className="flex flex-col gap-8 w-full">
+            <div className="flex flex-col gap-5 w-full">
               {/* >100 & 70% */}
               <div className="bg-[#6D9127] rounded-[16px] px-6 sm:px-10 py-6 text-white w-full lg:w-[605px] h-[318px] lg:h-[311px]">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -119,7 +119,7 @@ export function StatisticSection(){
                   fill
                   className=" scale-x-120 translate-x-7 sm:scale-140:translate-x-30:transform:object-cover rounded-[16px]"
                 />
-                <div className="relative z-10 pt-[50%] sm:flex-none text-white h-full">
+                <div className="relative z-10 pt-[50%] sm:flex-none sm:pt-[0%] text-white h-full">
                   <div className="text-[56px] sm:text-[82px] font-bold font-alegreya-sans leading-none">100%</div>
                   <p className="text-[14px] sm:text-[16px] font-fz-poppins opacity-80 sm:opacity-80:max-w-[251px]" style={{color:"#FBFFF2"}}>
                     phụ phẩm (trấu, cám, tro...) được tái chế làm phân bón hữu cơ và thức ăn chăn nuôi, góp phần giảm phát thải và gìn giữ môi trường

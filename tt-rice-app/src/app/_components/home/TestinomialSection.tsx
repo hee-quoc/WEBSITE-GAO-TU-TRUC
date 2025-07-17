@@ -3,6 +3,7 @@ import type { Testimonial } from "~/app/types/Types"
 import Image from "next/image"
 import React from "react";
 import { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const testimonials: Testimonial[] = [
     {
@@ -31,6 +32,7 @@ export function Testimonial(){
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const scrollRef = useRef<HTMLDivElement>(null);
   const testimonial = testimonials[currentIndex];
+  const [direction, setDirection] = useState(1); // 1: next, -1: prev
   useEffect(() => {
       const container = scrollRef.current;
       if (!container) return;
@@ -55,6 +57,51 @@ export function Testimonial(){
 
       return () => observer.disconnect();
     }, []);
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        const nextIndex = (currentIndex + 1) % testimonials.length;
+        setCurrentIndex(nextIndex);
+        const container = scrollRef.current;
+        if (container) {
+          const child = container.querySelector(`[data-index='${nextIndex}']`) as HTMLElement;
+          child?.scrollIntoView({ behavior: 'smooth', inline: 'start' });
+        }
+      }, 10000);
+
+      return () => clearInterval(interval);
+    }, [currentIndex]);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+          setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+        }, 5000);
+        return () => clearInterval(interval);
+      }, []);
+
+      
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setDirection(1);
+        setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+      }, 10000);
+      return () => clearInterval(interval);
+    }, []);
+
+      const variants = {
+        enter: (direction: number) => ({
+          x: direction > 0 ? 200 : -300,
+          opacity: 0,
+        }),
+        center: {
+          x: 0,
+          opacity: 1,
+        },
+        exit: (direction: number) => ({
+          x: direction > 0 ? -300 : 300,
+          opacity: 0,
+        }),
+      };
   if (!testimonial) return ""; 
     return (
         <section className="pb-20 pt-5 bg-white">
@@ -70,14 +117,26 @@ export function Testimonial(){
           <div className="bg-white sm:border rounded-2xl p-4 sm:p-6 lg:p-8 flex flex-col gap-6" style={{ borderColor: '#E9F2DA' }}>
             {/* Mobile */}
              <div ref={scrollRef} className="block lg:hidden overflow-x-auto scroll-smooth scrollbar-hide -mx-4 px-4">
-              <div className="flex gap-4 w-max">
+              {/* <div className="flex gap-4 w-max">
                 {testimonials.map((testimonial, index) => (
                   <div
                     key={testimonial.id}
                     data-index={index}
                     className="w-[297px] min-h-[395px] sm:w-[320px] flex-shrink-0 bg-white border rounded-xl p-4 flex flex-col gap-4"
                     style={{ borderColor: '#E9F2DA' }}
-                  >
+                  > */}
+                  <AnimatePresence custom={direction} mode="wait">
+                    <motion.div
+                      key={testimonials[currentIndex]?.id}
+                      custom={direction}
+                      variants={variants}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                      transition={{ duration: 0.5 }}
+                      className="w-[297px] min-h-[395px] sm:w-[320px] flex-shrink-0 bg-white border rounded-xl p-4 flex flex-col gap-4"
+                      style={{ borderColor: '#E9F2DA' }}
+                    >
                      <div className="flex-shrink-0 md:flex-[0.25]" >
                         <Image src="/img_.svg" alt="Quote" width={56} height={39} />
                     </div>
@@ -97,23 +156,46 @@ export function Testimonial(){
                       </div>
                     </div>
                     <div className="flex justify-center gap-2 mt-4">
-                      {testimonials.map((item, idx) => (
+                      {testimonials.map((item, index) => (
+                        <button
+                        key={index}
+                        onClick={() => setCurrentIndex(index)}
+                        className="rounded-full overflow-hidden transition duration-300"
+                      >
                         <Image
-                          key={idx}
-                          src={idx === currentIndex ? '/Pagination_current.svg' : '/Pagination.svg'}
+                          src={
+                            index === currentIndex
+                              ? '/Pagination_current.svg'
+                              : '/Pagination.svg'
+                          }
                           alt={item.author}
                           width={18}
                           height={8}
+                          className="object-cover"
                         />
+                      </button>
                       ))}
                     </div>
-                  </div>
-                ))}
-              </div>
+                  {/* </div> */}
+                  </motion.div>
+                  </AnimatePresence>
+                {/* ))}
+              </div> */}
             </div>
               {/* Testimonial Content */}
               {/* Desktop */}
               {/* Testimonial Text + Avatar */}
+              <AnimatePresence custom={direction} mode="wait">
+                 <motion.div
+                    key={testimonials[currentIndex]?.id}
+                    custom={direction}
+                    variants={variants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{ duration: 0.5 }}
+                    className="w-full"
+                  >
               <div className="hidden lg:flex flex-col md:flex-row gap-4 lg:gap-4 ">
                 {/* Quote Icon */}
                 <div className="flex-shrink-0 md:flex-[0.25]" >
@@ -173,6 +255,8 @@ export function Testimonial(){
                   </div>
                 </div>
               </div>
+              </motion.div>
+              </AnimatePresence>
             </div>
           </div>
         </div>

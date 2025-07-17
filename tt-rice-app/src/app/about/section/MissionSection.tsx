@@ -74,7 +74,7 @@ export function MissionSection() {
 
             {/* Right Column: Content */}
           <div className="w-full md:w-1/2 relative">
-            <h3 className="font-alegreya-sans text-[28px]  sm:text-[28px] md:text-[32px] font-medium mb-4" style={{color:"#667085"}}>
+            <h3 className="font-alegreya-sans py-4 sm:py-0 text-[28px]  leading-[100%] tracking-[0%]  sm:text-[28px] md:text-[32px] font-[400] mb-4" style={{color:"#667085"}}>
               Giá trị hạt gạo qua <br className="sm:hidden"/> lăng kính của Từ Trúc
             </h3>
 
