@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import type { ContactFormData } from "~/app/types/Types";
 import type { Testimonial } from "~/app/types/Types"
+import { motion, AnimatePresence } from 'framer-motion';
+
 
 const testimonials: Testimonial[] = [
     {
@@ -31,6 +33,37 @@ const testimonials: Testimonial[] = [
 export function CustomerSection() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const testimonial = testimonials[currentIndex];
+  const [direction, setDirection] = useState(1); // 1: next, -1: prev
+  useEffect(() => {
+          const interval = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+          }, 5000);
+          return () => clearInterval(interval);
+        }, []);
+  
+        
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDirection(1);
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
+    const variants = {
+      enter: (direction: number) => ({
+        x: direction > 0 ? 200 : -300,
+        opacity: 0,
+      }),
+      center: {
+        x: 0,
+        opacity: 1,
+      },
+      exit: (direction: number) => ({
+        x: direction > 0 ? -300 : 300,
+        opacity: 0,
+      }),
+    };
   if (!testimonial) return ""; 
   return (
     <section className="pt-20 pb-5 bg-[#FBFFF2]">
@@ -41,57 +74,70 @@ export function CustomerSection() {
           <p className="text-[32px] sm:text-xl md:text-[32px] mb-8 font-alegreya" style={{ color: "#667085" }}>
             Khách hàng nói gì về Tư Trúc?
           </p>
-          <div className="flex-shrink-0 md:flex-[0.25]" >
-            <Image src="/img_.svg" alt="Quote" width={56} height={39} />
-          </div>
-          <div className="py-6">
-            <p className="max-w-[566px] text-[16px] sm:text-[8px] md:text-[16px] font-fz-poppins font-[400] leading-[140%] flex-1" style={{color:"#667085"}}>
-              {testimonial.content.split('\n').map((line, i, arr) => (
-                  <React.Fragment key={i}>
-                    {line}
-                    {i !== arr.length - 1 && <br />}
-                  </React.Fragment>
-                ))}
-            </p>
-          </div>
-          <div className="flex flex-row items-center py-6 gap-4 md:flex-[1]">
-            <Image
-              src={testimonial.avatar}
-              alt={testimonial.author}
-              width={56}
-              height={56}
-              className="rounded-full"
-            />
-            <div className="text-left">
-              <h4 className="text-[20px] sm:text-[20px] md:text-[20px] font-[500] font-alegreya-sans leading-[140%]  mb-1" style={{color:"#0A5B89"}}>
-                {testimonial.author}
-              </h4>
-              <p className="text-[16px] sm:text-[16px] font-fz-poppins font-[400] opacity-60"style={{color:"#5C6578"}}>
-                {testimonial.position}
+          <AnimatePresence custom={direction} mode="wait">
+          <motion.div
+            key={testimonials[currentIndex]?.id}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.5 }}
+            className="w-full flex flex-col items-center "
+          >
+            <div className="flex-shrink-0 md:flex-[0.25]" >
+              <Image src="/img_.svg" alt="Quote" width={56} height={39} />
+            </div>
+            <div className="py-6">
+              <p className="max-w-[566px] text-[16px] sm:text-[8px] md:text-[16px] font-fz-poppins font-[400] leading-[140%] flex-1" style={{color:"#667085"}}>
+                {testimonial.content.split('\n').map((line, i, arr) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      {i !== arr.length - 1 && <br />}
+                    </React.Fragment>
+                  ))}
               </p>
             </div>
-          </div>
-          <div className="flex gap-2 mt-2 sm:mt-4">
-              {testimonials.map((item, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className="rounded-full overflow-hidden transition duration-300"
-                >
-                  <Image
-                    src={
-                      index === currentIndex
-                        ? '/Pagination_current.svg'
-                        : '/Pagination.svg'
-                    }
-                    alt={item.author}
-                    width={18}
-                    height={8}
-                    className="object-cover"
-                  />
-                </button>
-              ))}
+            <div className="flex flex-row items-center py-6 gap-4 md:flex-[1]">
+              <Image
+                src={testimonial.avatar}
+                alt={testimonial.author}
+                width={56}
+                height={56}
+                className="rounded-full"
+              />
+              <div className="text-left">
+                <h4 className="text-[20px] sm:text-[20px] md:text-[20px] font-[500] font-alegreya-sans leading-[140%]  mb-1" style={{color:"#0A5B89"}}>
+                  {testimonial.author}
+                </h4>
+                <p className="text-[16px] sm:text-[16px] font-fz-poppins font-[400] opacity-60"style={{color:"#5C6578"}}>
+                  {testimonial.position}
+                </p>
+              </div>
             </div>
+            <div className="flex gap-2 mt-2 sm:mt-4">
+                {testimonials.map((item, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className="rounded-full overflow-hidden transition duration-300"
+                  >
+                    <Image
+                      src={
+                        index === currentIndex
+                          ? '/Pagination_current.svg'
+                          : '/Pagination.svg'
+                      }
+                      alt={item.author}
+                      width={18}
+                      height={8}
+                      className="object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+            </AnimatePresence>
         </div>
     </section>
   );

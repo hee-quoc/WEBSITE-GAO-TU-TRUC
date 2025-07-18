@@ -36,9 +36,9 @@ const steps = [
 
 export default function StepSectionResponsive() {
   return (
-    <div className="bg-[#f9f9f3] relative flex flex-col justify-center mx-auto py-96 px-8 rounded-3xl border border-green-200 w-[337px] h-[770px] sm:w-[1296px] sm:h-[1296px] ">
+    <div className="bg-[#f9f9f3] relative flex flex-col justify-center mx-auto sm:py-96 px-8 w-[337px] h-[770px] sm:w-[1296px] sm:h-[1296px] rounded-3xl border border-green-200 ">
       {/* Title */}
-      <div className="text-center mb-12 hidden md:block">
+      <div className="text-center mb-12 ">
         <h2 className="font-alegreya-sans text-[32px] sm:text-[48px] md:text-[56px] font-bold text-[#0A5B89] mb-2 leading-tight max-w-[542px] mx-auto">
           Hạt gạo Việt từ ruộng đồng đến bàn ăn
         </h2>
@@ -66,16 +66,38 @@ export default function StepSectionResponsive() {
       </div>
       
       {/* Mobile horizontal scroll layout */}
-      <div className="lg:hidden overflow-x-auto scrollbar-hide -mx-4 px-4">
-        <div className="flex gap-6 w-max">
+      <div className="lg:hidden overflow-x-auto scrollbar-hide -mx-8 px-0 flex flex-col relative">
+        <div className="flex w-max">
+          {/* <div className="absolute z-0 w-[1023px] h-[5] flex justify-center">
+              <Image src="/process-line-mobile.svg" alt="process_line" width={930} height={380} className="pointer-events-none sm:inline" />
+          </div> */}
+           <svg
+            width="1023"
+            height="4"
+            viewBox="0 0 1023 4"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute left-[40%] top-[50%] opacity-100"
+          >
+            <line
+              x1="0"
+              y1="2"
+              x2="1023"
+              y2="2"
+              stroke="#D2DDBC"
+              strokeWidth="4"
+              strokeDasharray="8,8"
+              strokeLinecap="round"
+            />
+          </svg>
           {steps.map((step, i) => (
-            <div key={i} className="flex-shrink-0 w-[280px] h-auto bg-white border border-[#D2DDBC] rounded-xl p-4 flex flex-col items-center text-center">
-              <Image src={step.img} alt={step.title} width={80} height={80} className="mb-4" />
-              <span className="relative mb-4">
+            <div key={i} className="flex-shrink-0 w-[256px] h-[346px] rounded-xl p-4 flex flex-col items-center text-center">
+              <Image src={step.img} alt={step.title} width={189} height={139} className="w-[189px] min-h-[139px]" />
+              <span className="relative my-4">
                 <span className="block w-3 h-3 bg-[#6D9127] rounded-full"></span>
                 <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 border-[7px] border-[#D2DDBC] rounded-full"></span>
               </span>
-              <h4 className="text-[18px] text-[#4D671B] font-semibold mb-2 font-alegreya-sans">
+              <h4 className="text-[20px] text-[#4D671B] font-[500] mb-2 font-alegreya-sans">
                 {step.title.split('\n').map((line, idx, arr) => (
                   <React.Fragment key={idx}>
                     {line}
@@ -83,7 +105,7 @@ export default function StepSectionResponsive() {
                   </React.Fragment>
                 ))}
               </h4>
-              <p className="text-[15px] text-[#5C6578] font-fz-poppins">
+              <p className="text-[16px] font-[400] text-[#5C6578] font-fz-poppins">
                 {step.desc.split('\n').map((line, idx, arr) => (
                   <React.Fragment key={idx}>
                     {line}
