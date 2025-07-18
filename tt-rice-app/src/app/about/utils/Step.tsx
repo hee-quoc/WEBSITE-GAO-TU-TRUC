@@ -91,17 +91,17 @@ export default function StepSectionResponsive() {
             />
           </svg>
           {steps.map((step, i) => (
-            <div key={i} className="flex-shrink-0 w-[256px] h-[346px] rounded-xl p-4 flex flex-col items-center text-center">
+            <div key={i} className="flex-shrink-0 w-[256px] h-[346px] rounded-xl p-4 flex flex-col items-center text-center overflow-y-hidden">
               <Image src={step.img} alt={step.title} width={189} height={139} className="w-[189px] min-h-[139px]" />
-              <span className="relative my-4">
+              <span className="relative p-4">
                 <span className="block w-3 h-3 bg-[#6D9127] rounded-full"></span>
                 <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 border-[7px] border-[#D2DDBC] rounded-full"></span>
               </span>
-              <h4 className="text-[20px] text-[#4D671B] font-[500] mb-2 font-alegreya-sans">
+              <h4 className="text-[20px] text-[#4D671B] font-[500] leading-[100%] tracking-[10%] pb-2 font-alegreya-sans">
                 {step.title.split('\n').map((line, idx, arr) => (
                   <React.Fragment key={idx}>
                     {line}
-                    {idx !== arr.length - 1 && <br />}
+                    {idx !== arr.length - 1 && <br className="hidden sm:inline"/>}
                   </React.Fragment>
                 ))}
               </h4>
