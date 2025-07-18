@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Button from '~/app/_components/ui/Button';
@@ -10,20 +10,28 @@ import { useMediaQuery } from '../hooks/useMediaQuery';
 const mobileLogo ={alt:"Tu Truc mobile logo", width: 64, height: 35}
 const desktopLogo = { alt: 'Tu Truc logo', width: 150, height: 40}
 const Header: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrollingUp, setIsScrollingUp] = useState(false);
+  const lastScrollY = useRef(0); 
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY.current ||currentScrollY ===0 ) {
+        setIsScrollingUp(false);
+      } 
+      else {
+        setIsScrollingUp(true);
+      }
+      lastScrollY.current = currentScrollY;
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -33,7 +41,7 @@ const Header: React.FC = () => {
   return (
     <header
       className={`
-         top-0 z-50 w-full ease-in-out  fixed 
+         top-0 z-50 w-full ease-in-out  fixed ${isScrollingUp ? 'bg-white shadow-sm' : ''}
       `}
     >
       <div className="max-w-8xl mx-auto"> 
@@ -99,7 +107,7 @@ const Header: React.FC = () => {
           </div>
         </div>
         {isMenuOpen && (
-          <div className={`md:hidden ${isScrolled ? 'bg-white shadow-sm' : 'bg-green-lightest'} shadow-md`}>
+          <div className={`md:hidden ${isScrollingUp ? 'bg-white shadow-sm' : ''} shadow-md`}>
             <nav className="flex flex-col space-y-4 px-4 py-4">
               <Link
                 href="/about"
