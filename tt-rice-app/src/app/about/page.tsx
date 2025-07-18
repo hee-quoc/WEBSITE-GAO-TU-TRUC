@@ -15,7 +15,7 @@ export default function AboutPage() {
             <MissionSection/>
             <RiceSection/>
             <CommunitySection/>
-            <CustomerSection/>
+            <CustomerSection/> 
         </main>
     );
 }

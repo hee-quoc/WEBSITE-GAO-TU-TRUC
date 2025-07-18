@@ -7,7 +7,7 @@ const milestoneBlocks = [
   {
     id: "milestone-1988",
     bigImage: {
-      src: "/milestone/illustrator.svg",
+      src: "/milestone/Illustrator.svg",
       width: 190,
       height: 138,
       top: 20,
@@ -22,16 +22,16 @@ const milestoneBlocks = [
     },
     text: {
       year: "1988",
-      content: "Khởi nguồn từ nhà máy\nxay xát nhỏ tại Bà Rịa – Vũng Tàu",
+      content: "Khởi nguồn từ nhà máy\nxay xát nhỏ tại \n Bà Rịa – Vũng Tàu",
       top: 210,
-      left: 0,
+      left: -20,
       yearFontSize: "20px",
       contentFontSize: "16px",
     },
     style: {
       top: 360,
       left: 155,
-      width: 256,
+      width: 270,
       height: 324,
       padding: 20,
       gap: 20,
