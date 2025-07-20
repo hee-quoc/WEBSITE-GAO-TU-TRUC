@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { Fragment, useEffect, useState } from "react";
 import { motion, easeOut } from "framer-motion";
 
+// ✅ Data dùng cho desktop
 const scrollData = [
   {
     icon: "/platform/icon.svg",
@@ -11,7 +12,7 @@ const scrollData = [
     content:
       "Với lợi thế có hơn 150ha quỹ đất gia đình, Tư Trúc <br /> chủ động kiểm soát chặt chẽ từ lúa giống đến vùng trồng, đảm bảo chất lượng từ gốc. Nhờ vậy, doanh nghiệp luôn vững vàng trước mọi biến động về thời tiết, dịch bệnh hay thị trường, sẵn sàng duy trì nguồn cung ổn định, cao cấp, đáp ứng kịp thời mọi nhu cầu về sản lượng của đối tác.",
     image: "/platform/1.svg",
-    isHeader: false, 
+    isHeader: false,
   },
   {
     icon: "/platform/icon.svg",
@@ -39,6 +40,42 @@ const scrollData = [
   },
 ];
 
+// ✅ Data dành riêng cho mobile
+const scrollDataMobile = [
+  {
+    icon: "/platform/icon.svg",
+    title: ["Chủ động gieo trồng,", "vững vàng nguồn giống"],
+    content: [
+      "Với lợi thế có hơn 150ha quỹ đất gia đình, Tư Trúc chủ động kiểm soát chặt chẽ từ lúa giống đến vùng trồng, đảm bảo chất lượng từ gốc. Nhờ vậy, doanh nghiệp luôn vững vàng trước mọi biến động về thời tiết, dịch bệnh hay thị trường, sẵn sàng duy trì nguồn cung ổn định, cao cấp, đáp ứng kịp thời mọi nhu cầu về sản lượng  của đối tác.",
+    ],
+    image: "/platform/1.svg",
+  },
+  {
+    icon: "/platform/icon.svg",
+    title: ["Quy trình nghiêm ngặt,", "chất lượng vượt bậc"],
+    content: [
+      "Mọi công đoạn sản xuất được Tư Trúc kiểm soát nghiêm ngặt và minh bạch, đảm bảo mỗi hạt gạo đều đạt chất lượng ổn định và đồng nhất.",
+    ],
+    image: "/platform/2.svg",
+  },
+  {
+    icon: "/platform/icon.svg",
+    title: ["Sản phẩm an toàn,", "chứng nhận an tâm"],
+    content: [
+      "Tư Trúc đã và đang nghiên cứu phát triển nhiều dòng sản phẩm đáp ứng đa dạng nhu cầu thưởng thức, đồng thời tuân thủ nghiêm ngặt các tiêu chuẩn quốc tế về an toàn sản xuất và thực phẩm.",
+    ],
+    image: "/platform/3.svg",
+  },
+  {
+    icon: "/platform/icon.svg",
+    title: ["Uy tín hàng đầu,", "đồng hành dài lâu"],
+    content: [
+      "Với bề dày kinh nghiệm trong ngành lúa gạo, Tư Trúc đã trở thành đối tác tin cậy lâu năm của nhiều doanh nghiệp trong và ngoài nước, khẳng định vững chắc vị thế uy tín hàng đầu trên thị trường."
+    ],
+    image: "/platform/4.svg",
+  },
+];
+
 const textVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
@@ -47,6 +84,7 @@ const textVariants = {
     transition: { duration: 0.5, ease: easeOut },
   },
 };
+
 function useMediaQuery(query: string): boolean {
   const [matches, setMatches] = useState(false);
   useEffect(() => {
@@ -67,10 +105,10 @@ export function PlatformSection() {
       <section className="w-full px-5 py-10 bg-white">
         {/* HEADER TEXT */}
         <div className="space-y-4">
-          <h2 className="text-[28px] font-bold leading-tight text-[#005B94] font-fz">
+          <h2 className="text-[42px] font-bold leading-[1] text-[#005B94] font-fz">
             Nền tảng chủ động <br /> năng lực vững vàng
           </h2>
-          <p className="text-[18px] text-[#888888] leading-relaxed font-alegreya">
+          <p className="text-[28px] text-[#667085] leading-[1] font-alegreya">
             Thế mạnh sản phẩm & sản xuất của thương hiệu trong suốt 3 thập kỷ
           </p>
         </div>
@@ -83,7 +121,7 @@ export function PlatformSection() {
             width={40}
             height={30}
           />
-          <p className="text-[#005B94] text-[16px] font-fz leading-[1.6]">
+          <p className="text-[#0A5B89] text-[18px] font-alegreya-sans font-[500] leading-[1.2]">
             Suốt hơn 3 thập kỷ, Tư Trúc bền bỉ xây dựng nền tảng sản xuất chủ động, kiểm soát toàn diện từ chất lượng đến sản lượng, luôn sẵn sàng đồng hành lâu dài cùng các đối tác chiến lược
           </p>
         </div>
@@ -93,10 +131,10 @@ export function PlatformSection() {
 
         {/* SLIDE SCROLL SECTION */}
         <div className="flex overflow-x-auto space-x-5 snap-x snap-mandatory pb-4">
-          {scrollData.map((item, idx) => (
+          {scrollDataMobile.map((item, idx) => (
             <div
               key={idx}
-              className="min-w-[280px] max-w-[300px] shrink-0 snap-center bg-[#F9FAFB] rounded-xl p-4"
+              className="min-w-[280px] max-w-[300px] shrink-0 snap-center rounded-xl p-4 "
             >
               <div className="w-full aspect-square relative mb-4 rounded-md overflow-hidden">
                 <Image
@@ -106,7 +144,7 @@ export function PlatformSection() {
                   className="object-cover"
                 />
               </div>
-              <h3 className="text-[#628423] text-[18px] font-semibold mb-2 font-fz leading-tight">
+              <h3 className="text-[#628423] text-[28px] font-regular mb-2 font-fz leading-[1]">
                 {item.title.map((line, i) => (
                   <Fragment key={i}>
                     {line}
@@ -114,10 +152,16 @@ export function PlatformSection() {
                   </Fragment>
                 ))}
               </h3>
-              <p
-                className="text-[#667085] text-[14px] font-fz-poppins leading-[1.5]"
-                dangerouslySetInnerHTML={{ __html: item.content }}
-              />
+              <div className="space-y-2">
+                {item.content.map((line, i) => (
+                  <p
+                    key={i}
+                    className="text-[#667085] text-[14px] font-fz-poppins leading-[1.5]"
+                  >
+                    {line}
+                  </p>
+                ))}
+              </div>
             </div>
           ))}
         </div>
