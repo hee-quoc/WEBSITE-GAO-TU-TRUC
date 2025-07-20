@@ -1,4 +1,4 @@
-// src/app/_components/common/FloatingSocialLinks.tsx
+
 "use client"; // This component might have client-side interactions (like links)
 
 import Image from 'next/image';
