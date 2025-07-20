@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import React from "react";
+import StepSectionResponsive from '../utils/Step';
 const steps = [
   {
     img: '/gao_step1.svg',
@@ -32,31 +33,33 @@ const steps = [
 
 export function RiceSection() {
   return (
-    <section className="pt-20 pb-5 pt-[96px] bg-[#6C9126]">
-        <div className="bg-[#f9f9f3] relative flex flex-col justify-center mx-auto py-96 px-8 rounded-3xl border border-green-200 w-[1296px] h-[1296px]">
+    <section className="pt-20 pb-5 pt-[96px] bg-[#6C9126] px-6 md:px-0">
+        {/* <div className="bg-[#f9f9f3] relative flex flex-col justify-center mx-auto py-96 px-8 rounded-3xl border border-green-200 w-[1296px] h-[1296px]"> */}
           {/* Title */}
-          <div className="flex flex-col text-center mb-12 items-center">
+          {/* <div className="flex flex-col text-center mb-12 items-center hidden md:inline">
             <h2 className="font-alegreya-sans text-[56px] md:text-[56px] font-[700] font-bold text-[#0A5B89] mb-2 max-w-[542px] leading-[100%] tracking-[0%]">
               Hạt gạo Việt từ ruộng đồng đến bàn ăn
             </h2>
             <p className="font-alegreya-sans text-[32px]" style={{color:"#667085"}}>
               Hành trình thương hiệu đưa sản phẩm đến người tiêu dùng
             </p>
-          </div>
-          {/* Process Line - place above dots */}
-        <div className="absolute top-[47%] left-[10%] z-0 w-full flex justify-center h-[390px]">
+          </div> */}
+          
+          <StepSectionResponsive />
+        {/* Process Line - place above dots */}
+        {/* <div className=" absolute top-[47%] left-[10%] z-0 w-full flex justify-center h-[390px]">
           <Image
             src="/step_line.svg"
             alt="process_line"
             width={930}
             height={380}
-            className="pointer-events-none "
+            className="pointer-events-none hidden sm:inline "
           />
-        </div>
+        </div> */}
           {/* Steps */}
-          <div className="flex flex-col z-10">
+          {/* <div className="flex flex-col z-10"> */}
             {/* Top Row - 3 Steps */}
-            <div className="flex flex-col items-center sm:flex-row justify-center gap-34">
+            {/* <div className="flex flex-col items-center sm:flex-row justify-center gap-34">
               {steps.slice(0, 3).map((step, index) => (
                 <div key={index} className="flex flex-col items-center text-center max-w-[256px] h-[345px] ">
                   <Image src={step.img} alt={step.title} width={80} height={80} className="mb-4 min-h-[190px] min-w-[176px]" />
@@ -82,10 +85,10 @@ export function RiceSection() {
                   </p>
                 </div>
               ))}
-            </div>
+            </div> */}
               
             {/* Bottom Row - 2 Steps */}
-            <div className="flex flex-col items-center sm:flex-row justify-center gap-34">
+            {/* <div className="flex flex-col items-center sm:flex-row justify-center gap-34">
               {steps.slice(3).map((step, index) => (
                 <div key={index} className="flex flex-col items-center text-center max-w-[256px] h-[345px]">
                   <Image src={step.img} alt={step.title} width={80} height={80} className="mt-10 min-h-[190px] min-w-[176px]" />
@@ -104,18 +107,19 @@ export function RiceSection() {
                   </p>
                 </div>
               ))}
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-4 max-w-[973px] max-h-[223px] mx-auto pb-56 ">
+            </div> */}
+          {/* </div> */}
+        {/* </div> */}
+        <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-4 h-[375px] sm:w-[973px] sm:h-[223px] mx-auto sm:pb-56 ">
         {/* Left Column: Title and Paragraph */}
-        <div className="w-full md:basis-[56%] relative pt-64">
-          <div className="absolute -top-2 -left-4 md:-left-10 w-10 md:w-14 h-8 md:h-10  opacity-50 pointer-events-none pt-64">
-            <Image src="/quote_gray.svg" alt="Quote" width={56} height={39} />
+        <div className="w-full md:basis-[56%] md:relative md:pt-64">
+          <div className="flex flex-col items-center relative sm:absolute sm:-top-2 md:-left-10 w-full h-[45px] md:w-14 md:h-10  opacity-50 pointer-events-none sm:pt-64">
+            <Image src="/quote_gray.svg" alt="Quote" width={56} height={39} className="hidden sm:inline "/>
+            <Image src="/quote_gray_mobile.svg" alt="Quote" width={45} height={37} className="inline sm:hidden"/>
           </div>
 
-          <p className="text-[20px] text-white text-justify leading-relaxed font-alegreya-sans">
-            Mỗi chén cơm ấm hiện diện trong từng bữa ăn đều là kết tinh từ <br /> sự hào phóng của thiên nhiên trù phú, và sự tận tụy của những <br /> người lao động thầm lặng.
+          <p className="text-[18px] sm:text-[20px] text-white text-center sm:text-justify leading-relaxed font-alegreya-sans py-5 sm:py-0">
+            Mỗi chén cơm ấm hiện diện trong từng bữa ăn đều là kết tinh từ <br  className="hidden sm:inline"/> sự hào phóng của thiên nhiên trù phú, và sự tận tụy của những <br  className="hidden sm:inline"/> người lao động thầm lặng.
           </p>
         </div>
 
@@ -126,7 +130,7 @@ export function RiceSection() {
             alt="Women eat rice"
             width={304}
             height={230}
-            className="md:absolute md:top-[-72px] z-10 w-[304px]"
+            className="w-[335px] h-[191px] sm:w-[260px] md:w-[304px] md:h-[231px] md:absolute md:top-[-72px] z-10"
           />
         </div>
       </div>
