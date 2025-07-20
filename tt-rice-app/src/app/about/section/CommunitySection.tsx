@@ -55,7 +55,7 @@ function MobileCard(){
             </div>
             <div className="flex flex-col gap-4 w-full">
               <div className={`basis-[60%] flex flex-col text-white w-full  h-auto `}>
-                <div className="relative bg-[#6D9127] w-[335px] h-[264px] rounded-[16px] overflow-hidden">
+                <div className="relative bg-[#6D9127] w-full aspect-[335/264] rounded-[16px] overflow-hidden">
                   <Image
                       src="/images/about/img_farmer.svg"
                       fill
