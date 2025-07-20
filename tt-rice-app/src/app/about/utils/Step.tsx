@@ -36,13 +36,13 @@ const steps = [
 
 export default function StepSectionResponsive() {
   return (
-    <div className="bg-[#f9f9f3] relative flex flex-col justify-center mx-auto sm:py-96 px-8 w-[337px] h-[770px] sm:w-[1296px] sm:h-[1296px] rounded-3xl border border-green-200 ">
+    <div className="bg-[#f9f9f3] relative flex flex-col justify-center md:mx-auto sm:py-96 w-full h-[770px] sm:w-[1296px] sm:h-[1296px] rounded-3xl border border-green-200 ">
       {/* Title */}
-      <div className="text-center mb-12 ">
-        <h2 className="font-alegreya-sans text-[32px] sm:text-[48px] md:text-[56px] font-bold text-[#0A5B89] mb-2 leading-tight max-w-[542px] mx-auto">
-          Hạt gạo Việt từ ruộng đồng đến bàn ăn
+      <div className="flex flex-col items-center text-center mb-12 px-2">
+        <h2 className="w-[271px] md:w-[542px] font-alegreya-sans text-[42px] sm:text-[48px] md:text-[56px] font-bold text-[#0A5B89] mb-2 leading-[100%] tracking-[0%] mx-auto">
+          Hạt gạo Việt <br className="sm:hidden"/>từ ruộng đồng đến bàn ăn
         </h2>
-        <p className="font-alegreya-sans text-[20px] sm:text-[28px] md:text-[32px] text-[#667085]">
+        <p className="w-[271px] md:w-full font-alegreya-sans text-[28px] sm:text-[28px] md:text-[32px] text-[#667085] leading-[100%] tracking-[0%]">
           Hành trình thương hiệu đưa sản phẩm đến người tiêu dùng
         </p>
       </div>
@@ -66,7 +66,7 @@ export default function StepSectionResponsive() {
       </div>
       
       {/* Mobile horizontal scroll layout */}
-      <div className="lg:hidden overflow-x-auto scrollbar-hide -mx-8 px-0 flex flex-col relative">
+      <div className="w-full lg:hidden overflow-x-auto scrollbar-hide -mx-0 px-0 flex flex-col relative">
         <div className="flex w-max">
           {/* <div className="absolute z-0 w-[1023px] h-[5] flex justify-center">
               <Image src="/process-line-mobile.svg" alt="process_line" width={930} height={380} className="pointer-events-none sm:inline" />
@@ -105,7 +105,7 @@ export default function StepSectionResponsive() {
                   </React.Fragment>
                 ))}
               </h4>
-              <p className="text-[16px] font-[400] text-[#5C6578] font-fz-poppins">
+              <p className="text-[16px] font-[400] text-[#5C6578] font-fz-poppins leading-[120%] tracking-[1%]">
                 {step.desc.split('\n').map((line, idx, arr) => (
                   <React.Fragment key={idx}>
                     {line}
