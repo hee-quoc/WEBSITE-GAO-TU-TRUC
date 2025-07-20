@@ -33,10 +33,10 @@ export function StatisticSection(){
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative">
             <div className="w-[full] pb-16 flex flex-col items-center sm:flex-none sm:items-baseline">
-              <h2 className="text-[42px] sm:text-[56px] md:text-[56px] font-[700] text-center sm:text-left font-alegreya-sans" style={{color:" #0A5B89"}}>
+              <h2 className="w-[335px] md:w-full text-[42px] sm:text-[56px] md:text-[56px] font-[700] text-center sm:text-left font-alegreya-sans" style={{color:" #0A5B89"}}>
                 Ươm hạt gạo, <br /> nuôi mạch nguồn Việt Nam
               </h2>
-              <p className="text-[28px] sm:text-[32px]  text-center sm:text-left mb-2 font-alegreya" style={{color:"#667085"}}>
+              <p className="w-[335px] md:w-full text-[28px] sm:text-[32px]  text-center sm:text-left mb-2 font-alegreya" style={{color:"#667085"}}>
                 Những giá trị mà hạt gạo Tư Trúc đã mang lại
               </p>
               <Button
@@ -50,7 +50,7 @@ export function StatisticSection(){
                 </span>
               </Button>
             </div>
-            <div className="w-[587px] h-[327px] absolute top-5.5 left-[52%] hidden sm:inline">
+            <div className="w-[570px] h-[327px] absolute top-5.5 left-[52%] hidden sm:inline">
               <Image
                 src="/img_rectangle_3.png"
                 alt="Rice Field"
@@ -60,7 +60,7 @@ export function StatisticSection(){
               />
             </div>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-[42%_58%] gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-[42%_58%] gap-5">
             {/* Left Statistics */}
             <div className="bg-[#F4F3EA] rounded-[16px] overflow-hidden relative w-full h-[442px] lg:w-full lg:h-[642px]">
               <Image

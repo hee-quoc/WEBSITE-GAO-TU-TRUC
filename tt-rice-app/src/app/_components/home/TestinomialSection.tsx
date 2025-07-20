@@ -7,11 +7,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const testimonials: Testimonial[] = [
     {
-        id: '1',
-        content: 'Làm lúa bao nhiêu năm nay, tôi hiểu rõ từng \n hạt gạo mình làm ra. Từ lúc gieo mạ đến \n ngày thu hoạch, đều tự tay chăm chút. \n Thành ra, bao năm nay tôi chỉ ăn mỗi gạo \n Tư Trúc, vì tôi biết chắc từng hạt cơm sạch sẽ, \n tử tế như chính công sức mình bỏ vào. ',
-        author: 'Anh Năm Tiến (37 tuổi)',
-        position: 'Nông dân Long Điền',
-        avatar: '/testinomial_nam_tien.png'
+      id: '1',
+      content: 'Làm lúa bao nhiêu năm nay, tôi hiểu rõ từng \n hạt gạo mình làm ra. Từ lúc gieo mạ đến \n ngày thu hoạch, đều tự tay chăm chút. \n Thành ra, bao năm nay tôi chỉ ăn mỗi gạo \n Tư Trúc, vì tôi biết chắc từng hạt cơm sạch sẽ, \n tử tế như chính công sức mình bỏ vào. ',
+      author: 'Anh Năm Tiến (37 tuổi)',
+      position: 'Nông dân Long Điền',
+      avatar: '/testinomial_nam_tien.png'
     },
     {
       id: '2',
@@ -33,60 +33,83 @@ export function Testimonial(){
   const scrollRef = useRef<HTMLDivElement>(null);
   const testimonial = testimonials[currentIndex];
   const [direction, setDirection] = useState(1); // 1: next, -1: prev
-  useEffect(() => {
-      const container = scrollRef.current;
-      if (!container) return;
+  // useEffect(() => {
+  //     const container = scrollRef.current;
+  //     if (!container) return;
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const index = Number(entry.target.getAttribute('data-index'));
-              setCurrentIndex(index);
-            }
-          });
-        },
-        {
-          root: container,
-          threshold: 0.6, // 60% hiển thị mới tính là active
-        }
-      );
+  //     const observer = new IntersectionObserver(
+  //       (entries) => {
+  //         entries.forEach((entry) => {
+  //           if (entry.isIntersecting) {
+  //             const index = Number(entry.target.getAttribute('data-index'));
+  //             setCurrentIndex(index);
+  //           }
+  //         });
+  //       },
+  //       {
+  //         root: container,
+  //         threshold: 0.6, // 60% hiển thị mới tính là active
+  //       }
+  //     );
 
-      const children = container.querySelectorAll('[data-index]');
-      children.forEach((el) => observer.observe(el));
+  //     const children = container.querySelectorAll('[data-index]');
+  //     children.forEach((el) => observer.observe(el));
 
-      return () => observer.disconnect();
-    }, []);
+  //     return () => observer.disconnect();
+  //   }, []);
+    const total = testimonials.length;
+    const extendedTestimonials = [
+    ...testimonials,
+    { ...testimonials[0], id: '__loop_clone__' }
+  ];
+
+
+    const scrollToIndex = (index: number, behavior: ScrollBehavior = 'smooth') => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const children = Array.from(container.querySelectorAll('[data-index]')) as HTMLElement[];
+    const child = children[index];
+    if (child) {
+       const containerWidth = container.offsetWidth;
+      const childWidth = child.offsetWidth;
+      const offsetLeft = child.offsetLeft;
+      const scrollTo = offsetLeft - (containerWidth - childWidth) / 2;
+      container.scrollTo({ left: scrollTo, behavior });
+      setCurrentIndex(index % total);
+    }
+  };
+
 
     useEffect(() => {
       const interval = setInterval(() => {
         const nextIndex = (currentIndex + 1) % testimonials.length;
         setCurrentIndex(nextIndex);
-        const container = scrollRef.current;
-        if (container) {
-          const child = container.querySelector(`[data-index='${nextIndex}']`)!;
-          child?.scrollIntoView({ behavior: 'smooth', inline: 'start' });
-        }
-      }, 10000);
+        scrollToIndex(nextIndex)
+        // const container = scrollRef.current;
+        // if (container) {
+        //   const child = container.querySelector(`[data-index='${nextIndex}']`)!;
+        //   child?.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest'});
+        // }
+      }, 5000);
 
       return () => clearInterval(interval);
-    }, [currentIndex]);
+    }, [currentIndex,total]);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-          setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-        }, 5000);
-        return () => clearInterval(interval);
-      }, []);
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //       setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    //     }, 5000);
+    //     return () => clearInterval(interval);
+    //   }, []);
 
       
-    useEffect(() => {
-      const interval = setInterval(() => {
-        setDirection(1);
-        setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-      }, 10000);
-      return () => clearInterval(interval);
-    }, []);
+    // useEffect(() => {
+    //   const interval = setInterval(() => {
+    //     setDirection(1);
+    //     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    //   }, 10000);
+    //   return () => clearInterval(interval);
+    // }, []);
 
       const variants = {
         enter: (direction: number) => ({
@@ -114,74 +137,56 @@ export function Testimonial(){
           </h2>
           </div>
           
-          <div className="bg-white sm:border rounded-2xl p-4 sm:p-6 lg:p-8 flex flex-col gap-6" style={{ borderColor: '#E9F2DA' }}>
+          <div className="bg-white sm:border rounded-2xl py-4 sm:p-6 lg:p-8 flex flex-col gap-6" style={{ borderColor: '#E9F2DA' }}>
             {/* Mobile */}
-             <div ref={scrollRef} className="block lg:hidden overflow-x-auto scroll-smooth scrollbar-hide -mx-4 px-4">
-              {/* <div className="flex gap-4 w-max">
-                {testimonials.map((testimonial, index) => (
-                  <div
-                    key={testimonial.id}
-                    data-index={index}
-                    className="w-[297px] min-h-[395px] sm:w-[320px] flex-shrink-0 bg-white border rounded-xl p-4 flex flex-col gap-4"
-                    style={{ borderColor: '#E9F2DA' }}
-                  > */}
-                  <AnimatePresence custom={direction} mode="wait">
-                    <motion.div
-                      key={testimonials[currentIndex]?.id}
-                      custom={direction}
-                      variants={variants}
-                      initial="enter"
-                      animate="center"
-                      exit="exit"
-                      transition={{ duration: 0.5 }}
-                      className="w-[297px] min-h-[395px] sm:w-[320px] flex-shrink-0 bg-white border rounded-xl p-4 flex flex-col gap-4"
+              <div ref={scrollRef} className="block lg:hidden overflow-x-auto scroll-smooth scrollbar-hide -mx-4 px-4">
+                <div className="flex gap-2 w-max">
+                  {extendedTestimonials.map((testimonial, index) => (
+                    <div
+                      key={`${testimonial?.id}-${index}`}
+                      data-index={index}
+                      className="w-[297px] min-h-[395px] sm:w-[320px] flex-shrink-0 bg-white border rounded-xl p-4 flex flex-col gap-4 ml-8 "
                       style={{ borderColor: '#E9F2DA' }}
                     >
-                     <div className="flex-shrink-0 md:flex-[0.25]" >
+                      <div className="flex-shrink-0 md:flex-[0.25]">
                         <Image src="/img_.svg" alt="Quote" width={56} height={39} />
-                    </div>
-                    <div className="text-sm sm:text-base font-fz-poppins leading-relaxed break-words" style={{ color: '#667085' }}>
-                      {testimonial.content.split('\n').map((line, i, arr) => (
-                        <React.Fragment key={i}>
-                          {line}
-                          {i !== arr.length - 1 && <br className="hidden sm:inline" />}
-                        </React.Fragment>
-                      ))}
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Image src={testimonial.avatar} alt={testimonial.author} width={40} height={40} className="rounded-full" />
-                      <div>
-                        <h4 className="text-[16px] font-bold font-alegreya-sans text-blue-dark" style={{ color: '#0A5B89' }}>{testimonial.author}</h4>
-                        <p className="text-[14px] text-gray-muted font-alegreya-sans opacity-60" style={{ color: '#5C6578' }}>{testimonial.position}</p>
+                      </div>
+                      <div className="text-sm sm:text-base font-fz-poppins leading-relaxed break-words" style={{ color: '#667085' }}>
+                        {testimonial?.content?.split('\n').map((line, i, arr) => (
+                          <React.Fragment key={i}>
+                            {line}
+                            {i !== arr.length - 1 && <br className="hidden sm:inline" />}
+                          </React.Fragment>
+                        ))}
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <Image src={testimonial?.avatar ?? '/testinomial_nam_tien.png'} alt={testimonial?.author ?? 'Author'} width={40} height={40} className="rounded-full" />
+                        <div>
+                          <h4 className="text-[16px] font-bold font-alegreya-sans text-blue-dark" style={{ color: '#0A5B89' }}>{testimonial?.author}</h4>
+                          <p className="text-[14px] text-gray-muted font-alegreya-sans opacity-60" style={{ color: '#5C6578' }}>{testimonial?.position}</p>
+                        </div>
+                      </div>
+                      <div className="flex justify-center gap-2 mt-4">
+                        {testimonials.map((item, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => setCurrentIndex(idx)}
+                            className="rounded-full overflow-hidden transition duration-300"
+                          >
+                            <Image
+                              src={idx === currentIndex ? '/Pagination_current.svg' : '/Pagination.svg'}
+                              alt={item.author}
+                              width={18}
+                              height={8}
+                              className="object-cover"
+                            />
+                          </button>
+                        ))}
                       </div>
                     </div>
-                    <div className="flex justify-center gap-2 mt-4">
-                      {testimonials.map((item, index) => (
-                        <button
-                        key={index}
-                        onClick={() => setCurrentIndex(index)}
-                        className="rounded-full overflow-hidden transition duration-300"
-                      >
-                        <Image
-                          src={
-                            index === currentIndex
-                              ? '/Pagination_current.svg'
-                              : '/Pagination.svg'
-                          }
-                          alt={item.author}
-                          width={18}
-                          height={8}
-                          className="object-cover"
-                        />
-                      </button>
-                      ))}
-                    </div>
-                  {/* </div> */}
-                  </motion.div>
-                  </AnimatePresence>
-                {/* ))}
-              </div> */}
-            </div>
+                  ))}
+                </div>
+              </div>
               {/* Testimonial Content */}
               {/* Desktop */}
               {/* Testimonial Text + Avatar */}

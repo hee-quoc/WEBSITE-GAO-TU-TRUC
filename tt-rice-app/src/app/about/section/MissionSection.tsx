@@ -26,7 +26,7 @@ const coreValues = [
   {
     title: 'Vững đầu ra cho nông dân',
     description:
-      'Tôn trọng người nông dân gìn giữ nghề truyền thống; hỗ trợ kỹ thuật và công nghệ \n vào sản xuất, đảm bảo đầu ra ổn định, nâng cao thu nhập bền vững.',
+      'Tôn trọng người nông dân giữ nghề truyền thống; hỗ trợ kỹ thuật và công nghệ vào sản xuất, đảm bảo đầu ra ổn định, nâng cao thu nhập bền vững.',
   },
   {
     title: 'Vững chất lượng sản phẩm',
@@ -62,7 +62,7 @@ export function MissionSection() {
   }
   return (
     <section className="pt-20 pb-5 bg-white ">
-      <div className="flex justify-center flex-col max-w-[335px] md:flex-row items-start md:max-w-[1122px] mx-auto  py-8  "> 
+      <div className="flex justify-center flex-col max-w-[335px] md:flex-row items-start md:max-w-[1122px] px-5 md:mx-auto py-8  "> 
             {/* Left Column: Title */}
             <div className="w-full md:w-1/2 text-left sm:text-center md:text-left">
               <h2 className="font-alegreya-sans font-[700]  leading-[100%] tracking-[0%] text-[42px] max-w-[335px] sm:max-w-[360px]:max-h-[168px]:text-[56px] "style={{color:"#0A5B89"}}>
@@ -83,16 +83,16 @@ export function MissionSection() {
               <div className="absolute -top-2 sm:-left-11 sm:top-0 w-14 h-10 opacity-30 pointer-events-none">
               <Image src="/img_.svg" alt="Quote" width={34} height={24} />
               </div>
-              <p className="font-fz-poppins text-[14px] text-left sm:text-xl md:text-[16px] text-gray-600 sm:text-justify leading-relaxed max-w-[741px]">
-                Với nhiều người, gạo chỉ đơn thuần là lương thực để no bụng. <br className="hidden sm:inline"/> Nhưng với Từ Trúc, đó là kết tinh của đất trời hào phóng,<br className="hidden sm:inline"/>
-                đôi tay cần mẫn của người nông dân, sự kỹ lưỡng, chỉn chu <br className="hidden sm:inline"/> trong từng công đoạn của người công nhân và hơn hết,<br className="hidden sm:inline"/>
-                đó còn là niềm tự hào về nền văn minh lúa nước ngàn đời.
+              <p className="font-fz-poppins w-[335px] text-[14px] text-left sm:text-xl md:text-[16px] text-gray-600 sm:text-justify leading-relaxed max-w-[741px]">
+                Với nhiều người, gạo chỉ đơn thuần là lương <br className="sm:hidden"/> thực để no bụng. <br className="hidden sm:inline"/> Nhưng với Từ Trúc, đó là kết <br className="sm:hidden"/> tinh của đất trời hào phóng,<br className="hidden sm:inline"/>
+                đôi tay cần mẫn <br className="sm:hidden"/> của người nông dân, sự kỹ lưỡng, chỉn chu <br className="sm:hidden"/> <br className="hidden sm:inline"/> trong từng công đoạn của người công nhân,<br className="sm:hidden"/> và hơn hết,<br className="hidden sm:inline"/>
+                đó còn là niềm tự hào về nền văn <br className="sm:hidden"/> minh lúa nước ngàn đời.
               </p>
             </div>
           </div>
         </div>
-        <div className="relative bg-cover bg-center text-white overflow-hidden rounded-[16px] mx-auto w-full max-w-[1122px] h-[509px] md:h-[509px] opacity-100">
-          <div className={`flex flex-col justify-between inset-0 backdrop-blur-sm w-full h-full items-center text-center px-4 py-6 md:px-12 md:py-12 transition-opacity duration-1000 `}
+        <div className="relative bg-cover bg-center text-white overflow-hidden rounded-[16px] md:mx-auto px-5 w-full md:max-w-[1122px] h-[509px] md:h-[509px] opacity-100">
+          <div className={`flex flex-col justify-between inset-0 backdrop-blur-sm w-full h-full items-center text-center px-4 py-6 md:px-12 md:py-12 transition-opacity duration-1000  rounded-[16px]`}
           style={{ backgroundImage: `url(${backgroundImages[index]})` ,
                   transition: "opacity 0.8s ease-in-out",
                   opacity: fade ? 100 : 0,
@@ -116,7 +116,7 @@ export function MissionSection() {
                     ))
                   : null}
               </h2>
-              <p className={`max-w-[295px] md:max-w-[664px] font-fz-poppins  text-white text-[14px] sm:text-[8px] md:text-[16px]  mb-6 transition-opacity duration-700 ${fade ? 'opacity-100' : 'opacity-0'}`} style={{color:"#5C6578"}}>
+              <p className={`w-[295px] md:w-[664px] font-fz-poppins  text-white text-[14px] sm:text-[8px] md:text-[16px]  mb-6 transition-opacity duration-700 ${fade ? 'opacity-100' : 'opacity-0'}`} style={{color:"#5C6578"}}>
                 {textContent[index]?.paragraph.split('\n').map((line, i, arr) => (
                   <React.Fragment key={i}>
                     {line}
@@ -140,7 +140,7 @@ export function MissionSection() {
           </div>
         </div>
         {/* Core Values Accordion Section */}
-        <div className="max-w-[1122px] mx-auto px-4 py-12 flex flex-col md:flex-row gap-6">
+        <div className="w-full md:max-w-[1122px] md:mx-auto px-4 py-12 flex flex-col md:flex-row gap-6">
           <h3 className="text-[#54585A] text-[28px] sm:text-[32px] font-[400] md:w-1/4 font-alegreya">Giá trị cốt lõi</h3>
           <div className="md:w-3/4 space-y-4">
             {coreValues.map((item, idx) => (
@@ -168,7 +168,7 @@ export function MissionSection() {
                   />
                 </button>
                 {openIndex === idx && (
-                  <p className="pl-4 mt-5 sm:mt-2 text-[14px] w-[227px] sm:w-[606px] md:text-base:text-sm font-fz-poppins ml-12 font-[400] text-[#5C6578]">
+                  <p className="pl-0 mt-5 sm:mt-2 text-[14px] w-[227px] sm:w-[606px] md:text-base:text-sm font-fz-poppins ml-16 font-[400] text-[#5C6578]">
                     {item.description.split('\n').map((line, i, arr) => (
                       <React.Fragment key={i}>
                         {line}

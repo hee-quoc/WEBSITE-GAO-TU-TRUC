@@ -9,11 +9,11 @@ function MobileCard(){
   return(
     <section className="pt-20 pb-5 bg-white">
         <div className={`max-w-7xl flex flex-col items-center mx-auto px-5 `}>
-          <div className="max-w-[732px]">
+          <div className="w-[335px] md:w-[732px] ">
             <h2 className="text-4xl mb-3 text-center font-bold  font-alegreya-sans" style={{ color: "#0A5B89" }}> 
               Giá trị gửi trao <br /> đến cộng đồng
             </h2>
-            <p className="max-w-[732px] text-[16px] sm:text-[16px] text-center text-gray-light mb-8 sm:mb-12 font-fz-poppins" style={{ color: "#667085" }}> 
+            <p className=" text-[16px] sm:text-[16px] text-center text-gray-light mb-8 sm:mb-12 font-fz-poppins" style={{ color: "#667085" }}> 
               Thấu hiểu giá trị của đất lành, nước mát và bàn tay người lao động trong hành trình nuôi dưỡng hạt gạo Việt, Tư Trúc luôn đặt trọn tâm huyết vào việc bảo vệ hệ sinh thái canh tác, nâng cao giá trị nghề nông và cải thiện đời sống người lao động.
             </p>
           </div>
@@ -48,14 +48,14 @@ function MobileCard(){
                     Thu nhập bình quân
                   </p>
                 </div>
-                <p className="text-[14px] mt-6 sm:mt-8 font-fz-poppins" style={{ color: "#667085" }}> 
+                <p className="w-[287px] md:w-[447px] text-[14px] mt-6 sm:mt-8 font-fz-poppins" style={{ color: "#667085" }}> 
                   Tư Trúc trực tiếp thu mua lúa từ hàng ngàn hộ nông dân, đảm bảo đầu ra ổn định, thu nhập bền vững.<br />Song song đó, thường hiệu chủ trong đào tạo, chuyển giao kỹ thuật và ứng dụng công nghệ cho đội ngũ công nhân bản địa, giúp người lao động nâng cao tay nghề, tiếp cận tri thức mới nhưng vẫn gìn giữ nghề lúa nước truyền thống.
                 </p>
               </div>
             </div>
             <div className="flex flex-col gap-4 w-full">
               <div className={`basis-[60%] flex flex-col text-white w-full  h-auto `}>
-                <div className="relative bg-[#6D9127] w-[335px] h-[264px] rounded-[16px] overflow-hidden">
+                <div className="relative bg-[#6D9127] w-wull h-[264px] rounded-[16px] overflow-hidden">
                   <Image
                       src="/images/about/img_farmer.svg"
                       fill
@@ -80,14 +80,14 @@ function MobileCard(){
                       </p>
                   </div>
                 </div>
-                <div className="gap-4 mt-6 bg-[#F4F3EA] rounded-[16px] px-5 py-10 flex flex-col justify-around h-[352px]">
+                <div className="gap-4 mt-6 bg-[#F4F3EA] rounded-[16px] px-5  flex flex-col justify-around h-[352px]">
                   <div>
-                    <div className="text-7xl sm:text-7xl md:text-7xl font-bold  font-alegreya-sans" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>100 ha</div> 
+                    <div className="text-[82px] sm:text-7xl md:text-7xl font-bold  font-alegreya-sans" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>100 ha</div> 
                     <p className=" text-gray-700 font-fz-poppins" style={{ color: "#7D8493" }}> 
                       ha diện tích canh tác không hóa chất độc hại
                     </p>
                   </div>
-                  <p className=" text-gray-700 font-fz-poppins" style={{ color: "#7D8493" }}> {/* Adjusted font sizes and margin-top */}
+                  <p className=" w-[295px] md:w-[235px] text-gray-700 font-fz-poppins" style={{ color: "#7D8493" }}> {/* Adjusted font sizes and margin-top */}
                     Tư Trúc kiên trì mô hình canh tác sạch, không hóa chất độc hại, giúp giảm lượng thuốc bảo vệ thực vật đáng kể, giúp bảo vệ được sức khỏe đất đai, người trồng và mang đến những mùa vụ gạo sạch, an toàn.
                   </p>
                 </div>
@@ -102,12 +102,12 @@ function MobileCard(){
                 <div className="relative z-10 text-white px-[39px]">
                   <div className="pt-6">
                     <div className="text-[82px] font-bold font-alegreya-sans leading-[1] p-0 m-0">100%</div> 
-                    <p className="text-white font-fz-poppins opacity-80" style={{color:"#EFF0F2"}}> 
+                    <p className="w-[257px] md:w-[full] text-white font-fz-poppins opacity-80" style={{color:"#EFF0F2"}}> 
                       Phụ phẩm tái chế phục vụ chăn nuôi & canh tác bền vững
                     </p>
                   </div>
                   
-                  <p className="max-w-[345px] mt-8 text-white font-fz-poppins" style={{color:"#EFF0F2"}}> 
+                  <p className="w-[257px] md:w-[345px] max-w-[345px] mt-8 text-white font-fz-poppins" style={{color:"#EFF0F2"}}> 
                     Quy trình sản xuất áp dụng các công nghệ tiết kiệm năng lượng, tái sử dụng phụ phẩm nông nghiệp, hạn chế tối đa rác thải nhựa và phát thải CO₂, ra môi trường.
                   </p>
                 </div>
