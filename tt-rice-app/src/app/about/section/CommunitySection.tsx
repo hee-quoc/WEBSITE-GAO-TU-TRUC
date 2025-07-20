@@ -44,11 +44,11 @@ function MobileCard(){
                       <path d="M12 6L19 13H5L12 6Z" fill="#FFB000" stroke="#FFB000" strokeWidth="2" strokeLinejoin="round"/> 
                     </svg>10%
                   </div> 
-                  <p className=" font-fz-poppins opacity-80" style={{ color: "#667085" }}> 
+                  <p className=" font-fz-poppins font-[400] text-[16px] opacity-80" style={{ color: "#667085" }}> 
                     Thu nhập bình quân
                   </p>
                 </div>
-                <p className="w-[287px] md:w-[447px] text-[14px] mt-6 sm:mt-8 font-fz-poppins" style={{ color: "#667085" }}> 
+                <p className="w-[287px] md:w-[447px] text-[14px] font-[400] mt-10 sm:mt-8 font-fz-poppins" style={{ color: "#7D8493" }}> 
                   Tư Trúc trực tiếp thu mua lúa từ hàng ngàn hộ nông dân, đảm bảo đầu ra ổn định, thu nhập bền vững.<br />Song song đó, thường hiệu chủ trong đào tạo, chuyển giao kỹ thuật và ứng dụng công nghệ cho đội ngũ công nhân bản địa, giúp người lao động nâng cao tay nghề, tiếp cận tri thức mới nhưng vẫn gìn giữ nghề lúa nước truyền thống.
                 </p>
               </div>
@@ -80,9 +80,9 @@ function MobileCard(){
                       </p>
                   </div>
                 </div>
-                <div className="gap-4 mt-6 bg-[#F4F3EA] rounded-[16px] px-5  flex flex-col justify-around h-[352px]">
+                <div className="gap-4 mt-6 bg-[#F4F3EA] rounded-[16px] px-5  flex flex-col pt-4 md:justify-around h-[352px]">
                   <div>
-                    <div className="text-[82px] sm:text-7xl md:text-7xl font-bold  font-alegreya-sans" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>100 ha</div> 
+                    <div className="text-[82px] sm:text-7xl md:text-7xl font-bold  font-alegreya-sans leading-[100%] tracking-[0%]" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>100 ha</div> 
                     <p className=" text-gray-700 font-fz-poppins" style={{ color: "#7D8493" }}> 
                       ha diện tích canh tác không hóa chất độc hại
                     </p>
@@ -108,7 +108,7 @@ function MobileCard(){
                   </div>
                   
                   <p className="w-[257px] md:w-[345px] max-w-[345px] mt-8 text-white font-fz-poppins" style={{color:"#EFF0F2"}}> 
-                    Quy trình sản xuất áp dụng các công nghệ tiết kiệm năng lượng, tái sử dụng phụ phẩm nông nghiệp, hạn chế tối đa rác thải nhựa và phát thải CO₂, ra môi trường.
+                    Quy trình sản xuất áp dụng các công nghệ tiết kiệm năng lượng, tái sử dụng phụ phẩm nông nghiệp, hạn chế tối đa rác thải nhựa và phát thải CO₂ ra môi trường.
                   </p>
                 </div>
               </div> 

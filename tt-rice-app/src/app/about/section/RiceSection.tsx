@@ -33,7 +33,7 @@ const steps = [
 
 export function RiceSection() {
   return (
-    <section className="pt-20 pb-5 pt-[96px] bg-[#6C9126] px-5 md:px-0">
+    <section className="pt-20 pb-5 pt-[96px] pb-[76px] md:pb-[0px] bg-[#6C9126] px-5 md:px-0">
         {/* <div className="bg-[#f9f9f3] relative flex flex-col justify-center mx-auto py-96 px-8 rounded-3xl border border-green-200 w-[1296px] h-[1296px]"> */}
           {/* Title */}
           {/* <div className="flex flex-col text-center mb-12 items-center hidden md:inline">
