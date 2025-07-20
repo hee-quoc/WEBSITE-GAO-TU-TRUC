@@ -11,9 +11,30 @@ const riceItems = [
 const RiceList = () => {
   return (
     <div className="w-full max-w-[1240px] mx-auto pb-10">
-      <div className="flex flex-wrap justify-center sm:justify-between gap-6">
+      {/* Layout cho mobile: scroll ngang */}
+      <div className="flex sm:hidden overflow-x-auto gap-4 px-4 w-full scrollbar-thin scrollbar-thumb-transparent scrollbar-track-transparent">
         {riceItems.map((item, idx) => (
-          <RiceCard key={idx} image={item.image} label={item.label} hoverImage={item.hoverImage} slug={item.slug}/>
+          <div key={idx} className="flex-shrink-0">
+            <RiceCard
+              image={item.image}
+              label={item.label}
+              hoverImage={item.hoverImage}
+              slug={item.slug}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Layout cho PC: lưới 2 hàng hoặc chia đều */}
+      <div className="hidden sm:flex flex-wrap justify-center sm:justify-between gap-6">
+        {riceItems.map((item, idx) => (
+          <RiceCard
+            key={idx}
+            image={item.image}
+            label={item.label}
+            hoverImage={item.hoverImage}
+            slug={item.slug}
+          />
         ))}
       </div>
     </div>

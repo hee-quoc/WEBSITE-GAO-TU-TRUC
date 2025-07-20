@@ -39,13 +39,14 @@ export function ContactSection() {
     <section className="w-full bg-white py-20">
       <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row px-4 sm:px-6 lg:px-0 gap-8">
         {/* Left Box - Form */}
-        <div className="w-full lg:w-1/2 pl-[110px]">
-          <h2 className="text-[48px] leading-tight font-bold text-blue-dark mb-12"
-            style={{ color: "#0A5B89" }} 
+        <div className="w-full lg:w-1/2 lg:pl-[110px] flex flex-col items-center lg:items-start order-1 lg:order-none">
+          <h2
+            className="text-[32px] sm:text-[40px] lg:text-[48px] leading-tight font-bold text-blue-dark mb-8 lg:mb-12 text-center lg:text-left"
+            style={{ color: "#0A5B89" }}
           >
             Liên hệ <br /> đặt hàng & tư vấn
           </h2>
-          <form onSubmit={handleSubmit} className="space-y-6 w-[492px]">
+          <form onSubmit={handleSubmit} className="space-y-6 w-full max-w-[492px]">
             <Input
               label="Họ và tên"
               name="name"
@@ -83,9 +84,9 @@ export function ContactSection() {
             <Button
               type="submit"
               size="small"
-              className="bg-green-normal hover:bg-green-dark text-white transition-all duration-300 rounded-full px-5 py-3.5"
+              className="w-full lg:w-auto bg-green-normal hover:bg-green-dark text-white transition-all duration-300 rounded-full px-5 py-3.5"
             >
-              <span className="flex items-center gap-2">
+              <span className="flex items-center justify-center gap-2">
                 Gửi Thông Tin
                 <Image
                   src="/icon_wheat_white.svg"
@@ -99,14 +100,17 @@ export function ContactSection() {
         </div>
 
         {/* Right Box - Image */}
-        <div className="w-full lg:w-1/2 flex justify-center items-center relative">
-          <Image
-            src="/Group 7.svg"
-            alt="Contact Illustration"
-            width={900}
-            height={646}
-            className="absolute top-[134px] right-[100px] h-auto"
-          />
+        <div className="w-full lg:w-1/2 flex justify-center items-center relative order-2 lg:order-none">
+          {/* PC giữ absolute, mobile = relative */}
+          <div className="relative w-full flex justify-center lg:static">
+            <Image
+              src="/Group 7.svg"
+              alt="Contact Illustration"
+              width={900}
+              height={646}
+              className="w-full max-w-[500px] h-auto lg:w-auto lg:max-w-none lg:absolute lg:top-[134px] lg:right-[100px]"
+            />
+          </div>
         </div>
       </div>
     </section>

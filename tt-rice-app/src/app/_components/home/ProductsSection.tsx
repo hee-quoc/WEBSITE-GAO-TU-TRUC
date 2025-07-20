@@ -4,15 +4,15 @@ export function ProductsSection(){
     return (
         <section className="pt-20 pb-10 bg-[#FBFFF2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto mb-12 text-center space-y-3 max-w-[95%] sm:max-w-[639px] mt-10 sm:mt-[96px]">
+        <div className="mx-auto mb-12 text-center space-y-3  md:max-w-[639px]  mt-10 sm:mt-[96px]">
           <h2
-            className="font-bold text-[32px] sm:text-[56px] leading-[100%] text-center font-alegreya-sans"
+            className="font-bold text-[28px] sm:text-[32px] md:text-[42px] lg:text-[56px] leading-[96%] text-center font-alegreya-sans"
             style={{ color: "#0A5B89" }}
           >
             Mang tinh hoa vào từng bữa cơm Việt
           </h2>
           <p
-            className="text-[20px] sm:text-[32px] font-normal leading-[140%] text-center font-alegreya"
+            className="font-normal text-[24px] sm:text-[26px] md:text-[28px] lg:text-[32px] leading-[100%] text-center font-alegreya"
             style={{ color: "#526D1D" }}
           >
             Các sản phẩm có tại Tư Trúc
@@ -21,58 +21,59 @@ export function ProductsSection(){
 
         <RiceList />
 
-        <div className="text-center space-y-6 px-8 ">
-          <p className="text-[16px] leading-[140%] text-gray-600 px-18 mx-auto font-fz-poppins max-w-[771px]">
-            Tư Trúc tin rằng gạo không chỉ là lương thực để no bụng,<br /> mà còn là thức quà <span className='font-bold'>để thưởng, để nghiệm, và để tự hào.</span>
+        <div className="text-center space-y-6 sm:px-0 md:px-8 ">
+          <p className="text-[14px] sm:text-[15px] md:text-[16px] leading-[140%] text-center text-[#545C6D] px-0 sm:px-0 md:px-6 mx-auto font-fz-poppins max-w-[335px] sm:max-w-[640px] md:max-w-[771px]">
+            Tư Trúc tin rằng gạo không chỉ là lương thực để no bụng,<br className="hidden sm:inline" />
+            mà còn là thức quà <span className='font-bold'>để thưởng, để nghiệm, và để tự hào.</span>
           </p>
-          <p className="text-[16px] leading-[140%] text-gray-600  px-8 mx-auto font-fz-poppins max-w-[771px]">
-            Mỗi hạt gạo Tư Trúc đều được <span className='font-bold'>tinh chọn từ giống lúa chất lượng,<br /> canh tác theo quy trình nghiệm ngặt, thu hoạch đúng vụ</span>, và <br /><span className='font-bold'>được sàng lọc kỹ lưỡng từ đội ngũ công nhân nhiều năm kinh nghiệm</span><br /> bằng cả chuyên môn lẫn tâm huyết - để đem <span className='font-bold'>chất lượng hạt gạo ổn định, <br />hương vị thuần khiết và ngọt lành </span>từ đồng nội đến bữa cơm Việt.
+          <p className="text-[14px] sm:text-[15px] md:text-[16px] leading-[140%] text-[#545C6D] px-0 sm:px-8 mx-auto font-fz-poppins max-w-[335px] sm:max-w-[640px] md:max-w-[771px]">
+            Mỗi hạt gạo Tư Trúc đều được <span className='font-bold'>tinh chọn từ giống lúa chất lượng,<br  className="hidden sm:inline"/> canh tác theo quy trình nghiệm ngặt, thu hoạch đúng vụ</span>, và <br  className="hidden sm:inline"/><span className='font-bold'>được sàng lọc kỹ lưỡng từ đội ngũ công nhân nhiều năm kinh nghiệm</span><br  className="hidden sm:inline"/> bằng cả chuyên môn lẫn tâm huyết - để đem <span className='font-bold'>chất lượng hạt gạo ổn định, <br  className="hidden sm:inline"/>hương vị thuần khiết và ngọt lành </span>từ đồng nội đến bữa cơm Việt.
           </p>
         </div>
-         <div className="mt-16 text-center overflow-x-auto scrollbar-hide">
-          <h3 className="text-[20px] font-medium font-alegreya-sans" style={{color:"#0A5B89"}}>Các chứng nhận</h3>
-          <div className="flex flex-nowrap justify-start items-center gap-2 sm:gap-2 md:gap-2 pl-4 pr-6 w-max mx-auto">
+         <div className="mt-16 text-center overflow-x-auto scrollbar-hide rounded-[16px] px-0 sm:px-8 max-w-full sm:max-w-full relative h-[112px]">
+          <div className="relative w-full h-full flex flex-col items-center">
             {/* Item 1 */}
-            <div className="flex justify-center items-center flex-shrink-0">
+            <h3 className="absolute left-[30%] sm:left-[44%] text-[20px] font-[500] font-alegreya-sans " style={{color:"#0A5B89"}}>Các chứng nhận</h3>
+            <div className="absolute left-[-30] sm:left-[30%] top-1/2 -translate-y-1/2">
               <Image
                 src="/img_group_928.svg"
                 alt="Certification"
                 width={132}
                 height={107}
-                className='h-[107]'
+                className="h-[107px]"
               />
             </div>
 
             {/* Item 2 */}
-            <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center flex-shrink-0">
+            <div className="absolute left-[17%]  sm:left-[40%] top-[55%] -translate-y-1/2 w-[92px] h-[36px] rounded-full flex items-center justify-center">
               <Image
                 src="/ocop.png"
                 alt="Certification"
                 width={92}
                 height={36}
-                className='w-[92] h-[36]'
+                className="w-full h-full"
               />
             </div>
 
             {/* Item 3 */}
-            <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center flex-shrink-0">
+            <div className="absolute left-[57%] sm:left-[51%] top-[55%] -translate-y-1/2 w-[70px] h-[58px] rounded-full flex items-center justify-center">
               <Image
                 src="/ISO.png"
                 alt="Certification"
                 width={70}
                 height={58}
-                className='w-[70] h-[58]'
+                className="w-full h-full"
               />
             </div>
 
-            {/* Item 6 */}
-            <div className="flex justify-center items-center flex-shrink-0">
+            {/* Item 4 */}
+            <div className="absolute left-[68%] sm:left-[56%] top-1/2 -translate-y-1/2">
               <Image
                 src="/img_group_929_light_green_a700.svg"
                 alt="Certification"
                 width={115}
                 height={107}
-                className='h-[107]'
+                className="h-[107px]"
               />
             </div>
           </div>
