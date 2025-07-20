@@ -128,8 +128,8 @@ export function Testimonial() {
                     </div>
                     <div className="flex items-center gap-3">
                       <Image
-                        src={testimonial?.avatar || "/testinomial_nam_tien.png"}
-                        alt={testimonial?.author || "Author"}
+                        src={testimonial?.avatar ?? "/testinomial_nam_tien.png"}
+                        alt={testimonial?.author ?? "Author"}
                         width={40}
                         height={40}
                         className="rounded-full"
