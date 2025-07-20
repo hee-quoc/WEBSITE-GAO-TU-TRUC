@@ -161,7 +161,7 @@ export function CustomerSection() {
 
 function MobileCard({ testimonial, setCurrentIndex, currentIndex ,direction, variants}: MobileCardProps){
   return(
-    <section className="pt-20 pb-5 bg-[#FBFFF2]">
+    <section className="pt-20 pb-5 bg-[#FBFFF2] h-[700px]">
         <div className="max-w-4xl mx-auto px-5 text-center flex flex-col items-center leading-[1]">
           <h2 className="text-[42px] font-bold mb-2 font-alegreya-sans" style={{ color: "#0A5B89" }}>
             Hạt gạo Tư Trúc qua câu chuyện của mỗi người dùng

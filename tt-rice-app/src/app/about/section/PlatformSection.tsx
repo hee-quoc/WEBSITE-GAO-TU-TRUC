@@ -11,7 +11,7 @@ const scrollData = [
     content:
       "Với lợi thế có hơn 150ha quỹ đất gia đình, Tư Trúc <br /> chủ động kiểm soát chặt chẽ từ lúa giống đến vùng trồng, đảm bảo chất lượng từ gốc. Nhờ vậy, doanh nghiệp luôn vững vàng trước mọi biến động về thời tiết, dịch bệnh hay thị trường, sẵn sàng duy trì nguồn cung ổn định, cao cấp, đáp ứng kịp thời mọi nhu cầu về sản lượng của đối tác.",
     image: "/platform/1.svg",
-    isHeader: false,
+    isHeader: false, 
   },
   {
     icon: "/platform/icon.svg",
@@ -47,8 +47,6 @@ const textVariants = {
     transition: { duration: 0.5, ease: easeOut },
   },
 };
-
-// ✅ Custom hook inline (không cần import ngoài)
 function useMediaQuery(query: string): boolean {
   const [matches, setMatches] = useState(false);
   useEffect(() => {
