@@ -9,7 +9,7 @@ const milestoneSteps = [
     id: "milestone-1988",
     image: "/milestone/Illustrator.svg",
     year: "1988",
-    content: "Khởi nguồn từ nhà máy\nxay xát nhỏ tại Bà Rịa – Vũng Tàu",
+    content: "Khởi nguồn từ nhà máy xay xát nhỏ tại Bà Rịa – Vũng Tàu",
   },
   {
     id: "milestone-1990",
@@ -22,7 +22,7 @@ const milestoneSteps = [
     image: "/milestone/2000.svg",
     year: "2000s",
     content:
-      "Mở rộng và tự chủ vùng trồng.\nNâng cao trang thiết bị máy móc,\nquy trình sản xuất và đội ngũ nhân công",
+      "Mở rộng và tự chủ vùng trồng.\nNâng cao trang thiết bị máy móc, quy trình sản xuất và đội ngũ nhân công",
   },
   {
     id: "milestone-2010",
@@ -35,44 +35,14 @@ const milestoneSteps = [
     image: "/milestone/2020.svg",
     year: "2020s",
     content:
-      "Lan tỏa giá trị hạt gạo Việt,\ncam kết bảo vệ môi trường,\nnâng đời sống nông dân – công nhân.\nHướng đến vị thế là một trong những\nnhà cung cấp gạo hàng đầu Đông Nam Bộ.",
+      "Lan tỏa giá trị hạt gạo Việt,cam kết bảo vệ môi trường, nâng đời sống nông dân – công nhân. Hướng đến vị thế là một trong những nhà cung cấp gạo hàng đầu Đông Nam Bộ",
   },
 ];
 
-const milestoneStepsMobile = [
-  {
-    id: "milestone-1988",
-    image: "/milestone/Illustrator.svg",
-    year: "1988",
-    content: "Khởi nguồn từ\nnhà máy xay xát nhỏ\ntại Bà Rịa – Vũng Tàu",
-  },
-  {
-    id: "milestone-1990",
-    image: "/milestone/Illustrator2.svg",
-    year: "1990s",
-    content: "Đầu tư sở hữu đất canh tác\nvà mở rộng quy mô nhà máy",
-  },
-  {
-    id: "milestone-2000",
-    image: "/milestone/2000.svg",
-    year: "2000s",
-    content:
-      "Mở rộng và tự chủ vùng trồng.\nNâng cao trang thiết bị máy móc, quy trình sản xuất\nvà đội ngũ nhân công",
-  },
-  {
-    id: "milestone-2010",
-    image: "/milestone/2010.svg",
-    year: "2010s",
-    content: "Vươn lên vị trí\nnhà cung ứng gạo hàng đầu\nBà Rịa – Vũng Tàu",
-  },
-  {
-    id: "milestone-2020",
-    image: "/milestone/2020.svg",
-    year: "2020s",
-    content:
-      "Lan tỏa giá trị hạt gạo Việt,\ncam kết bảo vệ môi trường,\nnâng đời sống nông dân – công nhân.Hướng đến vị thế là một trong những nhà cung cấp gạo hàng đầu Đông Nam Bộ.",
-  },
-];
+const milestoneStepsMobile = milestoneSteps.map((step) => ({
+  ...step,
+  image: step.image ?? "", // đảm bảo image không undefined
+}));
 
 const desktopBlocks = [
   {
@@ -120,11 +90,11 @@ export function MileStoneSection() {
       <section className="bg-[#FAFDF2] py-10 px-5 relative">
         {/* Title */}
         <div className="text-center mb-10">
-          <h2 className="font-alegreya-sans text-[28px] font-bold text-[#005B94] leading-tight">
-            Dấu ấn trên <br /> hành trình phát triển
+          <h2 className="font-alegreya-sans text-[42px] font-bold text-[#0A5B89] leading-[1]">
+            Dấu ấn trên hành trình phát triển
           </h2>
-          <p className="font-alegreya-sans text-[18px] text-[#6D6D6D] mt-2">
-            Những cột mốc thương hiệu đã đi qua
+          <p className="font-alegreya-sans text-[28px] leading-[1] text-[#6D6D6D] mt-2">
+            Những cột mốc <br /> thương hiệu đã đi qua
           </p>
         </div>
 
@@ -159,7 +129,7 @@ export function MileStoneSection() {
               >
                 <div className="relative w-full aspect-[190/138] mb-4">
                   <Image
-                    src={item.image}
+                    src={item.image ?? ""}
                     alt={`Milestone ${item.year}`}
                     fill
                     className="object-contain"
@@ -172,7 +142,7 @@ export function MileStoneSection() {
                 <p className="text-[#4D671B] font-medium text-[20px] font-alegreya-sans font-[500]">
                   {item.year}
                 </p>
-                <p className="text-[#5C6578] text-[14px] leading-[1.6] whitespace-pre-line font-fz-poppins mt-1">
+                <p className="text-[#5C6578] text-[16px] leading-[1.4] whitespace-pre-line font-fz-poppins mt-1">
                   {item.content}
                 </p>
               </div>
@@ -240,7 +210,7 @@ export function MileStoneSection() {
               }}
             >
               <Image
-                src={item.image}
+                src={item.image ?? ""}
                 alt={`${item.id}-big`}
                 fill
                 className="object-contain"
