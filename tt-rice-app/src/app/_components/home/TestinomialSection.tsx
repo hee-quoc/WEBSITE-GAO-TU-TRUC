@@ -64,7 +64,7 @@ export function Testimonial(){
         setCurrentIndex(nextIndex);
         const container = scrollRef.current;
         if (container) {
-          const child = container.querySelector(`[data-index='${nextIndex}']`) as HTMLElement;
+          const child = container.querySelector(`[data-index='${nextIndex}']`)!;
           child?.scrollIntoView({ behavior: 'smooth', inline: 'start' });
         }
       }, 10000);

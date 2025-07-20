@@ -75,7 +75,7 @@ const Header: React.FC = () => {
               Đăng nhập
             </Link> */}
           </nav>
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center pr-4">
             <button onClick={toggleMenu} className="text-dark-gray focus:outline-none">
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

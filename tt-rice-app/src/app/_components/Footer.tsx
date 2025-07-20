@@ -1,6 +1,7 @@
+"use client";
 import Link from 'next/link';
 import Image from 'next/image';
-
+import { useMediaQuery } from '../hooks/useMediaQuery';
 export default function Footer() {
   const contactInfo = [
     {
@@ -53,69 +54,90 @@ export default function Footer() {
     { href: '/contact', label: 'Liên hệ' },
     { href: '/news', label: 'Tin tức' },
   ];
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
-    <footer className="relative text-white">
-      
+    <footer className="relative text-white ">
         <div className="">
+          {isMobile ?
           <Image
+            src="/images/footer/img_mobile_footer_decorate.svg"
+            alt="Footer decoration"
+            width={1440} 
+            height={143}  
+            className="w-full"
+          /> : <Image
             src="/footer_header.svg"
             alt="Footer decoration"
             width={1440} 
             height={143}  
             className="w-full"
-          />
+          />}
+          
         </div>
-        <div className='bg-green-normal pb-10'>
+        <div className='bg-green-normal pb-10 border-bg-green-normal'>
           <div className="container m-auto px-4 relative z-10  ">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-10 gap-x-8 gap-y-12">
               <div className="lg:col-span-2">
                 <div className="flex flex-col items-start space-y-6">
-                  <Link href="/">
+                  {isMobile ? <Link href="/">
+                    <Image
+                      src="/images/footer/icon_logo_mobile.svg"
+                      alt="Tu Truc Logo"
+                      width={180}
+                      height={48}
+                    />
+                  </Link>: <Link href="/">
                     <Image
                       src="/logo_white.svg"
                       alt="Tu Truc Logo"
                       width={150}
                       height={75}
                     />
-                  </Link>
+                  </Link>}
+                  
                 </div>
               </div>
               <div className="lg:col-span-4">
-                <h3 className="font-alegreya-sans font-bold text-lg mb-6 font-alegreya-sans-sans-serif">Sản phẩm của công ty TNHH Tư Trúc</h3>
+                <h3 className="font-alegreya-sans font-bold text-[20px] md:text-[24px] mb-6 font-alegreya-sans-sans-serif">Sản phẩm của công ty TNHH Tư Trúc</h3>
                 <div className="space-y-4">
                   {contactInfo.map((item, index) => (
                     <div key={index} className="font-fz-poppins flex items-start gap-3">
                       <span className="mt-1 flex-shrink-0">{item.icon}</span>
-                      <p className="text-sm">{item.text}</p>
+                      <p className="text-[14px] md:text-[16px]">{item.text}</p>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="lg:col-span-2">
-                <h3 className="font-alegreya-sans font-bold text-lg mb-6 font-alegreya-sans-sans-serif">Thông tin</h3>
-                <ul className="space-y-4">
-                  {infoLinks.map((link) => (
-                    <li key={link.href}>
-                      <Link href={link.href} className=" font-fz-poppins hover:underline text-sm">
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+              <div className="lg:col-span-4">
+                <div className="flex flex-row md:flex-row gap-8">
+                  <div className="lg:col-span-2 flex-1">
+                    <h3 className="font-alegreya-sans font-bold text-[20px] md:text-[24px] mb-6 font-alegreya-sans-sans-serif">Thông tin</h3>
+                    <ul className="space-y-4">
+                      {infoLinks.map((link) => (
+                        <li key={link.href}>
+                          <Link href={link.href} className=" font-fz-poppins hover:underline text-[14px] md:text-[16px]">
+                            {link.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="lg:col-span-2 flex-1 text-white">
+                    <h3 className="font-alegreya-sans font-bold text-[20px] md:text-[24px] mb-6 font-alegreya-sans-sans-serif">Hỗ trợ</h3>
+                    <ul className="space-y-4">
+                      {supportLinks.map((link) => (
+                        <li key={link.href}>
+                          <Link href={link.href} className="font-fz-poppins hover:underline text-[14px] md:text-[16px]">
+                            {link.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
-              <div className="lg:col-span-2">
-                <h3 className="font-alegreya-sans font-bold text-lg mb-6 font-alegreya-sans-sans-serif">Hỗ trợ</h3>
-                <ul className="space-y-4">
-                  {supportLinks.map((link) => (
-                    <li key={link.href}>
-                      <Link href={link.href} className="font-fz-poppins hover:underline text-sm">
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              
             </div>
           </div>
         </div>
