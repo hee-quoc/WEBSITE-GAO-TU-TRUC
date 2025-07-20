@@ -66,7 +66,9 @@ export function AboutSection() {
 
           {/* Block 1 */}
           <Image src="/Group 930.svg" alt="Tu Truc Story" width={249} height={249} className="mb-5" />
-          <p className="text-[15px] leading-[1.6] text-[#525A6A] mb-10 max-w-[340px]">
+
+          <p className="text-[15px] leading-[1.6] text-[#525A6A] mb-10 max-w-[340px] font-fz-poppins">
+
             Câu chuyện của Tư Trúc bắt đầu từ <b>hơn 30 năm trước</b>, nơi vùng đất{" "}
             <b>Hòa Long màu mỡ</b>, tại một <b>nhà máy xay xát lúa nhỏ bé</b> mang trong mình{" "}
             <b>sứ mệnh lớn lao – nâng tầm và lan tỏa giá trị “hạt ngọc thực”</b>.
@@ -74,7 +76,9 @@ export function AboutSection() {
 
           {/* Block 2 */}
           <Image src="/Group 929.svg" alt="Rice Field" width={250} height={250} className="mb-5" />
-          <p className="text-[15px] leading-[1.6] text-[#525A6A] mb-10 max-w-[340px]">
+
+          <p className="text-[15px] leading-[1.6] text-[#525A6A] mb-10 max-w-[340px] font-fz-poppins">
+
             Với Tư Trúc, gạo là kết tinh từ <b>sự ưu đãi của thiên nhiên</b>,{" "}
             <b>đôi bàn tay cần mẫn của người nông dân</b> và <b>công nhân, nhà máy</b> –{" "}
             <b>những giá trị luôn bền bỉ theo thời gian.</b>
@@ -84,7 +88,9 @@ export function AboutSection() {
           <Image src="/Layer_2.svg" alt="Tu Truc Heritage" width={350} height={175} className="mb-10" />
 
           {/* Block 4 */}
-          <p className="text-[15px] leading-[1.6] text-[#334155] max-w-[340px]">
+
+          <p className="text-[15px] leading-[1.6] text-[#334155] max-w-[340px] font-fz-poppins">
+
             Chính vì lẽ đó, suốt hành trình phát triển, bên cạnh việc{" "}
             <b>không ngừng nâng cấp chất lượng sản phẩm và hiện đại hóa hệ thống máy móc</b>, Tư Trúc
             vẫn luôn đặt trọng tâm việc <b>tôn vinh thức quà tinh túy</b> – để mỗi hạt gạo trở thành{" "}
