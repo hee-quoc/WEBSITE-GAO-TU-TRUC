@@ -58,7 +58,7 @@ export default function Footer() {
 
   return (
     <footer className="relative text-white ">
-        <div className="">
+        <div className="bg-green-50">
           {isMobile ?
           <Image
             src="/images/footer/img_mobile_footer_decorate.svg"
