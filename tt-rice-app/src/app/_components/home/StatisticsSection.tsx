@@ -32,16 +32,16 @@ export function StatisticSection(){
         <section className="pt-20 pb-5 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative">
-            <div className="w-[full] pb-16 flex flex-col items-center sm:flex-none sm:items-baseline">
-              <h2 className="w-[335px] md:w-full text-[42px] sm:text-[56px] md:text-[56px] font-[700] text-center sm:text-left font-alegreya-sans" style={{color:" #0A5B89"}}>
+            <div className="w-[full] pb-10 md:pb-16 flex flex-col items-center sm:flex-none sm:items-baseline">
+              <h2 className="w-[335px] leading-[100%] tracking-[0%] md:w-full text-[42px] sm:text-[56px] md:text-[56px] font-[700] text-center sm:text-left font-alegreya-sans" style={{color:" #0A5B89"}}>
                 Ươm hạt gạo, <br /> nuôi mạch nguồn Việt Nam
               </h2>
-              <p className="w-[335px] md:w-full text-[28px] sm:text-[32px]  text-center sm:text-left mb-2 font-alegreya" style={{color:"#667085"}}>
-                Những giá trị mà hạt gạo Tư Trúc đã mang lại
+              <p className="mt-3 w-[335px] md:w-full text-[28px] sm:text-[32px] leading-[100%] tracking-[0%] text-center sm:text-left mb-2 font-alegreya" style={{color:"#667085"}}>
+                Những giá trị mà hạt gạo <br className="sm:hidden"/> Tư Trúc đã mang lại
               </p>
               <Button
                 size="large"
-                className="bg-green-normal hover:bg-green-dark text-white transition-all duration-300 rounded-full px-5 py-3.5"
+                className="bg-green-normal hover:bg-green-dark text-white transition-all duration-300 rounded-full px-5 py-3.5 mt-5"
                 onClick={handleClick}
               >
                 <span className="flex items-center gap-2">
