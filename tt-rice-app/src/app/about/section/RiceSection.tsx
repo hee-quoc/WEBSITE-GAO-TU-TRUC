@@ -33,7 +33,7 @@ const steps = [
 
 export function RiceSection() {
   return (
-    <section className="pt-20 pb-5 pt-[96px] bg-[#6C9126] px-6 md:px-0">
+    <section className="pt-20 pb-5 pt-[96px] bg-[#6C9126] px-5 md:px-0">
         {/* <div className="bg-[#f9f9f3] relative flex flex-col justify-center mx-auto py-96 px-8 rounded-3xl border border-green-200 w-[1296px] h-[1296px]"> */}
           {/* Title */}
           {/* <div className="flex flex-col text-center mb-12 items-center hidden md:inline">
@@ -118,7 +118,7 @@ export function RiceSection() {
             <Image src="/quote_gray_mobile.svg" alt="Quote" width={45} height={37} className="inline sm:hidden"/>
           </div>
 
-          <p className="text-[18px] sm:text-[20px] text-white text-center sm:text-justify leading-relaxed font-alegreya-sans py-5 sm:py-0">
+          <p className="text-[18px] sm:text-[20px] text-white text-center sm:text-justify leading-relaxed font-alegreya-sans py-5 px-3 sm:py-0">
             Mỗi chén cơm ấm hiện diện trong từng bữa ăn đều là kết tinh từ <br  className="hidden sm:inline"/> sự hào phóng của thiên nhiên trù phú, và sự tận tụy của những <br  className="hidden sm:inline"/> người lao động thầm lặng.
           </p>
         </div>
@@ -130,7 +130,14 @@ export function RiceSection() {
             alt="Women eat rice"
             width={304}
             height={230}
-            className="w-[335px] h-[191px] sm:w-[260px] md:w-[304px] md:h-[231px] md:absolute md:top-[-72px] z-10"
+            className="hidden sm:inline w-[335px] h-[191px] sm:w-[260px] md:w-[304px] md:h-[231px] md:absolute md:top-[-72px] z-10"
+          />
+          <Image
+            src="/women_eat_rice_mobile.png"
+            alt="Women eat rice mobile"
+            width={304}
+            height={230}
+            className="mt-10 sm:hidden w-[82%] h-[80%] sm:w-[260px] md:w-[304px] md:h-[231px] md:absolute md:top-[-72px] z-10"
           />
         </div>
       </div>
