@@ -15,6 +15,7 @@ const Header: React.FC = () => {
   const lastScrollY = useRef(0); 
 
   useEffect(() => {
+    if (!isMenuOpen) return;
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       if (currentScrollY > lastScrollY.current ||currentScrollY ===0 ) {
@@ -25,13 +26,19 @@ const Header: React.FC = () => {
       }
       lastScrollY.current = currentScrollY;
     };
-
+    const handleClick = (e: MouseEvent) => {
+      const menu = document.getElementById('mobile-menu');
+      if (menu && !menu.contains(e.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
     window.addEventListener('scroll', handleScroll, { passive: true });
-
+    document.addEventListener('mousedown', handleClick);
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('mousedown', handleClick);
     };
-  }, []);
+  }, [isMenuOpen]);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -41,7 +48,7 @@ const Header: React.FC = () => {
   return (
     <header
       className={`
-         top-0 z-50 w-full ease-in-out  fixed ${isScrollingUp ? 'bg-white shadow-sm' : ''}
+         top-0 z-50 w-full ease-in-out  fixed ${isScrollingUp ? 'bg-green-50 shadow-sm' : ''}
       `}
     >
       <div className="max-w-8xl mx-auto"> 
@@ -75,12 +82,12 @@ const Header: React.FC = () => {
               Đăng nhập
             </Link> */}
           </nav>
-          <div className="md:hidden flex items-center pr-4">
+          <div className="md:hidden flex items-center pr-4 ">
             <button onClick={toggleMenu} className="text-dark-gray focus:outline-none">
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
-          <div className="hidden md:flex items-center lg:pr-[159px]">
+          <div className="hidden md:flex items-center lg:pr-[159px] ">
             <Button
               variant="secondary"
               size="medium"
@@ -107,8 +114,8 @@ const Header: React.FC = () => {
           </div>
         </div>
         {isMenuOpen && (
-          <div className={`md:hidden ${isScrollingUp ? 'bg-white shadow-sm' : ''} shadow-md`}>
-            <nav className="flex flex-col space-y-4 px-4 py-4">
+          <div id="mobile-menu" className={`md:hidden ${isScrollingUp ? 'bg-green-50 shadow-sm' : 'bg-green-50'} shadow-md`}>
+            <nav className="flex flex-col space-y-4 px-4 py-4 items-center">
               <Link
                 href="/about"
                 className="text-dark-gray hover:text-green-normal transition-colors"
@@ -155,10 +162,8 @@ const Header: React.FC = () => {
                   alt="Wheat Icon" 
                   width={20} 
                   height={20} 
-                  className="block group-hover:hidden" // Show by default, hide on hover
+                  className="block group-hover:hidden" 
                 />
-
-                {/* Hover Icon: Hidden by default, visible when the group is hovered */}
                 <Image 
                   src="/icon_wheat_white.svg" // The new white icon
                   alt="Wheat Icon Hover" 
