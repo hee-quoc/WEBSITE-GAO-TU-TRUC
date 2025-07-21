@@ -22,7 +22,7 @@ const milestoneSteps = [
     image: "/milestone/2000.svg",
     year: "2000s",
     content:
-      "Mở rộng và tự chủ vùng trồng.\nNâng cao trang thiết bị máy móc, quy trình sản xuất và đội ngũ nhân công",
+      "Mở rộng và tự chủ vùng trồng. Nâng cao trang thiết bị máy móc, quy trình sản xuất và đội ngũ nhân công",
   },
   {
     id: "milestone-2010",
