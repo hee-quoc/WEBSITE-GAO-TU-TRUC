@@ -31,7 +31,7 @@ export function ProductsSection(){
           </p>
         </div>
          <div className="mt-16 flex flex-col items-center text-center overflow-x-auto scrollbar-hide rounded-[16px] px-0 sm:px-8 max-w-full sm:max-w-full relative h-[112px]">
-          <div className="relative w-[375px] h-full flex flex-col items-center">
+          <div className="relative w-[375px] sm:w-full h-full flex flex-col items-center">
             {/* Item 1 */}
             <h3 className="absolute left-[35%] sm:left-[44%] text-[20px] font-[500] font-alegreya-sans " style={{color:"#0A5B89"}}>Các chứng nhận</h3>
             <div className="absolute left-[-3%] sm:left-[30%] top-1/2 -translate-y-1/2">
