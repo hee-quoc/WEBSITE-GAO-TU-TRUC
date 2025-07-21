@@ -50,7 +50,7 @@ export function StatisticSection(){
                 </span>
               </Button>
             </div>
-            <div className="w-[570px] h-[327px] absolute top-5.5 left-[52%] hidden sm:inline">
+            <div className="w-[570px] h-[327px] absolute top-[-19] left-[52%] hidden sm:inline">
               <Image
                 src="/img_rectangle_3.png"
                 alt="Rice Field"
