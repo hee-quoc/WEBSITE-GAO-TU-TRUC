@@ -88,7 +88,7 @@ export function MissionSection() {
               <div className="absolute -top-2 sm:-left-11 sm:top-0 w-14 h-10 opacity-30 pointer-events-none">
               <Image src="/img_.svg" alt="Quote" width={34} height={24} />
               </div>
-              <p className="font-fz-poppins w-[335px] text-[14px] text-left sm:text-xl md:text-[16px] text-gray-600 sm:text-justify leading-relaxed max-w-[741px]">
+              <p className="font-fz-poppins w-[335px] text-[14px] text-left sm:text-xl md:text-[16px] text-gray-600 sm:text-justify leading-relaxed md:w-[741px]">
                 Với nhiều người, gạo chỉ đơn thuần là lương <br className="sm:hidden"/> thực để no bụng. <br className="hidden sm:inline"/> Nhưng với Tư Trúc, đó là kết <br className="sm:hidden"/> tinh của đất trời hào phóng, <br className="hidden sm:inline"/>
                 đôi tay cần mẫn <br className="sm:hidden"/> của người nông dân, sự kỹ lưỡng, chỉn chu <br className="sm:hidden"/> <br className="hidden sm:inline"/> trong từng công đoạn của người công nhân,<br className="sm:hidden"/> và hơn hết, <br className="hidden sm:inline"/>
                 đó còn là niềm tự hào về nền văn <br className="sm:hidden"/> minh lúa nước ngàn đời.
