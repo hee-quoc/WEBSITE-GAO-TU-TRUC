@@ -178,7 +178,7 @@ function MobileCard({ testimonial, setCurrentIndex, currentIndex ,direction, var
             animate="center"
             exit="exit"
             transition={{ duration: 0.5 }}
-            className="w-full flex flex-col items-center "
+            className="w-full flex flex-col items-center h-[700px]"
           >
           <div className="flex-shrink-0 md:flex-[0.25]" >
             <Image src="/img_.svg" alt="Quote" width={56} height={39} />

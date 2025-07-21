@@ -47,11 +47,11 @@ export function AboutSection() {
       {isMobile ? (
         // ========== ✅ Mobile layout ==========
         <div className="flex flex-col items-center text-center px-6 py-16">
-          <h2 className="text-[32px] font-bold text-[#0A5B89] leading-tight mb-4">
-            Hành trình nâng tầm giá trị gạo Việt
+          <h2 className="text-[32px] font-bold text-[#0A5B89] leading-[1] mb-4">
+            Hành trình nâng tầm <br></br> giá trị gạo Việt
           </h2>
-          <p className="text-[18px] text-[#667085] mb-6 leading-[1.4]">
-            Câu chuyện truyền cảm hứng từ Tư Trúc
+          <p className="text-[18px] text-[#667085] mb-6 leading-[1]">
+            Câu chuyện truyền <br></br>cảm hứng từ Tư Trúc
           </p>
           <Button
             size="small"
@@ -66,29 +66,41 @@ export function AboutSection() {
 
           {/* Block 1 */}
           <Image src="/Group 930.svg" alt="Tu Truc Story" width={249} height={249} className="mb-5" />
-          <p className="text-[15px] leading-[1.6] text-[#525A6A] mb-10 max-w-[340px] font-fz-poppins">
-            Câu chuyện của Tư Trúc bắt đầu từ <b>hơn 30 năm trước</b>, nơi vùng đất{" "}
-            <b>Hòa Long màu mỡ</b>, tại một <b>nhà máy xay xát lúa nhỏ bé</b> mang trong mình{" "}
-            <b>sứ mệnh lớn lao – nâng tầm và lan tỏa giá trị “hạt ngọc thực”</b>.
+
+          <p className="text-[14px] leading-[1.4] text-[#525A6A] mb-10 max-w-[340px] font-fz-poppins">
+
+            Câu chuyện của Tư Trúc bắt đầu từ <b>hơn 30 năm trước</b>,{" "}
+            <b>nơi vùng đất Hòa Long màu mỡ</b>, tại một <b> nhà máy xay xát lúa nhỏ bé</b> nhưng mang trong mình một {" "}
+            <b>sứ mệnh lớn lao – nâng tầm và lan tỏa giá trị “hạt ngọc thực”</b> đến với mỗi người con đất Việt.{" "}
           </p>
+
+          {/* 👉 HÌNH BẠN MUỐN CHÈN GIỮA CÁC BLOCK */}
+          <Image src="/decor_between_block.svg" alt="Decor" width={30} height={106} />
 
           {/* Block 2 */}
           <Image src="/Group 929.svg" alt="Rice Field" width={250} height={250} className="mb-5" />
-          <p className="text-[15px] leading-[1.6] text-[#525A6A] mb-10 max-w-[340px] font-fz-poppins">
-            Với Tư Trúc, gạo là kết tinh từ <b>sự ưu đãi của thiên nhiên</b>,{" "}
-            <b>đôi bàn tay cần mẫn của người nông dân</b> và <b>công nhân, nhà máy</b> –{" "}
+
+          <p className="text-[14px] leading-[1.4] text-[#525A6A] mb-10 max-w-[340px] font-fz-poppins">
+
+            Với Tư Trúc, gạo là kết tinh từ <b>sự ưu ái của thiên nhiên</b>, từ{" "}
+            <b>đôi bàn tay cần mẫn của người nông dân</b> và <b>công nhân nhà máy</b>, từ{" "}
             <b>những giá trị luôn bền bỉ theo thời gian.</b>
           </p>
+          
+          
+          {/* 👉 HÌNH BẠN MUỐN CHÈN GIỮA CÁC BLOCK */}
+          <Image src="/decor_between_block.svg" alt="Decor" width={30} height={106} />
 
           {/* Block 3 */}
           <Image src="/Layer_2.svg" alt="Tu Truc Heritage" width={350} height={175} className="mb-10" />
 
           {/* Block 4 */}
-          <p className="text-[15px] leading-[1.6] text-[#334155] max-w-[340px] font-fz-poppins">
+
+          <p className="text-[14px] leading-[1.4] text-[#525A6A] max-w-[340px] font-fz-poppins">
+
             Chính vì lẽ đó, suốt hành trình phát triển, bên cạnh việc{" "}
             <b>không ngừng nâng cấp chất lượng sản phẩm và hiện đại hóa hệ thống máy móc</b>, Tư Trúc
-            vẫn luôn đặt trọng tâm việc <b>tôn vinh thức quà tinh túy</b> – để mỗi hạt gạo trở thành{" "}
-            <b>ký ức, nguồn cội, văn hóa và bản sắc Việt.</b>
+            vẫn luôn đặt trọng tâm việc <b>tôn vinh thức quà tinh túy</b> – để mỗi hạt gạo không chỉ là một phần không thể thiếu của gian bếp, mà còn trở thành ký ức, nguồn cội, văn hóa và bản sắc Việt.{" "}
           </p>
         </div>
       ) : (
