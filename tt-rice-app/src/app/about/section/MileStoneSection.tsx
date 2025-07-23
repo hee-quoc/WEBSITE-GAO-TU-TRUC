@@ -35,7 +35,7 @@ const milestoneSteps = [
     image: "/milestone/2020.svg",
     year: "2020s",
     content:
-      "Lan tỏa giá trị hạt gạo Việt,cam kết bảo vệ môi trường, nâng đời sống nông dân – công nhân. Hướng đến vị thế là một trong những nhà cung cấp gạo hàng đầu Đông Nam Bộ",
+      "Lan tỏa giá trị hạt gạo Việt, \n cam kết bảo vệ môi trường, nâng đời sống nông dân – \n công nhân. Hướng đến vị thế \n là một trong những\n nhà cung cấp gạo hàng đầu \n Đông Nam Bộ",
   },
 ];
 
