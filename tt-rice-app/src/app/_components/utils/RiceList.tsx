@@ -1,10 +1,10 @@
 import RiceCard from './RiceCard';
 
 const riceItems = [
-  { image: '/gao_an.png', label: 'Gạo ăn' ,hoverImage: '/gao_an_hover.png', slug:'gao-an'},
-  { image: '/gao_thong_dung.png', label: 'Gạo thông dụng' ,hoverImage: '/gao_thong_dung_hover.png',slug:'gao-thong-dung'},
-  { image: '/gao_nguyen_lieu.png', label: 'Gạo nguyên liệu' ,hoverImage: '/gao_nguyen_lieu_hover.png',slug:'gao-nguyen-lieu'},
-  { image: '/trau.png', label: 'Phụ phẩm' ,hoverImage: '/phu_pham_hover.png',slug:'gao-cam-trau'},
+  { image: '/gao_an.png', label: 'Gạo ăn' ,hoverImage: '/gao_an_hover_v1.png', slug:'gao-an'},
+  { image: '/gao_thong_dung.png', label: 'Gạo thông dụng' ,hoverImage: '/gao_thong_dung_hover_v1.png',slug:'gao-thong-dung'},
+  { image: '/gao_nguyen_lieu.png', label: 'Gạo nguyên liệu' ,hoverImage: '/gao_nguyen_lieu_hover_v1.png',slug:'gao-nguyen-lieu'},
+  { image: '/trau.png', label: 'Phụ phẩm' ,hoverImage: '/phu_pham_hover_v1.png',slug:'gao-cam-trau'},
 ];
 
 
