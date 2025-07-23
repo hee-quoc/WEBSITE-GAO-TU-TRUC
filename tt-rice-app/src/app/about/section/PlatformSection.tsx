@@ -251,7 +251,7 @@ export function PlatformSection() {
                   src={item.image}
                   alt={item.isHeader ? "Ảnh nền ban đầu" : `Illustration for ${item.title[0]}`}
                   fill
-                  sizes="(max-width: 1024px) 90vw, 550px"
+                  sizes="550px, 550px"
                   className="object-cover rounded-xl"
                   priority={idx === 0}
                 />
