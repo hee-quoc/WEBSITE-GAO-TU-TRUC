@@ -56,7 +56,7 @@ async function main() {
 
   const productsData = [
   {
-    name: 'Gạo Lúa Tôm ST25',
+    name: 'Gạo ST25 Lúa Tôm',
     description: `
       <div class="content mx-auto w-full ">
         <p class="text-gray-800 mb-4">
