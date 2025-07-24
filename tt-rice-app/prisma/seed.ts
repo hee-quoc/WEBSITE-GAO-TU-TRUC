@@ -57,7 +57,6 @@ async function main() {
   const productsData = [
   {
     name: 'Gạo ST25 Lúa Tôm',
-    slug: 'gao-st25-lua-tom',
     description: `
       <div class="content mx-auto w-full ">
         <p class="text-gray-800 mb-4">
@@ -404,9 +403,7 @@ async function main() {
 
     await prisma.product.upsert({
       where: { name: productData.name },
-      update: {
-        slug: productData.slug ?? toSlug(productData.name),
-      }, // We'll just create, assuming seed is the source of truth
+      update: {}, // We'll just create, assuming seed is the source of truth
       create: {
         name: productData.name,
         description: productData.description,
@@ -416,7 +413,7 @@ async function main() {
         authorId: adminUser.id,
         companyBrand: productData.companyBrand,
         SKU: productData.SKU,
-        slug: productData.slug ?? toSlug(productData.name),
+        slug: toSlug(productData.name),
         imageUrl: productData.imageUrl,
         
       },
