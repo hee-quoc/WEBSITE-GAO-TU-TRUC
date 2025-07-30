@@ -13,9 +13,9 @@ const desktopImages = [
 // --- Data for Mobile Layout (Percentages calculated from your pixel values) ---
 const mobileImages = [
   { id: 'hat-kim-cuong', src: '/story/hat-kim-cuong.svg', width: 167, height: 51, style: { top: '123px', left: '0px', width: '44.58%' }, zIndex: 'z-10', hover: 'hover:-rotate-5 hover:scale-110' },
-  { id: 'lay-chong', src: '/story/lay-chong.svg', width: 85, height: 144, style: { top: '214px', left: '47px', width: '22.84%' }, zIndex: 'z-20', hover: 'hover:-rotate-5 hover:scale-95' }, // Adjusted from your data for clarity
-  { id: 'mot-tay-chi', src: '/story/mot-tay-chi.svg', width: 167, height: 123, style: { top: '167px', left: '151px', width: '44.63%' }, zIndex: 'z-40', hover: 'hover:rotate-5 hover:scale-105' }, // Adjusted from your data
-  { id: 'lai-xe', src: '/story/lai-xe.svg', width: 227, height: 163, style: { top: '64px', right: '-30px', width: '60.46%' }, zIndex: 'z-30', hover: 'hover:-rotate-5 hover:scale-105' }, // Adjusted from your data
+  { id: 'lay-chong', src: '/story/lay-chong.svg', width: 85, height: 144, style: { top: '214px', left: '47px', width: '22.84%' }, zIndex: 'z-20', hover: 'hover:-rotate-5 hover:scale-95' },
+  { id: 'mot-tay-chi', src: '/story/mot-tay-chi.svg', width: 167, height: 123, style: { top: '38%', left: '40%', width: '44.63%' }, zIndex: 'z-40', hover: 'hover:rotate-5 hover:scale-105' }, // Adjusted from your data
+  { id: 'lai-xe', src: '/story/lai-xe.svg', width: 227, height: 163, style: { top: '10%', right: '-8%', width: '60.46%' }, zIndex: 'z-30', hover: 'hover:-rotate-5 hover:scale-105' }, // Adjusted from your data
 ];
 
 export function StorySection() {
@@ -60,12 +60,19 @@ export function StorySection() {
             `}
         >
           <div className="md:pt-[112px] pb-16">
-            <h2 className={`${isMobile ? 'text-[42px]' : 'text-[56px]'} font-bold text-steel-blue mb-4 leading-[96%]"`}>
-              Ba thập kỉ gắn liền với
-              đồng ruộng {isMobile? <br />: ""}và nhà máy
+            <h2 className={`${isMobile ? 'text-[42px]' : 'text-[56px]'} font-bold text-steel-blue leading-[96%] "`}>
+              Ba thập kỉ gắn liền 
             </h2>
+            <h2 className={`${isMobile ? 'text-[42px]' : 'text-[56px]'} mb-0 font-bold text-steel-blue leading-[96%] -mt-2"`}>
+              với đồng ruộng
+            </h2>
+            <h2 className={`${isMobile ? 'text-[42px]' : 'text-[56px]'} font-bold text-steel-blue leading-[96%] -mt-4"`}>
+               và nhà máy
+            </h2>
+            <h3 className={`${isMobile ? 'text-[28px]' : 'text-[32px]'} text-blue-normal font-alegreya`}>
+              Lịch sử hình thành và
+            </h3>
             <h3 className={`${isMobile ? 'text-[28px]' : 'text-[32px]'} text-blue-normal mb-8 font-alegreya`}>
-              Lịch sử hình thành và <br />
               phát triển của doanh nghiệp
             </h3>
             <p className="text-[14px] md:text-[16px] text-blue-normal-active leading-7 mb-4 font-fz-poppins">
@@ -118,7 +125,7 @@ export function StorySection() {
         <div
           className={`
             relative
-            ${isMobile ? 'w-full h-[498px] min-h-[250px] flex-shrink-0' : ''}
+            ${isMobile ? 'w-full aspect-[375/498] min-h-[250px] flex-shrink-0' : ''}
             ${isMobile ? 'block' : 'flex-shrink-0'}
             ${isMobile ? '' : 'md:w-full'}
           `}

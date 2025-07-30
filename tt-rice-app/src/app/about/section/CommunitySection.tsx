@@ -8,8 +8,8 @@ const farmerDesktop = { alt: 'Tu Truc logo',src: "/images/about/community_about_
 function MobileCard(){
   return(
     <section className="pt-20 pb-5 bg-white">
-        <div className={`max-w-7xl flex flex-col items-center mx-auto px-5 `}>
-          <div className="w-[335px] md:w-[732px] ">
+        <div className={`max-w-7xl flex flex-col items-center px-5 `}>
+          <div className="w-full md:w-[732px] ">
             <h2 className="text-4xl mb-3 text-center font-bold  font-alegreya-sans" style={{ color: "#0A5B89" }}> 
               Giá trị gửi trao <br /> đến cộng đồng
             </h2>
@@ -17,8 +17,8 @@ function MobileCard(){
               Thấu hiểu giá trị của đất lành, nước mát và bàn tay người lao động trong hành trình nuôi dưỡng hạt gạo Việt, Tư Trúc luôn đặt trọn tâm huyết vào việc bảo vệ hệ sinh thái canh tác, nâng cao giá trị nghề nông và cải thiện đời sống người lao động.
             </p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-[42%_58%] gap-6 sm:gap-8 mt-6 sm:mt-10"> 
-            <div className="bg-[#F4F3EA] rounded-[16px] overflow-hidden relative w-full h-[677px] "> 
+          <div className="grid grid-cols-1 gap-6 mt-6 w-full"> 
+            <div className="bg-[#F4F3EA] rounded-[16px] overflow-hidden relative w-full h-auto "> 
               <Image
                 src="/images/about/community_about_1.png"
                 alt="Farmers_lar"
@@ -55,12 +55,13 @@ function MobileCard(){
             </div>
             <div className="flex flex-col gap-4 w-full">
               <div className={`basis-[60%] flex flex-col text-white w-full  h-auto `}>
-                <div className="relative bg-[#6D9127] w-wull h-[264px] rounded-[16px] overflow-hidden">
+                <div className="relative bg-[#6D9127] w-full aspect-[335/264] rounded-[16px] overflow-hidden">
                   <Image
                       src="/images/about/img_farmer.svg"
                       fill
                       alt="Farmers_lar"
                       className="object-cover z-0"
+                      sizes="100vw"
                       />
                   <div className="pt-[35px] py-5 z-10 relative h-[56px]">
                     <div className=" h-[56px] flex items-center pl-[20px] overflow-hidden z-10 relative mb-2">
@@ -83,7 +84,7 @@ function MobileCard(){
                 <div className="gap-4 mt-6 bg-[#F4F3EA] rounded-[16px] px-5  flex flex-col pt-4 md:justify-around h-[352px]">
                   <div>
                     <div className="text-[82px] sm:text-7xl md:text-7xl font-bold  font-alegreya-sans leading-[100%] tracking-[0%]" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>100 ha</div> 
-                    <p className=" text-gray-700 font-fz-poppins" style={{ color: "#7D8493" }}> 
+                    <p className="w-[295px] text-gray-700 font-fz-poppins" style={{ color: "#7D8493" }}> 
                       ha diện tích canh tác không hóa chất độc hại
                     </p>
                   </div>

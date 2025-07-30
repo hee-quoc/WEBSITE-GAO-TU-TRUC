@@ -10,7 +10,7 @@ const scrollData = [
     icon: "/platform/icon.svg",
     title: ["Chủ động gieo trồng,", "vững vàng nguồn giống"],
     content:
-      "Với lợi thế có hơn 150ha quỹ đất gia đình, Tư Trúc <br /> chủ động kiểm soát chặt chẽ từ lúa giống đến vùng trồng, đảm bảo chất lượng từ gốc. Nhờ vậy, doanh nghiệp luôn vững vàng trước mọi biến động về thời tiết, dịch bệnh hay thị trường, sẵn sàng duy trì nguồn cung ổn định, cao cấp, đáp ứng kịp thời mọi nhu cầu về sản lượng của đối tác.",
+      "Với lợi thế có hơn 150ha quỹ đất gia đình, Tư Trúc <br /> chủ động kiểm soát chặt chẽ từ lúa giống đến <br /> vùng trồng, đảm bảo chất lượng từ gốc. Nhờ vậy,<br /> doanh nghiệp luôn vững vàng trước mọi biến động <br />về thời tiết, dịch bệnh hay thị trường, sẵn sàng duy trì<br /> nguồn cung ổn định, cao cấp, đáp ứng kịp thời mọi<br /> nhu cầu về sản lượng của đối tác.",
     image: "/platform/1.svg",
     isHeader: false,
   },
@@ -18,7 +18,7 @@ const scrollData = [
     icon: "/platform/icon.svg",
     title: ["Quy trình nghiêm ngặt,", "chất lượng vượt bậc"],
     content:
-      "Mọi công đoạn sản xuất được Tư Trúc kiểm soát nghiêm ngặt và minh bạch, đảm bảo mỗi hạt gạo đều đạt chất lượng ổn định và đồng nhất.",
+      "Mọi công đoạn sản xuất được Tư Trúc kiểm soát<br /> nghiêm ngặt và minh bạch, đảm bảo mỗi hạt gạo<br /> đều đạt chất lượng ổn định và đồng nhất.",
     image: "/platform/2.svg",
     isHeader: false,
   },
@@ -26,7 +26,7 @@ const scrollData = [
     icon: "/platform/icon.svg",
     title: ["Sản phẩm an toàn,", "chứng nhận an tâm"],
     content:
-      "Tư Trúc đã và đang nghiên cứu phát triển nhiều dòng sản phẩm đáp ứng đa dạng nhu cầu thưởng thức, đồng thời tuân thủ nghiêm ngặt các tiêu chuẩn quốc tế về an toàn sản xuất và thực phẩm.",
+      "Tư Trúc đã và đang nghiên cứu phát triển nhiều dòng<br /> sản phẩm đáp ứng đa dạng nhu cầu thưởng thức,<br /> đồng thời tuân thủ nghiêm ngặt các tiêu chuẩn<br /> quốc tế về an toàn sản xuất và thực phẩm.",
     image: "/platform/3.svg",
     isHeader: false,
   },
@@ -34,7 +34,7 @@ const scrollData = [
     icon: "/platform/icon.svg",
     title: ["Uy tín hàng đầu,", "đồng hành dài lâu"],
     content:
-      "Với bề dày kinh nghiệm trong ngành lúa gạo, Tư Trúc đã trở thành đối tác tin cậy lâu năm của nhiều doanh nghiệp trong và ngoài nước, khẳng định vững chắc vị thế uy tín hàng đầu trên thị trường.",
+      "Với bề dày kinh nghiệm trong ngành lúa gạo,<br /> Tư Trúc đã trở thành đối tác tin cậy lâu năm<br /> của nhiều doanh nghiệp trong và ngoài nước,<br /> khẳng định vững chắc vị thế uy tín hàng đầu<br /> trên thị trường.",
     image: "/platform/4.svg",
     isHeader: false,
   },
@@ -46,7 +46,7 @@ const scrollDataMobile = [
     icon: "/platform/icon.svg",
     title: ["Chủ động gieo trồng,", "vững vàng nguồn giống"],
     content: [
-      "Với lợi thế có hơn 150ha quỹ đất gia đình, Tư Trúc chủ động kiểm soát chặt chẽ từ lúa giống đến vùng trồng, đảm bảo chất lượng từ gốc. Nhờ vậy, doanh nghiệp luôn vững vàng trước mọi biến động về thời tiết, dịch bệnh hay thị trường, sẵn sàng duy trì nguồn cung ổn định, cao cấp, đáp ứng kịp thời mọi nhu cầu về sản lượng  của đối tác.",
+      "Với lợi thế có hơn 150ha quỹ đất gia đình, Tư Trúc chủ động kiểm soát chặt chẽ từ lúa giống đến vùng trồng, đảm bảo chất lượng từ gốc. Nhờ vậy, doanh nghiệp luôn vững vàng trước mọi biến động về thời tiết, dịch bệnh hay thị trường, sẵn sàng duy trì nguồn cung ổn định, cao cấp, đáp ứng kịp thời mọi nhu cầu về sản lượng  của đối tác.",
     ],
     image: "/platform/1.svg",
   },
@@ -184,7 +184,7 @@ export function PlatformSection() {
   return (
     <section className="relative w-full bg-white z-10">
       <div className="relative w-full max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 lg:gap-2">
-        <div className="w-full px-5 lg:px-10">
+        <div className="w-full px-5 lg:pl-10">
           {fullScrollData.map((item, idx) => (
             <div key={idx} className="min-h-[80vh] flex items-center">
               {item.isHeader ? (
@@ -206,8 +206,8 @@ export function PlatformSection() {
                       height={39}
                     />
                     <p className="text-[#005B94] text-[20px] leading-relaxed font-medium font-fz">
-                      Suốt hơn 3 thập kỷ, Tư Trúc bền bỉ xây dựng nền tảng sản xuất chủ động,
-                      kiểm soát toàn diện từ chất lượng đến sản lượng, luôn sẵn sàng đồng hành lâu dài
+                      Suốt hơn 3 thập kỷ, Tư Trúc bền bỉ xây dựng nền tảng sản xuất <br className="hidden sm:inline"/> chủ động,
+                      kiểm soát toàn diện từ chất lượng đến sản lượng,<br className="hidden sm:inline"/> luôn sẵn sàng đồng hành lâu dài
                       cùng các đối tác chiến lược
                     </p>
                   </div>
@@ -243,7 +243,7 @@ export function PlatformSection() {
           {fullScrollData.map((item, idx) => (
             <div
               key={idx}
-              className="sticky h-[80vh] flex items-center justify-center"
+              className="sticky h-[80vh] flex items-center "
               style={{ top: 0 }}
             >
               <div className="relative w-full max-w-[550px] h-[550px] rounded-xl shadow-md">
@@ -251,7 +251,7 @@ export function PlatformSection() {
                   src={item.image}
                   alt={item.isHeader ? "Ảnh nền ban đầu" : `Illustration for ${item.title[0]}`}
                   fill
-                  sizes="(max-width: 1024px) 90vw, 550px"
+                  sizes="550px, 550px"
                   className="object-cover rounded-xl"
                   priority={idx === 0}
                 />
