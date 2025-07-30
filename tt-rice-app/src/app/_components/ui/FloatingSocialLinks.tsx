@@ -16,7 +16,7 @@ type SocialLink = {
 
 // Array of social links data
 const socialLinks: SocialLink[] = [
-  { href: 'https://example.com', alt: 'Facebook', iconHeight:"h-[45px]",iconWidth:"w-[45px]",iconSrc: '/icon_mail.svg', bgColorClass: 'bg-green-light-1' },
+  { href: 'https://example.com', alt: 'Facebook', iconHeight:"h-[45px]",iconWidth:"w-[45px]",iconSrc: 'https://tutruc-images.s3.ap-southeast-2.amazonaws.com/icon/icon_mail.svg', bgColorClass: 'bg-green-light-1' },
   { href: 'tel:+84123456789', alt: 'Phone', iconHeight:"h-[45px]",iconWidth:"w-[45px]",iconSrc: '/icon_phone.svg', bgColorClass: 'bg-green-light-1' },
   { href: 'https://m.me/your-page-id', alt: 'Messenger',iconHeight:"h-[45px]",iconWidth:"w-[45px]", iconSrc: '/icon_messenger.svg', bgColorClass: 'bg-green-light-1' },
   { href: 'https://zalo.me/your-phone-number', alt: 'Zalo',iconHeight:"h-[45px]",iconWidth:"w-[45px]", iconSrc: '/images/home/icon_zalo.svg', bgColorClass: 'bg-primary' },

@@ -71,7 +71,7 @@ export function AboutSection() {
 
             Câu chuyện của Tư Trúc bắt đầu từ <b>hơn 30 năm trước</b>,{" "}
             <b>nơi vùng đất Hòa Long màu mỡ</b>, tại một <b> nhà máy xay xát lúa nhỏ bé</b> nhưng mang trong mình một {" "}
-            <b>sứ mệnh lớn lao – nâng tầm và lan tỏa giá trị “hạt ngọc thực”</b> đến với mỗi người con đất Việt.{" "}
+            <b>sứ mệnh lớn lao – nâng tầm và lan tỏa giá trị “hạt ngọc thực”</b> đến với mỗi người con đất Việt.{" "}
           </p>
 
           {/* 👉 HÌNH BẠN MUỐN CHÈN GIỮA CÁC BLOCK */}
