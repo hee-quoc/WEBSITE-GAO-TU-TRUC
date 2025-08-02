@@ -119,7 +119,7 @@ async function main() {
     tags: ['gao-an'],
     companyBrand: "Thương hiệu",
     SKU:"VN09",
-    imageUrl:"https://omweb-prod.s3.ap-southeast-1.amazonaws.com/58/nhamaygaotutruc/product/lua_tom.png"
+    imageUrl:"https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/images/products/lua_tom.png"
   },
   {
     name: 'Gạo Lài hoa',
@@ -185,7 +185,7 @@ async function main() {
     tags: ['gao-an'],
     companyBrand: "Thương hiệu",
     SKU:"M8S4",
-    imageUrl:"https://omweb-prod.s3.ap-southeast-1.amazonaws.com/58/nhamaygaotutruc/product/lai_hoa.png"
+    imageUrl:"https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/images/products/lai_hoa.png"
   },
   {
     name: 'Gạo Lài sữa',
@@ -251,7 +251,7 @@ async function main() {
     tags: ['gao-an'],
     companyBrand: "Thương hiệu",
     SKU:"GGX4",
-    imageUrl:"https://omweb-prod.s3.ap-southeast-1.amazonaws.com/58/nhamaygaotutruc/product/lai_sua.png"
+    imageUrl:"https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/images/products/lai_sua.png"
   },
   {
     name: 'Gạo Hương sen',
@@ -317,7 +317,7 @@ async function main() {
     tags: ['gao-an'],
     companyBrand: "Thương hiệu",
     SKU:"9J0Z",
-    imageUrl:"https://omweb-prod.s3.ap-southeast-1.amazonaws.com/58/nhamaygaotutruc/product/huong_sen.png"
+    imageUrl:"https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/images/products/huong_sen.png"
   },
   {
     name: 'Gạo ST25',
@@ -351,7 +351,7 @@ async function main() {
     tags: ['gao-an'],
     companyBrand: "Khác",
     SKU:"RZUXB",
-    imageUrl:"https://omweb-prod.s3.ap-southeast-1.amazonaws.com/58/nhamaygaotutruc/products/st25.png"
+    imageUrl:"https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/images/products/img_st25.png"
   },
   {
     name: 'Gạo Tẻ 504',
@@ -384,7 +384,7 @@ async function main() {
     tags: ['gao-thong-dung'],
     companyBrand: "Khác",
     SKU:"XHSVT",
-    imageUrl:"https://omweb-prod.s3.ap-southeast-1.amazonaws.com/58/nhamaygaotutruc/product/te_504.png"
+    imageUrl:"https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/images/products/te_504.png"
   }
 ];
 

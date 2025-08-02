@@ -28,7 +28,7 @@ export async function generateStaticParams() {
 
 // --- Component for the Breadcrumb banner at the top ---
 const BreadcrumbBanner = ({ productName }: { productName: string }) => {
-  const bannerImageUrl = 'https://omweb-prod.s3.ap-southeast-1.amazonaws.com/58/nhamaygaotutruc/___nh_banner______cut.png';
+  const bannerImageUrl = '/___nh_banner______cut.png';
   return (
     <div
       className="bg-cover bg-center py-16 text-white"
