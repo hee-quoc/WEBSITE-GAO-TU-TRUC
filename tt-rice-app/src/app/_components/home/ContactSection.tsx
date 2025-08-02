@@ -89,7 +89,7 @@ export function ContactSection() {
               <span className="flex items-center justify-center gap-2">
                 Gửi Thông Tin
                 <Image
-                  src="/icon_wheat_white.svg"
+                  src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/icon_wheat_white.svg"
                   alt="icon"
                   width={20}
                   height={20}
@@ -104,7 +104,7 @@ export function ContactSection() {
           {/* PC giữ absolute, mobile = relative */}
           <div className="relative w-full flex justify-center lg:static">
             <Image
-              src="/Group 7.svg"
+              src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/Group 7.svg"
               alt="Contact Illustration"
               width={900}
               height={646}

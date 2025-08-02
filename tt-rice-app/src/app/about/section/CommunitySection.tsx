@@ -20,7 +20,7 @@ function MobileCard(){
           <div className="grid grid-cols-1 gap-6 mt-6 w-full"> 
             <div className="bg-[#F4F3EA] rounded-[16px] overflow-hidden relative w-full h-auto "> 
               <Image
-                src="/images/about/community_about_1.png"
+                src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/images/about/community_about_1.png"
                 alt="Farmers_lar"
                 fill
                 className="object-cover"
@@ -57,7 +57,7 @@ function MobileCard(){
               <div className={`basis-[60%] flex flex-col text-white w-full  h-auto `}>
                 <div className="relative bg-[#6D9127] w-full aspect-[335/264] rounded-[16px] overflow-hidden">
                   <Image
-                      src="/images/about/img_farmer.svg"
+                      src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/images/about/img_farmer.svg"
                       fill
                       alt="Farmers_lar"
                       className="object-cover z-0"
@@ -66,7 +66,7 @@ function MobileCard(){
                   <div className="pt-[35px] py-5 z-10 relative h-[56px]">
                     <div className=" h-[56px] flex items-center pl-[20px] overflow-hidden z-10 relative mb-2">
                       <Image
-                        src="/images/about/icon_polygon.svg"
+                        src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/images/about/icon_polygon.svg"
                         width={56}
                         height={56}
                         alt="Farmers_lar"
@@ -95,7 +95,7 @@ function MobileCard(){
               </div>
                <div className="mt-2 h-[352px] rounded-[16px] relative overflow-hidden bg-center">
                 <Image
-                  src="/images/about/img_hand_husk.svg"
+                  src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/images/about/img_hand_husk.svg"
                   alt="Environment"
                   fill
                   className="object-cover rounded-[16px]"
@@ -137,7 +137,7 @@ export function CommunitySection() {
           <div className="grid grid-cols-1 lg:grid-cols-[42%_58%] gap-6 sm:gap-8 mt-6 sm:mt-10"> 
             <div className="bg-[#F4F3EA] rounded-[16px] overflow-hidden relative w-full h-[500px] sm:h-[600px] lg:w-[495px] lg:h-[642px]"> 
               <Image
-                src="/images/about/community_about_1.png"
+                src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/images/about/community_about_1.png"
                 alt="Farmers_lar"
                 fill
                 className="object-cover"
@@ -203,7 +203,7 @@ export function CommunitySection() {
               </div>
                <div className="basis-[40%] rounded-[16px] px-6 sm:px-10 py-2 relative overflow-hidden bg-cover bg-center w-full lg:w-[605px] h-auto lg:h-[311px]">
                 <Image
-                  src="/images/about/community_about_3.png"
+                  src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/images/about/community_about_3.png"
                   alt="Environment"
                   fill
                   className="object-cover rounded-[16px]"

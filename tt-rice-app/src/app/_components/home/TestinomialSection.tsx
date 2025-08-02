@@ -109,7 +109,7 @@ export function Testimonial() {
                   >
                     <div className="flex-shrink-0 md:flex-[0.25]">
                       <Image
-                        src="/img_.svg"
+                        src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_.svg"
                         alt="Quote"
                         width={56}
                         height={39}
@@ -187,7 +187,7 @@ export function Testimonial() {
                 className="w-full hidden lg:flex flex-col md:flex-row gap-4 lg:gap-4"
               >
                 <div className="flex-shrink-0 md:flex-[0.25]">
-                  <Image src="/img_.svg" alt="Quote" width={56} height={39} />
+                  <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_.svg" alt="Quote" width={56} height={39} />
                 </div>
 
                 <div className="flex flex-col md:flex-[3]">

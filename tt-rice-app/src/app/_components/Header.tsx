@@ -103,7 +103,7 @@ const Header: React.FC = () => {
             >
               <span>Liên hệ</span>
               <Image 
-                src="/img_icon_wheat.svg" 
+                src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_icon_wheat.svg" 
                 alt="Wheat Icon" 
                 width={20} 
                 height={20} 
@@ -112,7 +112,7 @@ const Header: React.FC = () => {
 
               {/* Hover Icon: Hidden by default, visible when the group is hovered */}
               <Image 
-                src="/icon_wheat_white.svg" // The new white icon
+                src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/icon_wheat_white.svg" // The new white icon
                 alt="Wheat Icon Hover" 
                 width={20} 
                 height={20} 
@@ -166,14 +166,14 @@ const Header: React.FC = () => {
               >
                 <span className='flex-shrink-0'>Liên hệ</span>
                 <Image 
-                  src="/img_icon_wheat.svg" 
+                  src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_icon_wheat.svg" 
                   alt="Wheat Icon" 
                   width={20} 
                   height={20} 
                   className="block group-hover:hidden" 
                 />
                 <Image 
-                  src="/icon_wheat_white.svg" // The new white icon
+                  src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/icon_wheat_white.svg" // The new white icon
                   alt="Wheat Icon Hover" 
                   width={20} 
                   height={20} 
@@ -248,14 +248,14 @@ function ProductHeader({
             >
               <span>Liên hệ</span>
               <Image
-                src="/img_icon_wheat.svg"
+                src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_icon_wheat.svg"
                 alt="Wheat Icon"
                 width={20}
                 height={20}
                 className="block group-hover:hidden"
               />
               <Image
-                src="/icon_wheat_white.svg"
+                src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/icon_wheat_white.svg"
                 alt="Wheat Icon Hover"
                 width={20}
                 height={20}
@@ -302,14 +302,14 @@ function ProductHeader({
               >
                 <span className="flex-shrink-0">Liên hệ</span>
                 <Image
-                  src="/img_icon_wheat.svg"
+                  src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_icon_wheat.svg"
                   alt="Wheat Icon"
                   width={20}
                   height={20}
                   className="block group-hover:hidden"
                 />
                 <Image
-                  src="/icon_wheat_white.svg"
+                  src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/icon_wheat_white.svg"
                   alt="Wheat Icon Hover"
                   width={20}
                   height={20}

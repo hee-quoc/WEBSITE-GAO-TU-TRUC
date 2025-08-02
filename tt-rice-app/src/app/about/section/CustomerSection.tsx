@@ -102,7 +102,7 @@ export function CustomerSection() {
             className="w-full flex flex-col items-center "
           >
             <div className="flex-shrink-0 md:flex-[0.25]" >
-              <Image src="/img_.svg" alt="Quote" width={56} height={39} />
+              <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_.svg" alt="Quote" width={56} height={39} />
             </div>
             <div className="py-6">
               <p className="max-w-[566px] text-[16px] sm:text-[8px] md:text-[16px] font-fz-poppins font-[400] leading-[140%] flex-1" style={{color:"#667085"}}>
@@ -181,7 +181,7 @@ function MobileCard({ testimonial, setCurrentIndex, currentIndex ,direction, var
             className="w-full flex flex-col items-center h-[700px]"
           >
           <div className="flex-shrink-0 md:flex-[0.25]" >
-            <Image src="/img_.svg" alt="Quote" width={56} height={39} />
+            <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_.svg" alt="Quote" width={56} height={39} />
           </div>
           <div className="py-6">
             <p className="max-w-[566px] text-[14px] font-fz-poppins text-gray-light leading-relaxed flex-1" style={{color:"#667085"}}>

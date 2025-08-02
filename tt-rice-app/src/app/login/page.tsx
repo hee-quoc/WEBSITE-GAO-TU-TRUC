@@ -111,7 +111,7 @@ export default function ContactSection() {
                                     {/* --- New: Show loading text --- */}
                                     {isLoading ? 'Đang xử lý...' : 'Đăng nhập'}
                                     <Image
-                                        src="/icon_wheat_white.svg"
+                                        src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/icon_wheat_white.svg"
                                         alt="Wheat Icon"
                                         width={20}
                                         height={20}
@@ -123,7 +123,7 @@ export default function ContactSection() {
                     <div className="relative">
                         <div className="relative pt-40 pl-20">
                             <Image
-                                src="/img_contact.svg"
+                                src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_contact.svg"
                                 alt="Contact Illustration"
                                 width={789}
                                 height={682}

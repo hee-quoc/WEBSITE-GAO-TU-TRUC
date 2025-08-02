@@ -114,7 +114,7 @@ export function HeroSection() {
               >
                 <span className='flex-shrink-0'>Khám phá sản phẩm</span>
                 <Image
-                  src="/icon_wheat_white.svg"
+                  src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/icon_wheat_white.svg"
                   alt="Wheat Icon"
                   width={20}
                   height={20}
@@ -129,7 +129,7 @@ export function HeroSection() {
               onClick={handlePrev}
               className="w-9 h-9 bg-white-transparent border border-green-light-2 rounded-full flex items-center justify-center shadow-lg hover:bg-green-normal transition-colors"
             >
-              <Image src="/img_arrowleft.svg" alt="Previous" width={16} height={16} />
+              <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_arrowleft.svg" alt="Previous" width={16} height={16} />
             </button>
           </div>
           <div className="absolute right-4 top-[425px] md:top-2/5 transform -translate-y-1/2 z-20">
@@ -137,7 +137,7 @@ export function HeroSection() {
               onClick={handleNext}
               className="w-9 h-9 bg-white-transparent border border-green-light-2 rounded-full flex items-center justify-center shadow-lg hover:bg-green-normal transition-colors"
             >
-              <Image src="/img_arrowright.svg" alt="Next" width={16} height={16} />
+              <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_arrowright.svg" alt="Next" width={16} height={16} />
             </button>
           </div>
           <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20 flex items-center justify-center gap-1">

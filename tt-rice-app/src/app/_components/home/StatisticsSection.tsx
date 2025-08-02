@@ -46,13 +46,13 @@ export function StatisticSection(){
               >
                 <span className="flex items-center gap-2">
                   Xem thêm
-                  <Image src="/bonglua.svg" alt="icon" width={8} height={19} />
+                  <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/bonglua.svg" alt="icon" width={8} height={19} />
                 </span>
               </Button>
             </div>
             <div className="w-[570px] h-[327px] absolute top-[-19] left-[52%] hidden sm:inline">
               <Image
-                src="/img_rectangle_3.png"
+                src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_rectangle_3.png"
                 alt="Rice Field"
                 width={587}
                 height={327}
@@ -64,7 +64,7 @@ export function StatisticSection(){
             {/* Left Statistics */}
             <div className="bg-[#F4F3EA] rounded-[16px] overflow-hidden relative w-full h-[442px] lg:w-full lg:h-[642px]">
               <Image
-                src="/img_image_104.png"
+                src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_image_104.png"
                 alt="Farmers"
                 fill
                 className="object-cover"
@@ -114,7 +114,7 @@ export function StatisticSection(){
               {/* 100% */}
               <div className="rounded-[16px] px-6 sm:px-10 py-6 relative overflow-hidden bg-cover bg-center w-full lg:w-[605px] h-[331px] lg:h-[311px]">
                 <Image
-                  src="/img__1.png"
+                  src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img__1.png"
                   alt="Environment"
                   fill
                   className=" scale-x-120 translate-x-7 sm:scale-140:translate-x-30:transform:object-cover rounded-[16px]"
@@ -131,7 +131,7 @@ export function StatisticSection(){
           {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="bg-cream rounded-2xl overflow-hidden relative">
               <Image
-                src="/img_image_104.png"
+                src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_image_104.png"
                 alt="Farmers"
                 fill
                 className="object-cover"
@@ -173,7 +173,7 @@ export function StatisticSection(){
               </div>
               <div className="rounded-2xl p-8 relative overflow-hidden">
                 <Image
-                  src="/img__1.png"
+                  src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img__1.png"
                   alt="Environment"
                   fill
                   className="object-cover"

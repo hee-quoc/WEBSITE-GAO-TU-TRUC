@@ -86,7 +86,7 @@ export function MissionSection() {
             <div className="relative">
               {/* Quote image placed behind paragraph */}
               <div className="absolute -top-2 sm:-left-11 sm:top-0 w-14 h-10 opacity-30 pointer-events-none">
-              <Image src="/img_.svg" alt="Quote" width={34} height={24} />
+              <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_.svg" alt="Quote" width={34} height={24} />
               </div>
               <p className="font-fz-poppins w-[335px] text-[14px] text-left sm:text-xl md:text-[16px] text-gray-600 sm:text-justify leading-relaxed md:w-[741px]">
                 Với nhiều người, gạo chỉ đơn thuần là lương <br className="sm:hidden"/> thực để no bụng. <br className="hidden sm:inline"/> Nhưng với Tư Trúc, đó là kết <br className="sm:hidden"/> tinh của đất trời hào phóng, <br className="hidden sm:inline"/>
@@ -105,11 +105,11 @@ export function MissionSection() {
           }} >
             <div className="flex flex-col items-center">
               <div className="flex flex-row">
-                <Image src="/vision_right_icon.svg" alt="Quote" width={18} height={8} />
+                <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/vision_right_icon.svg" alt="Quote" width={18} height={8} />
                 <p className="font-fz-poppins text-sm font-medium tracking-wide uppercase  px-2" style={{color:"#89A751"}}>
                   {titleMission[index]}
                 </p>
-                <Image src="/vision_left_icon.svg" alt="Quote" width={18} height={8} />
+                <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/vision_left_icon.svg" alt="Quote" width={18} height={8} />
               </div>
              <h2 className={`font-alegreya-sans text-[28px] leading-[100%] tracking-[0%] sm:text-[16px] md:text-[32px] mt-2 mb-4 max-w-[295px] md:max-w-[549px] transition-opacity duration-700 ${fade ? 'opacity-100' : 'opacity-0'}`} style={{color:"#0A5B89"}}>
                 {textContent[index]?.heading
@@ -157,7 +157,7 @@ export function MissionSection() {
                 >
                   <div className="flex items-center gap-2">
                     <Image 
-                    src="/lotus.svg" 
+                    src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/lotus.svg" 
                     alt="lotus-icon"
                     width={55}
                     height={59}

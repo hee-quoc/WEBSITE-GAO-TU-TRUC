@@ -19,7 +19,7 @@ export function PartnerSection(){
               {/* Khách hàng lẻ */}
               <div className="flex-shrink-0 w-full sm:w-[264px] h-auto sm:h-[200px] rounded-[16px] p-6 flex flex-col bg-[#EDF5DC] shadow-md">
                 <div className="mb-2">
-                  <Image src="/img_users.svg" alt="Users" width={41} height={26} />
+                  <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_users.svg" alt="Users" width={41} height={26} />
                 </div>
                 <ul className="space-y-0 text-green-dark text-sm">
                   <li className="flex items-start gap-2">
@@ -40,7 +40,7 @@ export function PartnerSection(){
               {/* Bếp ăn công nghiệp */}
               <div className="flex-shrink-0 w-full sm:w-[470px] h-auto sm:h-[200px] rounded-[16px] p-6 grid grid-cols-1 bg-[#EDF5DC] shadow-md">
                 <div className="mt-2 mb-4 sm:mb-0">
-                  <Image src="/img_building.svg" alt="Business" width={29} height={29} />
+                  <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_building.svg" alt="Business" width={29} height={29} />
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4">
                   <ul className="space-y-0 text-green-dark text-sm">
@@ -70,7 +70,7 @@ export function PartnerSection(){
               <div className="flex flex-col sm:flex-col gap-4 flex-shrink-0 w-full sm:w-auto">
                 <div className="w-full sm:w-[264px] h-auto sm:h-[91.5px] rounded-[16px] px-5 py-[25px] flex items-center bg-[#EDF5DC] shadow-md">
                   <Image
-                    src="/img_factory.svg"
+                    src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_factory.svg"
                     alt="Factory"
                     width={27}
                     height={25}
@@ -80,7 +80,7 @@ export function PartnerSection(){
                 </div>
                 <div className="w-full sm:w-[264px] h-auto sm:h-[91.5px] rounded-[16px] px-5 py-[25px] flex items-center bg-[#EDF5DC] shadow-md">
                   <Image
-                    src="/img_farm.svg"
+                    src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_farm.svg"
                     alt="Farm"
                     width={24}
                     height={29}

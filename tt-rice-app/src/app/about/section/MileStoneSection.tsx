@@ -167,14 +167,14 @@ export function MileStoneSection() {
             transform: "translateX(-50%)",
           }}
         >
-          <Image src="/milestone/line.svg" alt="Timeline Line" fill className="object-contain" />
+          <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/milestone/line.svg" alt="Timeline Line" fill className="object-contain" />
         </div>
 
         {/* Decor */}
-        <Image src="/milestone/hinh-lua.svg" alt="Decor 1" width={45} height={70} className="absolute" style={{ top: 491, left: 976 }} />
-        <Image src="/milestone/hinh-lua.svg" alt="Decor 2" width={45} height={70} className="absolute" style={{ top: 422, left: 1000 }} />
-        <Image src="/milestone/hinh-lua.svg" alt="Decor 3" width={45} height={70} className="absolute" style={{ top: 808, left: 267 }} />
-        <Image src="/milestone/hinh-lua.svg" alt="Decor 4" width={45} height={70} className="absolute" style={{ top: 874, left: 320 }} />
+        <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/milestone/hinh-lua.svg" alt="Decor 1" width={45} height={70} className="absolute" style={{ top: 491, left: 976 }} />
+        <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/milestone/hinh-lua.svg" alt="Decor 2" width={45} height={70} className="absolute" style={{ top: 422, left: 1000 }} />
+        <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/milestone/hinh-lua.svg" alt="Decor 3" width={45} height={70} className="absolute" style={{ top: 808, left: 267 }} />
+        <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/milestone/hinh-lua.svg" alt="Decor 4" width={45} height={70} className="absolute" style={{ top: 874, left: 320 }} />
 
         {/* Title */}
         <div className="absolute top-[40px] left-1/2 -translate-x-1/2 text-center">
@@ -228,7 +228,7 @@ export function MileStoneSection() {
               }}
             >
               <Image
-                src="/milestone/Ellipse.svg"
+                src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/milestone/Ellipse.svg"
                 alt={`${item.id}-icon`}
                 fill
                 className="object-contain"

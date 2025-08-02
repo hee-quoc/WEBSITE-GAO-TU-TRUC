@@ -116,7 +116,7 @@ export function PlatformSection() {
         {/* ICON + QUOTE */}
         <div className="pt-8 space-y-3">
           <Image
-            src="/platform/icon-ngoac-kep.svg"
+            src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/platform/icon-ngoac-kep.svg"
             alt="Quote Icon"
             width={40}
             height={30}
@@ -200,7 +200,7 @@ export function PlatformSection() {
                   </div>
                   <div className="space-y-3 pt-6">
                     <Image
-                      src="/platform/icon-ngoac-kep.svg"
+                      src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/platform/icon-ngoac-kep.svg"
                       alt="Quote Icon"
                       width={56}
                       height={39}

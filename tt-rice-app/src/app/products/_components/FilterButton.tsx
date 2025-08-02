@@ -55,7 +55,7 @@ export function FilterButton({ categories }: FilterButtonProps) {
     //                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
     //               >
     //                 <Image
-    //                   src="/icon/icon_product_button.svg"
+    //                   src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/icon/icon_product_button.svg"
     //                   alt="Active filter icon"
     //                   width={ICON_WIDTH}
     //                   height={ICON_WIDTH}
@@ -122,7 +122,7 @@ export function FilterButton({ categories }: FilterButtonProps) {
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   >
                     <Image
-                      src="/icon/icon_product_button.svg"
+                      src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/icon/icon_product_button.svg"
                       alt="Active filter icon"
                       width={ICON_WIDTH}
                       height={ICON_WIDTH}

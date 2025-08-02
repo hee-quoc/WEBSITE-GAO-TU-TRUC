@@ -5,27 +5,27 @@ import React from "react";
 import StepSectionResponsive from '../utils/Step';
 const steps = [
   {
-    img: '/gao_step1.svg',
+    img: 'https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/gao_step1.svg',
     title: 'Gieo trồng & Chăm sóc',
     desc: 'Được thực hiện bởi những nông dân lành nghề,\n tuân thủ kỹ thuật và quy \n chuẩn chất lượng khắt khe',
   },
   {
-    img: '/gao_step2.svg',
+    img: 'https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/gao_step2.svg',
     title: 'Thu hoạch & Tinh chọn',
     desc: ' Lúa chín được thu hoạch đúng thời điểm, kiểm tra chất lượng đầu vào trước khi đưa về nhà máy',
   },
   {
-    img: '/gao_step3.svg',
+    img: 'https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/gao_step3.svg',
     title: 'Sấy lúa đạt chuẩn \n độ ẩm <14%',
     desc: 'Áp dụng công nghệ sấy hiện đại để kiểm soát độ ẩm tối ưu, bảo toàn \n chất lượng hạt gạo',
   },
   {
-    img: '/gao_step4.svg',
+    img: 'https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/gao_step4.svg',
     title: 'Xay xát & Sàng lọc',
     desc: 'Tiến hành xay xát, tách tạp chất và sàng lọc, đảm bảo từng hạt gạo đạt chuẩn \n đồng đều',
   },
   {
-    img: '/gao_step5.svg',
+    img: 'https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/gao_step5.svg',
     title: 'Đóng gói & Phân phối',
     desc: 'Thành phẩm được đóng \n gói tự động với quy trình \n hiện đại, và vận chuyển \n đến khắp đất nước',
   },
@@ -49,7 +49,7 @@ export function RiceSection() {
         {/* Process Line - place above dots */}
         {/* <div className=" absolute top-[47%] left-[10%] z-0 w-full flex justify-center h-[390px]">
           <Image
-            src="/step_line.svg"
+            src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/step_line.svg"
             alt="process_line"
             width={930}
             height={380}
@@ -114,8 +114,8 @@ export function RiceSection() {
         {/* Left Column: Title and Paragraph */}
         <div className="w-full md:basis-[56%] md:relative md:pt-64">
           <div className="flex flex-col items-center relative sm:absolute sm:-top-2 md:-left-10 w-full h-[45px] md:w-14 md:h-10  opacity-50 pointer-events-none sm:pt-64">
-            <Image src="/quote_gray.svg" alt="Quote" width={56} height={39} className="hidden sm:inline "/>
-            <Image src="/quote_gray_mobile.svg" alt="Quote" width={45} height={37} className="inline sm:hidden"/>
+            <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/quote_gray.svg" alt="Quote" width={56} height={39} className="hidden sm:inline "/>
+            <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/quote_gray_mobile.svg" alt="Quote" width={45} height={37} className="inline sm:hidden"/>
           </div>
 
           <p className="text-[18px] sm:text-[20px] text-white text-center sm:text-justify leading-relaxed font-alegreya-sans py-5 px-3 sm:py-0">
@@ -126,14 +126,14 @@ export function RiceSection() {
         {/* Right Column: Image */}
         <div className="w-full md:basis-[44%] flex justify-center relative">
           <Image
-            src="/women_eat_rice.svg"
+            src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/women_eat_rice.svg"
             alt="Women eat rice"
             width={304}
             height={230}
             className="hidden sm:inline w-[335px] h-[191px] sm:w-[260px] md:w-[304px] md:h-[231px] md:absolute md:top-[-72px] z-10"
           />
           <Image
-            src="/women_eat_rice_mobile.png"
+            src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/women_eat_rice_mobile.png"
             alt="Women eat rice mobile"
             width={304}
             height={230}

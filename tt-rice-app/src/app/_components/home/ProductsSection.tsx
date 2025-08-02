@@ -36,7 +36,7 @@ export function ProductsSection(){
             <h3 className="absolute left-[35%] sm:left-[44%] text-[20px] font-[500] font-alegreya-sans " style={{color:"#0A5B89"}}>Các chứng nhận</h3>
             <div className="absolute left-[-3%] sm:left-[30%] top-1/2 -translate-y-1/2">
               <Image
-                src="/img_group_928.svg"
+                src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_group_928.svg"
                 alt="Certification"
                 width={132}
                 height={107}
@@ -47,7 +47,7 @@ export function ProductsSection(){
             {/* Item 2 */}
             <div className="absolute left-[22%]  sm:left-[40%] top-[55%] -translate-y-1/2 w-[92px] h-[36px] rounded-full flex items-center justify-center">
               <Image
-                src="/ocop.png"
+                src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/ocop.png"
                 alt="Certification"
                 width={92}
                 height={36}
@@ -58,7 +58,7 @@ export function ProductsSection(){
             {/* Item 3 */}
             <div className="absolute left-[61%] sm:left-[51%] top-[55%] -translate-y-1/2 w-[70px] h-[58px] rounded-full flex items-center justify-center">
               <Image
-                src="/ISO.png"
+                src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/ISO.png"
                 alt="Certification"
                 width={70}
                 height={58}
@@ -69,7 +69,7 @@ export function ProductsSection(){
             {/* Item 4 */}
             <div className="absolute left-[75%] sm:left-[56%] top-1/2 -translate-y-1/2">
               <Image
-                src="/img_group_929_light_green_a700.svg"
+                src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/img_group_929_light_green_a700.svg"
                 alt="Certification"
                 width={115}
                 height={107}

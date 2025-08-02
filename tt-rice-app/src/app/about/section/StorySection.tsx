@@ -88,7 +88,7 @@ export function StorySection() {
                 </h2>
                 <div>
                   <div className={`gap-x-6 mb-5 ${isMobile ? 'flex flex-col' : 'flex items-start md:w-[531px]' } p-8 backdrop-blur-none bg-white/60 rounded-xl`}>
-                    <Image src="/icon_rice_husk.svg" alt="icon" width={56} height={56} />
+                    <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/icon_rice_husk.svg" alt="icon" width={56} height={56} />
                     <div className=" md:w-[386px]">
                       <span className="text-green-600 text-[20px] pb-[4px]">Thu mua lúa</span>
                       <p className="text-gray-700 font-fz-poppins">
@@ -97,7 +97,7 @@ export function StorySection() {
                     </div>
                   </div>
                   <div className={`gap-x-6 mb-5 ${isMobile ? 'flex flex-col' : 'flex items-start md:w-[531px]' } p-8 backdrop-blur-none bg-white/60 rounded-xl`}>
-                    <Image src="/icon_rice_husk.svg" alt="icon" width={56} height={56} />
+                    <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/icon_rice_husk.svg" alt="icon" width={56} height={56} />
                     <div className=" md:w-[386px]">
                       <span className="text-green-600 text-[20px] pb-[4px]">
                         Sản xuất & kinh doanh lúa gạo / <br />
@@ -109,7 +109,7 @@ export function StorySection() {
                     </div>
                   </div>
                   <div className={`gap-x-6 ${isMobile ? 'flex flex-col' : 'flex items-start md:w-[531px]' } p-8 backdrop-blur-none bg-white/60 rounded-xl`}>
-                    <Image src="/icon_rice_husk.svg" alt="icon" width={56} height={56} />
+                    <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/icon_rice_husk.svg" alt="icon" width={56} height={56} />
                     <div className=" md:w-[386px]">
                       <span className="text-green-600 text-[20px] pb-[4px]">Xử lí các phụ phẩm (chủ yếu là cám)</span>
                       <p className="text-gray-700 font-fz-poppins">

@@ -8,27 +8,27 @@ interface Step {
 }
 const steps = [
   {
-    img: '/gao_step1.svg',
+    img: 'https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/gao_step1.svg',
     title: 'Gieo trồng & Chăm sóc',
     desc: 'Được thực hiện bởi những nông dân lành nghề,\n tuân thủ kỹ thuật và quy \n chuẩn chất lượng khắt khe',
   },
   {
-    img: '/gao_step2.svg',
+    img: 'https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/gao_step2.svg',
     title: 'Thu hoạch & Tinh chọn',
     desc: ' Lúa chín được thu hoạch đúng thời điểm, kiểm tra chất lượng đầu vào trước khi đưa về nhà máy',
   },
   {
-    img: '/gao_step3.svg',
+    img: 'https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/gao_step3.svg',
     title: 'Sấy lúa đạt chuẩn \n độ ẩm <14%',
     desc: 'Áp dụng công nghệ sấy hiện đại để kiểm soát độ ẩm tối ưu, bảo toàn \n chất lượng hạt gạo',
   },
   {
-    img: '/gao_step4.svg',
+    img: 'https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/gao_step4.svg',
     title: 'Xay xát & Sàng lọc',
     desc: 'Tiến hành xay xát, tách tạp chất và sàng lọc, đảm bảo từng hạt gạo đạt chuẩn \n đồng đều',
   },
   {
-    img: '/gao_step5.svg',
+    img: 'https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/gao_step5.svg',
     title: 'Đóng gói & Phân phối',
     desc: 'Thành phẩm được đóng \n gói tự động với quy trình \n hiện đại, và vận chuyển \n đến khắp đất nước',
   },
@@ -50,7 +50,7 @@ export default function StepSectionResponsive() {
       {/* Desktop layout */}
       <div className="hidden lg:flex flex-col gap-9 items-center">
         <div className="absolute top-[45.4%] left-[10%] z-0 w-full flex justify-center h-[390px]">
-          <Image src="/step_line.svg" alt="process_line" width={930} height={380} className="pointer-events-none hidden sm:inline" />
+          <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/step_line.svg" alt="process_line" width={930} height={380} className="pointer-events-none hidden sm:inline" />
         </div>
 
         <div className="flex gap-28 z-10">
@@ -69,7 +69,7 @@ export default function StepSectionResponsive() {
       <div className="w-full lg:hidden overflow-x-auto scrollbar-hide -mx-0 px-0 flex flex-col relative">
         <div className="flex w-max">
           {/* <div className="absolute z-0 w-[1023px] h-[5] flex justify-center">
-              <Image src="/process-line-mobile.svg" alt="process_line" width={930} height={380} className="pointer-events-none sm:inline" />
+              <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/process-line-mobile.svg" alt="process_line" width={930} height={380} className="pointer-events-none sm:inline" />
           </div> */}
            <svg
             width="1023"

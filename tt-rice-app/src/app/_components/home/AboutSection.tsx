@@ -60,12 +60,12 @@ export function AboutSection() {
           >
             <span className="flex items-center justify-center gap-2">
               Tìm hiểu thêm
-              <Image src="/icon_wheat_white.svg" alt="icon" width={20} height={20} />
+              <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/icon_wheat_white.svg" alt="icon" width={20} height={20} />
             </span>
           </Button>
 
           {/* Block 1 */}
-          <Image src="/Group 930.svg" alt="Tu Truc Story" width={249} height={249} className="mb-5" />
+          <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/Group 930.svg" alt="Tu Truc Story" width={249} height={249} className="mb-5" />
 
           <p className="text-[14px] leading-[1.4] text-[#525A6A] mb-10 max-w-[340px] font-fz-poppins">
 
@@ -75,10 +75,10 @@ export function AboutSection() {
           </p>
 
           {/* 👉 HÌNH BẠN MUỐN CHÈN GIỮA CÁC BLOCK */}
-          <Image src="/decor_between_block.svg" alt="Decor" width={30} height={106} />
+          <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/decor_between_block.svg" alt="Decor" width={30} height={106} />
 
           {/* Block 2 */}
-          <Image src="/Group 929.svg" alt="Rice Field" width={250} height={250} className="mb-5" />
+          <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/Group 929.svg" alt="Rice Field" width={250} height={250} className="mb-5" />
 
           <p className="text-[14px] leading-[1.4] text-[#525A6A] mb-10 max-w-[340px] font-fz-poppins">
 
@@ -89,10 +89,10 @@ export function AboutSection() {
           
           
           {/* 👉 HÌNH BẠN MUỐN CHÈN GIỮA CÁC BLOCK */}
-          <Image src="/decor_between_block.svg" alt="Decor" width={30} height={106} />
+          <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/decor_between_block.svg" alt="Decor" width={30} height={106} />
 
           {/* Block 3 */}
-          <Image src="/Layer_2.svg" alt="Tu Truc Heritage" width={350} height={175} className="mb-10" />
+          <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/Layer_2.svg" alt="Tu Truc Heritage" width={350} height={175} className="mb-10" />
 
           {/* Block 4 */}
 
@@ -128,7 +128,7 @@ export function AboutSection() {
             >
               <span className="flex items-center gap-2">
                 Tìm hiểu thêm
-                <Image src="/icon_wheat_white.svg" alt="icon" width={20} height={20} />
+                <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/icon_wheat_white.svg" alt="icon" width={20} height={20} />
               </span>
             </Button>
           </motion.div>
@@ -139,15 +139,15 @@ export function AboutSection() {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             className="absolute top-[421.75px] right-[41.95px] w-[183px] h-[70px] z-10"
           >
-            <Image src="/cloud.svg" alt="Cloud" width={183} height={70} />
+            <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/cloud.svg" alt="Cloud" width={183} height={70} />
           </motion.div>
 
           {/* Decorative elements */}
-          <Image src="/Ellipse 12.svg" alt="Dot" width={32} height={32} className="absolute top-[509px] left-[659px] z-10" />
-          <Image src="/Ellipse 12.svg" alt="Dot" width={32} height={32} className="absolute top-[660px] left-[843px] z-10" />
-          <Image src="/Ellipse 12.svg" alt="Dot" width={32} height={32} className="absolute top-[914px] left-[345px] z-10" />
+          <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/Ellipse 12.svg" alt="Dot" width={32} height={32} className="absolute top-[509px] left-[659px] z-10" />
+          <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/Ellipse 12.svg" alt="Dot" width={32} height={32} className="absolute top-[660px] left-[843px] z-10" />
+          <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/Ellipse 12.svg" alt="Dot" width={32} height={32} className="absolute top-[914px] left-[345px] z-10" />
           <div className="absolute top-[519.5px] left-[357.25px] w-[502px] h-[566px] z-0">
-            <Image src="/line.svg" alt="Decorative line" width={502} height={566} />
+            <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/line.svg" alt="Decorative line" width={502} height={566} />
           </div>
 
           {/* Block 1 */}
@@ -159,7 +159,7 @@ export function AboutSection() {
             viewport={{ once: true, amount: 0.4 }}
             className="absolute top-[352px] left-[119px] w-[571px] flex flex-col items-center gap-[20px] text-center z-10"
           >
-            <Image src="/Group 930.svg" alt="Tu Truc Story" width={249} height={249} className="mb-5" />
+            <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/Group 930.svg" alt="Tu Truc Story" width={249} height={249} className="mb-5" />
             <div className="text-[#525A6A] text-[16px] leading-[1.4] max-w-[530px] font-fz-poppins font-[400]">
               <p>
                 Câu chuyện của Tư Trúc bắt đầu từ <b>hơn 30 năm trước</b>, nơi vùng đất{" "}
@@ -178,7 +178,7 @@ export function AboutSection() {
             viewport={{ once: true, amount: 0.4 }}
             className="absolute top-[494px] right-[127px] w-[490px] text-center flex flex-col items-center z-10"
           >
-            <Image src="/Group 929.svg" alt="Rice Field" width={250} height={250} className="mb-5" />
+            <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/Group 929.svg" alt="Rice Field" width={250} height={250} className="mb-5" />
             <div className="text-[#525A6A] text-[16px] leading-[1.4] max-w-[530px] font-fz-poppins font-[400]">
               <p>
                 Với Tư Trúc, gạo là kết tinh từ <b>sự ưu đãi của thiên nhiên</b>,{" "}
@@ -197,7 +197,7 @@ export function AboutSection() {
             viewport={{ once: true, amount: 0.2 }}
             className="absolute top-[848px] left-[355px] w-[716px] h-[359px] z-[1]"
           >
-            <Image src="/Layer_2.svg" alt="Tu Truc Heritage" width={716} height={359} />
+            <Image src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/Layer_2.svg" alt="Tu Truc Heritage" width={716} height={359} />
           </motion.div>
 
           {/* Block 4 */}

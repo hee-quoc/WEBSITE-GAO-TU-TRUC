@@ -6,7 +6,7 @@ export default function Footer() {
   const contactInfo = [
     {
       icon: <Image
-          src="/map.svg"
+          src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/map.svg"
           alt="Map decoration"
           width={20} 
           height={20} 
@@ -14,25 +14,25 @@ export default function Footer() {
       text: 'Đường số 14, Xã Hoà Long, Thành phố Bà Rịa, Tỉnh Bà Rịa Vũng Tàu',
     },
     { icon: <Image
-          src="/google_map.svg"
+          src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/google_map.svg"
           alt="Google Map decoration"
           width={20} 
           height={20}  
         />, text: 'Tìm đường Google map' },
     { icon: <Image
-          src="/Phone.svg"
+          src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/Phone.svg"
           alt="Phone decoration"
           width={20} 
           height={20}  
         />, text: '0963719942 - 0983826158' },
     { icon: <Image
-          src="/phone_ring.svg"
+          src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/phone_ring.svg"
           alt="Phone ring decoration"
           width={20} 
           height={20}   
         />, text: '0773.81.86.88' },
     { icon: <Image
-          src="/mail.svg"
+          src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/mail.svg"
           alt="Mail decoration"
           width={20} 
           height={20}  
@@ -61,13 +61,13 @@ export default function Footer() {
         <div className="bg-green-50">
           {isMobile ?
           <Image
-            src="/images/footer/img_mobile_footer_decorate.svg"
+            src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/images/footer/img_mobile_footer_decorate.svg"
             alt="Footer decoration"
             width={1440} 
             height={143}  
             className="w-full"
           /> : <Image
-            src="/footer_header.svg"
+            src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/footer_header.svg"
             alt="Footer decoration"
             width={1440} 
             height={143}  
@@ -82,14 +82,14 @@ export default function Footer() {
                 <div className="flex flex-col items-start space-y-6">
                   {isMobile ? <Link href="/">
                     <Image
-                      src="/images/footer/icon_logo_mobile.svg"
+                      src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/images/footer/icon_logo_mobile.svg"
                       alt="Tu Truc Logo"
                       width={180}
                       height={48}
                     />
                   </Link>: <Link href="/">
                     <Image
-                      src="/logo_white.svg"
+                      src="https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/logo_white.svg"
                       alt="Tu Truc Logo"
                       width={150}
                       height={75}
