@@ -39,18 +39,19 @@ function toSlug(str: string): string {
 async function main() {
   console.log('Start seeding ...');
 
-  const username = 'admin';
-  const defaultPassword = 'password';
+  const username = 'admin'; 
+  const plainPassword = 'password'; 
 
-  const hashedPassword = await hash(defaultPassword, 12);
+  const hashedPassword = await hash(plainPassword, 10);
 
-  const adminUser = await prisma.user.upsert({
+  const admin = await prisma.user.upsert({
     where: { username: username },
-    update: {},
+    update: {
+        hashedPassword: hashedPassword,
+    },
     create: {
       username: username,
-      password: hashedPassword,
-      role: 'ADMIN',
+      hashedPassword: hashedPassword,
     },
   });
 
@@ -410,7 +411,6 @@ async function main() {
         tags: productData.tags,
         imageData: null, // Store the raw image data
         imageType: productData.imageType, // Store the MIME type
-        authorId: adminUser.id,
         companyBrand: productData.companyBrand,
         SKU: productData.SKU,
         slug: toSlug(productData.name),

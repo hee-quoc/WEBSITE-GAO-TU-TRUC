@@ -23,11 +23,11 @@ const Button: React.FC<ButtonProps> = ({
   className = '',
   ...props
 }) => {
-  const baseClasses = 'font-medium rounded-3xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-sm';
+  const baseClasses = 'font-medium rounded-3xl transition-colors duration-200 shadow-sm';
   
   const variants: Record<ButtonVariant, string> = {
     primary: 'bg-green-primary text-white hover:bg-green-600 disabled:bg-gray-400',
-    secondary: 'bg-white text-green-primary border border-green-primary hover:bg-green-50 disabled:bg-gray-100',
+    secondary: 'bg-white text-green-primary border hover:bg-green-50 disabled:bg-gray-100',
     outline: 'border border-gray-300 text-gray-700 hover:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400',
   };
   

@@ -1,10 +1,8 @@
-// Login.tsx
-
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation"; // <-- New: for redirection
-import { signIn } from "next-auth/react"; // <-- New: the magic function
+import { useRouter } from "next/navigation"; 
+import { signIn } from "next-auth/react"; 
 import React, { useState } from 'react';
 
 import Button from "~/app/_components/ui/Button";
@@ -12,12 +10,11 @@ import Input from "~/app/_components/ui/Input";
 import type { LoginFormData } from "~/app/types/Types";
 
 export default function ContactSection() {
-    const router = useRouter(); // <-- New: get router instance
+    const router = useRouter(); 
     const [formData, setFormData] = useState<LoginFormData>({
         username: '',
         password: '',
     });
-    // --- New States for UI feedback ---
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -29,33 +26,25 @@ export default function ContactSection() {
         }));
     };
 
-    // --- Updated handleSubmit function ---
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
-        setError(null); // Clear previous errors
+        setError(null); 
 
         try {
             const result = await signIn('credentials', {
-                // The first argument is the "id" of the provider in auth.ts
-                // The second argument is the credentials object
                 username: formData.username,
                 password: formData.password,
-                redirect: false, // We handle redirection manually
+                redirect: false, 
             });
 
             if (result?.error) {
-                // The error message comes from the "throw new Error(...)" in your authorize function
-                setError("Tên đăng nhập hoặc mật khẩu không đúng."); // "Invalid credentials"
+                setError("Tên đăng nhập hoặc mật khẩu không chính xác."); 
                 setIsLoading(false);
             } else if (result?.ok) {
-                // Login was successful
-                // Redirect to a protected page, e.g., the dashboard
                 router.push('/products'); 
-                // You can also use router.refresh() to update server components
             }
         } catch (err) {
-            // This catches network errors, etc.
             console.error(err);
             setError("Đã xảy ra lỗi. Vui lòng thử lại.");
             setIsLoading(false);
@@ -73,7 +62,7 @@ export default function ContactSection() {
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <Input
                                 label="Username"
-                                name="username" // <-- FIX: Was "name", should be "username"
+                                name="username" 
                                 value={formData.username}
                                 onChange={handleInputChange}
                                 required
@@ -86,17 +75,14 @@ export default function ContactSection() {
                                 onChange={handleInputChange}
                                 required
                             />
-
-                            {/* --- New: Error Message Display --- */}
                             {error && (
                                 <p className="text-sm text-red-600">{error}</p>
                             )}
                             
                             <div className="pt-4">
                                 <Button
-                                  type="submit" // Good practice for form buttons
+                                  type="submit" 
                                   size="large"
-                                  // --- New: Disable button while loading ---
                                   disabled={isLoading}
                                   className="
                                     flex items-center gap-2 bg-green-normal 
@@ -108,7 +94,6 @@ export default function ContactSection() {
                                     disabled:opacity-50 disabled:cursor-not-allowed
                                   "
                                 >
-                                    {/* --- New: Show loading text --- */}
                                     {isLoading ? 'Đang xử lý...' : 'Đăng nhập'}
                                     <Image
                                         src="/icon_wheat_white.svg"

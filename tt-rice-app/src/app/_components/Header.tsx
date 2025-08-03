@@ -7,6 +7,13 @@ import Button from '~/app/_components/ui/Button';
 import { Menu, X } from 'lucide-react';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { usePathname } from 'next/navigation';
+import dynamic from "next/dynamic";
+
+const AuthButton = dynamic(() => import("./AuthButton"), {
+  ssr: false,
+  // Optional: Add a loading component to prevent layout shift
+  loading: () => <div className="h-12 w-32 animate-pulse rounded-full bg-gray-200"></div>,
+});
 
 const mobileLogo ={alt:"Tu Truc mobile logo", width: 64, height: 35}
 const desktopLogo = { alt: 'Tu Truc logo', width: 150, height: 40}
@@ -80,15 +87,12 @@ const Header: React.FC = () => {
             <Link href="/products" className="text-dark-gray hover:text-green-normal transition-colors">
               Sản phẩm
             </Link>
-            <Link href="#news" className="text-dark-gray hover:text-green-normal transition-colors">
+            <Link href="/news" className="text-dark-gray hover:text-green-normal transition-colors">
               Tin tức
             </Link>
             <Link href="#contact" className="text-dark-gray hover:text-green-normal transition-colors">
               Liên hệ
             </Link>
-            {/* <Link href="/login" className="text-dark-gray hover:text-green-normal transition-colors">
-              Đăng nhập
-            </Link> */}
           </nav>
           <div className="md:hidden flex items-center pr-4 ">
             <button onClick={toggleMenu} className="text-dark-gray focus:outline-none">
@@ -96,6 +100,7 @@ const Header: React.FC = () => {
             </button>
           </div>
           <div className="hidden md:flex items-center lg:pr-[159px] ">
+            <AuthButton />
             <Button
               variant="secondary"
               size="medium"
@@ -112,7 +117,7 @@ const Header: React.FC = () => {
 
               {/* Hover Icon: Hidden by default, visible when the group is hovered */}
               <Image 
-                src="/icon_wheat_white.svg" // The new white icon
+                src="/img_icon_wheat_white.svg" // The new white icon
                 alt="Wheat Icon Hover" 
                 width={20} 
                 height={20} 
@@ -139,7 +144,7 @@ const Header: React.FC = () => {
                 Sản phẩm
               </Link>
               <Link
-                href="#news"
+                href="/news"
                 className="text-dark-gray hover:text-green-normal transition-colors"
                 onClick={toggleMenu}
               >
@@ -152,13 +157,7 @@ const Header: React.FC = () => {
               >
                 Liên hệ
               </Link>
-              {/* <Link
-                href="/login"
-                className="text-dark-gray hover:text-green-normal transition-colors"
-                onClick={toggleMenu}
-              >
-                Đăng nhập
-              </Link> */}
+              <AuthButton />
               <Button
                 variant="secondary"
                 size="medium"
@@ -173,7 +172,7 @@ const Header: React.FC = () => {
                   className="block group-hover:hidden" 
                 />
                 <Image 
-                  src="/icon_wheat_white.svg" // The new white icon
+                  src="/img_icon_wheat_white.svg" // The new white icon
                   alt="Wheat Icon Hover" 
                   width={20} 
                   height={20} 
@@ -228,7 +227,7 @@ function ProductHeader({
             <Link href="/products" className="text-white hover:text-green-normal transition-colors">
               Sản phẩm
             </Link>
-            <Link href="#news" className="text-white hover:text-green-normal transition-colors">
+            <Link href="/news" className="text-white hover:text-green-normal transition-colors">
               Tin tức
             </Link>
             <Link href="#contact" className="text-white hover:text-green-normal transition-colors">
@@ -241,6 +240,7 @@ function ProductHeader({
             </button>
           </div>
           <div className="hidden md:flex items-center lg:pr-[159px]">
+            <AuthButton />
             <Button
               variant="secondary"
               size="medium"
@@ -255,7 +255,7 @@ function ProductHeader({
                 className="block group-hover:hidden"
               />
               <Image
-                src="/icon_wheat_white.svg"
+                src="/img_icon_wheat_white.svg"
                 alt="Wheat Icon Hover"
                 width={20}
                 height={20}
@@ -282,7 +282,7 @@ function ProductHeader({
                 Sản phẩm
               </Link>
               <Link
-                href="#news"
+                href="/news"
                 className="text-black hover:text-green-normal transition-colors"
                 onClick={toggleMenu}
               >
@@ -295,6 +295,7 @@ function ProductHeader({
               >
                 Liên hệ
               </Link>
+              <AuthButton />
               <Button
                 variant="secondary"
                 size="medium"
@@ -309,7 +310,7 @@ function ProductHeader({
                   className="block group-hover:hidden"
                 />
                 <Image
-                  src="/icon_wheat_white.svg"
+                  src="/img_icon_wheat_white.svg"
                   alt="Wheat Icon Hover"
                   width={20}
                   height={20}
