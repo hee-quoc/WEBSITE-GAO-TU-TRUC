@@ -4,10 +4,10 @@ import Image from 'next/image';
 
 export function ContactPage() {
   return (
-    <div className="flex flex-col">
-      <div className=" bg-white px-4 py-30 md:px-16 lg:px-42 grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div className="flex flex-col items-center">
+      <div className=" bg-white px-4 py-30 md:px-16 lg:px-42 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         {/* Left Section - Contact Form */}
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center pr-8">
           <h2 className="text-[42px] md:text-[56px] font-[700] text-[#0A5B89] font-alegreya-sans mb-2">Liên hệ</h2>
           <p className="text-[28px] md:text-[32px] text-[#667085] font-[400] mb-4 font-alegreya-sans ">
             Bạn cần hỗ trợ? Hãy gửi thông tin cho <br className="hidden md:inline"/> chúng tôi
@@ -81,10 +81,10 @@ export function ContactPage() {
         <div>
           <iframe
             title="Google Map"
-            src="https://www.google.com/maps/@10.5069778,107.2003944,13z?entry=ttu&g_ep=EgoyMDI1MDcyOS4wIKXMDSoASAFQAw%3D%3D"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15690.59279028316!2d107.20778659980085!3d10.52835022771901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31750b3755d92c63%3A0xc81ce8b0368eea70!2zQ-G7rWEgSMOgbmcgR-G6oW8gVMawIFRyw7pjIEhvw6AgTG9uZw!5e0!3m2!1svi!2s!4v1754240350201!5m2!1svi!2s"
             width="100%"
             height="100%"
-            className="w-full h-[600px] rounded-lg shadow-lg"
+            className=" w-[335px] h-[325px] md:w-[600px] md:h-[600px] rounded-lg shadow-lg"
             allowFullScreen
             loading="lazy"
           ></iframe>
