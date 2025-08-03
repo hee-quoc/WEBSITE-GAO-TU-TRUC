@@ -10,7 +10,7 @@ const config = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'omweb-prod.s3.ap-southeast-1.amazonaws.com',
+        hostname: 'nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com',
         port: '',
         pathname: '/**', // This allows any path from this hostname.
       },

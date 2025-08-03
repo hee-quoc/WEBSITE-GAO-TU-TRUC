@@ -34,7 +34,6 @@ export const userRouter = createTRPCRouter({
       }
 
       if (input.password) {
-        // Always hash the new password before saving
         dataToUpdate.password = await hash(input.password, 12);
       }
 

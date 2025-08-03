@@ -10,15 +10,22 @@ export function ImageUploader() {
 
   // Get the tRPC mutation hook
   const { mutate: getPresignedUrl } = api.s3.getPresignedUrl.useMutation({
-    onSuccess: async (data, variables) => {
+    // The `_variables` parameter is unused, so we prefix it with an underscore
+    onSuccess: async (data, _variables) => {
       setMessage("Uploading to S3...");
+
+      // The `file` object is available here from the component's state
+      if (!file) {
+        setMessage("Error: File not found after getting URL.");
+        return;
+      }
 
       // Use the presigned URL to upload the file directly to S3
       const response = await fetch(data.presignedUrl, {
         method: "PUT",
         body: file,
         headers: {
-          "Content-Type": file!.type,
+          "Content-Type": file.type,
         },
       });
 
@@ -50,7 +57,7 @@ export function ImageUploader() {
       setMessage("Please select a file first.");
       return;
     }
-    
+
     setMessage("Getting presigned URL...");
     // Call the tRPC mutation to get the URL
     getPresignedUrl({
@@ -70,17 +77,4 @@ export function ImageUploader() {
   );
 }
 
-// A trick to pass the file object through tRPC without it being part of the input schema
-declare module "~/trpc/react" {
-  interface MyTRPCMutationOptions<T> {
-    file?: File;
-  }
-
-  export namespace api {
-    export namespace s3 {
-      export namespace getPresignedUrl {
-        export type Options = MyTRPCMutationOptions<any>;
-      }
-    }
-  }
-}
+// The module declaration block has been removed as it was unnecessary and causing errors.
