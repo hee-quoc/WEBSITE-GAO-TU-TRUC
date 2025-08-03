@@ -120,7 +120,6 @@ export const productRouter = createTRPCRouter({
         data: {
           ...input,
           slug: slug,
-          authorId: ctx.session.user.id, // Associate with the logged-in user
         },
       });
     }),
@@ -139,11 +138,6 @@ export const productRouter = createTRPCRouter({
       const { id, ...dataToUpdate } = input;
 
       const product = await ctx.db.product.findUnique({ where: { id } });
-
-      // Authorization check: Ensure the user owns the product
-      if (product?.authorId !== ctx.session.user.id) {
-        throw new TRPCError({ code: "FORBIDDEN" });
-      }
       void triggerRevalidation();
       return ctx.db.product.update({
         where: { id },
@@ -157,10 +151,6 @@ export const productRouter = createTRPCRouter({
     .mutation(async ({ ctx, input }) => {
       const product = await ctx.db.product.findUnique({ where: { id: input.id } });
 
-      // Authorization check
-      if (product?.authorId !== ctx.session.user.id) {
-        throw new TRPCError({ code: "FORBIDDEN" });
-      }
       void triggerRevalidation();
       return ctx.db.product.delete({
         where: { id: input.id },

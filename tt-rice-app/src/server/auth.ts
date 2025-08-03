@@ -6,48 +6,28 @@ import {
   type NextAuthOptions,
 } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { compare } from "bcryptjs";
+import bcrypt from 'bcryptjs';
 
 import { db } from "~/server/db";
-import { type Role } from "@prisma/client";
 
-/**
- * Module augmentation for `next-auth` types.
- */
+// Type augmentation for the session user
 declare module "next-auth" {
   interface Session extends DefaultSession {
     user: {
       id: string;
-      role: Role;
+      username: string;
     } & DefaultSession["user"];
-  }
-
-  interface User {
-    role: Role;
   }
 }
 
-/**
- * Options for NextAuth.js
- */
 export const authOptions: NextAuthOptions = {
-  callbacks: {
-    session: ({ session, token }) => ({
-      ...session,
-      user: {
-        ...session.user,
-        id: token.sub!,
-        role: token.role as Role,
-      },
-    }),
-    jwt: ({ token, user }) => {
-      if (user) {
-        token.role = user.role;
-      }
-      return token;
-    },
-  },
   adapter: PrismaAdapter(db),
+  session: {
+    strategy: "jwt",
+  },
+  pages: {
+    signIn: "/login",
+  },
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -56,31 +36,43 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.username || !credentials?.password) {
-          throw new Error("Invalid credentials");
-        }
+        if (!credentials?.username || !credentials.password) return null;
+        
         const user = await db.user.findUnique({
           where: { username: credentials.username },
         });
-        if (!user?.password) {
-          throw new Error("Invalid credentials");
-        }
-        const isValidPassword = await compare(credentials.password, user.password);
-        if (!isValidPassword) {
-          throw new Error("Invalid credentials");
-        }
-        return user;
+
+        if (!user?.hashedPassword) return null;
+
+        const isPasswordValid = await bcrypt.compare(
+          credentials.password,
+          user.hashedPassword
+        );
+
+        if (!isPasswordValid) return null;
+
+        return { id: user.id, username: user.username };
       },
     }),
   ],
-  session: {
-    strategy: "jwt",
+  callbacks: {
+    jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        if ('username' in user && typeof user.username === 'string') {
+          token.username = user.username;
+        }
+      }
+      return token;
+    },
+    session({ session, token }) {
+      if (token && session.user) {
+        session.user.id = token.id as string;
+        session.user.username = token.username as string;
+      }
+      return session;
+    },
   },
 };
 
-/**
- * Wrapper for `getServerSession` that works in both App Router and Pages Router.
- * This is the new, recommended way to get the session on the server.
- * @see https://next-auth.js.org/configuration/nextjs
- */
 export const getServerAuthSession = () => getServerSession(authOptions);

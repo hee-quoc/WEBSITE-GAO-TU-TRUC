@@ -26,8 +26,8 @@ export default function RootLayout({
     <html lang="en" className={`${geist.variable}`}>
       <body className="min-h-screen">
         <TRPCReactProvider>
-          <Header />        
             <AuthProvider>
+              <Header /> 
             {children}
             </AuthProvider>
           <Footer />
