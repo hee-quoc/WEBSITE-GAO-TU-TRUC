@@ -70,14 +70,13 @@ model Product {
   updatedAt     DateTime @updatedAt
 }
 model Blog {
-  id          String   @id @default(cuid())
   title       String
-  slug        String   @unique
-  content     String   @db.Text
+  slug        String   @id @unique
+  content     Json   
   published   Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  bannerImageUrl String?
+  thumbnailUrl String?
   contentImages BlogImage[]
 }
 
@@ -86,6 +85,6 @@ model BlogImage {
   url     String 
   altText String? 
   blogId String
-  blog   Blog   @relation(fields: [blogId], references: [id], onDelete: Cascade)
+  blog   Blog   @relation(fields: [blogId], references: [slug], onDelete: Cascade)
   order Int? 
 }

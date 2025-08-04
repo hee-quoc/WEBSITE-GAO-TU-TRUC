@@ -30,7 +30,7 @@ export default function NewsIndexPage() {
 
       <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {blogs?.map((blog) => (
-          <BlogCard key={blog.id} blog={blog} />
+          <BlogCard key={blog.slug} blog={blog} />
         ))}
       </div>
     </div>

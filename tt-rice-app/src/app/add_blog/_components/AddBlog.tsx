@@ -62,7 +62,7 @@ export  function AddBlogPage() {
     { id: uid(), type: "description", description: { code: "Hãy viết gì đó..." } },
   ]);
   const [isClient, setIsClient] = useState(false);
-  const addBlogMutation = api.blog.addBlog.useMutation();
+  const addBlogMutation = api.blog.create.useMutation();
 
     useEffect(() => {
     setIsClient(true);
@@ -141,8 +141,9 @@ export  function AddBlogPage() {
       );
 
       const payload = { title: title.trim(), thumbnail: thumbBase64, blocks: blocksPayload };
+      // console.log(payload)
     //   setJsonPreview(JSON.stringify(payload, null, 2));
-        await addBlogMutation.mutateAsync(payload);
+      await addBlogMutation.mutateAsync(payload);
     } catch (e) {
       console.error(e);
       alert("Có lỗi khi tạo payload.");

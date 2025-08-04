@@ -5,10 +5,10 @@ import Link from "next/link";
 // Define the type based on the 'select' in our getAll query
 type BlogCardProps = {
   blog: {
-    id: string;
+    // id: string;
     title: string;
     slug: string;
-    bannerImageUrl: string | null;
+    thumbnailUrl: string | null;
     createdAt: Date;
   };
 };
@@ -20,9 +20,9 @@ export default function BlogCard({ blog }: BlogCardProps) {
       className="group block overflow-hidden rounded-lg border border-gray-200 shadow-sm transition-all duration-300 hover:shadow-lg"
     >
       <div className="relative h-48 w-full">
-        {blog.bannerImageUrl ? (
+        {blog.thumbnailUrl ? (
           <Image
-            src={blog.bannerImageUrl}
+            src={blog.thumbnailUrl}
             alt={blog.title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
