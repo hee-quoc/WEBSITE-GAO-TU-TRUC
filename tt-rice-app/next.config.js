@@ -14,6 +14,12 @@ const config = {
         port: '',
         pathname: '/**', // This allows any path from this hostname.
       },
+      {
+        protocol: 'https',
+        hostname: 'nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com',
+        port: '',
+        pathname: '/**', // This allows any path from this hostname.
+      },
     ],
   },
 };
