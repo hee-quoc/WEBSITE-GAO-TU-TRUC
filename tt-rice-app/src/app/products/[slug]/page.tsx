@@ -6,10 +6,10 @@ import { ProductAccordion } from "../_components/ProductAccordion";
 import { ProductCertificates } from "../_components/ProductCertificates";
 import { ProductFeatures } from "../_components/ProductFeatures";
 import { ProductGallery } from "../_components/ProductGallery";
-import type { info } from "console";
+import Breadcrumb from "../_components/BreadCrumb";
 
 export default async function ProductPage() {
-  const st25LuaTomProduct = {
+  const product = {
   slug: "gao-st25-lua-tom",
   title: "Gạo ST25 Lúa Tôm",
   description: "Từ vùng đất lúa - tôm giàu dưỡng chất, Tư Trúc tạo nên những hạt gạo sạch, dẻo thơm, được kết tinh từ mùa vụ duy nhất trong năm, hấp thụ trọn vẹn tinh hoa đất trời.",
@@ -17,7 +17,7 @@ export default async function ProductPage() {
   // The price is "Liên hệ" (Contact us), so we can represent it as 0.
   price: 0,
   
-  detail: "Gạo Lúa Tôm ST25 được canh tác theo mô hình luân canh lúa - tôm tự nhiên, hạn chế tối đa hóa chất, giúp đất lành, nước sạch, giữ cho hạt gạo có hương vị nguyên bản và thuần khiết. Tận dụng thổ nhưỡng giàu khoáng tại vùng trồng Bà Rịa - Vũng Tàu, Tư Trúc gieo trồng và cho ra những hạt gạo trắng ngà, thon dài, đều tăm tắp, không lẫn tạp chất, khi chạm vào thấy hạt gạo mịn, chắc mẩy. Khi nấu chín, cơm thoảng hương thơm dịu như lá dứa quyện cốm non, nhẹ nhàng mà vẫn đủ lan tỏa khắp gian bếp. Hạt cơm dẻo mềm, tơi đều, vừa chạm đầu lưỡi đã thấy vị ngọt thanh, hậu vị đậm dần theo từng lần nhai. Dù dùng khi còn nóng hay đã nguội, cơm vẫn thơm ngon dễ ăn, phù hợp không chỉ cho mọi bữa cơm gia đình, mà còn cho các bếp ăn cao cấp lẫn thị trường xuất khẩu.",
+  detail: "Gạo Lúa Tôm ST25 được canh tác theo mô hình luân canh lúa - tôm tự nhiên, hạn chế tối đa hóa chất, giúp đất lành, nước sạch, giữ cho hạt gạo có hương vị nguyên bản và thuần khiết. Tận dụng thổ nhưỡng giàu khoáng tại vùng trồng Bà Rịa - Vũng Tàu, Tư Trúc gieo trồng và cho ra những hạt gạo trắng ngà, thon dài, đều tăm tắp, không lẫn tạp chất, khi chạm vào thấy hạt gạo mịn, chắc mẩy. Khi nấu chín, cơm thoảng hương thơm dịu như lá dứa quyện cốm non, nhẹ nhàng mà vẫn đủ lan tỏa khắp gian bếp. Hạt cơm dẻo mềm, tơi đều, vừa chạm đầu lưỡi đã thấy vị ngọt thanh, hậu vị đậm dần theo từng lần nhai. Dù dùng khi còn nóng hay đã nguội, cơm vẫn thơm ngon dễ ăn, phù hợp <br /> <br /><br /><br /><br /><br /><br /><br /> <br /><br /><br /><br /><br /><br /><br /><br /> <br /><br /><br /><br /><br /><br /><br />không chỉ cho mọi bữa cơm gia đình, mà còn cho các bếp ăn cao cấp lẫn thị trường xuất khẩu.",
   
   // Represents [Độ thơm, Độ dẻo, Độ mềm, Độ nở] on a scale of 1-5
   // [Aroma, Stickiness, Softness, Expansion]
@@ -48,26 +48,34 @@ export default async function ProductPage() {
   international: true,
   
   // Placeholder image URLs
-  thumbnail: "/images/products/gao-st25-lua-tom-thumbnail.jpg",
+  thumbnail: "/images/products/img_st25.png",
   subImages: [
-    "/images/products/gao-st25-lua-tom-01.jpg",
-    "/images/products/gao-st25-lua-tom-02.jpg",
-    "/images/products/gao-st25-lua-tom-03.jpg"
+    "/images/products/img_st25.png",
+    "/images/products/lua_tom.png",
+    "/images/products/te_504.png",
+    "/images/products/lai_hoa.png",
+    "/images/products/lai_sua.png"
   ]
 };
   return (
     <main>
-      <div className="flex flex-col lg:flex-row gap-12 max-w-7xl mx-auto px-4 py-8">
-        <div className="w-full lg:w-1/2">
-          <ProductGallery />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="mt-20">
+          <Breadcrumb />
         </div>
-        <div className="w-full lg:w-1/2 flex flex-col gap-y-6">
-          <ProductInfo />
-          <ProductTabs  />
-          <ProductFeatures />
-          <ProductCertificates />
-          <ProductUsageGuide />
-          <ProductAccordion />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16">
+          
+          <div className="lg:sticky lg:top-8 lg:self-start">
+            <ProductGallery images={product.subImages}/>
+          </div>
+          <div className="flex flex-col ">
+            <ProductInfo product={product}/>
+            <ProductTabs  descriptionHtml={product.detail}/>
+            <ProductFeatures features={product.properties}/>
+            {/* <ProductCertificates />
+            <ProductUsageGuide />
+            <ProductAccordion /> */}
+          </div>
         </div>
       </div>
     </main>
