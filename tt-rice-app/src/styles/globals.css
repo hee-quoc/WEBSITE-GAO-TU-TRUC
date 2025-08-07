@@ -12,7 +12,9 @@ html {
   font-style: normal;
   font-display: swap;
 }
-
+th {
+  font-weight: 600 !important;
+}
 @font-face {
   font-family: "Fz Poppins";
   src: url("/fonts/FzPoppins/FZ-Poppins-Bold.ttf") format("truetype");
@@ -96,6 +98,7 @@ html {
     }
   }
 
+  
 @theme {
   --font-sans: "Alegreya Sans", sans-serif;
   --color-green-lightest: #EAF2DA ; 

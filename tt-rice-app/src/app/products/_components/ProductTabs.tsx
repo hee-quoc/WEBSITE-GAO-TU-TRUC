@@ -16,12 +16,12 @@ const ProductDescription = ({ htmlContent }: { htmlContent: string }) => {
 export function ProductTabs({ descriptionHtml }: ProductTabsProps) {
   return (
     <div className="mt-8">
-      <div className="border-b border-gray-200">
-        <ul className="-mb-px flex space-x-4 font-fz-poppins" role="tablist">
-          Chi tiết sản phẩm
+      <div className=" border-gray-200">
+        <ul className="font-bold flex space-x-4 font-fz-poppins mb-2" role="tablist">
+          Chi tiết sản phẩm:
         </ul>
       </div>
-      <div className="mt-6">
+      <div className="">
         <div role="tabpanel">
             {descriptionHtml ? (
               <ProductDescription htmlContent={descriptionHtml} />
