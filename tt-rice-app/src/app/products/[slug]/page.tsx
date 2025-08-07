@@ -72,9 +72,9 @@ export default async function ProductPage() {
             <ProductInfo product={product}/>
             <ProductTabs  descriptionHtml={product.detail}/>
             <ProductFeatures features={product.properties}/>
-            {/* <ProductCertificates />
-            <ProductUsageGuide />
-            <ProductAccordion /> */}
+            <ProductCertificates/>
+            <ProductUsageGuide guide={product.guide} />
+            <ProductAccordion product={product} />
           </div>
         </div>
       </div>
