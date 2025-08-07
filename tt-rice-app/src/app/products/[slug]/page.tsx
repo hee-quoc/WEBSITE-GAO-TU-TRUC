@@ -50,7 +50,7 @@ export default async function ProductPage() {
   // Placeholder image URLs
   thumbnail: "/images/products/img_st25.png",
   subImages: [
-    "/images/products/img_st25.png",
+    "/images/products/img_st25.svg",
     "/images/products/lua_tom.png",
     "/images/products/te_504.png",
     "/images/products/lai_hoa.png",

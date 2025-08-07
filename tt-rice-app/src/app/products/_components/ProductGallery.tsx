@@ -43,7 +43,6 @@ export function ProductGallery({ images }: {images: string[]}) {
 
   return (
     <div>
-      {/* Main Image Display */}
       <div className="relative aspect-square w-full overflow-hidden rounded-lg">
         <Image
           
@@ -55,16 +54,12 @@ export function ProductGallery({ images }: {images: string[]}) {
           priority={true}
         />
       </div>
-
-      {/* Thumbnails and Navigation */}
-      <div className="mt-4 flex items-center justify-between gap-4">
-        {/* Previous Button */}
+      <div className="mt-4 flex items-center  pl-5 pr-5 gap-2">
         <button
           onClick={handlePrev}
-          aria-label="Previous image"
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-green-50 text-green-700 shadow-md transition-all hover:bg-green-100 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+          className="w-9 h-9 bg-whisper-white border border-green-light rounded-full flex items-center justify-center shadow-lg hover:bg-green-light-active transition-colors"
         >
-          <ChevronLeft className="h-6 w-6" />
+          <Image src="/img_arrowleft.svg" alt="Previous" width={16} height={16} />
         </button>
 
         {/* Thumbnail Images */}
@@ -75,7 +70,7 @@ export function ProductGallery({ images }: {images: string[]}) {
               key={index} // Use a unique value like src for the key
               onClick={() => setActiveIndex(index)}
               className={`relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border-2 transition-all
-                ${activeIndex === index ? 'border-green-600 shadow-md' : 'border-transparent hover:border-green-300'}
+                ${activeIndex === index ? 'border-green-600 shadow-md' : 'border-blue-50  hover:border-green-300'}
               `}
             >
               <Image
@@ -90,14 +85,11 @@ export function ProductGallery({ images }: {images: string[]}) {
             </button>
           ))}
         </div>
-
-        {/* Next Button */}
         <button
           onClick={handleNext}
-          aria-label="Next image"
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-green-50 text-green-700 shadow-md transition-all hover:bg-green-100 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+          className="w-9 h-9 bg-whisper-white border border-green-light rounded-full flex items-center justify-center shadow-lg hover:bg-green-light-active transition-colors"
         >
-          <ChevronRight className="h-6 w-6" />
+          <Image src="/img_arrowright.svg" alt="Next" width={16} height={16} />
         </button>
       </div>
     </div>

@@ -99,7 +99,8 @@ html {
 @theme {
   --font-sans: "Alegreya Sans", sans-serif;
   --color-green-lightest: #EAF2DA ; 
-  --color-green-light: #D5E8C0 ;    
+  --color-green-light: #D5E8C0 ; 
+  --color-green-light-active: #D2DDBC ;   
   --color-green-medium: #7D8F69 ;    
   --color-green-dark: #556B2F ;    
   --color-green-600: #628423;
@@ -111,7 +112,9 @@ html {
   --color-blue-normal: #667085;
   --color-blue-normal-active: #525A6A;
   --color-blue-500: #5C6578;
+  --color-blue-800: #333842;
   --color-green-50: #FBFFF2;
+  --color-whisper-white:#F4F3EA;
   --color-gray: #525A6A;
   --font-alegreya-sans: "Alegreya Sans", sans-serif;
   --font-fz-poppins: "Fz Poppins";
