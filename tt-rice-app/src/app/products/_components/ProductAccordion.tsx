@@ -20,7 +20,7 @@ export function ProductAccordion({ product }: { product: any }) {
     { title: "Vùng nguyên liệu", content: product.ingredients },
     { title: "Quy trình canh tác", content: product.grow },
     { title: "Quy trình chế biến và bảo quản", content: product.cooking },
-    { title: "Quy trình đóng gói", content: product.wrap_process },
+    { title: "Quy trình đóng gói", content: product.wrapProcess },
     { title: "Chứng nhận", content: product.certificate },
   ];
 
@@ -80,7 +80,9 @@ export function ProductAccordion({ product }: { product: any }) {
             </div>
           )}
         </div>
+        
       ))}
+      
     </div>
   );
 }

@@ -56,19 +56,54 @@ model VerificationToken {
 }
 
 model Product {
-  id            String   @id @default(cuid())
-  name          String   @unique // Each type of rice should have a unique name
-  description   String?  // Optional detailed description of the rice
-  imageData     Bytes?
-  imageType     String?
-  imageUrl      String 
-  tags          String[] @default([])
-  slug          String   @unique
-  companyBrand  String?
-  SKU           String
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id              Int    @id @default(autoincrement())
+  slug            String @unique
+  title           String
+  productImages   String[]
+  tag             String
+  description     String
+  price           String
+  detail          String
+  properties      Int[]
+  guide           Guide
+  package         String
+  parts           String
+  ingredients     String
+  grow            String
+  cooking         String
+  wrapProcess     WrapProcess
+  certificates    Certificate[]
+  productCertImages String[]
 }
+
+model Guide {
+  id        Int     @id @default(autoincrement())
+  water     Float[]
+  rice      String[]
+  finger    String[]
+  step      String[]
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int     @unique
+}
+
+model WrapProcess {
+  id          Int     @id @default(autoincrement())
+  step        String[]
+  description String
+  product     Product @relation(fields: [productId], references: [id])
+  productId   Int     @unique
+}
+
+model Certificate {
+  id          Int     @id @default(autoincrement())
+  name        String
+  image       String
+  description String
+  product     Product @relation(fields: [productId], references: [id])
+  productId   Int
+}
+
+
 model Blog {
   id          String   @id @default(cuid())
   title       String

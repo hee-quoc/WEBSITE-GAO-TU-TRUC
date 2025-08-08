@@ -5,15 +5,13 @@ type ProductTabsProps = {
   descriptionHtml: string | null;
 };
 
-// A helper to sanitize and render the HTML from the database
+
 const ProductDescription = ({ htmlContent }: { htmlContent: string }) => {
-  // WARNING: This is safe if the HTML comes from a trusted source (like your admin panel/seed file).
-  // If this HTML could ever come from untrusted user input, you MUST sanitize it
-  // using a library like 'dompurify' to prevent XSS attacks.
   return <div className="prose max-w-none font-fz-poppins" dangerouslySetInnerHTML={{ __html: htmlContent }} />;
 };
 
 export function ProductTabs({ descriptionHtml }: ProductTabsProps) {
+  
   return (
     <div className="mt-8">
       <div className=" border-gray-200">
