@@ -149,7 +149,7 @@ export const productRouter = createTRPCRouter({
         where: { slug: input.slug },
         include: {
           guide: true,        
-          wrapProcess: true,  
+          cooking: true,  
           certificates: true, 
         },
       });

@@ -10,8 +10,13 @@ import Breadcrumb from "../_components/BreadCrumb";
 import { api } from "~/trpc/server";
 import { notFound } from "next/navigation";
 
-export default async function ProductPage({ params }: { params: { slug: string } }) {
-  const product = await api.product.getBySlug({ slug: params.slug });
+type ProductPageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { slug } = await params;
+  const product = await api.product.getBySlug({ slug });
   if (!product) {
     notFound();
   }
