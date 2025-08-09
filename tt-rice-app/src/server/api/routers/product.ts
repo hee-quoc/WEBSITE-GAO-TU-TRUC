@@ -147,6 +147,11 @@ export const productRouter = createTRPCRouter({
     .query(async ({ ctx, input }) => {
       return ctx.db.product.findUnique({
         where: { slug: input.slug },
+        include: {
+          guide: true,        
+          wrapProcess: true,  
+          certificates: true, 
+        },
       });
     }),
 });

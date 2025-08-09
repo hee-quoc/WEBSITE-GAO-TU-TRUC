@@ -70,10 +70,10 @@ model Product {
   parts           String
   ingredients     String
   grow            String
-  cooking         String
+  cooking         Cooking?
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt @default(now())   
-  wrapProcess     WrapProcess?
+  wrapProcess     String
   certificates    Certificate[]
   productCertImages String[]
 }
@@ -88,7 +88,7 @@ model Guide {
   productId Int     @unique
 }
 
-model WrapProcess {
+model Cooking {
   id          Int     @id @default(autoincrement())
   step        String[]
   description String
