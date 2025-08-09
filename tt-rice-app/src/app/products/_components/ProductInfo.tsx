@@ -1,4 +1,6 @@
-export function ProductInfo({ product }: { product: any }) {
+import { type ProductWithDetails } from "~/app/types/Types";
+
+export function ProductInfo({ product }: { product: ProductWithDetails }) {
   return (
     <div>
       <h1 className="text-[56px] font-bold text-steel-blue ">{product.title}</h1>

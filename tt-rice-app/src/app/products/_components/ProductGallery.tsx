@@ -14,6 +14,7 @@ export interface ProductImage {
 }
 
 export function ProductGallery({ images }: {images: string[]}) {
+  const [activeIndex, setActiveIndex] = useState(0);
   // Gracefully handle cases where there are no images.
   if (!images || images.length === 0) {
     return (
@@ -27,7 +28,7 @@ export function ProductGallery({ images }: {images: string[]}) {
     thumbnailSrc: image, 
     alt: `Product Image ${index + 1}`,
   }));
-  const [activeIndex, setActiveIndex] = useState(0);
+  
 
   const handlePrev = () => {
     setActiveIndex((prevIndex) =>

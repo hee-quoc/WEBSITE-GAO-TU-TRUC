@@ -7,6 +7,26 @@ import {
 } from "~/server/api/trpc";
 import { TRPCError } from "@trpc/server";
 import { createUniqueSlug } from "~/lib/utils";
+
+const GuideInput = z.object({
+  water: z.array(z.number()),
+  rice: z.array(z.string()),
+  finger: z.array(z.string()),
+  step: z.array(z.string()),
+});
+
+const CookingInput = z.object({
+  step: z.array(z.string()),
+  description: z.string(),
+});
+
+const CertificateInput = z.object({
+  name: z.string(),
+  image: z.string(),
+  description: z.string(),
+});
+
+
 async function triggerRevalidation() {
   const revalidateUrl = new URL('/api/revalidate', process.env.NEXT_PUBLIC_APP_URL);
   
@@ -72,6 +92,7 @@ export const productRouter = createTRPCRouter({
   create: protectedProcedure
     .input(
       z.object({
+        // Scalar fields for the Product model
         title: z.string().min(1, "Title is required"),
         slug: z.string().min(1, "Slug is required"),
         description: z.string().min(1, "Description is required"),
@@ -84,23 +105,39 @@ export const productRouter = createTRPCRouter({
         parts: z.string(),
         ingredients: z.string(),
         grow: z.string(),
-        cooking: z.string(),
+        wrapProcess: z.string(), // Updated from your new schema
         productCertImages: z.array(z.string()),
+        
+        // Relational fields (optional)
+        guide: GuideInput.optional(),
+        cooking: CookingInput.optional(),
+        certificates: z.array(CertificateInput).optional(),
       })
     )
-    .mutation(({ ctx, input }) => {
-      void triggerRevalidation();
+    .mutation(async ({ ctx, input }) => {
+      // void triggerRevalidation();
+      
+      const { guide, cooking, certificates, ...productData } = input;
+
       return ctx.db.product.create({
-        data: input,
+        data: {
+          // Spread the simple product data
+          ...productData,
+          // Conditionally use nested writes to create related records
+          ...(guide && { guide: { create: guide } }),
+          ...(cooking && { cooking: { create: cooking } }),
+          ...(certificates && { certificates: { create: certificates } }),
+        },
       });
     }),
 
-  // UPDATE PRODUCT
   update: protectedProcedure
     .input(
       z.object({
-        id: z.number(),
+        id: z.number(), // ID of the product to update
+        // All fields are optional for an update
         title: z.string().optional(),
+        slug: z.string().optional(),
         description: z.string().optional(),
         price: z.string().optional(),
         detail: z.string().optional(),
@@ -111,19 +148,42 @@ export const productRouter = createTRPCRouter({
         parts: z.string().optional(),
         ingredients: z.string().optional(),
         grow: z.string().optional(),
-        cooking: z.string().optional(),
+        wrapProcess: z.string(),
         productCertImages: z.array(z.string()).optional(),
+        
+        // Relational fields are also optional
+        guide: GuideInput.optional().nullable(),
+        cooking: CookingInput.optional().nullable(),
+        certificates: z.array(CertificateInput).optional(),
       })
     )
     .mutation(async ({ ctx, input }) => {
-      const { id, ...dataToUpdate } = input;
-      void triggerRevalidation();
+      // void triggerRevalidation();
+
+      const { id, guide, cooking, certificates, ...productData } = input;
+
       return ctx.db.product.update({
         where: { id },
-        data: dataToUpdate,
+        data: {
+          // Update scalar fields
+          ...productData,
+          // Update relational fields using Prisma's powerful nested write operations
+          ...(guide !== undefined && { 
+            guide: guide ? { upsert: { create: guide, update: guide } } : { delete: true }
+          }),
+          ...(cooking !== undefined && { 
+            cooking: cooking ? { upsert: { create: cooking, update: cooking } } : { delete: true }
+          }),
+          ...(certificates !== undefined && { 
+            certificates: { 
+              // This replaces all existing certificates with the new list
+              set: [], 
+              create: certificates 
+            }
+          }),
+        },
       });
     }),
-
   // DELETE PRODUCT
   delete: protectedProcedure
     .input(z.object({ id: z.number() }))

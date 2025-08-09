@@ -31,7 +31,7 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="flex flex-col items-center gap-4 md:h-[378px] md:w-[278] hover:scale-110" key={product.slug} onClick={handleClick}>
       <Image
-          src={product.productImages[0] ? product.productImages[0] : '/default-image.png'}
+          src={product.productImages[0] ?? '/default-image.png'}
           alt={product.title}
           width={278} 
           height={302}
