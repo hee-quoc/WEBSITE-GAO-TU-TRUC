@@ -96,6 +96,10 @@ html {
           scrollbar-width: none;  /* Firefox */
     }
   }
+:root {
+  --tapered-border-h: url("/images/products/Line 5.svg");
+  --tapered-border-v: url("/images/products/Line 4.svg");
+}
 
 @theme {
   --font-sans: "Alegreya Sans", sans-serif;

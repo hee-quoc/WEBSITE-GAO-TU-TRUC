@@ -65,13 +65,15 @@ model Product {
   price           String
   detail          String
   properties      Int[]
-  guide           Guide
+  guide           Guide?
   package         String
   parts           String
   ingredients     String
   grow            String
-  cooking         String
-  wrapProcess     WrapProcess
+  cooking         Cooking?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt @default(now())   
+  wrapProcess     String
   certificates    Certificate[]
   productCertImages String[]
 }
@@ -86,7 +88,7 @@ model Guide {
   productId Int     @unique
 }
 
-model WrapProcess {
+model Cooking {
   id          Int     @id @default(autoincrement())
   step        String[]
   description String
