@@ -8,10 +8,16 @@ type AccordionItem = {
 };
 
 export function ProductAccordion({ product }: { product: any }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0); // mở mặc định item đầu tiên
+  // Mặc định mở item đầu tiên (index 0). Nếu không muốn mở sẵn gì thì để new Set()
+  const [openSet, setOpenSet] = useState<Set<number>>(new Set([0]));
 
   const handleToggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+    setOpenSet((prev) => {
+      const next = new Set(prev);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);                   
+      return next;
+    });
   };
 
   const accordionData: AccordionItem[] = [
@@ -26,63 +32,72 @@ export function ProductAccordion({ product }: { product: any }) {
 
   return (
     <div className="mt-10 space-y-2">
-      {accordionData.map((item, index) => (
-        <div key={index} className="space-y-2">
-          {/* Line chia block */}
-          {index !== 0 && (
-            <Image
-              src="/certificate/Line.svg" // đường line SVG của bạn
-              alt="divider"
-              width={600}
-              height={10}
-              className="mx-auto"
-            />
-          )}
-
-          {/* Nút mở accordion */}
-          <button
-            onClick={() => handleToggle(index)}
-            className="w-full flex items-center justify-between px-4 py-3 bg-white text-left"
-          >
-            <div className="flex items-center gap-2">
+      {accordionData.map((item, index) => {
+        const isOpen = openSet.has(index);
+        return (
+          <div key={index} className="space-y-2">
+            {/* Line chia block */}
+            {index !== 0 && (
               <Image
-                src="/usageguide/Bullet point.svg"
-                alt="Leaf Icon"
+                src="/certificate/Line.svg"
+                alt="divider"
+                width={600}
+                height={10}
+                className="mx-auto"
+              />
+            )}
+
+            {/* Nút mở accordion */}
+            <button
+              onClick={() => handleToggle(index)}
+              className="w-full flex items-center justify-between px-4 py-3 bg-white text-left"
+              aria-expanded={isOpen}
+              aria-controls={`accordion-panel-${index}`}
+              id={`accordion-button-${index}`}
+            >
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/usageguide/Bullet point.svg"
+                  alt="Leaf Icon"
+                  width={20}
+                  height={20}
+                />
+                <span className="text-[#333842] font-alegreya-sans font-medium text-[20px]">
+                  {item.title}
+                </span>
+              </div>
+              <Image
+                src="/certificate/chevron-down.svg"
+                alt="arrow"
                 width={20}
                 height={20}
+                className={`transition-transform duration-300 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
               />
-              <span className="text-[#333842] font-alegreya-sans font-medium text-[20px]">
-                {item.title}
-              </span>
-            </div>
-            <Image
-              src="/certificate/chevron-down.svg" // icon mũi tên của bạn
-              alt="arrow"
-              width={20}
-              height={20}
-              className={`transition-transform duration-300 ${
-                openIndex === index ? "rotate-180" : ""
-              }`}
-            />
-          </button>
+            </button>
 
-          {/* Nội dung mở rộng */}
-          {openIndex === index && (
-            <div className="px-6 pt-1 pb-4 text-[#628423] font-alegreya-sans font-medium text-[20px] leading-[1]">
-              <Image
-      src="/certificate/quote.svg" // Đường dẫn đến icon quote
-      alt="quote icon"
-      width={56}
-      height={39}
-      className="mt-1 flex-shrink-0"
-    />
-              {item.content}
-            </div>
-          )}
-        </div>
-        
-      ))}
-      
+            {/* Nội dung mở rộng */}
+            {isOpen && (
+              <div
+                id={`accordion-panel-${index}`}
+                role="region"
+                aria-labelledby={`accordion-button-${index}`}
+                className="px-6 pt-1 pb-4 text-[#628423] font-alegreya-sans font-medium text-[20px] leading-[1]"
+              >
+                <Image
+                  src="/certificate/quote.svg"
+                  alt="quote icon"
+                  width={56}
+                  height={39}
+                  className="mt-1 flex-shrink-0"
+                />
+                {item.content}
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
