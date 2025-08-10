@@ -14,7 +14,6 @@ ALTER TABLE "Product" DROP COLUMN "authorId";
 -- AlterTable
 ALTER TABLE "User" DROP COLUMN "createdAt",
 DROP COLUMN "password",
-DROP COLUMN "role",
 DROP COLUMN "updatedAt",
 ADD COLUMN     "hashedPassword" TEXT,
 ADD COLUMN     "image" TEXT,
