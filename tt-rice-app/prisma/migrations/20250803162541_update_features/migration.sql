@@ -5,4 +5,4 @@
 
 */
 -- AlterTable
-ALTER TABLE "Product" ADD COLUMN     "features" TEXT NOT NULL;
+ALTER TABLE "Product" ADD COLUMN     "features" TEXT NOT NULL DEFAULT '';
