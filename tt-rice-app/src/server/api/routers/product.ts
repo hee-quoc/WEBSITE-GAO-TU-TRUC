@@ -84,7 +84,7 @@ export const productRouter = createTRPCRouter({
         where: tag
           ? { tag: { equals: tag } } // tag is now a String
           : {},
-        orderBy: { createdAt: "desc" },
+        orderBy: { createdAt: "asc" },
       });
     }),
 
