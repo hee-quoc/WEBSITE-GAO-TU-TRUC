@@ -22,7 +22,6 @@ ADD COLUMN     "name" TEXT,
 ALTER COLUMN "username" DROP NOT NULL;
 
 -- DropEnum
-DROP TYPE "Role";
 
 -- CreateTable
 CREATE TABLE "Account" (
