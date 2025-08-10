@@ -36,7 +36,7 @@ const CATEGORY_DATA: Record<string, CategoryData> = {
     image: '/images/products/Graphic.svg',
     id:3,
   },
-  'gao-cam-trau': {
+  'phu-pham': {
     name: 'Phụ phẩm',
     description: `<p>Tại Tư Trúc, không chỉ hạt gạo được chăm chút, mà phụ phẩm từ xay xát như cám và trấu cũng được tận dụng tối đa, góp phần phát triển mô hình sản xuất nông nghiệp tuần hoàn, không lãng phí:</p>
     <p> Cám gạo có thể dùng để sản xuất dầu cám gạo cho thực phẩm và mỹ phẩm; Trấu được ứng dụng trong sản xuất và đời sống - từ nhiên liệu đốt lò, sấy nông sản, đến ủ phân hữu cơ, làm giá thể trồng cây, lót chuồng chăn nuôi, hoặc tái chế thành củi trấu, gạch không nung, ván ép sinh học.</p>

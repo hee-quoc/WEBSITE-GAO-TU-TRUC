@@ -100,7 +100,7 @@ const Header: React.FC = () => {
             </button>
           </div>
           <div className="hidden md:flex items-center lg:pr-[159px] ">
-            <AuthButton />
+            {/* <AuthButton /> */}
             <Button
               variant="secondary"
               size="medium"
@@ -157,7 +157,7 @@ const Header: React.FC = () => {
               >
                 Liên hệ
               </Link>
-              <AuthButton />
+              {/* <AuthButton /> */}
               <Button
                 variant="secondary"
                 size="medium"
@@ -240,7 +240,7 @@ function ProductHeader({
             </button>
           </div>
           <div className="hidden md:flex items-center lg:pr-[159px]">
-            <AuthButton />
+            {/* <AuthButton /> */}
             <Button
               variant="secondary"
               size="medium"
@@ -295,7 +295,7 @@ function ProductHeader({
               >
                 Liên hệ
               </Link>
-              <AuthButton />
+              {/* <AuthButton /> */}
               <Button
                 variant="secondary"
                 size="medium"
