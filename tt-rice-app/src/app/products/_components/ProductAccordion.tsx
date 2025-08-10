@@ -6,10 +6,11 @@ import { AccordionItem } from "./AccorditionItem";
 // (Paste the AccordionItem helper component from Step 1 here)
 // ...
 
-export function ProductAccordion({ product }: { product: ProductWithDetails }) {
+export function ProductAccordion({ product }: { product: ProductWithDetails}) {
   const [openSet, setOpenSet] = useState<Set<number>>(new Set([0]));
 
   const handleToggle = (index: number) => {
+    
     setOpenSet((prev) => {
       const next = new Set(prev);
       if (next.has(index)) next.delete(index);
@@ -37,7 +38,7 @@ export function ProductAccordion({ product }: { product: ProductWithDetails }) {
           isOpen={openSet.has(0)}
           onToggle={() => handleToggle(0)}
         >
-          <p className="text-[#628423]">{product.package}</p>
+          <p className="text-blue-500">{product.package}</p>
         </AccordionItem>
       )}
 
@@ -50,7 +51,7 @@ export function ProductAccordion({ product }: { product: ProductWithDetails }) {
             isOpen={openSet.has(1)}
             onToggle={() => handleToggle(1)}
           >
-            <p className="text-[#628423]">{product.parts}</p>
+            <p className="text-blue-500">{product.parts}</p>
           </AccordionItem>
         </>
       )}
@@ -64,7 +65,7 @@ export function ProductAccordion({ product }: { product: ProductWithDetails }) {
             isOpen={openSet.has(2)}
             onToggle={() => handleToggle(2)}
           >
-            <p className="text-[#628423]">{product.ingredients}</p>
+            <p className="text-blue-500">{product.ingredients}</p>
           </AccordionItem>
         </>
       )}
@@ -78,7 +79,7 @@ export function ProductAccordion({ product }: { product: ProductWithDetails }) {
             isOpen={openSet.has(3)}
             onToggle={() => handleToggle(3)}
           >
-            <p className="text-[#628423]">{product.grow}</p>
+            <p className="text-blue-500">{product.grow}</p>
           </AccordionItem>
         </>
       )}
@@ -94,12 +95,12 @@ export function ProductAccordion({ product }: { product: ProductWithDetails }) {
           >
             <div className="space-y-3">
               {product.tag==='gao-an'&& <>
-                <ol className="list-decimal list-inside space-y-2">
+                <ol className="list-decimal list-inside space-y-2 text-blue-800 font-small">
                   {product.cooking.step.map((s, i) => <p key={i}>{s}</p>)}
                 </ol>
                 <Divider />
               </>}
-              <p className="text-[#628423]">{product.cooking.description}</p>
+              <p className="text-green-600 bg-[url('/certificate/quote.svg')]  bg-no-repeat bg-left-top pt-5">{product.cooking.description}</p>
             </div>
           </AccordionItem>
         </>
@@ -113,7 +114,7 @@ export function ProductAccordion({ product }: { product: ProductWithDetails }) {
             isOpen={openSet.has(5)}
             onToggle={() => handleToggle(5)}
           >
-            <p className="text-[#628423]">{product.wrapProcess}</p>
+            <p className="text-blue-500">{product.wrapProcess}</p>
           </AccordionItem>
         </>
       )}
