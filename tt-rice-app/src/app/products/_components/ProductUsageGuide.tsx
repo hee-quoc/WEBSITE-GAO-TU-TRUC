@@ -34,7 +34,7 @@ export default function RiceTable({ guide }: { guide: ProductWithDetails["guide"
 
       const containerRect = container.getBoundingClientRect();
       const tableRect = table.getBoundingClientRect();
-      // --- Calculate Horizontal Borders ---
+      
       const newHorizontalBorders: HorizontalBorder[] = [];
       newHorizontalBorders.push({
         top: 0, // Positioned at the very top of the container
