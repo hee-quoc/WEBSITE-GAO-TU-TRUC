@@ -40,11 +40,11 @@ export default function Footer() {
   ];
 
   const infoLinks = [
-    { href: '/privacy-policy', label: 'Chính sách bảo mật' },
-    { href: '/payment-methods', label: 'Hình thức thanh toán' },
-    { href: '/warranty-policy', label: 'Chính sách bảo hành' },
-    { href: '/return-policy', label: 'Chính sách đổi trả dịch vụ' },
-    { href: '/terms-of-service', label: 'Điều khoản & điều kiện sử dụng' },
+    { href: '/faq/privacy-policy', label: 'Chính sách bảo mật' },
+    { href: '/faq/payment-methods', label: 'Hình thức thanh toán' },
+    { href: '/faq/warranty-policy', label: 'Chính sách bảo hành' },
+    { href: '/faq/return-policy', label: 'Chính sách đổi trả dịch vụ' },
+    { href: '/faq/terms-of-service', label: 'Điều khoản & điều kiện sử dụng' },
   ];
 
   const supportLinks = [

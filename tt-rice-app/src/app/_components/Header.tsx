@@ -22,7 +22,7 @@ const Header: React.FC = () => {
   const [isScrollingUp, setIsScrollingUp] = useState(false);
   const lastScrollY = useRef(0); 
   const pathname = usePathname();
-  const isProductsPage = pathname === '/products';
+  const isProductsPage = pathname === '/products' || pathname === '/faq/privacy-policy'  || pathname === '/faq/payment-methods'  || pathname === '/faq/warranty-policy' || pathname === '/faq/return-policy' || pathname === '/faq/terms-of-service';
   useEffect(() => {
     if (!isMenuOpen) return;
     const handleScroll = () => {
