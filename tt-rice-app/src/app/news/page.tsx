@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { BlogFilterButton } from "./_components/BlogFilterButton";
 import { BlogFilteredList } from "./_components/BlogFilteredList";
+import Image from "next/image";
 // Corrected mock data to match the visual design
 const blogs = [
   {
@@ -99,16 +100,23 @@ export default function NewsIndexPage() {
   
 
   return (
-    <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-      {/* Optional: Add a page title */}
-      <div className="mb-10 text-center">
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Tin Tức & Công Thức
-        </h1>
-        <p className="mt-3 text-lg text-gray-600">
-          Khám phá những câu chuyện và công thức nấu ăn ngon từ Tư Trúc.
-        </p>
+    <div>
+      <div className="relative w-full h-[200px] sm:h-[250px] md:h-[400px]">
+        <Image
+          src="/faq/thumbnail.svg"
+          alt="banner"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg flex items-center justify-center px-4">
+          <h1 className="text-white text-2xl sm:text-3xl md:text-5xl font-bold font-alegreya-sans text-center leading-snug">
+            Tin Tức
+          </h1>
+        </div>
       </div>
+      <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      
       <div className={`mt-[43px] flex flex-col items-center mb-5`}>
         <div className="relative z-10 w-full">
           <Suspense fallback={<FilterButtonsFallback />}>
@@ -118,5 +126,6 @@ export default function NewsIndexPage() {
       </div>
       <BlogFilteredList blogs={blogs} categories={CATEGORY_DATA}/>
     </main>
+    </div>
   );
 }
