@@ -26,6 +26,7 @@ export const blogRouter = createTRPCRouter({
   create: protectedProcedure
     .input(
       z.object({
+        tag: z.string(),
         title: z.string().min(1),
         content: z.string(),
         bannerImageUrl: z.string().url().optional(), // Expect a URL for the banner
@@ -43,6 +44,7 @@ export const blogRouter = createTRPCRouter({
 
       return ctx.db.blog.create({
         data: {
+          tag: input.tag,
           title: input.title,
           slug: uniqueSlug,
           content: input.content,
@@ -61,12 +63,11 @@ export const blogRouter = createTRPCRouter({
 
   // Your getBySlug would now need to include the images
   getBySlug: publicProcedure
-    .input(z.object({ slug: z.string() }))
+    .input(z.object({ slug: z.string()}))
     .query(async ({ ctx, input }) => {
       return ctx.db.blog.findUnique({
         where: { slug: input.slug },
         include: {
-          // Tell Prisma to fetch the related images as well
           contentImages: {
             orderBy: {
               order: 'asc', // Ensure they are in the correct order
