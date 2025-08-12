@@ -81,8 +81,11 @@ export const productRouter = createTRPCRouter({
       const { tag } = input;
 
       return ctx.db.product.findMany({
-        where: tag
-          ? { tag: { equals: tag } } // tag is now a String
+        where: tag ? {
+          tag: {
+            has: tag, // Filter by tag if it exists
+          },
+        }  // tag is now a String
           : {},
         orderBy: { createdAt: "asc" },
       });
@@ -99,7 +102,7 @@ export const productRouter = createTRPCRouter({
         price: z.string().min(1, "Price is required"),
         detail: z.string(),
         properties: z.array(z.number()),
-        tag: z.string().min(1, "Tag is required"),
+        tag: z.array(z.string()).min(1, "Tag is required"),
         productImages: z.array(z.string()),
         package: z.string(),
         parts: z.string(),
@@ -142,7 +145,7 @@ export const productRouter = createTRPCRouter({
         price: z.string().optional(),
         detail: z.string().optional(),
         properties: z.array(z.number()).optional(),
-        tag: z.string().optional(),
+        tag: z.array(z.string()).optional(),
         productImages: z.array(z.string()).optional(),
         package: z.string().optional(),
         parts: z.string().optional(),

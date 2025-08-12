@@ -16,7 +16,7 @@ export function AccordionItem({
     <div className="space-y-2">
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between px-4 py-3 bg-white text-left"
+        className="w-full flex items-center justify-between px-4 py-3 text-left"
         aria-expanded={isOpen}
       >
         <div className="flex items-center gap-2">
