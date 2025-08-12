@@ -96,9 +96,17 @@ function FilterButtonsFallback() {
   );
 }
 
-export default function NewsIndexPage() {
+export default async  function NewsIndexPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ tag?: string }>;
   
-
+}) {
+  const resolvedSearchParams = await searchParams;
+  const activeTag = resolvedSearchParams?.tag;
+  const filteredBlogs = activeTag
+    ? blogs.filter((blog) => blog.tag === activeTag)
+    : blogs;
   return (
     <div>
       <div className="relative w-full h-[200px] sm:h-[250px] md:h-[400px]">
@@ -124,7 +132,7 @@ export default function NewsIndexPage() {
           </Suspense>
         </div>
       </div>
-      <BlogFilteredList blogs={blogs} categories={CATEGORY_DATA}/>
+      <BlogFilteredList blogs={filteredBlogs} categories={CATEGORY_DATA}/>
     </main>
     </div>
   );
