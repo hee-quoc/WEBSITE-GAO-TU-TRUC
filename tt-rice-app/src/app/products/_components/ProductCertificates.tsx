@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export function ProductCertificates() {
   return (
-    <section className="bg-white rounded-lg shadow overflow-hidden mt-12 mb-8">
+    <section className="rounded-lg shadow overflow-hidden mt-12 mb-8">
       <h2 className="text-white text-center py-3 text-xl font-alegreya-sans bg-[#6C9126]">
         Chứng nhận quốc tế
       </h2>

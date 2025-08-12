@@ -60,7 +60,7 @@ model Product {
   slug            String @unique
   title           String
   productImages   String[]
-  tag             String
+  tag             String[]
   description     String
   price           String
   detail          String
@@ -109,6 +109,7 @@ model Certificate {
 model Blog {
   id          String   @id @default(cuid())
   title       String
+  tag         String 
   slug        String   @unique
   content     String   @db.Text
   published   Boolean  @default(false)

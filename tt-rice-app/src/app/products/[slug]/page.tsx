@@ -21,7 +21,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     notFound();
   }
   return (
-    <main>
+    <main className="bg-green-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mt-20">
           <Breadcrumb title={product.title}/>
@@ -35,7 +35,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <ProductInfo product={product}/>
             <ProductTabs  descriptionHtml={product.detail}/>
             <ProductFeatures features={product.properties}/>
-            <ProductCertificates/>
+            {/* <ProductCertificates/> */}
             <ProductUsageGuide guide={product.guide} />
             <ProductAccordion product={product} />
           </div>

@@ -94,7 +94,7 @@ export function ProductAccordion({ product }: { product: ProductWithDetails}) {
             onToggle={() => handleToggle(4)}
           >
             <div className="space-y-3">
-              {product.tag==='gao-an'&& <>
+              {product.tag.includes('gao-an')&& <>
                 <ol className="list-decimal list-inside space-y-2 text-blue-800 font-small">
                   {product.cooking.step.map((s, i) => <p key={i}>{s}</p>)}
                 </ol>
@@ -118,9 +118,7 @@ export function ProductAccordion({ product }: { product: ProductWithDetails}) {
           </AccordionItem>
         </>
       )}
-
-      {/* --- Item 7: Chứng nhận (certificates is an array) --- */}
-      {product.productCertImages && product.productCertImages.length > 0 && (
+      {/* {product.productCertImages && product.productCertImages.length > 0 && (
         <>
           <Divider />
           <button
@@ -164,7 +162,7 @@ export function ProductAccordion({ product }: { product: ProductWithDetails}) {
             </div>
           )}
         </>
-      )}
+      )} */}
     </div>
   );
 }
