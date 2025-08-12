@@ -2,7 +2,7 @@ import { type Image, type ProductForm, } from "../AddProductPage";
 
 export interface BaseFieldProps {
   title?: string;
-  value?: string | number | Image | unknown[] | undefined;
+  value?: string | string[] | number | Image | unknown[] | undefined;
   index?: number | null;
   disabled?: boolean;
   error?: string;
@@ -44,7 +44,7 @@ export interface TextAreaFieldProps extends BaseFieldProps {
 
 interface DropdownOption {
   label: string;
-  value: string | number;
+  value: string;
 }
 
 export interface DropdownProps extends BaseFieldProps {
@@ -53,4 +53,14 @@ export interface DropdownProps extends BaseFieldProps {
   onChange: (field: keyof ProductForm,  value: string | number , index?:number ) => void;
   disabled?: boolean;
   placeholder?: string;
+}
+
+export interface MultiSelectDropdownProps extends BaseFieldProps {
+  field: keyof ProductForm;
+  options: DropdownOption[];
+  value: string[] ;
+  // onChange: (field: keyof ProductForm, value: string[]) => void;
+  placeholder?: string;
+  disabled?: boolean;
+  setForm: React.Dispatch<React.SetStateAction<ProductForm>>
 }

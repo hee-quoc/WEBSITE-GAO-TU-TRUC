@@ -5,24 +5,9 @@ import { createTRPCRouter, protectedProcedure, publicProcedure } from "~/server/
 import { db } from "~/server/db";
 import { s3Client } from "~/server/s3";
 import { PutObjectCommand } from "@aws-sdk/client-s3";
+import {generateUniqueSlug} from "../../utils/utils"
 
-async function generateUniqueSlug(title: string): Promise<string> {
-  const slug = slugify(title, { lower: true, strict: true });
-  let count = 0;
-  
-  while (true) {
-    const potentialSlug = count === 0 ? slug : `${slug}-${count}`;
-    const existing = await db.blog.findUnique({
-      where: { slug: potentialSlug },
-    });
-    
-    if (!existing) {
-      return potentialSlug; // It's unique, return it
-    }
-    
-    count++; // It's not unique, increment counter and try again
-  }
-}
+
 
 export const blogRouter = createTRPCRouter({
   create: publicProcedure

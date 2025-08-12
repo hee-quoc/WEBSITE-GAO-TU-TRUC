@@ -6,9 +6,11 @@ import { ImageCard } from  "./utils/ImageCard";
 import { TextCard, TextCardObject } from  "./utils/TextCard";
 import { ArrayCardInput } from  "./utils/ArrayCardInput";
 import {TextAreaCard} from  "./utils/AreaCard"
-import {Dropdown} from "./utils/DropDownCard"
+import {Dropdown, MultiSelectDropdown} from "./utils/DropDownCard"
 import {  X } from "lucide-react";
 import { set } from "zod";
+// import { api } from '../../utils/api';
+import { api } from "~/trpc/react";
 export type Image = {
 	file?: File | null;
 	preview?: string | null;
@@ -19,7 +21,7 @@ export type Image = {
 export type ProductForm = {
 	title: string;
 	productImage: { file?: File | null; preview?: string | null; caption?: string }[];
-    tag: string;
+    tag: Array<string>; 
 	description: string;
 	price: string;
 	detail:  string;
@@ -30,38 +32,41 @@ export type ProductForm = {
 	ingredients: string;
 	grow: string;
 	cooking: { step: Array<string> , description: string };
-	wrap_process: string;
+	wrapProcess: string;
 	certificate: {name: string, image: Image ,description: string}[];
     productCertImage: { file?: File | null; preview?: string | null; caption?: string }[];
 }
 
 
 export type Guide = {
-	water: Array<number>;
+	water: Array<string>;
 	rice: Array<string>;
 	finger: Array<string>;
 	step: Array<string>;
 }
 
 export function AddProductPage(){
-	const [form, setForm] = useState<ProductForm>({
+    const initialFormState = {
 		title: "",
 		productImage: [{ file: null, preview: null, width: undefined, height: undefined }] as Image[],
-        tag:"",
+        tag:[],
 		description: "",
 		price: "",
 		detail: "",
 		properties: [0,0,0,0],
-		guide: { water: [0,0,0], rice: ["","",""], finger: ["","",""], step: ["","","",""] },
+		guide: { water: ["","",""], rice: ["","",""], finger: ["","",""], step: ["","","",""] },
 		package: "",
 		parts: "",
 		ingredients: "",
 		grow: "",
 		cooking: {step:[],description:""},
-		wrap_process: "",
+		wrapProcess: "",
 		certificate: [{name:"",image:{ file: null, preview: null, width: undefined, height: undefined },description:""}],
         productCertImage: [{ file: null, preview: null, width: undefined, height: undefined }] as Image[],
-	});
+	}
+    const [popup, setPopup] = useState({ show: false, message: "", type: "success" });
+    const [onSave,setSave] = useState<boolean>(false)
+	const [form, setForm] = useState<ProductForm>(initialFormState);
     const scoreOptions= [
         {label:"0",value:"0"},
         {label:"1",value:"1"},
@@ -71,14 +76,11 @@ export function AddProductPage(){
         {label:"5",value:"5"}
     ]
     const riceTypeOptions = [
-        {label:"Gạo ST25",value:"gao-st25"},
-        {label:"Gạo ST25 Lúa Tôm",value:"gao-st25-luatom"},
-        {label:"Gạo Lài Hoa",value:"gao-lai-hoa"},
-        {label:"Gạo Lài Sữa",value:"gao-lai-sua"},
-        {label:"Gạo Hương Sen",value:"gao-huong-sen"},
-        {label:"Gạo Dẻo Bầu",value:"gao-deo-bau"},
-        {label:"Gạo Tẻ 504",value:"gao-te-504"},
+        {label:"Gạo ăn",value:"gao-an"},
+        {label:"Gạo thông dụng",value:"gao-thong-dung"},
+        {label:"Gạo nguyên liệu",value:"gao-nguyen-lieu"},
         {label:"Phụ phẩm",value:"phu-pham"},
+        
     ]
 	// Hàm cập nhật từng trường
 	// const handleChange = (key: keyof ProductForm , value: any) => {
@@ -122,9 +124,11 @@ export function AddProductPage(){
     //    console.log(form)
     };
 
+   
+
 	// Hàm cập nhật mảng thuộc tính
     const handleNestedChange = (
-    section: keyof ProductForm,       // ví dụ 'guide' hoặc 'wrap_process' hoặc 'productImage'...
+    section: keyof ProductForm,       // ví dụ 'guide' hoặc 'wrapProcess' hoặc 'productImage'...
     field?: string,           // ví dụ 'water' | 'step' | 'description' (undefined nếu muốn thay cả section)
     index?: number,           // nếu cập nhật phần tử cụ thể trong array
     value?: any               // giá trị mới
@@ -149,7 +153,7 @@ export function AddProductPage(){
         return next;
         }
 
-        // nếu field hiện tại là một array (vd: guide.water, wrap_process.step)
+        // nếu field hiện tại là một array (vd: guide.water, wrapProcess.step)
         const fieldValue = (sectionValue as any)[field];
 
         if (Array.isArray(fieldValue)) {
@@ -175,6 +179,7 @@ export function AddProductPage(){
         (next as any)[section] = { ...(sectionValue as any), [field]: value };
         return next;
     });
+    console.log(form)
     };
 	
     const setImageFile = <K extends keyof ProductForm>(
@@ -304,6 +309,7 @@ export function AddProductPage(){
         console.log(form)
     };
 
+    const createProduct = api.product.create.useMutation();
     // const createProduct = trpc.product.create.useMutation({
     //     onSuccess: () => {
     //     alert("Thêm sản phẩm thành công!");
@@ -315,59 +321,117 @@ export function AddProductPage(){
     //     },
     // });
 
-    const fileToBase64 = (file: File) => {
-    return new Promise<string>((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result as string);
-      reader.onerror = (error) => reject(error);
-    });
-  };
 
-   const convertImagesInForm = async (data: ProductForm) => {
-    return {
-      ...data,
-      productImage: await Promise.all(
-        data.productImage
-          .filter((p) => p.file)
-          .map(async (p) => ({
-            file: await fileToBase64(p.file!)
-          }))
-      ),
-      productCertImage: await Promise.all(
-        data.productCertImage
-          .filter((p) => p.file)
-          .map(async (p) => ({
-            file: await fileToBase64(p.file!)
-          }))
-      ),
-      certificate: await Promise.all(
-        data.certificate
-          .filter(
-            (c) =>
-              c.name?.trim() !== "" ||
-              c.description?.trim() !== "" ||
-              (c.image && c.image.file)
-          )
-          .map(async (c) => ({
-            name: c.name,
-            description: c.description,
-            image: c.image?.file
-              ? {file: await fileToBase64(c.image.file) }
-              : { file: null }
-          }))
-      )
-    };
-  };
+    async function uploadFileToS3(url:string, file:File){
+        const uploadResponse = await fetch(url, {
+        method: "PUT",
+        body: file,
+        headers: {
+          "Content-Type": file.type,
+        },
+      });
+    }
+    const createPresignedUrl = api.s3.createPresignedUrl.useMutation();
 
     const handleSubmit = async () => {
         try {
-        const processedForm = await convertImagesInForm(form);
-        console.log(processedForm)
-        // await createProduct.mutateAsync(processedForm);
-        } catch (error) {
+        setSave(true)
+        // const processedForm = await convertImagesInForm(form);
+        // console.log(processedForm)
+        // // Debug kiểm tra file trước khi gửi
+        // // console.log(processedForm.productImage[0]?.file instanceof File); // true
+        // // console.log(form.productCertImage[0]?.file instanceof File); // true
+        // await createProduct.mutateAsync({form:processedForm});
+         // 1. Lấy danh sách tất cả file cần upload theo thứ tự:
+    // productImage, productCertImage, certificate images
+        const productImageFiles = form.productImage.filter(p => p.file).map(p => p.file!);
+        const productCertImageFiles = form.productCertImage.filter(p => p.file).map(p => p.file!);
+        const certificateImageFiles = form.certificate
+        .filter(c => c.image?.file)
+        .map(c => c.image!.file!);
+
+        const allFiles = [...productImageFiles, ...productCertImageFiles, ...certificateImageFiles];
+
+        // 2. Lấy presigned URLs cho tất cả file
+        const presignedResults = await Promise.all(
+        allFiles.map(file =>
+            createPresignedUrl.mutateAsync({
+            fileName: file.name,
+            fileType: file.type,
+            })
+        )
+        );
+        console.log(presignedResults)
+
+        // 3. Upload file lên S3 theo thứ tự
+        await Promise.all(
+        presignedResults.map((res, i) => uploadFileToS3(res.url, allFiles[i] as File))
+        );
+
+        
+
+        // 4. Map lại key tương ứng theo từng phần
+        let index = 0;
+
+        const details = `<p>${form.detail.replace("\n","<br />")}</p>`
+
+       const productImageUrls = form.productImage
+        .filter(p => p.file)
+        .map(() => presignedResults[index++]?.fileUrl)
+        .filter((url): url is string => typeof url === "string"); // loại bỏ undefined
+
+        const productCertImageUrls = form.productCertImage
+        .filter(p => p.file)
+        .map(() => presignedResults[index++]?.fileUrl)
+        .filter((url): url is string => typeof url === "string");
+
+        const filteredCertificates = form.certificate
+        .filter(
+            (c) =>
+            c.name?.trim() !== "" ||
+            c.description?.trim() !== "" ||
+            (c.image && c.image.file)
+        );
+
+        const certificateImagesUrls = filteredCertificates
+        .filter(c => c.image?.file)
+        .map(() => presignedResults[index++]?.fileUrl)
+        .filter((url): url is string => typeof url === "string");
+
+     
+        // 5. Tạo payload gửi server (gán url/key cho certificate)
+       
+        const payload = {
+        ...form,
+        detail: details,
+        productImage: productImageUrls,       
+        productCertImage: productCertImageUrls, 
+        certificate: filteredCertificates.map((c, i) => ({
+            name: c.name,
+            description: c.description,
+            image: certificateImagesUrls[i] ?? null,
+        })),
+        };
+        console.log(payload)
+
+        // const response = await createProduct.mutateAsync({ form: payload });
+
+        // if (response.success) {
+        //     setPopup({ show: true, message: "Lưu sản phẩm thành công", type: "success" });
+        //     // Delay 5 giây sau đó reset form và refresh page
+        //     setTimeout(() => {
+        //         setForm(initialFormState); // reset form
+        //         window.location.reload(); // refresh trang
+        //     }, 5000);
+        // // Có thể redirect tới trang chi tiết sản phẩm
+        // // router.push(`/product/${response.slug}`);
+        // } else {
+        //     setPopup({ show: true, message: "Có lỗi khi thêm sản phẩm!", type: "error" });
+        // }
+
+    } catch (error) {
         console.error(error);
-        }
+    }
     };
 
 
@@ -390,12 +454,19 @@ export function AddProductPage(){
                 </div>
                 <div className="px-12">
                     <div className="text-[20px] font-bold w-full px-4">Loại gạo</div>
-                    <Dropdown
+                    {/* <Dropdown
                         field="tag"
                         options = {riceTypeOptions}
                         value={form.tag}
                         index={null}
                         onChange={(field, value) => handleChange(field, value)}
+                    /> */}
+                    <MultiSelectDropdown
+                        field="tag"
+                        options = {riceTypeOptions}
+                        value={form.tag}
+                        setForm = {setForm}
+                        placeholder="Loại gạo"
                     />
                 </div>
                 <div className="px-4">
@@ -697,7 +768,7 @@ export function AddProductPage(){
             <div className="w-full mb-5">
                 <div className="text-[20px] font-bold w-full px-4">Quy trình chế biến và bảo quản</div>
                 <div className="mb-2 text-sm text-gray-600 px-4">Mô tả cách chế biến và bảo quản</div>
-                 {form.tag == "gao-lai-sua" && (
+                 {form.tag.includes("gao-an") && (
                   <div className="p-4 rounded-xl border border-gray-200 bg-white shadow-sm">
                     <div className="flex justify-end mb-4">
                         <button
@@ -794,8 +865,8 @@ export function AddProductPage(){
             <div className="w-full mb-5">
                 <div className="text-[20px] font-bold w-full px-4">Quy trình đóng gói</div>
                 <TextAreaCard
-                    field="wrap_process"
-                    value={form.wrap_process}
+                    field="wrapProcess"
+                    value={form.wrapProcess}
                     title=""
                     onUpdateField={(field, value) => handleChange(field, value)}
                     />
@@ -838,14 +909,47 @@ export function AddProductPage(){
                 <button
                 type="button"
                 onClick={handleSubmit}
-                // disabled={createProduct.isLoading}
-                className="rounded-lg bg-green-600 text-white px-6 py-3 text-lg font-semibold shadow hover:bg-green-700 disabled:opacity-50"
+                // disabled={onSave}
+                className="flex flex-row rounded-lg bg-green-600 text-white px-6 py-3 text-lg font-semibold shadow hover:bg-green-700 disabled:opacity-50"
                 >
-                {/* {createProduct.isLoading ? "Đang lưu..." : "Lưu sản phẩm"} */}
-                Lưu sản phẩm
+                {onSave && (
+                <svg
+                    className="animate-spin h-5 w-5 mr-2 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                >
+                    <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    ></circle>
+                    <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                    ></path>
+                </svg>
+                )}
+                {onSave ? "Đang lưu..." : "Lưu sản phẩm"} 
                 </button>
             </div>
+            {/* Popup thông báo */}
+           
         </div>
+         {popup.show && (
+                <div
+                className={`fixed top-[50%] right-[50%] px-6 py-3 rounded-lg shadow-lg text-white transition-opacity duration-500 ${
+                    popup.type === "success" ? "bg-green-500" : "bg-red-500"
+                }`}
+                >
+                {popup.message}
+                </div>
+             )}
        </div>
+       
 	)
 }

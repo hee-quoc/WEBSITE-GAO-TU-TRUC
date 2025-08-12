@@ -21,14 +21,25 @@ export function ArrayCardInput({
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const inputValue = e.target.value;
 
-      if (numericOnly) {
-        // Chỉ cho phép số và rỗng
-        if (!/^\d*$/.test(inputValue)) return;
-        onChange(section as keyof ProductForm, field as string, index ?? 0, Number(inputValue));
+     if (numericOnly) {
+      // Chỉ cho phép số nguyên hoặc số thập phân (dấu chấm hoặc dấu phẩy)
+      if (!/^\d*(\.|,)?\d*$/.test(inputValue)) return;
+
+      // Chuyển dấu phẩy thành dấu chấm
+      const normalizedValue = inputValue.replace(",", ".");
+
+      // Nếu người dùng đang nhập dang dở số thập phân ("1." hoặc "1,")
+      if (/^\d+(\.|,)$/.test(inputValue) || normalizedValue === ".") {
+        onChange(section as keyof ProductForm, field as string, index ?? 0, normalizedValue);
       } else {
-        // Cho phép nhập cả chữ và số
-        onChange(section as keyof ProductForm, field as string, index ?? 0, inputValue);
+        // Chuyển thành số nếu hợp lệ, hoặc giữ nguyên nếu rỗng
+        const numValue = normalizedValue === "" ? "" : parseFloat(normalizedValue);
+        onChange(section as keyof ProductForm, field as string, index ?? 0, numValue);
       }
+    } else {
+      // Cho phép mọi ký tự
+      onChange(section as keyof ProductForm, field as string, index ?? 0, inputValue);
+    }
     },
     [numericOnly, onChange, field, index]
   );

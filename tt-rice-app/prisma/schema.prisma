@@ -60,7 +60,7 @@ model Product {
   slug            String @unique
   title           String
   productImages   String[]
-  tag             String
+  tag             String[]
   description     String
   price           String
   detail          String
