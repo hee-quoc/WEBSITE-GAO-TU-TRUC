@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
-import { type NumberArrayFieldProps } from "./types";
-import { type ProductForm } from "../AddProductPage";
+import { type NumberArrayFieldProps, type ProductForm } from "./types";
 
 interface ExtendedNumberArrayFieldProps extends NumberArrayFieldProps {
   numericOnly?: boolean; // true = chỉ cho phép số, false = cho phép cả text và số

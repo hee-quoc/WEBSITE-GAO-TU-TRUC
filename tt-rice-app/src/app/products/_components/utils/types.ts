@@ -1,4 +1,4 @@
-import { type Image, type ProductForm, } from "../AddProductPage";
+// import { type Image, type ProductForm, } from "../AddProductPage";
 
 export interface BaseFieldProps {
   title?: string;
@@ -19,6 +19,7 @@ export interface ImageUploadFieldProps extends BaseFieldProps {
 
 export interface TextFieldProps extends BaseFieldProps {
   field: string | number | Image | unknown[];
+  isArea?: boolean;
   onUpdateField?: (field: keyof ProductForm, value: string) => void;
 }
  
@@ -26,14 +27,15 @@ export interface TextFieldProps extends BaseFieldProps {
 export interface NumberArrayFieldProps extends BaseFieldProps {
   field: string | number | Image | unknown[];
   section: string
-  onChange: (section: keyof ProductForm, field?: string, index?: number, value?: number|string) => void;
+  onChange: (section: keyof ProductForm, field: string, index: number, value?: number|string) => void;
 }
 
 
 export interface TextCardObjectProps extends BaseFieldProps {
   field: string | number | Image | unknown[];
   section: string
-  onChange: (section: keyof ProductForm, field?: string, index?: number, value?: number|string) => void;
+  isArea: boolean
+  onChange: (section: keyof ProductForm, field: string, index: number, value?: number|string) => void;
 }
 
 
@@ -64,3 +66,36 @@ export interface MultiSelectDropdownProps extends BaseFieldProps {
   disabled?: boolean;
   setForm: React.Dispatch<React.SetStateAction<ProductForm>>
 }
+
+export type Image = {
+  file?: File | null;
+  preview?: string | null;
+  width?: number;
+  height?: number;
+};
+
+export type Guide = {
+  water: string[];
+  rice: string[];
+  finger: string[];
+  step: string[];
+};
+
+export type ProductForm = {
+  title: string;
+  productImage: (Image & { caption?: string })[];
+  tag: string[];
+  description: string;
+  price: string;
+  detail: string;
+  properties: number[];
+  guide: Guide;
+  package: string;
+  parts: string;
+  ingredients: string;
+  grow: string;
+  cooking: { step: string[]; description: string };
+  wrapProcess: string;
+  certificate: { name: string; image: Image; description: string }[];
+  productCertImage: (Image & { caption?: string })[];
+};
