@@ -41,14 +41,8 @@ export function AccordionItem({
         />
       </button>
       {isOpen && (
-        <div className="px-6 pt-1 pb-4 font-alegreya-sans font-medium text-[20px] leading-[1.4]">
-          <Image
-            src="/certificate/quote.svg"
-            alt="quote icon"
-            width={56}
-            height={39}
-            className="mt-1 flex-shrink-0 mb-2"
-          />
+        <div className="px-6 pt-1 pb-4 font-fz-poppins font-medium text-[16px] leading-[1.4]">
+          
           {children}
         </div>
       )}

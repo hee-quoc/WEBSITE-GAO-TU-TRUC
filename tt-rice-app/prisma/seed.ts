@@ -76,20 +76,20 @@ async function main() {
   },
 
   package: "Túi PA (5kg); Bao PP (10kg, 25kg, 50kg)",
-  parts: "100% Gạo ST25 nguyên chất từ giống lúa canh tác trên đất nuôi tôm.",
-  ingredients: "100% Gạo ST25 Lúa Tôm. Không chứa Gluten, không chất bảo quản, không biến đổi gen.",
-  grow: "Canh tác theo mô hình luân canh lúa - tôm tự nhiên tại vùng trồng Bà Rịa - Vũng Tàu. Hạn chế tối đa hóa chất, giúp đất lành, nước sạch để giữ hương vị thuần khiết.",
-  wrapProcess: "Khi nấu chín, cơm thoảng hương thơm lá dứa quyện cốm non. Hạt cơm dẻo mềm, tơi đều, có vị ngọt thanh. Cơm vẫn giữ được độ ngon ngay cả khi để nguội.",
+  parts: "Giống lúa thuần ST25",
+  ingredients: "Bạc Liêu & Bà Rịa",
+  grow: "Lúa được gieo trồng theo quy trình canh tác an toàn, sử dụng giống và phân bón có nguồn gốc rõ ràng. Việc bón phân được thực hiện cân đối, dưới sự hướng dẫn của chuyên gia và kinh nghiệm thực tiễn của nông dân. Quá trình thu hoạch diễn ra đúng thời điểm, nhằm đảm bảo chất lượng hạt lúa và không tồn dư thuốc bảo vệ thực vật.",
+  wrapProcess: "Gạo được đóng gói ngay sau chế biến trong bao bì chuyên dụng, không sử dụng chất diệt mọt, đảm bảo an toàn cho sức khỏe người tiêu dùng. Bao bì kín, phù hợp bảo quản vàvận chuyển.",
   cooking: {
     step:[
-      "01 - Chọn lịch người điều chỉ huy",
-      "02 - Cân mận gió trớng & chấm bón",
-      "03 - Nước duỡng băng tính hoa đất trới",
-      "04 - Ký luận thu hoạch & tính chốn",
-      "05 - Sấy lượn đất chứn để âm <14%",
-      "06 - Xay xất & đóng gói trong quy trình hiện đại"
+      "01 - Chọn lọc nguồn giống chất lượng",
+      "02 - Cần mẫn gieo trồng & chăm bón",
+      "03 - Nuôi dưỡng bằng tinh hoa đất trời",
+      "04 - Kỹ lưỡng thu hoạch và tinh chọn",
+      "05 - Sấy lúa đạt chuẩn độ ẩm <14%",
+      "06 - Xay xát & đóng gói trong quy trình hiện đại"
     ],
-    description: "Lúa được xay xát bằng công nghệ hiện đại, hạn chế đánh bóng quá mức để bảo toàn lớp cám tự nhiên. Sản phẩm được đóng gói và bảo quản trong điều kiện kho sạch, khô thoáng, không sử dụng chất bảo quản."
+    description: "'Lúa được xay xát bằng công nghệ hiện đại, hạn chế đánh bóng quá mức để bảo toàn lớp cám tự nhiên - nguồn dưỡng chất quý của hạt gạo. Sản phẩm được đóng gói và bảo quản trong điều kiện kho sạch, khô thoáng, không sử dụng chất bảo quản''"
   },
   certificate: [
     {
@@ -106,10 +106,10 @@ async function main() {
   international: true,
   productImages: [
     "/images/products/img_st25.svg",
-    "/images/products/lua_tom.png",
-    "/images/products/te_504.png",
-    "/images/products/lai_hoa.png",
-    "/images/products/lai_sua.png"
+    "/images/products/img_st25_2.svg",
+    "/images/products/img_st25_3.svg",
+    "/images/products/img_st25_4.svg",
+    "/images/products/img_st25_5.svg"
   ],
   tags: 'gao-an',
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
@@ -134,20 +134,20 @@ async function main() {
   },
 
   package: "Túi PA (5kg); Bao PP (10kg, 25kg, 50kg)",
-  parts: "100% Gạo ST25 nguyên chất từ giống lúa canh tác trên đất nuôi tôm.",
-  ingredients: "100% Gạo ST25 Lúa Tôm. Không chứa Gluten, không chất bảo quản, không biến đổi gen.",
-  grow: "Canh tác theo mô hình luân canh lúa - tôm tự nhiên tại vùng trồng Bà Rịa - Vũng Tàu. Hạn chế tối đa hóa chất, giúp đất lành, nước sạch để giữ hương vị thuần khiết.",
-  wrapProcess: "Khi nấu chín, cơm thoảng hương thơm lá dứa quyện cốm non. Hạt cơm dẻo mềm, tơi đều, có vị ngọt thanh. Cơm vẫn giữ được độ ngon ngay cả khi để nguội.",
+  parts: "Giống lúa thuần ST26",
+  ingredients: "Bạc Liêu & Bà Rịa",
+  grow: "Lúa ST25 được gieo trồng trong mô hình luân canh lúa – tôm, tận dụng điều kiện tự nhiên để hạn chế sâu bệnh, không sử dụng thuốc trừ sâu hóa học. Giống và phân bón có nguồn gốc rõ ràng, bón phân cân đối theo hướng dẫn kỹ thuật. Thu hoạch đúng thời điểm, đảm bảo chất lượng hạt lúa và an toàn cho sức khỏe người tiêu dùng.",
+  wrapProcess: "Gạo được đóng gói ngay sau chế biến trong bao bì chuyên dụng, không sử dụng chất diệt mọt, đảm bảo an toàn cho sức khỏe người tiêu dùng. Bao bì kín, phù hợp bảo quản và vận chuyển.",
   cooking: {
     step:[
-      "01 - Chọn lịch người điều chỉ huy",
-      "02 - Cân mận gió trớng & chấm bón",
-      "03 - Nước duỡng băng tính hoa đất trới",
-      "04 - Ký luận thu hoạch & tính chốn",
-      "05 - Sấy lượn đất chứn để âm <14%",
-      "06 - Xay xất & đóng gói trong quy trình hiện đại"
+      "01 - Chọn lọc nguồn giống chất lượng",
+      "02 - Cần mẫn gieo trồng & chăm bón",
+      "03 - Nuôi dưỡng bằng tinh hoa đất trời",
+      "04 - Kỹ lưỡng thu hoạch và tinh chọn",
+      "05 - Sấy lúa đạt chuẩn độ ẩm <14%",
+      "06 - Xay xát & đóng gói trong quy trình hiện đại"
     ],
-    description: "Lúa được xay xát bằng công nghệ hiện đại, hạn chế đánh bóng quá mức để bảo toàn lớp cám tự nhiên. Sản phẩm được đóng gói và bảo quản trong điều kiện kho sạch, khô thoáng, không sử dụng chất bảo quản."
+    description: "'Lúa được xay xát bằng công nghệ hiện đại, hạn chế đánh bóng quá mức để bảo toàn lớp cám tự nhiên - nguồn dưỡng chất quý của hạt gạo. Sản phẩm được đóng gói và bảo quản trong điều kiện kho sạch, khô thoáng, không sử dụng chất bảo quản''"
   },
   certificate: [
     {
@@ -164,10 +164,10 @@ async function main() {
   international: true,
   productImages: [
     "/images/products/img_st25.svg",
-    "/images/products/lua_tom.png",
-    "/images/products/te_504.png",
-    "/images/products/lai_hoa.png",
-    "/images/products/lai_sua.png"
+    "/images/products/img_st25_2.svg",
+    "/images/products/img_st25_3.svg",
+    "/images/products/img_st25_4.svg",
+    "/images/products/img_st25_5.svg"
   ],
   tags: 'gao-an',
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
@@ -192,20 +192,20 @@ async function main() {
   },
 
   package: "Túi PA (5kg); Bao PP (10kg, 25kg, 50kg)",
-  parts: "100% Gạo ST25 nguyên chất từ giống lúa canh tác trên đất nuôi tôm.",
-  ingredients: "100% Gạo ST25 Lúa Tôm. Không chứa Gluten, không chất bảo quản, không biến đổi gen.",
-  grow: "Canh tác theo mô hình luân canh lúa - tôm tự nhiên tại vùng trồng Bà Rịa - Vũng Tàu. Hạn chế tối đa hóa chất, giúp đất lành, nước sạch để giữ hương vị thuần khiết.",
-  wrapProcess: "Khi nấu chín, cơm thoảng hương thơm lá dứa quyện cốm non. Hạt cơm dẻo mềm, tơi đều, có vị ngọt thanh. Cơm vẫn giữ được độ ngon ngay cả khi để nguội.",
+  parts: "Giống đài thơm 8",
+  ingredients: "Bà Rịa",
+  grow: "Lúa được gieo trồng theo quy trình canh tác an toàn, sử dụng giống và phân bón có nguồn gốc rõ ràng. Việc bón phân được thực hiện cân đối, dưới sự hướng dẫn của chuyên gia và kinh nghiệm thực tiễn của nông dân. Quá trình thu hoạch diễn ra đúng thời điểm, nhằm đảm bảo chất lượng hạt lúa và không tồn dư thuốc bảo vệ thực vật.",
+  wrapProcess: "Gạo được đóng gói ngay sau chế biến trong bao bì chuyên dụng, không sử dụng chất diệt mọt, đảm bảo an toàn cho sức khỏe người tiêu dùng. Bao bì kín, phù hợp bảo quản vàvận chuyển.",
   cooking: {
     step:[
-      "01 - Chọn lịch người điều chỉ huy",
-      "02 - Cân mận gió trớng & chấm bón",
-      "03 - Nước duỡng băng tính hoa đất trới",
-      "04 - Ký luận thu hoạch & tính chốn",
-      "05 - Sấy lượn đất chứn để âm <14%",
-      "06 - Xay xất & đóng gói trong quy trình hiện đại"
+      "01 - Chọn lọc nguồn giống chất lượng",
+      "02 - Cần mẫn gieo trồng & chăm bón",
+      "03 - Nuôi dưỡng bằng tinh hoa đất trời",
+      "04 - Kỹ lưỡng thu hoạch và tinh chọn",
+      "05 - Sấy lúa đạt chuẩn độ ẩm <14%",
+      "06 - Xay xát & đóng gói trong quy trình hiện đại"
     ],
-    description: "Lúa được xay xát bằng công nghệ hiện đại, hạn chế đánh bóng quá mức để bảo toàn lớp cám tự nhiên. Sản phẩm được đóng gói và bảo quản trong điều kiện kho sạch, khô thoáng, không sử dụng chất bảo quản."
+    description: "'Lúa được xay xát bằng công nghệ hiện đại, hạn chế đánh bóng quá mức để bảo toàn lớp cám tự nhiên - nguồn dưỡng chất quý của hạt gạo. Sản phẩm được đóng gói và bảo quản trong điều kiện kho sạch, khô thoáng, không sử dụng chất bảo quản''"
   },
   certificate: [
     {
@@ -222,10 +222,10 @@ async function main() {
   international: true,
   productImages: [
     "/images/products/img_st25.svg",
-    "/images/products/lua_tom.png",
-    "/images/products/te_504.png",
-    "/images/products/lai_hoa.png",
-    "/images/products/lai_sua.png"
+    "/images/products/img_st25_2.svg",
+    "/images/products/img_st25_3.svg",
+    "/images/products/img_st25_4.svg",
+    "/images/products/img_st25_5.svg"
   ],
   tags: 'gao-an',
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
@@ -249,21 +249,21 @@ async function main() {
     ]
   },
 
-  package: "Túi PA (5kg); Bao PP (10kg, 25kg, 50kg)",
-  parts: "100% Gạo ST25 nguyên chất từ giống lúa canh tác trên đất nuôi tôm.",
-  ingredients: "100% Gạo ST25 Lúa Tôm. Không chứa Gluten, không chất bảo quản, không biến đổi gen.",
-  grow: "Canh tác theo mô hình luân canh lúa - tôm tự nhiên tại vùng trồng Bà Rịa - Vũng Tàu. Hạn chế tối đa hóa chất, giúp đất lành, nước sạch để giữ hương vị thuần khiết.",
-  wrapProcess: "Khi nấu chín, cơm thoảng hương thơm lá dứa quyện cốm non. Hạt cơm dẻo mềm, tơi đều, có vị ngọt thanh. Cơm vẫn giữ được độ ngon ngay cả khi để nguội.",
+  package: "Bao PP (10kg, 25kg, 50kg)",
+  parts: "Giống lúa: OM4900, OM6600",
+  ingredients: "Bà Rịa",
+  grow: "Lúa được gieo trồng theo quy trình canh tác an toàn, sử dụng giống và phân bón có nguồn gốc rõ ràng. Việc bón phân được thực hiện cân đối, dưới sự hướng dẫn của chuyên gia và kinh nghiệm thực tiễn của nông dân. Quá trình thu hoạch diễn ra đúng thời điểm, nhằm đảm bảo chất lượng hạt lúa và không tồn dư thuốc bảo vệ thực vật.",
+  wrapProcess: "Gạo được đóng gói ngay sau chế biến trong bao bì chuyên dụng, không sử dụng chất diệt mọt, đảm bảo an toàn cho sức khỏe người tiêu dùng. Bao bì kín, phù hợp bảo quản vàvận chuyển.",
   cooking: {
     step:[
-      "01 - Chọn lịch người điều chỉ huy",
-      "02 - Cân mận gió trớng & chấm bón",
-      "03 - Nước duỡng băng tính hoa đất trới",
-      "04 - Ký luận thu hoạch & tính chốn",
-      "05 - Sấy lượn đất chứn để âm <14%",
-      "06 - Xay xất & đóng gói trong quy trình hiện đại"
+      "01 - Chọn lọc nguồn giống chất lượng",
+      "02 - Cần mẫn gieo trồng & chăm bón",
+      "03 - Nuôi dưỡng bằng tinh hoa đất trời",
+      "04 - Kỹ lưỡng thu hoạch và tinh chọn",
+      "05 - Sấy lúa đạt chuẩn độ ẩm <14%",
+      "06 - Xay xát & đóng gói trong quy trình hiện đại"
     ],
-    description: "Lúa được xay xát bằng công nghệ hiện đại, hạn chế đánh bóng quá mức để bảo toàn lớp cám tự nhiên. Sản phẩm được đóng gói và bảo quản trong điều kiện kho sạch, khô thoáng, không sử dụng chất bảo quản."
+    description: "'Lúa được xay xát bằng công nghệ hiện đại, hạn chế đánh bóng quá mức để bảo toàn lớp cám tự nhiên - nguồn dưỡng chất quý của hạt gạo. Sản phẩm được đóng gói và bảo quản trong điều kiện kho sạch, khô thoáng, không sử dụng chất bảo quản''"
   },
   certificate: [
     {
@@ -280,10 +280,10 @@ async function main() {
   international: true,
   productImages: [
     "/images/products/img_st25.svg",
-    "/images/products/lua_tom.png",
-    "/images/products/te_504.png",
-    "/images/products/lai_hoa.png",
-    "/images/products/lai_sua.png"
+    "/images/products/img_st25_2.svg",
+    "/images/products/img_st25_3.svg",
+    "/images/products/img_st25_4.svg",
+    "/images/products/img_st25_5.svg"
   ],
   tags: 'gao-an',
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
@@ -307,21 +307,21 @@ async function main() {
     ]
   },
 
-  package: "Túi PA (5kg); Bao PP (10kg, 25kg, 50kg)",
-  parts: "100% Gạo ST25 nguyên chất từ giống lúa canh tác trên đất nuôi tôm.",
-  ingredients: "100% Gạo ST25 Lúa Tôm. Không chứa Gluten, không chất bảo quản, không biến đổi gen.",
-  grow: "Canh tác theo mô hình luân canh lúa - tôm tự nhiên tại vùng trồng Bà Rịa - Vũng Tàu. Hạn chế tối đa hóa chất, giúp đất lành, nước sạch để giữ hương vị thuần khiết.",
-  wrapProcess: "Khi nấu chín, cơm thoảng hương thơm lá dứa quyện cốm non. Hạt cơm dẻo mềm, tơi đều, có vị ngọt thanh. Cơm vẫn giữ được độ ngon ngay cả khi để nguội.",
+  package: "Bao PP (10kg, 25kg, 50kg)",
+  parts: "Giống lúa: OM18",
+  ingredients: "Bà Rịa",
+  grow: "Lúa được gieo trồng theo quy trình canh tác an toàn, sử dụng giống và phân bón có nguồn gốc rõ ràng. Việc bón phân được thực hiện cân đối, dưới sự hướng dẫn của chuyên gia và kinh nghiệm thực tiễn của nông dân. Quá trình thu hoạch diễn ra đúng thời điểm, nhằm đảm bảo chất lượng hạt lúa và không tồn dư thuốc bảo vệ thực vật.",
+  wrapProcess: "Gạo được đóng gói ngay sau chế biến trong bao bì chuyên dụng, không sử dụng chất diệt mọt, đảm bảo an toàn cho sức khỏe người tiêu dùng. Bao bì kín, phù hợp bảo quản vàvận chuyển.",
   cooking: {
     step:[
-      "01 - Chọn lịch người điều chỉ huy",
-      "02 - Cân mận gió trớng & chấm bón",
-      "03 - Nước duỡng băng tính hoa đất trới",
-      "04 - Ký luận thu hoạch & tính chốn",
-      "05 - Sấy lượn đất chứn để âm <14%",
-      "06 - Xay xất & đóng gói trong quy trình hiện đại"
+      "01 - Chọn lọc nguồn giống chất lượng",
+      "02 - Cần mẫn gieo trồng & chăm bón",
+      "03 - Nuôi dưỡng bằng tinh hoa đất trời",
+      "04 - Kỹ lưỡng thu hoạch và tinh chọn",
+      "05 - Sấy lúa đạt chuẩn độ ẩm <14%",
+      "06 - Xay xát & đóng gói trong quy trình hiện đại"
     ],
-    description: "Lúa được xay xát bằng công nghệ hiện đại, hạn chế đánh bóng quá mức để bảo toàn lớp cám tự nhiên. Sản phẩm được đóng gói và bảo quản trong điều kiện kho sạch, khô thoáng, không sử dụng chất bảo quản."
+    description: "'Lúa được xay xát bằng công nghệ hiện đại, hạn chế đánh bóng quá mức để bảo toàn lớp cám tự nhiên - nguồn dưỡng chất quý của hạt gạo. Sản phẩm được đóng gói và bảo quản trong điều kiện kho sạch, khô thoáng, không sử dụng chất bảo quản''"
   },
   certificate: [
     {
@@ -338,10 +338,10 @@ async function main() {
   international: true,
   productImages: [
     "/images/products/img_st25.svg",
-    "/images/products/lua_tom.png",
-    "/images/products/te_504.png",
-    "/images/products/lai_hoa.png",
-    "/images/products/lai_sua.png"
+    "/images/products/img_st25_2.svg",
+    "/images/products/img_st25_3.svg",
+    "/images/products/img_st25_4.svg",
+    "/images/products/img_st25_5.svg"
   ],
   tags: 'gao-an',
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
@@ -365,21 +365,21 @@ async function main() {
     ]
   },
 
-  package: "Túi PA (5kg); Bao PP (10kg, 25kg, 50kg)",
-  parts: "100% Gạo ST25 nguyên chất từ giống lúa canh tác trên đất nuôi tôm.",
-  ingredients: "100% Gạo ST25 Lúa Tôm. Không chứa Gluten, không chất bảo quản, không biến đổi gen.",
-  grow: "Canh tác theo mô hình luân canh lúa - tôm tự nhiên tại vùng trồng Bà Rịa - Vũng Tàu. Hạn chế tối đa hóa chất, giúp đất lành, nước sạch để giữ hương vị thuần khiết.",
-  wrapProcess: "Khi nấu chín, cơm thoảng hương thơm lá dứa quyện cốm non. Hạt cơm dẻo mềm, tơi đều, có vị ngọt thanh. Cơm vẫn giữ được độ ngon ngay cả khi để nguội.",
+  package: "Bao PP ( 25kg, 50kg)",
+  parts: "Giống lúa: dẻo bầu",
+  ingredients: "Bà Rịa",
+  grow: "Lúa được gieo trồng theo quy trình canh tác an toàn, sử dụng giống và phân bón có nguồn gốc rõ ràng. Việc bón phân được thực hiện cân đối, dưới sự hướng dẫn của chuyên gia và kinh nghiệm thực tiễn của nông dân. Quá trình thu hoạch diễn ra đúng thời điểm, nhằm đảm bảo chất lượng hạt lúa và không tồn dư thuốc bảo vệ thực vật.",
+  wrapProcess: "Gạo được đóng gói ngay sau chế biến trong bao bì chuyên dụng, không sử dụng chất diệt mọt, đảm bảo an toàn cho sức khỏe người tiêu dùng. Bao bì kín, phù hợp bảo quản vàvận chuyển.",
   cooking: {
     step:[
-      "01 - Chọn lịch người điều chỉ huy",
-      "02 - Cân mận gió trớng & chấm bón",
-      "03 - Nước duỡng băng tính hoa đất trới",
-      "04 - Ký luận thu hoạch & tính chốn",
-      "05 - Sấy lượn đất chứn để âm <14%",
-      "06 - Xay xất & đóng gói trong quy trình hiện đại"
+      "01 - Chọn lọc nguồn giống chất lượng",
+      "02 - Cần mẫn gieo trồng & chăm bón",
+      "03 - Nuôi dưỡng bằng tinh hoa đất trời",
+      "04 - Kỹ lưỡng thu hoạch và tinh chọn",
+      "05 - Sấy lúa đạt chuẩn độ ẩm <14%",
+      "06 - Xay xát & đóng gói trong quy trình hiện đại"
     ],
-    description: "Lúa được xay xát bằng công nghệ hiện đại, hạn chế đánh bóng quá mức để bảo toàn lớp cám tự nhiên. Sản phẩm được đóng gói và bảo quản trong điều kiện kho sạch, khô thoáng, không sử dụng chất bảo quản."
+    description: "'Lúa được xay xát bằng công nghệ hiện đại, hạn chế đánh bóng quá mức để bảo toàn lớp cám tự nhiên - nguồn dưỡng chất quý của hạt gạo. Sản phẩm được đóng gói và bảo quản trong điều kiện kho sạch, khô thoáng, không sử dụng chất bảo quản''"
   },
   certificate: [
     {
@@ -396,10 +396,10 @@ async function main() {
   international: true,
   productImages: [
     "/images/products/img_st25.svg",
-    "/images/products/lua_tom.png",
-    "/images/products/te_504.png",
-    "/images/products/lai_hoa.png",
-    "/images/products/lai_sua.png"
+    "/images/products/img_st25_2.svg",
+    "/images/products/img_st25_3.svg",
+    "/images/products/img_st25_4.svg",
+    "/images/products/img_st25_5.svg"
   ],
   tags: 'gao-an',
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
@@ -423,21 +423,21 @@ async function main() {
     ]
   },
 
-  package: "Túi PA (5kg); Bao PP (10kg, 25kg, 50kg)",
-  parts: "100% Gạo ST25 nguyên chất từ giống lúa canh tác trên đất nuôi tôm.",
-  ingredients: "100% Gạo ST25 Lúa Tôm. Không chứa Gluten, không chất bảo quản, không biến đổi gen.",
-  grow: "Canh tác theo mô hình luân canh lúa - tôm tự nhiên tại vùng trồng Bà Rịa - Vũng Tàu. Hạn chế tối đa hóa chất, giúp đất lành, nước sạch để giữ hương vị thuần khiết.",
-  wrapProcess: "Khi nấu chín, cơm thoảng hương thơm lá dứa quyện cốm non. Hạt cơm dẻo mềm, tơi đều, có vị ngọt thanh. Cơm vẫn giữ được độ ngon ngay cả khi để nguội.",
+  package: "Bao PP ( 25kg, 50kg)",
+  parts: "Giống lúa: tẻ 504",
+  ingredients: "Bà Rịa",
+  grow: "Lúa được gieo trồng theo quy trình canh tác an toàn, sử dụng giống và phân bón có nguồn gốc rõ ràng. Việc bón phân được thực hiện cân đối, dưới sự hướng dẫn của chuyên gia và kinh nghiệm thực tiễn của nông dân. Quá trình thu hoạch diễn ra đúng thời điểm, nhằm đảm bảo chất lượng hạt lúa và không tồn dư thuốc bảo vệ thực vật.",
+  wrapProcess: "Gạo được đóng gói ngay sau chế biến trong bao bì chuyên dụng, không sử dụng chất diệt mọt, đảm bảo an toàn cho sức khỏe người tiêu dùng. Bao bì kín, phù hợp bảo quản vàvận chuyển.",
   cooking: {
     step:[
-      "01 - Chọn lịch người điều chỉ huy",
-      "02 - Cân mận gió trớng & chấm bón",
-      "03 - Nước duỡng băng tính hoa đất trới",
-      "04 - Ký luận thu hoạch & tính chốn",
-      "05 - Sấy lượn đất chứn để âm <14%",
-      "06 - Xay xất & đóng gói trong quy trình hiện đại"
+      "01 - Chọn lọc nguồn giống chất lượng",
+      "02 - Cần mẫn gieo trồng & chăm bón",
+      "03 - Nuôi dưỡng bằng tinh hoa đất trời",
+      "04 - Kỹ lưỡng thu hoạch và tinh chọn",
+      "05 - Sấy lúa đạt chuẩn độ ẩm <14%",
+      "06 - Xay xát & đóng gói trong quy trình hiện đại"
     ],
-    description: "Lúa được xay xát bằng công nghệ hiện đại, hạn chế đánh bóng quá mức để bảo toàn lớp cám tự nhiên. Sản phẩm được đóng gói và bảo quản trong điều kiện kho sạch, khô thoáng, không sử dụng chất bảo quản."
+    description: "'Lúa được xay xát bằng công nghệ hiện đại, hạn chế đánh bóng quá mức để bảo toàn lớp cám tự nhiên - nguồn dưỡng chất quý của hạt gạo. Sản phẩm được đóng gói và bảo quản trong điều kiện kho sạch, khô thoáng, không sử dụng chất bảo quản''"
   },
   certificate: [
     {
@@ -454,10 +454,10 @@ async function main() {
   international: true,
   productImages: [
     "/images/products/img_st25.svg",
-    "/images/products/lua_tom.png",
-    "/images/products/te_504.png",
-    "/images/products/lai_hoa.png",
-    "/images/products/lai_sua.png"
+    "/images/products/img_st25_2.svg",
+    "/images/products/img_st25_3.svg",
+    "/images/products/img_st25_4.svg",
+    "/images/products/img_st25_5.svg"
   ],
   tags: 'gao-thong-dung',
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
@@ -482,20 +482,20 @@ async function main() {
   },
 
   package: "Túi PA (5kg); Bao PP (10kg, 25kg, 50kg)",
-  parts: "100% Gạo ST25 nguyên chất từ giống lúa canh tác trên đất nuôi tôm.",
-  ingredients: "100% Gạo ST25 Lúa Tôm. Không chứa Gluten, không chất bảo quản, không biến đổi gen.",
-  grow: "Canh tác theo mô hình luân canh lúa - tôm tự nhiên tại vùng trồng Bà Rịa - Vũng Tàu. Hạn chế tối đa hóa chất, giúp đất lành, nước sạch để giữ hương vị thuần khiết.",
-  wrapProcess: "Khi nấu chín, cơm thoảng hương thơm lá dứa quyện cốm non. Hạt cơm dẻo mềm, tơi đều, có vị ngọt thanh. Cơm vẫn giữ được độ ngon ngay cả khi để nguội.",
+  parts: "Giống lúa thuần ST25",
+  ingredients: "Bạc Liêu & Bà Rịa",
+  grow: "Lúa được gieo trồng theo quy trình canh tác an toàn, sử dụng giống và phân bón có nguồn gốc rõ ràng. Việc bón phân được thực hiện cân đối, dưới sự hướng dẫn của chuyên gia và kinh nghiệm thực tiễn của nông dân. Quá trình thu hoạch diễn ra đúng thời điểm, nhằm đảm bảo chất lượng hạt lúa và không tồn dư thuốc bảo vệ thực vật.",
+  wrapProcess: "Gạo được đóng gói ngay sau chế biến trong bao bì chuyên dụng, không sử dụng chất diệt mọt, đảm bảo an toàn cho sức khỏe người tiêu dùng. Bao bì kín, phù hợp bảo quản vàvận chuyển.",
   cooking: {
     step:[
-      "01 - Chọn lịch người điều chỉ huy",
-      "02 - Cân mận gió trớng & chấm bón",
-      "03 - Nước duỡng băng tính hoa đất trới",
-      "04 - Ký luận thu hoạch & tính chốn",
-      "05 - Sấy lượn đất chứn để âm <14%",
-      "06 - Xay xất & đóng gói trong quy trình hiện đại"
+      "01 - Chọn lọc nguồn giống chất lượng",
+      "02 - Cần mẫn gieo trồng & chăm bón",
+      "03 - Nuôi dưỡng bằng tinh hoa đất trời",
+      "04 - Kỹ lưỡng thu hoạch và tinh chọn",
+      "05 - Sấy lúa đạt chuẩn độ ẩm <14%",
+      "06 - Xay xát & đóng gói trong quy trình hiện đại"
     ],
-    description: "Lúa được xay xát bằng công nghệ hiện đại, hạn chế đánh bóng quá mức để bảo toàn lớp cám tự nhiên. Sản phẩm được đóng gói và bảo quản trong điều kiện kho sạch, khô thoáng, không sử dụng chất bảo quản."
+    description: "'Lúa được xay xát bằng công nghệ hiện đại, hạn chế đánh bóng quá mức để bảo toàn lớp cám tự nhiên - nguồn dưỡng chất quý của hạt gạo. Sản phẩm được đóng gói và bảo quản trong điều kiện kho sạch, khô thoáng, không sử dụng chất bảo quản''"
   },
   certificate: [
     {
@@ -512,12 +512,12 @@ async function main() {
   international: true,
   productImages: [
     "/images/products/img_st25.svg",
-    "/images/products/lua_tom.png",
-    "/images/products/te_504.png",
-    "/images/products/lai_hoa.png",
-    "/images/products/lai_sua.png"
+    "/images/products/img_st25_2.svg",
+    "/images/products/img_st25_3.svg",
+    "/images/products/img_st25_4.svg",
+    "/images/products/img_st25_5.svg"
   ],
-  tags: 'gao-an',
+  tags: 'phu-pham',
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
 },
 ];
