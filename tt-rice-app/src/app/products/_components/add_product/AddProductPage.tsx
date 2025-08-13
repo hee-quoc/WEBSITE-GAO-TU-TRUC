@@ -65,7 +65,7 @@ export function AddProductPage(){
     };
 
     // 2. Handler cho field là array primitive (ví dụ: properties)
-    const handleArrayFieldChange = (key: keyof ProductForm, index: number, value: any) => {
+    const handleArrayFieldChange = (key: keyof ProductForm,  value: any, index: number) => {
         setForm(prev => {
             const arr = Array.isArray(prev[key]) ? [...(prev[key] as any[])] : [];
             arr[index] = value;
@@ -246,6 +246,10 @@ export function AddProductPage(){
             }, 5000);
         } else {
             setPopup({ show: true, message: "Có lỗi khi thêm sản phẩm!", type: "error" });
+            setTimeout(() => {
+               setPopup({ show: false, message: "", type: "success" });
+               setSave(false)
+            }, 3000);
         }
 
     } catch (error) {
@@ -358,7 +362,7 @@ export function AddProductPage(){
                 <button
                 type="button"
                 onClick={handleSubmit}
-                // disabled={onSave}
+                disabled={onSave && popup.show}
                 className="flex flex-row rounded-lg bg-green-600 text-white px-6 py-3 text-lg font-semibold shadow hover:bg-green-700 disabled:opacity-50"
                 >
                 {onSave && (
@@ -384,6 +388,7 @@ export function AddProductPage(){
                 </svg>
                 )}
                 {onSave ? "Đang lưu..." : "Lưu sản phẩm"} 
+                {(popup.show) && (popup.type == "success") &&( "Lưu thành công") }
                 </button>
             </div>
             {/* Popup thông báo */}
@@ -391,13 +396,60 @@ export function AddProductPage(){
         </div>
          {popup.show && (
                 <div
-                className={`fixed top-[50%] right-[50%] px-6 py-3 rounded-lg shadow-lg text-white transition-opacity duration-500 ${
-                    popup.type === "success" ? "bg-green-500" : "bg-red-500"
-                }`}
-                >
-                {popup.message}
+                    className={`fixed top-20 right-20 max-w-sm w-full flex items-center gap-3 px-5 py-3 rounded-xl shadow-lg text-black transition-all duration-500 transform ${{
+                        true: popup.type === "success" ? "bg-green-500" : "bg-red-500"
+                    }}`}
+                    >
+                    {/* Icon */}
+                    <div className="flex-shrink-0">
+                        {popup.type === "success" ? (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        ) : (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        )}
+                    </div>
+
+                    {/* Text */}
+                    <div className="flex-1">
+                        <p className="font-semibold text-sm">
+                        {popup.type === "success" ? "Thành công" : "Lỗi"}
+                        </p>
+                        <p className="text-sm opacity-90">{popup.message || "Lưu thành công"}</p>
+                    </div>
+
+                    {/* Close button */}
+                    <button
+                        onClick={() => setPopup({ ...popup, message: "" })}
+                        className="text-white opacity-70 hover:opacity-100"
+                    >
+                        <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
                 </div>
-             )}
+             )} 
        </div>
        
 	)
