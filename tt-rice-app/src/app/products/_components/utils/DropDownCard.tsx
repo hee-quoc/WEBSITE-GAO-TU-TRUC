@@ -1,7 +1,6 @@
 "use client";
-import { type DropdownProps , type MultiSelectDropdownProps } from "./types";
+import { type DropdownProps , type MultiSelectDropdownProps, type ProductForm } from "./types";
 import React, { useCallback , useRef, useState, useEffect} from "react";
-import { type ProductForm } from "../AddProductPage";
 
 
 export function Dropdown({

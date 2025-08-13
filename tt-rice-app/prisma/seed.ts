@@ -111,7 +111,7 @@ async function main() {
     "/images/products/img_st25_4.svg",
     "/images/products/img_st25_5.svg"
   ],
-  tags: 'gao-an',
+  tags: ['gao-an'],
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
 },
 {
@@ -169,7 +169,7 @@ async function main() {
     "/images/products/img_st25_4.svg",
     "/images/products/img_st25_5.svg"
   ],
-  tags: 'gao-an',
+  tags: ['gao-an'],
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
 },
 {
@@ -227,7 +227,7 @@ async function main() {
     "/images/products/img_st25_4.svg",
     "/images/products/img_st25_5.svg"
   ],
-  tags: 'gao-an',
+  tags: ['gao-an'],
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
 },
 {
@@ -285,7 +285,7 @@ async function main() {
     "/images/products/img_st25_4.svg",
     "/images/products/img_st25_5.svg"
   ],
-  tags: 'gao-an',
+  tags: ['gao-an'],
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
 },
 {
@@ -343,7 +343,7 @@ async function main() {
     "/images/products/img_st25_4.svg",
     "/images/products/img_st25_5.svg"
   ],
-  tags: 'gao-an',
+  tags: ['gao-an'],
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
 },
 {
@@ -401,7 +401,7 @@ async function main() {
     "/images/products/img_st25_4.svg",
     "/images/products/img_st25_5.svg"
   ],
-  tags: 'gao-an',
+  tags: ['gao-an'],
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
 },
 {
@@ -459,7 +459,7 @@ async function main() {
     "/images/products/img_st25_4.svg",
     "/images/products/img_st25_5.svg"
   ],
-  tags: 'gao-thong-dung',
+  tags: ['gao-thong-dung'],
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
 },
 {
@@ -517,7 +517,7 @@ async function main() {
     "/images/products/img_st25_4.svg",
     "/images/products/img_st25_5.svg"
   ],
-  tags: 'phu-pham',
+  tags: ['gao-an'],
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
 },
 ];

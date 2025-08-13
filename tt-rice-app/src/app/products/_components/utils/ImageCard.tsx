@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { Upload, X } from "lucide-react";
-import { type ImageUploadFieldProps } from "./types";
-import { type Image, type ProductForm,  } from "../AddProductPage";
+import { type ImageUploadFieldProps, type Image, type ProductForm } from "./types";
+
 
 export function ImageCard({
   type,
