@@ -5,8 +5,8 @@ import {
   protectedProcedure,
   publicProcedure,
 } from "~/server/api/trpc";
-import { TRPCError } from "@trpc/server";
-import { createUniqueSlug } from "~/lib/utils";
+import {generateUniqueSlug} from "../../utils/utils"
+
 
 const GuideInput = z.object({
   water: z.array(z.number()),
@@ -25,6 +25,7 @@ const CertificateInput = z.object({
   image: z.string(),
   description: z.string(),
 });
+
 
 
 async function triggerRevalidation() {
@@ -92,44 +93,77 @@ export const productRouter = createTRPCRouter({
   create: protectedProcedure
     .input(
       z.object({
-        // Scalar fields for the Product model
-        title: z.string().min(1, "Title is required"),
-        slug: z.string().min(1, "Slug is required"),
-        description: z.string().min(1, "Description is required"),
-        price: z.string().min(1, "Price is required"),
-        detail: z.string(),
-        properties: z.array(z.number()),
-        tag: z.string().min(1, "Tag is required"),
-        productImages: z.array(z.string()),
-        package: z.string(),
-        parts: z.string(),
-        ingredients: z.string(),
-        grow: z.string(),
-        wrapProcess: z.string(), // Updated from your new schema
-        productCertImages: z.array(z.string()),
-        
-        // Relational fields (optional)
-        guide: GuideInput.optional(),
-        cooking: CookingInput.optional(),
-        certificates: z.array(CertificateInput).optional(),
+        form: z.object({
+          title: z.string().min(1, "Title is required"),
+          description: z.string().min(1, "Description is required"),
+          price: z.string().min(1, "Price is required"),
+          detail: z.string(),
+          properties: z.array(z.number()),
+          tag: z.array(z.string()),
+
+          // Thay vì mảng object { file: any }, giờ là mảng string key/url
+          productImage: z.array(z.string()),
+          package: z.string(),
+          parts: z.string(),
+          ingredients: z.string(),
+          grow: z.string(),
+          wrapProcess: z.string(),
+
+          productCertImage: z.array(z.string()),
+          guide: GuideInput.optional(),
+          cooking: CookingInput.optional(),
+
+          certificate: z
+            .array(
+              z.object({
+                name: z.string().optional(),
+                description: z.string().optional(),
+                // image giờ chỉ là string hoặc null (URL)
+                image: z.string().nullable().optional(),
+              })
+            )
+            .optional(),
+        }),
       })
     )
     .mutation(async ({ ctx, input }) => {
-      // void triggerRevalidation();
-      
-      const { guide, cooking, certificates, ...productData } = input;
+      const { form } = input;
+      const slug = await generateUniqueSlug(form.title);
 
-      return ctx.db.product.create({
+      const { guide, cooking, certificate, productImage, productCertImage, ...rest } = form;
+
+      // Không upload file nữa vì client đã gửi URL rồi
+      // Bạn chỉ cần lưu URL/key vào database
+
+      const newProduct = await ctx.db.product.create({
         data: {
-          // Spread the simple product data
-          ...productData,
-          // Conditionally use nested writes to create related records
+          ...rest,
+          slug,
+          productImages: { set: productImage },
+          productCertImages: { set: productCertImage },
           ...(guide && { guide: { create: guide } }),
           ...(cooking && { cooking: { create: cooking } }),
-          ...(certificates && { certificates: { create: certificates } }),
+          ...(certificate && {
+            certificates: {
+              create: certificate.map((c) => ({
+                name: c.name ?? "",
+                description: c.description ?? "",
+                image: c.image ?? "",
+              })),
+            },
+          }),
         },
       });
+
+    
+      return {
+        success: true,
+        message: "Product created successfully",
+        productId: newProduct.id,
+        slug: newProduct.slug,
+      };
     }),
+
 
   update: protectedProcedure
     .input(
