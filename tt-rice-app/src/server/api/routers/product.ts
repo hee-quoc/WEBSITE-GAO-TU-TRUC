@@ -90,7 +90,7 @@ export const productRouter = createTRPCRouter({
     }),
 
   // CREATE PRODUCT
-  create: publicProcedure
+  create: protectedProcedure
     .input(
       z.object({
         form: z.object({
@@ -155,25 +155,7 @@ export const productRouter = createTRPCRouter({
         },
       });
 
-      // return ctx.db.product.create({
-      //   data: {
-      //     ...rest,
-      //     slug,
-      //     productImages: { set: productImage },
-      //     productCertImages: { set: productCertImage },
-      //     ...(guide && { guide: { create: guide } }),
-      //     ...(cooking && { cooking: { create: cooking } }),
-      //     ...(certificate && {
-      //       certificates: {
-      //         create: certificate.map((c) => ({
-      //           name: c.name ?? "",
-      //           description: c.description ?? "",
-      //           image: c.image ?? "",
-      //         })),
-      //       },
-      //     }),
-      //   },
-      // });
+    
       return {
         success: true,
         message: "Product created successfully",

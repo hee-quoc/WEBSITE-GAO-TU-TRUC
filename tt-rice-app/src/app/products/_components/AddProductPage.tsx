@@ -82,11 +82,7 @@ export function AddProductPage(){
         {label:"Phụ phẩm",value:"phu-pham"},
         
     ]
-	// Hàm cập nhật từng trường
-	// const handleChange = (key: keyof ProductForm , value: any) => {
-	// 	setForm((prev) => ({ ...prev, [key]: value }));
-	// 	console.log("Updated form:", { ...form, [key]: value });
-	// };
+
     const handleChange = (
         key: keyof ProductForm,
         value: any,
@@ -310,17 +306,6 @@ export function AddProductPage(){
     };
 
     const createProduct = api.product.create.useMutation();
-    // const createProduct = trpc.product.create.useMutation({
-    //     onSuccess: () => {
-    //     alert("Thêm sản phẩm thành công!");
-    //     utils.product.list.invalidate();
-    //     },
-    //     onError: (err) => {
-    //     console.error(err);
-    //     alert("Có lỗi khi thêm sản phẩm!");
-    //     },
-    // });
-
 
     async function uploadFileToS3(url:string, file:File){
         const uploadResponse = await fetch(url, {
@@ -336,14 +321,7 @@ export function AddProductPage(){
     const handleSubmit = async () => {
         try {
         setSave(true)
-        // const processedForm = await convertImagesInForm(form);
-        // console.log(processedForm)
-        // // Debug kiểm tra file trước khi gửi
-        // // console.log(processedForm.productImage[0]?.file instanceof File); // true
-        // // console.log(form.productCertImage[0]?.file instanceof File); // true
-        // await createProduct.mutateAsync({form:processedForm});
          // 1. Lấy danh sách tất cả file cần upload theo thứ tự:
-    // productImage, productCertImage, certificate images
         const productImageFiles = form.productImage.filter(p => p.file).map(p => p.file!);
         const productCertImageFiles = form.productCertImage.filter(p => p.file).map(p => p.file!);
         const certificateImageFiles = form.certificate
@@ -412,22 +390,19 @@ export function AddProductPage(){
             image: certificateImagesUrls[i] ?? null,
         })),
         };
-        console.log(payload)
 
-        // const response = await createProduct.mutateAsync({ form: payload });
+        const response = await createProduct.mutateAsync({ form: payload });
 
-        // if (response.success) {
-        //     setPopup({ show: true, message: "Lưu sản phẩm thành công", type: "success" });
-        //     // Delay 5 giây sau đó reset form và refresh page
-        //     setTimeout(() => {
-        //         setForm(initialFormState); // reset form
-        //         window.location.reload(); // refresh trang
-        //     }, 5000);
-        // // Có thể redirect tới trang chi tiết sản phẩm
-        // // router.push(`/product/${response.slug}`);
-        // } else {
-        //     setPopup({ show: true, message: "Có lỗi khi thêm sản phẩm!", type: "error" });
-        // }
+        if (response.success) {
+            setPopup({ show: true, message: "Lưu sản phẩm thành công", type: "success" });
+            // Delay 5 giây sau đó reset form và refresh page
+            setTimeout(() => {
+                setForm(initialFormState); // reset form
+                window.location.reload(); // refresh trang
+            }, 5000);
+        } else {
+            setPopup({ show: true, message: "Có lỗi khi thêm sản phẩm!", type: "error" });
+        }
 
     } catch (error) {
         console.error(error);
