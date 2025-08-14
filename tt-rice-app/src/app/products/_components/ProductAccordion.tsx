@@ -118,7 +118,7 @@ export function ProductAccordion({ product }: { product: ProductWithDetails}) {
           </AccordionItem>
         </>
       )}
-      {/* {product.productCertImages && product.productCertImages.length > 0 && (
+      {product.productCertImages && product.productCertImages.length > 0 && (
         <>
           <Divider />
           <button
@@ -162,7 +162,7 @@ export function ProductAccordion({ product }: { product: ProductWithDetails}) {
             </div>
           )}
         </>
-      )} */}
+      )}
     </div>
   );
 }
