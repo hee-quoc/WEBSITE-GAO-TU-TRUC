@@ -57,7 +57,7 @@ export function AddProductPage(){
 
 
     // 1. Handler cho field primitive (string, number, ...)
-    const handleFieldChange = (key: keyof ProductForm, value: any) => {
+    const handleFieldChange = (key: keyof ProductForm, value: string | number | string[] | number[] | Image |(Image)[] ) => {
         setForm(prev => ({
             ...prev,
             [key]: value,
@@ -65,9 +65,9 @@ export function AddProductPage(){
     };
 
     // 2. Handler cho field là array primitive (ví dụ: properties)
-    const handleArrayFieldChange = (key: keyof ProductForm,  value: any, index: number) => {
+    const handleArrayFieldChange = (key: keyof ProductForm,  value:  string | number , index: number) => {
         setForm(prev => {
-            const arr = Array.isArray(prev[key]) ? [...(prev[key] as any[])] : [];
+            const arr = Array.isArray(prev[key]) ? [...(prev[key] as string[] | number[])] : [];
             arr[index] = value;
             return { ...prev, [key]: arr };
         });
@@ -78,11 +78,11 @@ export function AddProductPage(){
         section: keyof ProductForm,
         field: string,
         index: number,
-        value: any
+        value: string | number
     ) => {
         setForm(prev => {
-            const sectionValue = { ...(prev[section] as any) };
-            const arr = Array.isArray(sectionValue[field]) ? [...sectionValue[field]] : [];
+            const sectionValue = { ...(prev[section] as  Record<string, unknown>) };
+            const arr = Array.isArray(sectionValue[field] as Array<number>| Array<string>) ? [...sectionValue[field] as Array<number>| Array<string>] : [];
             arr[index] = value;
             return {
                 ...prev,
@@ -95,11 +95,11 @@ export function AddProductPage(){
     const handleNestedFieldChange = (
         section: keyof ProductForm,
         field: string,
-        value: any
+        value: string | number
     ) => {
         setForm(prev => ({
             ...prev,
-            [section]: { ...(prev[section] as any), [field]: value },
+            [section]: { ...(prev[section] as  Record<string, unknown>), [field]: value },
         }));
     };
 
@@ -108,10 +108,10 @@ export function AddProductPage(){
         section: keyof ProductForm,
         field: string,
         index: number,
-        value: any
+        value: string
     ) => {
         setForm(prev => {
-            const arr = Array.isArray(prev[section]) ? [...(prev[section] as any[])] : [];
+            const arr = Array.isArray(prev[section]) ? [...(prev[section] as Record<string, unknown>[])] : [];
             arr[index] = { ...arr[index], [field]: value };
             return { ...prev, [section]: arr };
         });
@@ -125,13 +125,13 @@ export function AddProductPage(){
         subField?: string
     ) => {
         setForm(prev => {
-            const arr = Array.isArray(prev[section]) ? [...(prev[section] as any[])] : [];
+            const arr = Array.isArray(prev[section]) ? [...(prev[section] as Record<string, unknown>[])] : [];
             if (subField) {
                 // object image trong array object (vd: certificate.image)
                 arr[index] = {
                     ...arr[index],
                     [subField]: {
-                        ...arr[index][subField],
+                        ...(arr[index]?.[subField] ?? {}),
                         file,
                         preview: file ? URL.createObjectURL(file) : null,
                     },
@@ -166,12 +166,17 @@ export function AddProductPage(){
     const handleSubmit = async () => {
         try {
         setSave(true)
+        function notEmpty<T>(value: T | null | undefined): value is T {
+            return value != null;
+            }
          // 1. Lấy danh sách tất cả file cần upload theo thứ tự:
         const productImageFiles = form.productImage.filter(p => p.file).map(p => p.file!);
         const productCertImageFiles = form.productCertImage.filter(p => p.file).map(p => p.file!);
         const certificateImageFiles = form.certificate
-        .filter(c => c.image?.file)
-        .map(c => c.image!.file!);
+        .filter((c): c is typeof c & { image: { file: File } } => !!c.image?.file)
+        .map(c => c.image.file);
+
+       
 
         const allFiles = [...productImageFiles, ...productCertImageFiles, ...certificateImageFiles];
 
@@ -187,7 +192,7 @@ export function AddProductPage(){
 
         // 3. Upload file lên S3 theo thứ tự
         await Promise.all(
-        presignedResults.map((res, i) => uploadFileToS3(res.url, allFiles[i] as File))
+            presignedResults.map((res, i) => uploadFileToS3(res.url, allFiles[i]!))
         );
 
         
@@ -212,7 +217,7 @@ export function AddProductPage(){
             (c) =>
             c.name?.trim() !== "" ||
             c.description?.trim() !== "" ||
-            (c.image && c.image.file)
+            (c.image?.file)
         );
 
         const certificateImagesUrls = filteredCertificates
@@ -220,11 +225,15 @@ export function AddProductPage(){
         .map(() => presignedResults[index++]?.fileUrl)
         .filter((url): url is string => typeof url === "string");
 
-     
+        const water = form.guide.water.map((w)=>{return Number(w)})
         // 5. Tạo payload gửi server (gán url/key cho certificate)
        
         const payload = {
         ...form,
+        guide: {
+            ...form.guide,
+            water: water
+        },
         detail: details,
         productImage: productImageUrls,       
         productCertImage: productCertImageUrls, 
@@ -286,7 +295,7 @@ export function AddProductPage(){
              <CertificateSection
                 certificates={form.certificate}
                 setForm={setForm}
-                setImageFile={(idx, file, field, subField) => handleImageFileChange(field, idx as number, file ?? null, subField)}
+                setImageFile={(idx, file, field, subField) => handleImageFileChange(field, idx!, file!, subField)}
                 handleArrayObjectFieldChange={handleArrayObjectFieldChange}
                 />
             <GuideSection
@@ -396,9 +405,9 @@ export function AddProductPage(){
         </div>
          {popup.show && (
                 <div
-                    className={`fixed top-20 right-20 max-w-sm w-full flex items-center gap-3 px-5 py-3 rounded-xl shadow-lg text-black transition-all duration-500 transform ${{
-                        true: popup.type === "success" ? "bg-green-500" : "bg-red-500"
-                    }}`}
+                    className={`fixed top-[50%] right-[50%] px-6 py-3 rounded-lg shadow-lg text-white transition-opacity duration-500 ${
+                        popup.type === "success" ? "bg-green-500" : "bg-red-500"
+                    }`}
                     >
                     {/* Icon */}
                     <div className="flex-shrink-0">

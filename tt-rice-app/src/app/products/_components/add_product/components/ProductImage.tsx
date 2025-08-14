@@ -21,7 +21,7 @@ export function ProductImageSection({ images, onAdd, onSetImageFile }: ProductIm
               value={img}
               index={idx}
               onSetImageFile={(i, file) => onSetImageFile(i!, file)}
-              setForm={() => {}}
+              setForm={() => {return}}
               form={{} as ProductForm}
             />
           </div>

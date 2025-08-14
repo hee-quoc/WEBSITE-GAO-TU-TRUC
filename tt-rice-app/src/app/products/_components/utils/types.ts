@@ -10,9 +10,9 @@ export interface BaseFieldProps {
 
 export interface ImageUploadFieldProps extends BaseFieldProps {
   field:  keyof ProductForm;
-  subField:   keyof ProductForm[keyof ProductForm] | string;
+  subField:  string;
   type: 'image' | 'logo';
-  onSetImageFile: (index: number | null, f: File | null ,field: keyof ProductForm, subField: keyof ProductForm[keyof ProductForm] | string) => void;
+  onSetImageFile: (index: number | null, f: File | null ,field: keyof ProductForm, subField:  string) => void;
   form: ProductForm
   setForm: React.Dispatch<React.SetStateAction<ProductForm>>
 }
@@ -27,7 +27,7 @@ export interface TextFieldProps extends BaseFieldProps {
 export interface NumberArrayFieldProps extends BaseFieldProps {
   field: string | number | Image | unknown[];
   section: string
-  onChange: (section: keyof ProductForm, field: string, index: number, value?: number|string) => void;
+  onChange: (section: keyof ProductForm, field: string, index: number, value: number|string) => void;
 }
 
 
@@ -35,7 +35,7 @@ export interface TextCardObjectProps extends BaseFieldProps {
   field: string | number | Image | unknown[];
   section: string
   isArea: boolean
-  onChange: (section: keyof ProductForm, field: string, index: number, value?: number|string) => void;
+  onChange: (section: keyof ProductForm, field: string, index: number, value: string) => void;
 }
 
 
@@ -52,7 +52,7 @@ interface DropdownOption {
 export interface DropdownProps extends BaseFieldProps {
   field: string | number | Image | unknown[];
   options: DropdownOption[];
-  onChange: (field: keyof ProductForm,  value: string | number , index?:number ) => void;
+  onChange: (field: keyof ProductForm,  value: string | number , index:number ) => void;
   disabled?: boolean;
   placeholder?: string;
 }
@@ -83,7 +83,7 @@ export type Guide = {
 
 export type ProductForm = {
   title: string;
-  productImage: (Image & { caption?: string })[];
+  productImage: (Image)[];
   tag: string[];
   description: string;
   price: string;
@@ -97,5 +97,5 @@ export type ProductForm = {
   cooking: { step: string[]; description: string };
   wrapProcess: string;
   certificate: { name: string; image: Image; description: string }[];
-  productCertImage: (Image & { caption?: string })[];
+  productCertImage: (Image)[];
 };

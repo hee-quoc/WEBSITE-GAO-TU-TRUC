@@ -28,11 +28,11 @@ export function FilteredProductList({ allProducts, categories }: FilteredProduct
     }
     allProducts.map(product => {
 
-      console.log(`Product Title: ${product.title}, Tag: ${product.tag}`);
+      // console.log(`Product Title: ${product.title}, Tag: ${product.tag}`);
     })
-    const products=allProducts.filter(product => product.tag === activeTag);
+    const products=allProducts.filter(product => product.tag.includes(activeTag));
     
-    return allProducts.filter(product => product.tag === activeTag);
+    return allProducts.filter(product => product.tag.includes(activeTag));
   }, [activeTag, allProducts]);
 
   const selectedCategory = activeTag ? categories[activeTag] : null;

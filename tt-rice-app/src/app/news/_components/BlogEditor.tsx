@@ -24,7 +24,7 @@ export default function BlogEditor({ blog }: BlogEditorProps) {
     if (blog) {
       setTitle(blog.title);
       if (quill && blog.content) {
-        quill.clipboard.dangerouslyPasteHTML(blog.content);
+        // quill.clipboard.dangerouslyPasteHTML(blog.content);
       }
     }
   }, [blog, quill]);
@@ -61,24 +61,24 @@ export default function BlogEditor({ blog }: BlogEditorProps) {
       toast.error("Editor is not ready yet.");
       return;
     }
-    const content = quill.root.innerHTML;
-    const promise = blog
-      ? updateBlog.mutateAsync({ id: blog.id, title, content })
-      : createBlog.mutateAsync({ title, content });
+    // const content = quill.root.innerHTML;
+    // const promise = blog
+    //   ? updateBlog.mutateAsync({ id: blog.id, title, content })
+    //   : createBlog.mutateAsync({ title, content });
     
-    await toast.promise(promise, {
-      loading: blog ? 'Updating post...' : 'Creating post...',
-      success: `Post ${blog ? 'updated' : 'created'} successfully!`,
-      error: `Failed to ${blog ? 'update' : 'create'} post.`,
-    });
+    // await toast.promise(promise, {
+    //   loading: blog ? 'Updating post...' : 'Creating post...',
+    //   success: `Post ${blog ? 'updated' : 'created'} successfully!`,
+    //   error: `Failed to ${blog ? 'update' : 'create'} post.`,
+    // });
   };
 
   const handleDelete = () => {
-    if (!blog) return;
+    // if (!blog) return;
 
-    if (window.confirm("Are you sure you want to delete this post? This action cannot be undone.")) {
-        deleteBlog.mutate({ id: blog.id });
-    }
+    // if (window.confirm("Are you sure you want to delete this post? This action cannot be undone.")) {
+    //     deleteBlog.mutate({ id: blog.id });
+    // }
   };
 
   const isLoading = createBlog.isPending || updateBlog.isPending || deleteBlog.isPending;

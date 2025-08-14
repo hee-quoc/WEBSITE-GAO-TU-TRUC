@@ -11,12 +11,12 @@ interface CookingSectionProps {
     section: keyof ProductForm,
     field: string,
     index: number,
-    value?: any
+    value: string | number
   ) => void;
   handleNestedFieldChange: (
     section: keyof ProductForm,
     field: string,
-    value: any
+    value: string | number
   ) => void;
 }
 

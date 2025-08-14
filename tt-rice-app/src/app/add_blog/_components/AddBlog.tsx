@@ -42,7 +42,7 @@ const uid = (p = "blk") => `${p}_${Math.random().toString(36).slice(2, 10)}`;
 const fileToBase64 = (file: File) =>
   new Promise<string>((resolve, reject) => {
     const reader = new FileReader();
-    reader.onload = () => resolve(String(reader.result));
+    reader.onload = () => resolve(reader.result as string);
     reader.onerror = reject;
     reader.readAsDataURL(file);
   });

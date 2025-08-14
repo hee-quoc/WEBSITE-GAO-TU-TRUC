@@ -7,8 +7,8 @@ interface ProductInfoSectionProps {
   form: ProductForm;
   riceTypeOptions: { label: string; value: string }[];
   scoreOptions: { label: string; value: string }[];
-  onChange: (key: keyof ProductForm, value: any) => void;
-  onArrayChange: (key: keyof ProductForm, index: number, value: any) => void;
+  onChange: (key: keyof ProductForm, value: string) => void;
+  onArrayChange: (key: keyof ProductForm,value: string | number, index: number) => void;
   setForm: React.Dispatch<React.SetStateAction<ProductForm>>;
 }
 
@@ -82,7 +82,7 @@ export function ProductInfoSection({
               options={scoreOptions}
               index={idx}
               value={form.properties[idx]}
-              onChange={(field, value, index?: number) =>
+              onChange={(field, value, index: number) =>
                 onArrayChange(field, Number(value), index)
               }
             />

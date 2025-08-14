@@ -20,11 +20,14 @@ const CookingInput = z.object({
   description: z.string(),
 });
 
-const CertificateInput = z.object({
-  name: z.string(),
-  image: z.string(),
-  description: z.string(),
-});
+const CertificateInput = z.array(
+  z.object({
+    name: z.string().optional(),
+    description: z.string().optional(),
+    // image giờ chỉ là string hoặc null (URL)
+    image: z.string().nullable().optional(),
+  })
+)
 
 
 
@@ -83,7 +86,7 @@ export const productRouter = createTRPCRouter({
 
       return ctx.db.product.findMany({
         where: tag
-          ? { tag: { equals: tag } } // tag is now a String
+          ? { tag: { has: tag } } // tag is now a String
           : {},
         orderBy: { createdAt: "desc" },
       });
@@ -113,16 +116,7 @@ export const productRouter = createTRPCRouter({
           guide: GuideInput.optional(),
           cooking: CookingInput.optional(),
 
-          certificate: z
-            .array(
-              z.object({
-                name: z.string().optional(),
-                description: z.string().optional(),
-                // image giờ chỉ là string hoặc null (URL)
-                image: z.string().nullable().optional(),
-              })
-            )
-            .optional(),
+          certificate: CertificateInput.optional(),
         }),
       })
     )
@@ -165,59 +159,59 @@ export const productRouter = createTRPCRouter({
     }),
 
 
-  update: protectedProcedure
-    .input(
-      z.object({
-        id: z.number(), // ID of the product to update
-        // All fields are optional for an update
-        title: z.string().optional(),
-        slug: z.string().optional(),
-        description: z.string().optional(),
-        price: z.string().optional(),
-        detail: z.string().optional(),
-        properties: z.array(z.number()).optional(),
-        tag: z.string().optional(),
-        productImages: z.array(z.string()).optional(),
-        package: z.string().optional(),
-        parts: z.string().optional(),
-        ingredients: z.string().optional(),
-        grow: z.string().optional(),
-        wrapProcess: z.string(),
-        productCertImages: z.array(z.string()).optional(),
+  // update: protectedProcedure
+  //   .input(
+  //     z.object({
+  //       id: z.number(), // ID of the product to update
+  //       // All fields are optional for an update
+  //       title: z.string().optional(),
+  //       slug: z.string().optional(),
+  //       description: z.string().optional(),
+  //       price: z.string().optional(),
+  //       detail: z.string().optional(),
+  //       properties: z.array(z.number()).optional(),
+  //       tag: z.string().optional(),
+  //       productImages: z.array(z.string()).optional(),
+  //       package: z.string().optional(),
+  //       parts: z.string().optional(),
+  //       ingredients: z.string().optional(),
+  //       grow: z.string().optional(),
+  //       wrapProcess: z.string(),
+  //       productCertImages: z.array(z.string()).optional(),
         
-        // Relational fields are also optional
-        guide: GuideInput.optional().nullable(),
-        cooking: CookingInput.optional().nullable(),
-        certificates: z.array(CertificateInput).optional(),
-      })
-    )
-    .mutation(async ({ ctx, input }) => {
-      // void triggerRevalidation();
+  //       // Relational fields are also optional
+  //       guide: GuideInput.optional().nullable(),
+  //       cooking: CookingInput.optional().nullable(),
+  //       certificates: z.array(CertificateInput).optional(),
+  //     })
+  //   )
+  //   .mutation(async ({ ctx, input }) => {
+  //     // void triggerRevalidation();
 
-      const { id, guide, cooking, certificates, ...productData } = input;
+  //     const { id, guide, cooking, certificates, ...productData } = input;
 
-      return ctx.db.product.update({
-        where: { id },
-        data: {
-          // Update scalar fields
-          ...productData,
-          // Update relational fields using Prisma's powerful nested write operations
-          ...(guide !== undefined && { 
-            guide: guide ? { upsert: { create: guide, update: guide } } : { delete: true }
-          }),
-          ...(cooking !== undefined && { 
-            cooking: cooking ? { upsert: { create: cooking, update: cooking } } : { delete: true }
-          }),
-          ...(certificates !== undefined && { 
-            certificates: { 
-              // This replaces all existing certificates with the new list
-              set: [], 
-              create: certificates 
-            }
-          }),
-        },
-      });
-    }),
+      // return ctx.db.product.update({
+      //   where: { id },
+      //   data: {
+      //     // Update scalar fields
+      //     ...productData,
+      //     // Update relational fields using Prisma's powerful nested write operations
+      //     ...(guide !== undefined && { 
+      //       guide: guide ? { upsert: { create: guide, update: guide } } : { delete: true }
+      //     }),
+      //     ...(cooking !== undefined && { 
+      //       cooking: cooking ? { upsert: { create: cooking, update: cooking } } : { delete: true }
+      //     }),
+      //     ...(certificates !== undefined && { 
+      //       certificates: { 
+      //         // This replaces all existing certificates with the new list
+      //         set: [], 
+      //         create: certificates 
+      //       }
+      //     }),
+      //   },
+      // });
+    // }),
   // DELETE PRODUCT
   delete: protectedProcedure
     .input(z.object({ id: z.number() }))

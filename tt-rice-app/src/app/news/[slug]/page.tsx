@@ -30,10 +30,15 @@ export default function BlogPage() {
   if (isAdmin && isEditMode && blogData) {
     return <BlogEditor blog={blogData} />;
   }
+  // if (blogData.content) {
+  const content = JSON.parse(blogData?.content as string) as Array<object>;
+  // }
+  const newBlogData = {...blogData, content:content}
+  
   if (blogData) {
     return (
       <BlogView
-        blog={blogData}
+        blog={newBlogData}
         isEditable={isAdmin}
         onEdit={() => setIsEditMode(true)}
       />

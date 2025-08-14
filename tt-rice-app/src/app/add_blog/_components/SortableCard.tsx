@@ -104,7 +104,7 @@ export function SortableCard({
             <div
               className={`relative grid h-48 place-content-center rounded-xl border border-dashed ${block.image?.preview ? "bg-gray-100" : "bg-white"}`
             }      
-            style={{ height: block.image?.height ? `${(block.image?.height / block.image?.width!) * 100}%` : 'auto' }}
+            style={{ height: (block.image?.height && block.image?.width) ? `${(block.image?.height / block.image.width) * 100}%` : 'auto' }}
             >
               {block.image?.preview ? (
                 <img src={block.image.preview} alt="block" className="h-full w-full rounded-xl object-contain" />
