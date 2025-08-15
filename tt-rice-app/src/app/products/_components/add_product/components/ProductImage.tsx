@@ -15,7 +15,7 @@ export function ProductImageSection({ images, onAdd, onSetImageFile }: ProductIm
         {images.map((img, idx) => (
           <div key={idx} className="flex-shrink-0">
             <ImageCard
-              field="productImage"
+              field="productImages"
               subField=""
               type="image"
               value={img}

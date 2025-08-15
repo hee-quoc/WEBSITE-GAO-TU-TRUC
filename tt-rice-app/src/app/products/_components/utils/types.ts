@@ -83,7 +83,7 @@ export type Guide = {
 
 export type ProductForm = {
   title: string;
-  productImage: (Image)[];
+  productImages: (Image)[];
   tag: string[];
   description: string;
   price: string;
@@ -96,6 +96,6 @@ export type ProductForm = {
   grow: string;
   cooking: { step: string[]; description: string };
   wrapProcess: string;
-  certificate: { name: string; image: Image; description: string }[];
-  productCertImage: (Image)[];
+  certificates: { name: string; image: Image; description: string }[];
+  productCertImages: (Image)[];
 };
