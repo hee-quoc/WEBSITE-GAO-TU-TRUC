@@ -1,11 +1,12 @@
 // src/app/_components/BlogView.tsx
 // import { type Blog } from "@prisma/client";
 import Image from "next/image";
+// import type { JSONValue } from "node_modules/superjson/dist/types";
 
 interface Blog{
   title: string;
   slug: string;
-  content: string;
+  content: Array<object>;
   published: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -19,19 +20,19 @@ interface BlogViewProps {
 }
 type Block = {
   type: 'header' | 'image' | 'description';
-  payload: Record<string, any>;
+  payload: Record<string, unknown>;
 };
 
 export default function BlogView({ blog, isEditable, onEdit }: BlogViewProps) {
-  let blocks: Block[] =[]
-  if(blog.content){
-    try {
-      blocks = JSON.parse(blog.content);
-    } catch (error) {
-      console.error('Invalid JSON content:', error);
-      return <p className="text-red-500">Nội dung không hợp lệ.</p>;
-    }
-  }
+  const blocks: Block[] =[]
+  // if(blog.content){
+  //   try {
+  //     blocks = JSON.parse(blog.content);
+  //   } catch (error) {
+  //     console.error('Invalid JSON content:', error);
+  //     return <p className="text-red-500">Nội dung không hợp lệ.</p>;
+  //   }
+  // }
   
   return (
     <article className="mx-auto max-w-4xl py-12">
@@ -77,22 +78,22 @@ export default function BlogView({ blog, isEditable, onEdit }: BlogViewProps) {
             case 'header':
               return (
                 <h3 key={index} className="text-2xl font-semibold">
-                  {block.payload.text}
+                  {block.payload.text as string}
                 </h3>
               );
             case 'image':
               return (
                 <div key={index} className="w-full">
                   <Image
-                    src={block.payload.image}
-                    alt={block.payload.caption || 'Blog Image'}
+                    src={block.payload.image as string}
+                    alt={block.payload.caption as string ?? 'Blog Image'}
                     width={800}
                     height={450}
                     className="rounded-lg object-contain"
                   />
-                  {block.payload.caption && (
+                  {block.payload.caption as string && (
                     <p className="text-sm text-center mt-2 text-gray-600">
-                      {block.payload.caption}
+                      {block.payload.caption as string}
                     </p>
                   )}
                 </div>
@@ -100,7 +101,7 @@ export default function BlogView({ blog, isEditable, onEdit }: BlogViewProps) {
             case 'description':
               return (
                 <p key={index} className="text-base leading-relaxed">
-                  {block.payload.code}
+                  {block.payload.code as string}
                 </p>
               );
             default:

@@ -16,7 +16,7 @@ export function Dropdown({
      const handleSelectChange = useCallback(
         (e: React.ChangeEvent<HTMLSelectElement>) => {
           console.log(e.target.value)
-          onChange?.(field as keyof ProductForm, e.target.value, index as number);
+          onChange(field as keyof ProductForm, e.target.value, index!);
         },
         [onChange, field,index]
       );
@@ -109,7 +109,7 @@ export const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
         className={`w-full rounded-lg border px-4 py-2 bg-white text-sm shadow-sm cursor-pointer ${disabled ? "bg-gray-100 cursor-not-allowed" : ""}`}
         onClick={handleToggle}
       >
-        {value.length > 0 ? options.filter(o => value.includes(o.value as string)).map(o => o.label).join(", ") : placeholder}
+        {value.length > 0 ? options.filter(o => value.includes(o.value)).map(o => o.label).join(", ") : placeholder}
       </div>
       {open && (
         <div className="absolute top-full left-0 mt-1 w-full rounded-lg border bg-white shadow-lg z-10 max-h-60 overflow-y-auto">

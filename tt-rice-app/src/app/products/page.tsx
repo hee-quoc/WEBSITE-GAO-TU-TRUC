@@ -56,11 +56,13 @@ function FilterButtonsFallback() {
   );
 }
 
-export default async function ProductsPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ tag?: string }>;
-}) {
+export default async function ProductsPage(
+//   {
+//   searchParams,
+// }: {
+//   searchParams: Promise<{ tag?: string }>;
+// }
+) {
   const allProducts = await api.product.getAll({});
   return (
     <main>

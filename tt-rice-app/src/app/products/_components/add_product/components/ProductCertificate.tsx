@@ -11,13 +11,13 @@ interface CertificateSectionProps {
     indexImage: number | null,
     fileOrUndefined: File | null | undefined,
     field: keyof ProductForm,
-    subField?: keyof ProductForm[keyof ProductForm] | string
+    subField?: string
   ) => void;
   handleArrayObjectFieldChange:(
     section: keyof ProductForm,
     field: string,
     index: number,
-    value: any
+    value: string
   ) => void;
 }
 
@@ -131,7 +131,7 @@ export function ProductCertImageSection({
               value={img}
               index={idx}
               onSetImageFile={(i, file) => onSetImageFile(i!, file)}
-              setForm={() => {}}
+              setForm={()=>{return}}
               form={{} as ProductForm}
             />
           </div>

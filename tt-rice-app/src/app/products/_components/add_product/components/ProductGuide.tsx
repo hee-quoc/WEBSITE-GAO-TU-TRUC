@@ -8,7 +8,7 @@ interface GuideSectionProps {
     section: keyof ProductForm,
     field: string,
     index: number,
-    value?: any
+    value: string | number
   ) => void;
 }
 
@@ -66,7 +66,7 @@ export function GuideSection({ guide, handleNestedChange }: GuideSectionProps) {
           <div className="mx-auto max-w-5xl px-4 py-2 flex flex-col gap-4">
             {guide.finger.map((_, index) => (
               <div className="flex flex-row gap-2" key={index}>
-                <span className="text-center">Tương đương <br />"lóng tay"</span>
+                <span className="text-center">Tương đương <br />{"\"lóng tay\""}</span>
                 <ArrayCardInput
                   section="guide"
                   field="finger"
