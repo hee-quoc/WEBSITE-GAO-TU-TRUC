@@ -171,41 +171,49 @@ export const productRouter = createTRPCRouter({
 
   update: protectedProcedure
     .input(
-      z.object({
-        id: z.number(),
-        title: z.string().optional(),
-        slug: z.string(),
-        description: z.string().optional(),
-        price: z.string().optional(),
-        detail: z.string().optional(),
-        properties: z.array(z.number()).optional(),
-        tag: z.array(z.string()),
-        productImages: z.array(z.string()).optional(),
-        package: z.string().optional(),
-        parts: z.string().optional(),
-        ingredients: z.string().optional(),
-        grow: z.string().optional(),
-        wrapProcess: z.string(),
-        productCertImages: z.array(z.string()).optional(),
-        guide: GuideInput.optional().nullable(),
-        cooking: CookingInput.optional().nullable(),
-        certificates: CertificateInput.optional(),
-      })
+        z.object({
+          id: z.number(),
+          slug: z.string(),
+          form: z.object({
+            title: z.string().min(1, "Title is required"),
+            description: z.string().min(1, "Description is required"),
+            price: z.string().min(1, "Price is required"),
+            detail: z.string(),
+            properties: z.array(z.number()),
+            tag: z.array(z.string()),
+
+            // Thay vì mảng object { file: any }, giờ là mảng string key/url
+            productImages: z.array(z.string()),
+            package: z.string(),
+            parts: z.string(),
+            ingredients: z.string(),
+            grow: z.string(),
+            wrapProcess: z.string(),
+
+            productCertImages: z.array(z.string()),
+            guide: GuideInput.optional(),
+            cooking: CookingInput.optional(),
+
+            certificates: z
+              .array(
+                z.object({
+                  name: z.string().optional(),
+                  description: z.string().optional(),
+                  // image giờ chỉ là string hoặc null (URL)
+                  image: z.string().nullable().optional(),
+                })
+              )
+              .optional(),
+          }),
+        })
     )
     .mutation(async ({ ctx, input }) => {
-      const {
-        id,
-        guide,
-        cooking,
-        certificates,
-        productImages,
-        productCertImages,
-        ...productData
-      } = input;
+      const { id,slug,form } = input;
+      const { guide, cooking, certificates, productImages, productCertImages, ...rest } = form;
 
       // 1. Lấy dữ liệu cũ từ DB
       const oldProduct = await ctx.db.product.findFirst({
-        where: { id, slug: input.slug },
+        where: { id, slug: slug },
         select: {
           productImages: true,
           productCertImages: true,
@@ -237,11 +245,10 @@ export const productRouter = createTRPCRouter({
       // 5. Xóa ảnh trên S3
       await Promise.all(imagesToDelete.map((url) => deleteS3ObjectByUrl(url)));
 
-      // 6. Update DB
-      return ctx.db.product.update({
+      await ctx.db.product.update({
         where: { id },
         data: {
-          ...productData,
+           ...rest,
           ...(productImages && { productImages: { set: productImages } }),
           ...(productCertImages && { productCertImages: { set: productCertImages } }),
           ...(guide !== undefined && {
@@ -266,6 +273,12 @@ export const productRouter = createTRPCRouter({
           }),
         },
       });
+
+      // 6. Update DB
+      return {
+        success: true,
+        message: "Product updated successfully",
+      };
   }),
   // DELETE PRODUCT
   delete: protectedProcedure

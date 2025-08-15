@@ -9,6 +9,7 @@ import {CertificateSection, ProductCertImageSection} from "./components/ProductC
 import {GuideSection} from "./components/ProductGuide";
 import {CookingSection} from "./components/ProductCooking";
 import { useProductFormHandlers } from "./utils/useProductFormHandlers";
+import {uploadFileToS3} from "./utils/s3Upload";
 
 function mapImageUrlsToImageObjects(urls: string[] = []): Image[] {
   return urls.map((url) => ({
@@ -46,34 +47,34 @@ const riceTypeOptions = [
         
     ]
 
+
+
 export function EditProductPage({ productSlug }: { productSlug: string }) {
-    const [form, setForm] = useState<ProductForm | null>(null);
+    const initialFormState = {
+        title: "",
+        productImages: [{ file: null, preview: null, width: undefined, height: undefined }] as Image[],
+            tag:[],
+        description: "",
+        price: "",
+        detail: "",
+        properties: [0,0,0,0],
+        guide: { water: ["","",""], rice: ["","",""], finger: ["","",""], step: ["","","",""] },
+        package: "",
+        parts: "",
+        ingredients: "",
+        grow: "",
+        cooking: {step:[],description:""},
+        wrapProcess: "",
+        certificates: [{name:"",image:{ file: null, preview: null, width: undefined, height: undefined },description:""}],
+            productCertImages: [{ file: null, preview: null, width: undefined, height: undefined }] as Image[],
+      }
+    const [form, setForm] = useState<ProductForm>(initialFormState);
     const [loading, setLoading] = useState(true);
     const [popup, setPopup] = useState({ show: false, message: "", type: "success" });
     const [onSave, setSave] = useState(false);
     // 1. Fetch product data
     const { data: productData, isLoading } = api.product.getBySlug.useQuery({ slug: productSlug });
     const convertWater = productData?.guide?.water.map((w) => w.toString());
-    if (form === null) {
-      setForm({
-        title: "",
-        productImages: [{ file: null, preview: null, width: undefined, height: undefined }] as Image[],
-        tag: [],
-        description: "",
-        price: "",
-        detail: "",
-        properties: [0, 0, 0, 0],
-        guide: { water: ["", "", ""], rice: ["", "", ""], finger: ["", "", ""], step: ["", "", "", ""] },
-        package: "",
-        parts: "",
-        ingredients: "",
-        grow: "",
-        cooking: { step: [], description: "" },
-        wrapProcess: "",
-        certificates: [{ name: "", image: { file: null, preview: null, width: undefined, height: undefined }, description: "" }],
-        productCertImages: [{ file: null, preview: null, width: undefined, height: undefined }] as Image[],
-      });
-    }
     const {
             handleFieldChange,
             handleArrayFieldChange,
@@ -81,7 +82,7 @@ export function EditProductPage({ productSlug }: { productSlug: string }) {
             handleNestedFieldChange,
             handleArrayObjectFieldChange,
             handleImageFileChange,
-            } = useProductFormHandlers(setForm as React.Dispatch<React.SetStateAction<ProductForm>>);
+            } = useProductFormHandlers(setForm);
 
 
   useEffect(() => {
@@ -113,8 +114,124 @@ export function EditProductPage({ productSlug }: { productSlug: string }) {
   }, [productData]);
 
   const updateProduct = api.product.update.useMutation();
+  const createPresignedUrl = api.s3.createPresignedUrl.useMutation();
+
+  const handleSubmit = async () => {
+        try {
+        setSave(true)
+        function notEmpty<T>(value: T | null | undefined): value is T {
+            return value != null;
+            }
+         // 1. Lấy danh sách tất cả file cần upload theo thứ tự:
+        const productImageFiles = form.productImages.filter(p => p.file).map(p => p.file!);
+        const remainProductImageUrls = mapImageUrlsToImageObjects(productData?.productImages).filter(p => {return (p.file == null && p.preview)}).map(p => p.preview!)
+        const productCertImageFiles = form.productCertImages.filter(p => p.file).map(p => p.file!);
+        const remainProductCertImageUrls = mapImageUrlsToImageObjects(productData?.productCertImages).filter(p => {return (p.file == null && p.preview)}).map(p => p.preview!)
+        const certificateImageFiles = form.certificates
+        .filter((c): c is typeof c & { image: { file: File } } => !!c.image?.file)
+        .map(c => c.image.file);
+        const remainCertificateImageFileUrls = mapCertificates(productData?.certificates)
+        .filter((c): c is typeof c & { image: { file: File } } => {return (c.image?.file == null && !!c.image?.preview)})
+        .map(c => c.image.preview!);
+
+       
+
+        const allFiles = [...productImageFiles, ...productCertImageFiles, ...certificateImageFiles];
+
+        // 2. Lấy presigned URLs cho tất cả file
+        const presignedResults = await Promise.all(
+        allFiles.map(file =>
+            createPresignedUrl.mutateAsync({
+            fileName: file.name,
+            fileType: file.type,
+            })
+        )
+        );
+
+        // 3. Upload file lên S3 theo thứ tự
+        await Promise.all(
+            presignedResults.map((res, i) => uploadFileToS3(res.url, allFiles[i]!))
+        );
+
+        
+
+        // 4. Map lại key tương ứng theo từng phần
+        let index = 0;
+
+        const details = `<p>${form.detail.replace("\n","<br />")}</p>`
+
+       const productImageUrls = form.productImages
+        .filter(p => p.file)
+        .map(() => presignedResults[index++]?.fileUrl)
+        .filter((url): url is string => typeof url === "string"); // loại bỏ undefined
+
+        const totalProductImageUrls = [...remainProductImageUrls,...productImageUrls]
+
+        const productCertImageUrls = form.productCertImages
+        .filter(p => p.file)
+        .map(() => presignedResults[index++]?.fileUrl)
+        .filter((url): url is string => typeof url === "string");
+
+        const totalProductCertImageUrls = [...remainProductCertImageUrls, ...productCertImageUrls]
+
+        const filteredCertificates = form.certificates
+        .filter(
+            (c) =>
+            c.name?.trim() !== "" ||
+            c.description?.trim() !== "" ||
+            (c.image?.file)
+        );
+
+        const certificateImagesUrls = filteredCertificates
+        .filter(c => c.image?.file)
+        .map(() => presignedResults[index++]?.fileUrl)
+        .filter((url): url is string => typeof url === "string");
+
+        const totalCertificateImagesUrls = [...remainCertificateImageFileUrls, ...certificateImagesUrls]
+
+        const water = form.guide.water.map((w)=>{return Number(w)})
+        // 5. Tạo payload gửi server (gán url/key cho certificate)
+       
+        const payload = {
+        ...form,
+        guide: {
+            ...form.guide,
+            water: water
+        },
+        detail: details,
+        productImages: totalProductImageUrls,
+        productCertImages: totalProductCertImageUrls,
+        certificates: filteredCertificates.map((c, i) => ({
+            name: c.name,
+            description: c.description,
+            image: totalCertificateImagesUrls[i] ?? null,
+        })),
+        };
+
+        const response = await updateProduct.mutateAsync({ id: productData!.id , slug: productData!.slug ,form: payload });
+
+        if (response.success) {
+            setPopup({ show: true, message: "Cập nhật sản phẩm thành công", type: "success" });
+            setSave(false);
+            // Delay 5 giây sau đó reset form và refresh page
+            setTimeout(() => {
+                setForm(initialFormState); // reset form
+                window.location.reload(); // refresh trang
+            }, 5000);
+        } else {
+            setPopup({ show: true, message: "Có lỗi khi thêm sản phẩm!", type: "error" });
+            setTimeout(() => {
+               setPopup({ show: false, message: "", type: "success" });
+               setSave(false);
+            }, 3000);
+        }
+
+    } catch (error) {
+        console.error(error);
+    }
+    };
   
-  if (loading || !form) return <div>Đang tải dữ liệu sản phẩm...</div>;
+  if (isLoading || !form) return ( <div className="flex flex-col items-center"><div className="pt-20 text-[32px]">Đang tải dữ liệu sản phẩm...</div>;</div>)
   return(
       <div className="flex flex-col items-center">
           <div className="flex flex-col max-w-[1440px]  pt-8">
@@ -127,7 +244,7 @@ export function EditProductPage({ productSlug }: { productSlug: string }) {
                   scoreOptions={scoreOptions}
                   onChange={handleFieldChange}
                   onArrayChange={handleArrayFieldChange}
-                  setForm={setForm as React.Dispatch<React.SetStateAction<ProductForm>>}
+                  setForm={setForm}
                   />
               <ProductImageSection
                   images={form.productImages}
@@ -141,7 +258,7 @@ export function EditProductPage({ productSlug }: { productSlug: string }) {
               />
                <CertificateSection
                   certificates={form.certificates}
-                  setForm={setForm as React.Dispatch<React.SetStateAction<ProductForm>>}
+                  setForm={setForm}
                   setImageFile={(idx, file, field, subField) => handleImageFileChange(field, idx!, file!, subField)}
                   handleArrayObjectFieldChange={handleArrayObjectFieldChange}
                   />
@@ -190,7 +307,7 @@ export function EditProductPage({ productSlug }: { productSlug: string }) {
               <CookingSection
                   cooking={form.cooking}
                   showStep={form.tag.includes("gao-an")}
-                  setForm={setForm as React.Dispatch<React.SetStateAction<ProductForm>>}
+                  setForm={setForm}
                   handleNestedArrayFieldChange={handleNestedArrayFieldChange}
                   handleNestedFieldChange={handleNestedFieldChange}
                   />
@@ -217,8 +334,8 @@ export function EditProductPage({ productSlug }: { productSlug: string }) {
               <div className="w-full flex justify-center mt-10">
                   <button
                   type="button"
-                  // onClick={handleSubmit}
-                  // disabled={onSave}
+                  onClick={handleSubmit}
+                  disabled={onSave || popup.show}
                   className="flex flex-row rounded-lg bg-green-600 text-white px-6 py-3 text-lg font-semibold shadow hover:bg-green-700 disabled:opacity-50"
                   >
                   {onSave && (
