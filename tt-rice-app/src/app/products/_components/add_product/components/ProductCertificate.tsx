@@ -5,7 +5,7 @@ import { X } from "lucide-react";
 import { type ProductForm, type Image } from "../../utils/types";
 
 interface CertificateSectionProps {
-  certificates: ProductForm["certificate"];
+  certificates: ProductForm["certificates"];
   setForm: React.Dispatch<React.SetStateAction<ProductForm>>;
   setImageFile: (
     indexImage: number | null,
@@ -45,7 +45,7 @@ export function CertificateSection({
           >
             <div className="text-[20px] font-bold w-full px-4 mt-5">Ảnh chứng nhận</div>
             <ImageCard
-              field="certificate"
+              field="certificates"
               subField="image"
               type="image"
               value={cer.image}
@@ -78,7 +78,7 @@ export function CertificateSection({
               onClick={() =>
                 setForm((prev) => ({
                   ...prev,
-                  certificate: prev.certificate.filter((_, i) => i !== idx),
+                  certificate: prev.certificates.filter((_, i) => i !== idx),
                 }))
               }
               className="absolute right-2 top-2 rounded-lg bg-white/80 p-1 text-red-600 shadow hover:bg-white"
@@ -95,7 +95,7 @@ export function CertificateSection({
               setForm((prev) => ({
                 ...prev,
                 certificate: [
-                  ...prev.certificate,
+                  ...prev.certificates,
                   {
                     name: "",
                     image: { file: null, preview: null, width: undefined, height: undefined },
@@ -125,7 +125,7 @@ export function ProductCertImageSection({
         {images.map((img, idx) => (
           <div key={idx} className="flex-shrink-0">
             <ImageCard
-              field="productCertImage"
+              field="productCertImages"
               subField=""
               type="logo"
               value={img}

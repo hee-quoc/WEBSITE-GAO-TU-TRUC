@@ -6,6 +6,7 @@ import {
   publicProcedure,
 } from "~/server/api/trpc";
 import {generateUniqueSlug} from "../../utils/utils"
+import {deleteS3ObjectByUrl} from "../../s3";
 
 
 const GuideInput = z.object({
@@ -105,18 +106,27 @@ export const productRouter = createTRPCRouter({
           tag: z.array(z.string()),
 
           // Thay vì mảng object { file: any }, giờ là mảng string key/url
-          productImage: z.array(z.string()),
+          productImages: z.array(z.string()),
           package: z.string(),
           parts: z.string(),
           ingredients: z.string(),
           grow: z.string(),
           wrapProcess: z.string(),
 
-          productCertImage: z.array(z.string()),
+          productCertImages: z.array(z.string()),
           guide: GuideInput.optional(),
           cooking: CookingInput.optional(),
 
-          certificate: CertificateInput.optional(),
+          certificates: z
+            .array(
+              z.object({
+                name: z.string().optional(),
+                description: z.string().optional(),
+                // image giờ chỉ là string hoặc null (URL)
+                image: z.string().nullable().optional(),
+              })
+            )
+            .optional(),
         }),
       })
     )
@@ -124,7 +134,7 @@ export const productRouter = createTRPCRouter({
       const { form } = input;
       const slug = await generateUniqueSlug(form.title);
 
-      const { guide, cooking, certificate, productImage, productCertImage, ...rest } = form;
+      const { guide, cooking, certificates, productImages, productCertImages, ...rest } = form;
 
       // Không upload file nữa vì client đã gửi URL rồi
       // Bạn chỉ cần lưu URL/key vào database
@@ -133,13 +143,13 @@ export const productRouter = createTRPCRouter({
         data: {
           ...rest,
           slug,
-          productImages: { set: productImage },
-          productCertImages: { set: productCertImage },
+          productImages: { set: productImages },
+          productCertImages: { set: productCertImages },
           ...(guide && { guide: { create: guide } }),
           ...(cooking && { cooking: { create: cooking } }),
-          ...(certificate && {
+          ...(certificates && {
             certificates: {
-              create: certificate.map((c) => ({
+              create: certificates.map((c) => ({
                 name: c.name ?? "",
                 description: c.description ?? "",
                 image: c.image ?? "",
@@ -159,59 +169,117 @@ export const productRouter = createTRPCRouter({
     }),
 
 
-  // update: protectedProcedure
-  //   .input(
-  //     z.object({
-  //       id: z.number(), // ID of the product to update
-  //       // All fields are optional for an update
-  //       title: z.string().optional(),
-  //       slug: z.string().optional(),
-  //       description: z.string().optional(),
-  //       price: z.string().optional(),
-  //       detail: z.string().optional(),
-  //       properties: z.array(z.number()).optional(),
-  //       tag: z.string().optional(),
-  //       productImages: z.array(z.string()).optional(),
-  //       package: z.string().optional(),
-  //       parts: z.string().optional(),
-  //       ingredients: z.string().optional(),
-  //       grow: z.string().optional(),
-  //       wrapProcess: z.string(),
-  //       productCertImages: z.array(z.string()).optional(),
-        
-  //       // Relational fields are also optional
-  //       guide: GuideInput.optional().nullable(),
-  //       cooking: CookingInput.optional().nullable(),
-  //       certificates: z.array(CertificateInput).optional(),
-  //     })
-  //   )
-  //   .mutation(async ({ ctx, input }) => {
-  //     // void triggerRevalidation();
+  update: protectedProcedure
+    .input(
+        z.object({
+          id: z.number(),
+          slug: z.string(),
+          form: z.object({
+            title: z.string().min(1, "Title is required"),
+            description: z.string().min(1, "Description is required"),
+            price: z.string().min(1, "Price is required"),
+            detail: z.string(),
+            properties: z.array(z.number()),
+            tag: z.array(z.string()),
 
-  //     const { id, guide, cooking, certificates, ...productData } = input;
+            // Thay vì mảng object { file: any }, giờ là mảng string key/url
+            productImages: z.array(z.string()),
+            package: z.string(),
+            parts: z.string(),
+            ingredients: z.string(),
+            grow: z.string(),
+            wrapProcess: z.string(),
 
-      // return ctx.db.product.update({
-      //   where: { id },
-      //   data: {
-      //     // Update scalar fields
-      //     ...productData,
-      //     // Update relational fields using Prisma's powerful nested write operations
-      //     ...(guide !== undefined && { 
-      //       guide: guide ? { upsert: { create: guide, update: guide } } : { delete: true }
-      //     }),
-      //     ...(cooking !== undefined && { 
-      //       cooking: cooking ? { upsert: { create: cooking, update: cooking } } : { delete: true }
-      //     }),
-      //     ...(certificates !== undefined && { 
-      //       certificates: { 
-      //         // This replaces all existing certificates with the new list
-      //         set: [], 
-      //         create: certificates 
-      //       }
-      //     }),
-      //   },
-      // });
-    // }),
+            productCertImages: z.array(z.string()),
+            guide: GuideInput.optional(),
+            cooking: CookingInput.optional(),
+
+            certificates: z
+              .array(
+                z.object({
+                  name: z.string().optional(),
+                  description: z.string().optional(),
+                  // image giờ chỉ là string hoặc null (URL)
+                  image: z.string().nullable().optional(),
+                })
+              )
+              .optional(),
+          }),
+        })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const { id,slug,form } = input;
+      const { guide, cooking, certificates, productImages, productCertImages, ...rest } = form;
+
+      // 1. Lấy dữ liệu cũ từ DB
+      const oldProduct = await ctx.db.product.findFirst({
+        where: { id, slug: slug },
+        select: {
+          productImages: true,
+          productCertImages: true,
+          certificates: { select: { image: true } },
+        },
+      });
+
+      // 2. Lấy danh sách ảnh cũ
+      const oldProductImages = oldProduct?.productImages ?? [];
+      const oldProductCertImages = oldProduct?.productCertImages ?? [];
+      const oldCertificateImages = (oldProduct?.certificates ?? [])
+        .map((c) => c.image)
+        .filter(Boolean);
+
+      // 3. Lấy danh sách ảnh mới
+      const newProductImages = productImages ?? oldProductImages;
+      const newProductCertImages = productCertImages ?? oldProductCertImages;
+      const newCertificateImages = certificates
+        ? certificates.map((c) => c.image).filter(Boolean)
+        : oldCertificateImages;
+
+      // 4. Tìm các URL cần xóa trên S3
+      const imagesToDelete = [
+        ...oldProductImages.filter((url) => !newProductImages.includes(url)),
+        ...oldProductCertImages.filter((url) => !newProductCertImages.includes(url)),
+        ...oldCertificateImages.filter((url) => !newCertificateImages.includes(url)),
+      ];
+
+      // 5. Xóa ảnh trên S3
+      await Promise.all(imagesToDelete.map((url) => deleteS3ObjectByUrl(url)));
+
+      await ctx.db.product.update({
+        where: { id },
+        data: {
+           ...rest,
+          ...(productImages && { productImages: { set: productImages } }),
+          ...(productCertImages && { productCertImages: { set: productCertImages } }),
+          ...(guide !== undefined && {
+            guide: guide
+              ? { upsert: { create: guide, update: guide } }
+              : { delete: true },
+          }),
+          ...(cooking !== undefined && {
+            cooking: cooking
+              ? { upsert: { create: cooking, update: cooking } }
+              : { delete: true },
+          }),
+          ...(certificates !== undefined && {
+            certificates: {
+              set: [],
+              create: certificates.map((c) => ({
+                name: c.name ?? "",
+                description: c.description ?? "",
+                image: c.image ?? "",
+              })),
+            },
+          }),
+        },
+      });
+
+      // 6. Update DB
+      return {
+        success: true,
+        message: "Product updated successfully",
+      };
+  }),
   // DELETE PRODUCT
   delete: protectedProcedure
     .input(z.object({ id: z.number() }))
@@ -233,13 +301,15 @@ export const productRouter = createTRPCRouter({
   getBySlug: publicProcedure
     .input(z.object({ slug: z.string() }))
     .query(async ({ ctx, input }) => {
-      return ctx.db.product.findUnique({
-        where: { slug: input.slug },
-        include: {
-          guide: true,        
-          cooking: true,  
-          certificates: true, 
+      const product = await ctx.db.product.findUnique({
+      where: { slug: input.slug },
+      include: {
+        guide: true,
+        cooking: true,
+        certificates: true,
         },
       });
+      if (!product) return null;
+      return product;
     }),
 });

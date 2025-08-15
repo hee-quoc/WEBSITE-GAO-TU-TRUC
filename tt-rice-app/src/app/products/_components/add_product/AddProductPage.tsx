@@ -3,7 +3,7 @@
 import React, { useState} from "react";
 // import { AddProductCard } from "./AddProductCard";
 // import { ImageCard } from  "./utils/ImageCard";
-import { TextCard, TextCardObject } from  "../utils/TextCard";
+import { TextCard} from  "../utils/TextCard";
 // import { ArrayCardInput } from  "./utils/ArrayCardInput";
 // import {Dropdown, MultiSelectDropdown} from "./utils/DropDownCard"
 // import {  X } from "lucide-react";
@@ -14,13 +14,14 @@ import {ProductInfoSection} from "./components/ProductInfo";
 import {CertificateSection, ProductCertImageSection} from "./components/ProductCertificate";
 import {GuideSection} from "./components/ProductGuide";
 import {CookingSection} from "./components/ProductCooking";
+import { useProductFormHandlers } from "./utils/useProductFormHandlers";
 // import { t } from "node_modules/framer-motion/dist/types.d-D0HXPxHm";
 
 
 export function AddProductPage(){
     const initialFormState = {
 		title: "",
-		productImage: [{ file: null, preview: null, width: undefined, height: undefined }] as Image[],
+		productImages: [{ file: null, preview: null, width: undefined, height: undefined }] as Image[],
         tag:[],
 		description: "",
 		price: "",
@@ -33,8 +34,8 @@ export function AddProductPage(){
 		grow: "",
 		cooking: {step:[],description:""},
 		wrapProcess: "",
-		certificate: [{name:"",image:{ file: null, preview: null, width: undefined, height: undefined },description:""}],
-        productCertImage: [{ file: null, preview: null, width: undefined, height: undefined }] as Image[],
+		certificates: [{name:"",image:{ file: null, preview: null, width: undefined, height: undefined },description:""}],
+        productCertImages: [{ file: null, preview: null, width: undefined, height: undefined }] as Image[],
 	}
     const [popup, setPopup] = useState({ show: false, message: "", type: "success" });
     const [onSave,setSave] = useState<boolean>(false)
@@ -56,97 +57,106 @@ export function AddProductPage(){
     ]
 
 
-    // 1. Handler cho field primitive (string, number, ...)
-    const handleFieldChange = (key: keyof ProductForm, value: string | number | string[] | number[] | Image |(Image)[] ) => {
-        setForm(prev => ({
-            ...prev,
-            [key]: value,
-        }));
-    };
+    // // 1. Handler cho field primitive (string, number, ...)
+    // const handleFieldChange = (key: keyof ProductForm, value: string | number | string[] | number[] | Image |(Image)[] ) => {
+    //     setForm(prev => ({
+    //         ...prev,
+    //         [key]: value,
+    //     }));
+    // };
 
     // 2. Handler cho field là array primitive (ví dụ: properties)
-    const handleArrayFieldChange = (key: keyof ProductForm,  value:  string | number , index: number) => {
-        setForm(prev => {
-            const arr = Array.isArray(prev[key]) ? [...(prev[key] as string[] | number[])] : [];
-            arr[index] = value;
-            return { ...prev, [key]: arr };
-        });
-    };
+    // const handleArrayFieldChange = (key: keyof ProductForm,  value:  string | number , index: number) => {
+    //     setForm(prev => {
+    //         const arr = Array.isArray(prev[key]) ? [...(prev[key] as string[] | number[])] : [];
+    //         arr[index] = value;
+    //         return { ...prev, [key]: arr };
+    //     });
+    // };
 
-    // 3. Handler cho object lồng (ví dụ: guide.water, guide.step, ...)
-    const handleNestedArrayFieldChange = (
-        section: keyof ProductForm,
-        field: string,
-        index: number,
-        value: string | number
-    ) => {
-        setForm(prev => {
-            const sectionValue = { ...(prev[section] as  Record<string, unknown>) };
-            const arr = Array.isArray(sectionValue[field] as Array<number>| Array<string>) ? [...sectionValue[field] as Array<number>| Array<string>] : [];
-            arr[index] = value;
-            return {
-                ...prev,
-                [section]: { ...sectionValue, [field]: arr },
-            };
-        });
-    };
+    // // 3. Handler cho object lồng (ví dụ: guide.water, guide.step, ...)
+    // const handleNestedArrayFieldChange = (
+    //     section: keyof ProductForm,
+    //     field: string,
+    //     index: number,
+    //     value: string | number
+    // ) => {
+    //     setForm(prev => {
+    //         const sectionValue = { ...(prev[section] as  Record<string, unknown>) };
+    //         const arr = Array.isArray(sectionValue[field] as Array<number>| Array<string>) ? [...sectionValue[field] as Array<number>| Array<string>] : [];
+    //         arr[index] = value;
+    //         return {
+    //             ...prev,
+    //             [section]: { ...sectionValue, [field]: arr },
+    //         };
+    //     });
+    // };
 
-    // 4. Handler cho object lồng (field không phải array, ví dụ: guide.description)
-    const handleNestedFieldChange = (
-        section: keyof ProductForm,
-        field: string,
-        value: string | number
-    ) => {
-        setForm(prev => ({
-            ...prev,
-            [section]: { ...(prev[section] as  Record<string, unknown>), [field]: value },
-        }));
-    };
+    // // 4. Handler cho object lồng (field không phải array, ví dụ: guide.description)
+    // const handleNestedFieldChange = (
+    //     section: keyof ProductForm,
+    //     field: string,
+    //     value: string | number
+    // ) => {
+    //     setForm(prev => ({
+    //         ...prev,
+    //         [section]: { ...(prev[section] as  Record<string, unknown>), [field]: value },
+    //     }));
+    // };
 
-    // 5. Handler cho array object (ví dụ: certificate)
-    const handleArrayObjectFieldChange = (
-        section: keyof ProductForm,
-        field: string,
-        index: number,
-        value: string
-    ) => {
-        setForm(prev => {
-            const arr = Array.isArray(prev[section]) ? [...(prev[section] as Record<string, unknown>[])] : [];
-            arr[index] = { ...arr[index], [field]: value };
-            return { ...prev, [section]: arr };
-        });
-    };
+    // // 5. Handler cho array object (ví dụ: certificate)
+    // const handleArrayObjectFieldChange = (
+    //     section: keyof ProductForm,
+    //     field: string,
+    //     index: number,
+    //     value: string
+    // ) => {
+    //     setForm(prev => {
+    //         const arr = Array.isArray(prev[section]) ? [...(prev[section] as Record<string, unknown>[])] : [];
+    //         arr[index] = { ...arr[index], [field]: value };
+    //         return { ...prev, [section]: arr };
+    //     });
+    // };
 
-    // 6. Handler cho image upload (array image hoặc object image trong array)
-    const handleImageFileChange = (
-        section: keyof ProductForm,
-        index: number,
-        file: File | null,
-        subField?: string
-    ) => {
-        setForm(prev => {
-            const arr = Array.isArray(prev[section]) ? [...(prev[section] as Record<string, unknown>[])] : [];
-            if (subField) {
-                // object image trong array object (vd: certificate.image)
-                arr[index] = {
-                    ...arr[index],
-                    [subField]: {
-                        ...(arr[index]?.[subField] ?? {}),
-                        file,
-                        preview: file ? URL.createObjectURL(file) : null,
-                    },
-                };
-            } else {
-                // array image trực tiếp (vd: productImage)
-                arr[index] = {
-                    ...arr[index],
-                    file,
-                    preview: file ? URL.createObjectURL(file) : null,
-                };
-            }
-            return { ...prev, [section]: arr };
-        });
-    };
+    // // 6. Handler cho image upload (array image hoặc object image trong array)
+    // const handleImageFileChange = (
+    //     section: keyof ProductForm,
+    //     index: number,
+    //     file: File | null,
+    //     subField?: string
+    // ) => {
+    //     setForm(prev => {
+    //         const arr = Array.isArray(prev[section]) ? [...(prev[section] as Record<string, unknown>[])] : [];
+    //         if (subField) {
+    //             // object image trong array object (vd: certificate.image)
+    //             arr[index] = {
+    //                 ...arr[index],
+    //                 [subField]: {
+    //                     ...(arr[index]?.[subField] ?? {}),
+    //                     file,
+    //                     preview: file ? URL.createObjectURL(file) : null,
+    //                 },
+    //             };
+    //         } else {
+    //             // array image trực tiếp (vd: productImage)
+    //             arr[index] = {
+    //                 ...arr[index],
+    //                 file,
+    //                 preview: file ? URL.createObjectURL(file) : null,
+    //             };
+    //         }
+    //         return { ...prev, [section]: arr };
+    //     });
+    // };
+
+    const {
+        handleFieldChange,
+        handleArrayFieldChange,
+        handleNestedArrayFieldChange,
+        handleNestedFieldChange,
+        handleArrayObjectFieldChange,
+        handleImageFileChange,
+        } = useProductFormHandlers(setForm);
 
 
 
@@ -170,9 +180,9 @@ export function AddProductPage(){
             return value != null;
             }
          // 1. Lấy danh sách tất cả file cần upload theo thứ tự:
-        const productImageFiles = form.productImage.filter(p => p.file).map(p => p.file!);
-        const productCertImageFiles = form.productCertImage.filter(p => p.file).map(p => p.file!);
-        const certificateImageFiles = form.certificate
+        const productImageFiles = form.productImages.filter(p => p.file).map(p => p.file!);
+        const productCertImageFiles = form.productCertImages.filter(p => p.file).map(p => p.file!);
+        const certificateImageFiles = form.certificates
         .filter((c): c is typeof c & { image: { file: File } } => !!c.image?.file)
         .map(c => c.image.file);
 
@@ -202,17 +212,17 @@ export function AddProductPage(){
 
         const details = `<p>${form.detail.replace("\n","<br />")}</p>`
 
-       const productImageUrls = form.productImage
+       const productImageUrls = form.productImages
         .filter(p => p.file)
         .map(() => presignedResults[index++]?.fileUrl)
         .filter((url): url is string => typeof url === "string"); // loại bỏ undefined
 
-        const productCertImageUrls = form.productCertImage
+        const productCertImageUrls = form.productCertImages
         .filter(p => p.file)
         .map(() => presignedResults[index++]?.fileUrl)
         .filter((url): url is string => typeof url === "string");
 
-        const filteredCertificates = form.certificate
+        const filteredCertificates = form.certificates
         .filter(
             (c) =>
             c.name?.trim() !== "" ||
@@ -235,9 +245,9 @@ export function AddProductPage(){
             water: water
         },
         detail: details,
-        productImage: productImageUrls,       
-        productCertImage: productCertImageUrls, 
-        certificate: filteredCertificates.map((c, i) => ({
+        productImages: productImageUrls,
+        productCertImages: productCertImageUrls,
+        certificates: filteredCertificates.map((c, i) => ({
             name: c.name,
             description: c.description,
             image: certificateImagesUrls[i] ?? null,
@@ -284,17 +294,17 @@ export function AddProductPage(){
                 setForm={setForm}
                 />
             <ProductImageSection
-                images={form.productImage}
+                images={form.productImages}
                 onAdd={() =>
-                handleFieldChange("productImage", [
-                    ...form.productImage,
+                handleFieldChange("productImages", [
+                    ...form.productImages,
                     { file: null, preview: null, width: undefined, height: undefined },
                 ])
                 }
-                onSetImageFile={(idx, file) => handleImageFileChange("productImage",idx, file)}
+                onSetImageFile={(idx, file) => handleImageFileChange("productImages",idx, file)}
             />
              <CertificateSection
-                certificates={form.certificate}
+                certificates={form.certificates}
                 setForm={setForm}
                 setImageFile={(idx, file, field, subField) => handleImageFileChange(field, idx!, file!, subField)}
                 handleArrayObjectFieldChange={handleArrayObjectFieldChange}
@@ -359,14 +369,14 @@ export function AddProductPage(){
                     />
             </div>
             <ProductCertImageSection
-                images={form.productCertImage}
+                images={form.productCertImages}
                 onAdd={() =>
-                    handleFieldChange("productCertImage", [
-                    ...form.productCertImage,
+                    handleFieldChange("productCertImages", [
+                    ...form.productCertImages,
                     { file: null, preview: null, width: undefined, height: undefined },
                     ])
                 }
-                onSetImageFile={(idx, file) => handleImageFileChange("productCertImage", idx, file)}
+                onSetImageFile={(idx, file) => handleImageFileChange("productCertImages", idx, file)}
                 />
             <div className="w-full flex justify-center mt-10">
                 <button
