@@ -248,6 +248,7 @@ export function AddProductPage(){
 
         if (response.success) {
             setPopup({ show: true, message: "Lưu sản phẩm thành công", type: "success" });
+            setSave(false);
             // Delay 5 giây sau đó reset form và refresh page
             setTimeout(() => {
                 setForm(initialFormState); // reset form
@@ -257,7 +258,7 @@ export function AddProductPage(){
             setPopup({ show: true, message: "Có lỗi khi thêm sản phẩm!", type: "error" });
             setTimeout(() => {
                setPopup({ show: false, message: "", type: "success" });
-               setSave(false)
+               setSave(false);
             }, 3000);
         }
 
@@ -371,7 +372,7 @@ export function AddProductPage(){
                 <button
                 type="button"
                 onClick={handleSubmit}
-                disabled={onSave && popup.show}
+                disabled={onSave || popup.show}
                 className="flex flex-row rounded-lg bg-green-600 text-white px-6 py-3 text-lg font-semibold shadow hover:bg-green-700 disabled:opacity-50"
                 >
                 {onSave && (
@@ -397,7 +398,7 @@ export function AddProductPage(){
                 </svg>
                 )}
                 {onSave ? "Đang lưu..." : "Lưu sản phẩm"} 
-                {(popup.show) && (popup.type == "success") &&( "Lưu thành công") }
+                {/* {(popup.show) && (popup.type == "success") &&( "Lưu thành công") } */}
                 </button>
             </div>
             {/* Popup thông báo */}
@@ -405,7 +406,7 @@ export function AddProductPage(){
         </div>
          {popup.show && (
                 <div
-                    className={`fixed top-[50%] right-[50%] px-6 py-3 rounded-lg shadow-lg text-white transition-opacity duration-500 ${
+                    className={`fixed top-20 right-20 max-w-sm w-full flex items-center gap-3 px-5 py-3 rounded-xl shadow-lg text-black transition-all duration-500 transform ${
                         popup.type === "success" ? "bg-green-500" : "bg-red-500"
                     }`}
                     >
