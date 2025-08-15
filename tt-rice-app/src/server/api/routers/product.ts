@@ -189,7 +189,7 @@ export const productRouter = createTRPCRouter({
         productCertImages: z.array(z.string()).optional(),
         guide: GuideInput.optional().nullable(),
         cooking: CookingInput.optional().nullable(),
-        certificates: z.array(CertificateInput).optional(),
+        certificates: CertificateInput.optional(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -223,45 +223,49 @@ export const productRouter = createTRPCRouter({
       // 3. Lấy danh sách ảnh mới
       const newProductImages = productImages ?? oldProductImages;
       const newProductCertImages = productCertImages ?? oldProductCertImages;
-      // const newCertificateImages = certificates
-      //   ? certificates.map((c) => c.image).filter(Boolean)
-      //   : oldCertificateImages;
+      const newCertificateImages = certificates
+        ? certificates.map((c) => c.image).filter(Boolean)
+        : oldCertificateImages;
 
       // 4. Tìm các URL cần xóa trên S3
-      // const imagesToDelete = [
-      //   ...oldProductImages.filter((url) => !newProductImages.includes(url)),
-      //   ...oldProductCertImages.filter((url) => !newProductCertImages.includes(url)),
-      //   ...oldCertificateImages.filter((url) => !newCertificateImages.includes(url)),
-      // ];
+      const imagesToDelete = [
+        ...oldProductImages.filter((url) => !newProductImages.includes(url)),
+        ...oldProductCertImages.filter((url) => !newProductCertImages.includes(url)),
+        ...oldCertificateImages.filter((url) => !newCertificateImages.includes(url)),
+      ];
 
       // 5. Xóa ảnh trên S3
-      // await Promise.all(imagesToDelete.map((url) => deleteS3ObjectByUrl(url)));
+      await Promise.all(imagesToDelete.map((url) => deleteS3ObjectByUrl(url)));
 
       // 6. Update DB
-      // return ctx.db.product.update({
-      //   where: { id },
-      //   data: {
-      //     ...productData,
-      //     ...(productImages && { productImages: { set: productImages } }),
-      //     ...(productCertImages && { productCertImages: { set: productCertImages } }),
-      //     ...(guide !== undefined && {
-      //       guide: guide
-      //         ? { upsert: { create: guide, update: guide } }
-      //         : { delete: true },
-      //     }),
-      //     ...(cooking !== undefined && {
-      //       cooking: cooking
-      //         ? { upsert: { create: cooking, update: cooking } }
-      //         : { delete: true },
-      //     }),
-      //     ...(certificates !== undefined && {
-      //       certificates: {
-      //         set: [],
-      //         create: certificates,
-      //       },
-      //     }),
-      //   },
-      // });
+      return ctx.db.product.update({
+        where: { id },
+        data: {
+          ...productData,
+          ...(productImages && { productImages: { set: productImages } }),
+          ...(productCertImages && { productCertImages: { set: productCertImages } }),
+          ...(guide !== undefined && {
+            guide: guide
+              ? { upsert: { create: guide, update: guide } }
+              : { delete: true },
+          }),
+          ...(cooking !== undefined && {
+            cooking: cooking
+              ? { upsert: { create: cooking, update: cooking } }
+              : { delete: true },
+          }),
+          ...(certificates !== undefined && {
+            certificates: {
+              set: [],
+              create: certificates.map((c) => ({
+                name: c.name ?? "",
+                description: c.description ?? "",
+                image: c.image ?? "",
+              })),
+            },
+          }),
+        },
+      });
   }),
   // DELETE PRODUCT
   delete: protectedProcedure
