@@ -18,7 +18,7 @@ export default function AuthButton() {
     return (
       <div className="flex items-center gap-4">
         <Button
-          onClick={() => signOut({ callbackUrl: "/" })} // Redirect to homepage after sign out
+          onClick={() => signOut()} // Redirect to homepage after sign out
           variant="secondary"
               size="medium"
               className=" group flex items-center rounded-full bg-red-500 text-red-500  hover:bg-red-500 hover:text-white"

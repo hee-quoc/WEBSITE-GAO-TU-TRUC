@@ -5,9 +5,11 @@ interface ProductImageSectionProps {
   images: Image[];
   onAdd: () => void;
   onSetImageFile: (index: number, file: File | null ) => void;
+  onRemove: (index: number | undefined) => void; 
 }
 
-export function ProductImageSection({ images, onAdd, onSetImageFile }: ProductImageSectionProps) {
+export function ProductImageSection({ images, onAdd, onSetImageFile, onRemove }: ProductImageSectionProps) {
+  
   return (
     <section>
       <div className="text-[20px] font-bold w-full px-4 mt-5">Ảnh sản phẩm</div>
@@ -23,6 +25,7 @@ export function ProductImageSection({ images, onAdd, onSetImageFile }: ProductIm
               onSetImageFile={(i, file) => onSetImageFile(i!, file)}
               setForm={() => {return}}
               form={{} as ProductForm}
+              onRemove={onRemove}
             />
           </div>
         ))}

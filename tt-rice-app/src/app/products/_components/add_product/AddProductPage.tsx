@@ -15,6 +15,7 @@ import {CertificateSection, ProductCertImageSection} from "./components/ProductC
 import {GuideSection} from "./components/ProductGuide";
 import {CookingSection} from "./components/ProductCooking";
 import { useProductFormHandlers } from "./utils/useProductFormHandlers";
+import { productFormSchema } from "~/shared/product-schema";
 // import { t } from "node_modules/framer-motion/dist/types.d-D0HXPxHm";
 
 
@@ -210,7 +211,7 @@ export function AddProductPage(){
         // 4. Map lại key tương ứng theo từng phần
         let index = 0;
 
-        const details = `<p>${form.detail.replace("\n","<br />")}</p>`
+        const details = `<p>${form.detail.replace(/\n/g,"<br />")}</p>`
 
        const productImageUrls = form.productImages
         .filter(p => p.file)
@@ -244,7 +245,7 @@ export function AddProductPage(){
             ...form.guide,
             water: water
         },
-        detail: details,
+        detail: form.detail,
         productImages: productImageUrls,
         productCertImages: productCertImageUrls,
         certificates: filteredCertificates.map((c, i) => ({
@@ -253,7 +254,25 @@ export function AddProductPage(){
             image: certificateImagesUrls[i] ?? null,
         })),
         };
+        const validationResult = productFormSchema.safeParse(payload);
 
+        if (!validationResult.success) {
+            // If validation fails, format the error messages and show the popup
+            const errorMessages = validationResult.error.issues.map(issue => issue.message);
+            
+            setPopup({
+                show: true,
+                message: errorMessages.join("\n"), // Join messages with a newline
+                type: "error"
+            });
+            
+            // Hide the popup after 5 seconds
+            setTimeout(() => {
+                setPopup({ show: false, message: "", type: "success" });
+            }, 5000);
+            setSave(false);
+            return; // Stop the submission process
+        }
         const response = await createProduct.mutateAsync({ form: payload });
 
         if (response.success) {
@@ -277,7 +296,15 @@ export function AddProductPage(){
     }
     };
 
-
+    const handleRemoveImage = (section: keyof ProductForm, index: number | undefined) => {
+            setForm((prev) => {
+                const currentImages = prev[section] as Image[];
+                return {
+                ...prev,
+                [section]: currentImages.filter((_, i) => i !== index),
+                };
+            });
+        };
 
 	return(
     <div className="flex flex-col items-center">
@@ -302,12 +329,14 @@ export function AddProductPage(){
                 ])
                 }
                 onSetImageFile={(idx, file) => handleImageFileChange("productImages",idx, file)}
+                onRemove={(idx) => handleRemoveImage("productImages", idx)}
             />
              <CertificateSection
                 certificates={form.certificates}
                 setForm={setForm}
                 setImageFile={(idx, file, field, subField) => handleImageFileChange(field, idx!, file!, subField)}
                 handleArrayObjectFieldChange={handleArrayObjectFieldChange}
+                onRemove={(idx) => handleRemoveImage("productImages", idx)}
                 />
             <GuideSection
                 guide={form.guide}
@@ -377,6 +406,7 @@ export function AddProductPage(){
                     ])
                 }
                 onSetImageFile={(idx, file) => handleImageFileChange("productCertImages", idx, file)}
+                onRemove={(idx) => handleRemoveImage("productImages", idx)}
                 />
             <div className="w-full flex justify-center mt-10">
                 <button

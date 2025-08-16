@@ -15,6 +15,7 @@ export interface ImageUploadFieldProps extends BaseFieldProps {
   onSetImageFile: (index: number | null, f: File | null ,field: keyof ProductForm, subField:  string) => void;
   form: ProductForm
   setForm: React.Dispatch<React.SetStateAction<ProductForm>>
+  onRemove: (index: number | undefined) => void;
 }
 
 export interface TextFieldProps extends BaseFieldProps {

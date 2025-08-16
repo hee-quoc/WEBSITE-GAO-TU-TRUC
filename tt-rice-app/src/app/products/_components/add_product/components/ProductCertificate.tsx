@@ -19,12 +19,14 @@ interface CertificateSectionProps {
     index: number,
     value: string
   ) => void;
+  onRemove: (index: number | undefined) => void; 
 }
 
 interface ProductCertImageSectionProps {
   images: Image[];
   onAdd: () => void;
   onSetImageFile: (index: number, file: File | null) => void;
+  onRemove: (index: number | undefined) => void; 
 }
 
 export function CertificateSection({
@@ -32,7 +34,8 @@ export function CertificateSection({
   setForm,
   setImageFile,
 //   handleFieldChange,
-  handleArrayObjectFieldChange
+  handleArrayObjectFieldChange,
+  onRemove
 }: CertificateSectionProps) {
   return (
     <section>
@@ -53,6 +56,7 @@ export function CertificateSection({
               onSetImageFile={setImageFile}
               setForm={setForm}
               form={{} as ProductForm}
+              onRemove={onRemove}
             />
             <div className="text-[20px] font-bold w-full px-4 mt-5">Tên chứng nhận</div>
             <TextCardObject
@@ -117,6 +121,7 @@ export function ProductCertImageSection({
   images,
   onAdd,
   onSetImageFile,
+  onRemove
 }: ProductCertImageSectionProps) {
   return (
     <section>
@@ -133,6 +138,7 @@ export function ProductCertImageSection({
               onSetImageFile={(i, file) => onSetImageFile(i!, file)}
               setForm={()=>{return}}
               form={{} as ProductForm}
+              onRemove={onRemove}
             />
           </div>
         ))}

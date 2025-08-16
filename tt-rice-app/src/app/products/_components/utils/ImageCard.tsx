@@ -12,6 +12,7 @@ export function ImageCard({
   form,
   setForm,
   onSetImageFile,
+  onRemove
 }: ImageUploadFieldProps) {
   const [inputKey, setInputKey] = useState<number>(Date.now());
   const image = value as Image;
@@ -55,6 +56,11 @@ export function ImageCard({
     setInputKey(Date.now());
   }, [onSetImageFile,index]);
 
+  const handleRemoveClick = useCallback(() => {
+    if (index !== null) {
+      onRemove(index);
+    }
+  }, [onRemove, index]);
   return (
     <div className={`flex flex-col mr-4 gap-3 sm:flex-row ${type === "image" ? "w-[400px]" : "w-[200px]"}`}>
       <div className="sm:w-full">
@@ -100,7 +106,7 @@ export function ImageCard({
             <div></div>
            ):(
             <button
-              onClick={handleRemoveBlock}
+              onClick={handleRemoveClick}
               className="absolute right-2 top-2 rounded-lg bg-white/80 p-1 text-red-600 shadow hover:bg-white"
             >
               <X className="h-4 w-4" />

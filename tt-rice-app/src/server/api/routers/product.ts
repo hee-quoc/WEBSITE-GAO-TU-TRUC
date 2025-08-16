@@ -7,7 +7,7 @@ import {
 } from "~/server/api/trpc";
 import {generateUniqueSlug} from "../../utils/utils"
 import {deleteS3ObjectByUrl} from "../../s3";
-
+import { productFormSchema } from "~/shared/product-schema";
 
 const GuideInput = z.object({
   water: z.array(z.number()),
@@ -97,37 +97,7 @@ export const productRouter = createTRPCRouter({
   create: protectedProcedure
     .input(
       z.object({
-        form: z.object({
-          title: z.string().min(1, "Title is required"),
-          description: z.string().min(1, "Description is required"),
-          price: z.string().min(1, "Price is required"),
-          detail: z.string(),
-          properties: z.array(z.number()),
-          tag: z.array(z.string()),
-
-          // Thay vì mảng object { file: any }, giờ là mảng string key/url
-          productImages: z.array(z.string()),
-          package: z.string(),
-          parts: z.string(),
-          ingredients: z.string(),
-          grow: z.string(),
-          wrapProcess: z.string(),
-
-          productCertImages: z.array(z.string()),
-          guide: GuideInput.optional(),
-          cooking: CookingInput.optional(),
-
-          certificates: z
-            .array(
-              z.object({
-                name: z.string().optional(),
-                description: z.string().optional(),
-                // image giờ chỉ là string hoặc null (URL)
-                image: z.string().nullable().optional(),
-              })
-            )
-            .optional(),
-        }),
+        form: productFormSchema,
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -245,33 +215,36 @@ export const productRouter = createTRPCRouter({
       // 5. Xóa ảnh trên S3
       await Promise.all(imagesToDelete.map((url) => deleteS3ObjectByUrl(url)));
 
-      await ctx.db.product.update({
-        where: { id },
-        data: {
-           ...rest,
-          ...(productImages && { productImages: { set: productImages } }),
-          ...(productCertImages && { productCertImages: { set: productCertImages } }),
-          ...(guide !== undefined && {
+      await ctx.db.$transaction(async (prisma) => {
+        // Step 1: Delete all existing certificates for this product.
+        // This is safe because it's inside a transaction.
+        await prisma.certificate.deleteMany({
+          where: { productId: id },
+        });
+
+        // Step 2: Update the product and create the new certificates.
+        await prisma.product.update({
+          where: { id },
+          data: {
+            ...rest,
+            productImages: { set: productImages },
+            productCertImages: { set: productCertImages },
             guide: guide
               ? { upsert: { create: guide, update: guide } }
-              : { delete: true },
-          }),
-          ...(cooking !== undefined && {
+              : undefined, // Let upsert handle it
             cooking: cooking
               ? { upsert: { create: cooking, update: cooking } }
-              : { delete: true },
-          }),
-          ...(certificates !== undefined && {
+              : undefined, // Let upsert handle it
+            // Now, we only need to 'create' the new certificates.
             certificates: {
-              set: [],
-              create: certificates.map((c) => ({
+              create: certificates?.map((c) => ({
                 name: c.name ?? "",
                 description: c.description ?? "",
                 image: c.image ?? "",
               })),
             },
-          }),
-        },
+          },
+        });
       });
 
       // 6. Update DB

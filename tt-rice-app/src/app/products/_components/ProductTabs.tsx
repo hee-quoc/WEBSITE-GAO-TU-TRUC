@@ -7,7 +7,9 @@ type ProductTabsProps = {
 
 
 const ProductDescription = ({ htmlContent }: { htmlContent: string }) => {
-  return <div className="text-blue-500 prose max-w-none font-fz-poppins" dangerouslySetInnerHTML={{ __html: htmlContent }} />;
+  const details = `<p>${htmlContent.replace(/\n/g,"<br />")}</p>`
+  console.log(htmlContent)
+  return <div className="text-blue-500 prose max-w-none font-fz-poppins" dangerouslySetInnerHTML={{ __html: details }} />;
 };
 
 export function ProductTabs({ descriptionHtml }: ProductTabsProps) {

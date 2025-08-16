@@ -100,7 +100,7 @@ const Header: React.FC = () => {
             </button>
           </div>
           <div className="hidden md:flex items-center lg:pr-[159px] ">
-            {/* <AuthButton /> */}
+            <AuthButton />
             <Button
               variant="secondary"
               size="medium"
@@ -151,13 +151,13 @@ const Header: React.FC = () => {
                 Tin tức
               </Link>
               <Link
-                href="#contact"
+                href="/contact"
                 className="text-dark-gray hover:text-green-normal transition-colors"
                 onClick={toggleMenu}
               >
                 Liên hệ
               </Link>
-              {/* <AuthButton /> */}
+              <AuthButton />
               <Button
                 variant="secondary"
                 size="medium"
@@ -230,7 +230,7 @@ function ProductHeader({
             <Link href="/news" className="text-white hover:text-green-normal transition-colors">
               Tin tức
             </Link>
-            <Link href="#contact" className="text-white hover:text-green-normal transition-colors">
+            <Link href="/contact" className="text-white hover:text-green-normal transition-colors">
               Liên hệ
             </Link>
           </nav>
@@ -240,7 +240,7 @@ function ProductHeader({
             </button>
           </div>
           <div className="hidden md:flex items-center lg:pr-[159px]">
-            {/* <AuthButton /> */}
+            <AuthButton />
             <Button
               variant="secondary"
               size="medium"
@@ -289,13 +289,13 @@ function ProductHeader({
                 Tin tức
               </Link>
               <Link
-                href="#contact"
+                href="/contact"
                 className="text-black hover:text-green-normal transition-colors"
                 onClick={toggleMenu}
               >
                 Liên hệ
               </Link>
-              {/* <AuthButton /> */}
+              <AuthButton />
               <Button
                 variant="secondary"
                 size="medium"

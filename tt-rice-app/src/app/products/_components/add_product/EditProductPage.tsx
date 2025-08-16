@@ -118,125 +118,112 @@ export function EditProductPage({ productSlug }: { productSlug: string }) {
 
   const handleSubmit = async () => {
         try {
-        setSave(true)
-        function notEmpty<T>(value: T | null | undefined): value is T {
-            return value != null;
+            setSave(true);
+
+            // 1. Identify ONLY the NEW files that need to be uploaded from the current form state.
+            const newProductImageFiles = form.productImages.filter(p => p.file).map(p => p.file!);
+            const newProductCertImageFiles = form.productCertImages.filter(p => p.file).map(p => p.file!);
+            const newCertificateImageFiles = form.certificates.filter(c => c.image?.file).map(c => c.image.file!);
+            const allNewFiles = [...newProductImageFiles, ...newProductCertImageFiles, ...newCertificateImageFiles];
+
+            let newUploadedUrls: string[] = [];
+
+            // 2. If there are new files, get Presigned URLs and upload them to S3.
+            if (allNewFiles.length > 0) {
+                const presignedResults = await Promise.all(
+                    allNewFiles.map(file =>
+                        createPresignedUrl.mutateAsync({
+                            fileName: file.name,
+                            fileType: file.type,
+                        })
+                    )
+                );
+                await Promise.all(
+                    presignedResults.map((res, i) => uploadFileToS3(res.url, allNewFiles[i]!))
+                );
+                newUploadedUrls = presignedResults.map(res => res.fileUrl);
             }
-         // 1. Lấy danh sách tất cả file cần upload theo thứ tự:
-        const productImageFiles = form.productImages.filter(p => p.file).map(p => p.file!);
-        const remainProductImageUrls = mapImageUrlsToImageObjects(productData?.productImages).filter(p => {return (p.file == null && p.preview)}).map(p => p.preview!)
-        const productCertImageFiles = form.productCertImages.filter(p => p.file).map(p => p.file!);
-        const remainProductCertImageUrls = mapImageUrlsToImageObjects(productData?.productCertImages).filter(p => {return (p.file == null && p.preview)}).map(p => p.preview!)
-        const certificateImageFiles = form.certificates
-        .filter((c): c is typeof c & { image: { file: File } } => !!c.image?.file)
-        .map(c => c.image.file);
-        const remainCertificateImageFileUrls = mapCertificates(productData?.certificates)
-        .filter((c): c is typeof c & { image: { file: File } } => {return (c.image?.file == null && !!c.image?.preview)})
-        .map(c => c.image.preview!);
 
-       
+            // 3. Construct the FINAL arrays of image URLs for the database payload.
+            // This logic iterates through the form state. If an image has a new 'file',
+            // it gets the newly uploaded URL. If it only has a 'preview', it's an existing
+            // image URL that the user decided to keep. Images the user removed are now gone
+            // from the form state, so they won't be included here.
+            
+            const payloadProductImages = form.productImages
+                .map(p => p.file ? newUploadedUrls.shift() : p.preview)
+                .filter((url): url is string => !!url);
 
-        const allFiles = [...productImageFiles, ...productCertImageFiles, ...certificateImageFiles];
+            const payloadProductCertImages = form.productCertImages
+                .map(p => p.file ? newUploadedUrls.shift() : p.preview)
+                .filter((url): url is string => !!url);
 
-        // 2. Lấy presigned URLs cho tất cả file
-        const presignedResults = await Promise.all(
-        allFiles.map(file =>
-            createPresignedUrl.mutateAsync({
-            fileName: file.name,
-            fileType: file.type,
-            })
-        )
-        );
+            const filteredCertificates = form.certificates.filter(
+                (c) => c.name?.trim() !== "" || c.description?.trim() !== "" || c.image?.file || c.image?.preview
+            );
 
-        // 3. Upload file lên S3 theo thứ tự
-        await Promise.all(
-            presignedResults.map((res, i) => uploadFileToS3(res.url, allFiles[i]!))
-        );
+            const payloadCertificates = filteredCertificates.map(c => ({
+                name: c.name,
+                description: c.description,
+                image: c.image?.file ? newUploadedUrls.shift() : c.image?.preview ?? null,
+            }));
 
-        
+            // 4. Prepare other form data.
+            const water = form.guide.water.map((w) => Number(w));
+            const details = `<p>${form.detail.replace(/\n/g, "<br />")}</p>`;
 
-        // 4. Map lại key tương ứng theo từng phần
-        let index = 0;
+            // 5. Create the final payload object to send to the server.
+            // This payload represents the complete, final state of the product.
+            const payload = {
+                ...form,
+                guide: {
+                    ...form.guide,
+                    water: water,
+                },
+                detail: form.detail,
+                productImages: payloadProductImages,
+                productCertImages: payloadProductCertImages,
+                certificates: payloadCertificates,
+            };
 
-        const details = `<p>${form.detail.replace("\n","<br />")}</p>`
-
-       const productImageUrls = form.productImages
-        .filter(p => p.file)
-        .map(() => presignedResults[index++]?.fileUrl)
-        .filter((url): url is string => typeof url === "string"); // loại bỏ undefined
-
-        const totalProductImageUrls = [...remainProductImageUrls,...productImageUrls]
-
-        const productCertImageUrls = form.productCertImages
-        .filter(p => p.file)
-        .map(() => presignedResults[index++]?.fileUrl)
-        .filter((url): url is string => typeof url === "string");
-
-        const totalProductCertImageUrls = [...remainProductCertImageUrls, ...productCertImageUrls]
-
-        const filteredCertificates = form.certificates
-        .filter(
-            (c) =>
-            c.name?.trim() !== "" ||
-            c.description?.trim() !== "" ||
-            (c.image?.file)
-        );
-
-        const certificateImagesUrls = filteredCertificates
-        .filter(c => c.image?.file)
-        .map(() => presignedResults[index++]?.fileUrl)
-        .filter((url): url is string => typeof url === "string");
-
-        const totalCertificateImagesUrls = [...remainCertificateImageFileUrls, ...certificateImagesUrls]
-
-        const water = form.guide.water.map((w)=>{return Number(w)})
-        // 5. Tạo payload gửi server (gán url/key cho certificate)
-       
-        const payload = {
-        ...form,
-        guide: {
-            ...form.guide,
-            water: water
-        },
-        detail: details,
-        productImages: totalProductImageUrls,
-        productCertImages: totalProductCertImageUrls,
-        certificates: filteredCertificates.map((c, i) => ({
-            name: c.name,
-            description: c.description,
-            image: totalCertificateImagesUrls[i] ?? null,
-        })),
-        };
-
-        const response = await updateProduct.mutateAsync({ id: productData!.id , slug: productData!.slug ,form: payload });
-
-        if (response.success) {
-            setPopup({ show: true, message: "Cập nhật sản phẩm thành công", type: "success" });
+            // 6. Send the final payload to the server.
+            const response = await updateProduct.mutateAsync({ id: productData!.id, slug: productData!.slug, form: payload });
+            
+            // 7. Handle the response from the server.
+            if (response.success) {
+                setPopup({ show: true, message: "Cập nhật sản phẩm thành công", type: "success" });
+                setSave(false);
+                setTimeout(() => {
+                    window.location.reload(); 
+                }, 3000);
+            } else {
+                setPopup({ show: true, message: "Có lỗi khi cập nhật sản phẩm!", type: "error" });
+                setTimeout(() => {
+                setPopup({ show: false, message: "", type: "success" });
+                setSave(false);
+                }, 3000);
+            }
+        } catch (error) {
+            console.error("An error occurred during product update:", error);
+            setPopup({ show: true, message: "Đã xảy ra lỗi không mong muốn!", type: "error" });
             setSave(false);
-            // Delay 5 giây sau đó reset form và refresh page
-            setTimeout(() => {
-                setForm(initialFormState); // reset form
-                window.location.reload(); // refresh trang
-            }, 5000);
-        } else {
-            setPopup({ show: true, message: "Có lỗi khi thêm sản phẩm!", type: "error" });
-            setTimeout(() => {
-               setPopup({ show: false, message: "", type: "success" });
-               setSave(false);
-            }, 3000);
         }
-
-    } catch (error) {
-        console.error(error);
-    }
     };
-  
+    const handleRemoveImage = (section: keyof ProductForm, index: number | undefined) => {
+        setForm((prev) => {
+            const currentImages = prev[section] as Image[];
+            return {
+            ...prev,
+            [section]: currentImages.filter((_, i) => i !== index),
+            };
+        });
+    };
   if (isLoading || !form) return ( <div className="flex flex-col items-center"><div className="pt-20 text-[32px]">Đang tải dữ liệu sản phẩm...</div>;</div>)
   return(
       <div className="flex flex-col items-center">
           <div className="flex flex-col max-w-[1440px]  pt-8">
               <div className="mx-auto max-w-5xl px-4 py-6">
-              <h1 className="text-[56px] font-semibold">Thêm sản phẩm</h1>
+              <h1 className="text-[56px] font-semibold">Chỉnh sửa sản phẩm</h1>
               </div>
               <ProductInfoSection
                   form={form}
@@ -255,12 +242,14 @@ export function EditProductPage({ productSlug }: { productSlug: string }) {
                   ])
                   }
                   onSetImageFile={(idx, file) => handleImageFileChange("productImages",idx, file)}
+                  onRemove={(idx) => handleRemoveImage("productImages", idx)}
               />
                <CertificateSection
                   certificates={form.certificates}
                   setForm={setForm}
                   setImageFile={(idx, file, field, subField) => handleImageFileChange(field, idx!, file!, subField)}
                   handleArrayObjectFieldChange={handleArrayObjectFieldChange}
+                  onRemove={(idx) => handleRemoveImage("productImages", idx)}
                   />
               <GuideSection
                   guide={form.guide}
@@ -330,6 +319,7 @@ export function EditProductPage({ productSlug }: { productSlug: string }) {
                       ])
                   }
                   onSetImageFile={(idx, file) => handleImageFileChange("productCertImages", idx, file)}
+                  onRemove={(idx) => handleRemoveImage("productImages", idx)}
                   />
               <div className="w-full flex justify-center mt-10">
                   <button
@@ -363,7 +353,6 @@ export function EditProductPage({ productSlug }: { productSlug: string }) {
                   {onSave ? "Đang lưu..." : "Lưu sản phẩm"} 
                   </button>
               </div>
-              {/* Popup thông báo */}
              
           </div>
            {popup.show && (
