@@ -1,8 +1,12 @@
 // src/app/products/_components/ProductCertificates.tsx
 "use client";
 import Image from "next/image";
+import { type ProductWithDetails } from "~/app/types/Types";
 
-export function ProductCertificates() {
+export function ProductCertificates({ productCertificates }: { productCertificates: ProductWithDetails['certificates']}) {
+  if (!productCertificates){
+    return (<></>);
+  }
   return (
     <section className="bg-white rounded-lg shadow overflow-hidden mt-12">
       <h2 className="text-white text-center py-3 text-xl font-alegreya-sans bg-[#6C9126]">
@@ -12,7 +16,18 @@ export function ProductCertificates() {
       <div className="p-6">
         {/* Hình ảnh 2 chứng nhận */}
         <div className="flex flex-col md:flex-row justify-center items-center gap-6">
-          <Image
+          {
+            productCertificates.map((certificate)=>(
+              <Image
+                src={certificate.image} // bạn đổi lại đúng đường dẫn ảnh
+                alt="OCOP Certificate"
+                width={195}
+                height={279}
+                className="object-contain"
+              />
+            ))
+          }
+          {/* <Image
             src="/certificate/image 23.svg" // bạn đổi lại đúng đường dẫn ảnh
             alt="OCOP Certificate"
             width={195}
@@ -25,12 +40,22 @@ export function ProductCertificates() {
             width={199}
             height={280}
             className="object-contain"
-          />
+          /> */}
         </div>
 
         {/* Phần mô tả chứng nhận */}
         <div className="mt-6 space-y-4 text-[20px] text-[#334155] font-alegreya-sans font-medium">
-          <div>
+          {
+            productCertificates.map((certificate)=>(
+              <div>
+                <p className="font-alegreya-sans font-medium text-[20px]">{certificate.name}</p>
+                <p className="font-fz-poppins text-[16px]">
+                  {certificate.description}
+                </p>
+              </div>
+            ))
+          }
+          {/* <div>
             <p className="font-alegreya-sans font-medium text-[20px]">ISO (2025)</p>
             <p className="font-fz-poppins text-[16px]">
               Gạo đạt chứng nhận sản phẩm không chứa Gluten, an toàn thực phẩm Châu Âu
@@ -43,7 +68,7 @@ export function ProductCertificates() {
               Gạo đạt chứng nhận sản phẩm không chứa Gluten, an toàn thực phẩm Châu Âu
               (Thực phẩm không biến đổi gen)
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
