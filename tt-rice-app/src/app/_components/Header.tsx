@@ -22,7 +22,7 @@ const Header: React.FC = () => {
   const [isScrollingUp, setIsScrollingUp] = useState(false);
   const lastScrollY = useRef(0); 
   const pathname = usePathname();
-  const isProductsPage = pathname === '/products';
+  const isProductsPage = pathname === '/products' || pathname === '/news' || pathname === '/faq/privacy-policy'  || pathname === '/faq/payment-methods'  || pathname === '/faq/warranty-policy' || pathname === '/faq/return-policy' || pathname === '/faq/terms-of-service';
   useEffect(() => {
     if (!isMenuOpen) return;
     const handleScroll = () => {
@@ -100,7 +100,7 @@ const Header: React.FC = () => {
             </button>
           </div>
           <div className="hidden md:flex items-center lg:pr-[159px] ">
-            <AuthButton />
+            {/* <AuthButton /> */}
             <Button
               variant="secondary"
               size="medium"
@@ -157,7 +157,7 @@ const Header: React.FC = () => {
               >
                 Liên hệ
               </Link>
-              <AuthButton />
+              {/* <AuthButton /> */}
               <Button
                 variant="secondary"
                 size="medium"
@@ -240,7 +240,7 @@ function ProductHeader({
             </button>
           </div>
           <div className="hidden md:flex items-center lg:pr-[159px]">
-            <AuthButton />
+            {/* <AuthButton /> */}
             <Button
               variant="secondary"
               size="medium"
@@ -295,7 +295,7 @@ function ProductHeader({
               >
                 Liên hệ
               </Link>
-              <AuthButton />
+              {/* <AuthButton /> */}
               <Button
                 variant="secondary"
                 size="medium"

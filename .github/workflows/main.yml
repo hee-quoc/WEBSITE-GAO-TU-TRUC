@@ -75,7 +75,7 @@ jobs:
             cd ${{ secrets.DROPLET_APP_PATH }}
             echo "Running post-deployment commands..."
             source ~/.nvm/nvm.sh
-            npm install --omit=dev
+            npm install
             npx prisma migrate deploy
             npx prisma db seed
             pm2 reload tt-rice-app

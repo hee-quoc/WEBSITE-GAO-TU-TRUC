@@ -122,12 +122,11 @@ export const blogRouter = createTRPCRouter({
 
   // Your getBySlug would now need to include the images
   getBySlug: publicProcedure
-    .input(z.object({ slug: z.string() }))
+    .input(z.object({ slug: z.string()}))
     .query(async ({ ctx, input }) => {
       return ctx.db.blog.findUnique({
         where: { slug: input.slug },
         include: {
-          // Tell Prisma to fetch the related images as well
           contentImages: {
             orderBy: {
               order: 'asc', // Ensure they are in the correct order

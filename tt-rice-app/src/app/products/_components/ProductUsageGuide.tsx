@@ -77,7 +77,7 @@ export default function RiceTable({ guide }: { guide: ProductWithDetails["guide"
     return <></>;
   }
   return (
-    <div className="w-full p-4">
+    <div className="w-full p-4 ">
       <div ref={containerRef} className="relative mx-auto max-w-[500px]">
         <table ref={tableRef} className="w-full min-w-[300px] border-collapse text-center">
           <thead ref={theadRef} className="text-[16px] font-bold font-fz-poppins text-[#628423]">
@@ -119,7 +119,7 @@ export default function RiceTable({ guide }: { guide: ProductWithDetails["guide"
 }
 export function ProductUsageGuide({ guide }: { guide: ProductWithDetails["guide"]}) {
   return guide ? (
-    <section className="bg-white rounded-lg shadow overflow-hidden">
+    <section className=" rounded-lg shadow overflow-hidden">
       <h2 className="text-white text-center py-3 text-xl font-alegreya-sans bg-[#6C9126]">
         Hướng dẫn sử dụng
       </h2>

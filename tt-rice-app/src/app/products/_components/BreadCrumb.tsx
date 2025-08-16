@@ -12,7 +12,7 @@ const breadcrumbData = {
   productName: "Gạo ST25 Lúa Tôm",
 };
 
-export default function Breadcrumb() {
+export default function Breadcrumb({title}:{title:string}) {
   return (
     <nav aria-label="Breadcrumb">
       <ol className="flex items-center gap-2 text-sm">
@@ -47,7 +47,7 @@ export default function Breadcrumb() {
         {/* Current Page (Active) */}
         <li>
           <span className="font-medium text-green-500  px-2 py-1 rounded-md">
-            {breadcrumbData.productName}
+            {title}
           </span>
         </li>
       </ol>

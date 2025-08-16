@@ -108,8 +108,9 @@ model Certificate {
 
 model Blog {
   title       String
-  slug        String   @id @unique
-  content     Json   
+  tag         String 
+  slug        String   @unique
+  content     String   @db.Text
   published   Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
