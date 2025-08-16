@@ -13,6 +13,7 @@ export const blogRouter = createTRPCRouter({
   create: publicProcedure
     .input(
         z.object({
+          tag: z.string(),
           title: z.string(),
           thumbnail: z.string().startsWith('data:image/'),
           blocks: z.array(
@@ -39,7 +40,7 @@ export const blogRouter = createTRPCRouter({
     // )
     .mutation(async ({ ctx, input }) => {
       const uniqueSlug = await generateUniqueSlug(input.title);
-      const { title, thumbnail, blocks } = input;
+      const { title, thumbnail, blocks, tag } = input;
       const timestamp = new Date().toISOString();
       const folderPath = `blogs/${timestamp.substring(0, 10)}/${uniqueSlug}`;
 
@@ -104,6 +105,7 @@ export const blogRouter = createTRPCRouter({
 
       return ctx.db.blog.create({
         data: {
+          tag:tag, 
           title: title,
           slug: uniqueSlug,
           content: JSON.stringify(processedBlocks),

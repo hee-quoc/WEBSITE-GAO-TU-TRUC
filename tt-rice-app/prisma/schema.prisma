@@ -107,6 +107,7 @@ model Certificate {
 
 
 model Blog {
+  id          Int    @id @default(autoincrement())
   title       String
   tag         String 
   slug        String   @unique

@@ -19,6 +19,7 @@ export function ProductCertificates({ productCertificates }: { productCertificat
           {
             productCertificates.map((certificate)=>(
               <Image
+                key={certificate.id}
                 src={certificate.image} // bạn đổi lại đúng đường dẫn ảnh
                 alt="OCOP Certificate"
                 width={195}
@@ -47,7 +48,7 @@ export function ProductCertificates({ productCertificates }: { productCertificat
         <div className="mt-6 space-y-4 text-[20px] text-[#334155] font-alegreya-sans font-medium">
           {
             productCertificates.map((certificate)=>(
-              <div>
+              <div key={certificate.id}>
                 <p className="font-alegreya-sans font-medium text-[20px]">{certificate.name}</p>
                 <p className="font-fz-poppins text-[16px]">
                   {certificate.description}

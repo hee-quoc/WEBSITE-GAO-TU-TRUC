@@ -28,11 +28,11 @@ export function BlogFilteredList({ blogs, categories }: BlogFilteredListProps) {
 
   return (
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-      {blogs.map((blog) => blog.bannerImageUrl&&(
+      {blogs.map((blog) => blog.thumbnailUrl&&(
         <Link href={`/news/${blog.slug}`} key={blog.id} className="group block">
           <div className="overflow-hidden rounded-lg">
             <Image
-              src={blog.bannerImageUrl}
+              src={blog.thumbnailUrl}
               alt={blog.title}
               width={400}
               height={250}

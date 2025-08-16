@@ -5,7 +5,7 @@ import Image from "next/image";
 // Corrected mock data to match the visual design
 const blogs = [
   {
-    id: "1",
+    id: 1,
     slug: "cau-chuyen-san-pham-gao-sach-thom-ngon",
     title: "Câu chuyện sản phẩm - Gạo sạch thơm ngon từ Tư Trúc",
     tag: "tin-tuc",
@@ -13,11 +13,11 @@ const blogs = [
     published: true,
     createdAt: new Date("2023-10-26T10:00:00Z"),
     updatedAt: new Date("2023-10-26T10:00:00Z"),
-    bannerImageUrl: "/images/news/img_news_banner1.svg",
+    thumbnailUrl: "/images/news/img_news_banner1.svg",
     contentImages: [], // Matches the BlogImage[] relation
   },
   {
-    id: "2",
+    id: 2,
     slug: "hat-kim-cuong-giua-dong-ruong",
     title: "“Hạt kim cương” giữa đồng ruộng",
     tag: "tin-tuc",
@@ -25,11 +25,11 @@ const blogs = [
     published: true,
     createdAt: new Date("2023-10-25T11:30:00Z"),
     updatedAt: new Date("2023-10-25T11:30:00Z"),
-    bannerImageUrl: "/images/news/img_news_banner1.svg",
+    thumbnailUrl: "/images/news/img_news_banner1.svg",
     contentImages: [],
   },
   {
-    id: "3",
+    id: 3,
     slug: "cong-thuc-com-rang-dua-bo",
     title: "Công thức: Cơm rang dừa bò",
     tag: "vao-bep-cung-chung-toi",
@@ -37,11 +37,11 @@ const blogs = [
     published: true,
     createdAt: new Date("2023-10-24T09:00:00Z"),
     updatedAt: new Date("2023-10-24T09:00:00Z"),
-    bannerImageUrl: "/images/news/img_news_banner1.svg",
+    thumbnailUrl: "/images/news/img_news_banner1.svg",
     contentImages: [],
   },
   {
-    id: "4",
+    id: 4,
     slug: "cong-thuc-com-chien-toi-trung",
     title: "Công thức: Cơm chiên tỏi trứng",
     tag: "vao-bep-cung-chung-toi",
@@ -49,11 +49,11 @@ const blogs = [
     published: true,
     createdAt: new Date("2023-10-23T14:00:00Z"),
     updatedAt: new Date("2023-10-23T14:00:00Z"),
-    bannerImageUrl: "/images/news/img_news_banner1.svg",
+    thumbnailUrl: "/images/news/img_news_banner1.svg",
     contentImages: [],
   },
   {
-    id: "5",
+    id: 5,
     slug: "cong-thuc-com-ga-hoi-an",
     title: "Công thức: Cơm gà Hội An",
     tag: "vao-bep-cung-chung-toi",
@@ -61,11 +61,11 @@ const blogs = [
     published: true,
     createdAt: new Date("2023-10-22T08:45:00Z"),
     updatedAt: new Date("2023-10-22T08:45:00Z"),
-    bannerImageUrl: "/images/news/img_news_banner1.svg",
+    thumbnailUrl: "/images/news/img_news_banner1.svg",
     contentImages: [],
   },
   {
-    id: "6",
+    id: 6,
     slug: "tu-truc-va-dong-gop-cho-xa-hoi",
     title: "Tư Trúc và những đóng góp cho xã hội & cộng đồng",
     tag: "tin-tuc",
@@ -73,7 +73,7 @@ const blogs = [
     published: true,
     createdAt: new Date("2023-10-21T16:20:00Z"),
     updatedAt: new Date("2023-10-21T16:20:00Z"),
-    bannerImageUrl: "/images/news/img_news_banner1.svg",
+    thumbnailUrl: "/images/news/img_news_banner1.svg",
     contentImages: [],
   },
 ];

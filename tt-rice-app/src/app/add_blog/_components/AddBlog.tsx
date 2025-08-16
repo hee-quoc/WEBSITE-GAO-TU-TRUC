@@ -140,7 +140,7 @@ export  function AddBlogPage() {
         })
       );
 
-      const payload = { title: title.trim(), thumbnail: thumbBase64, blocks: blocksPayload };
+      const payload = { title: title.trim(), tag: "vao-bep-cung-chung-toi",thumbnail: thumbBase64, blocks: blocksPayload };
       // console.log(payload)
     //   setJsonPreview(JSON.stringify(payload, null, 2));
       await addBlogMutation.mutateAsync(payload);

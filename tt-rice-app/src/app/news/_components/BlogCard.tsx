@@ -2,26 +2,28 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import {type Blog } from '@prisma/client';
+
+// Define the shape of the blog prop we expect
+interface Blog {
+  slug: string;
+  title: string;
+  bannerImageUrl: string;
+  category: string;
+}
 
 interface BlogCardProps {
   blog: Blog;
 }
 
 export default function BlogCard({ blog }: BlogCardProps) {
-  if(!blog.bannerImageUrl){
-    return (
-      <div>No blog</div>
-    );
-  }
-
   return (
     // The `group` class allows us to apply styles to children on hover of the parent
     <Link
       href={`/news/${blog.slug}`}
-      className="block group overflow-hidden  transition-all duration-300 hover:shadow-lg"
+      className="block group overflow-hidden rounded-xl shadow-sm transition-all duration-300 hover:shadow-lg"
     >
-      <div className=" rounded-xl relative aspect-video w-full overflow-hidden">
+      {/* Image Container */}
+      <div className="relative aspect-video w-full overflow-hidden">
         <Image
           src={blog.bannerImageUrl}
           alt={blog.title}
@@ -30,11 +32,13 @@ export default function BlogCard({ blog }: BlogCardProps) {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
       </div>
-      <div className="pt-5">
-        <p className="font-fz-poppins mb-1 text-xs font-medium uppercase tracking-wider text-green-500">
-          {blog.tag}
+
+      {/* Text Content */}
+      <div className="p-4 sm:p-5">
+        <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-green-700">
+          {blog.category}
         </p>
-        <h3 className="text-lg font-medium text-blue-900 line-clamp-2">
+        <h3 className="text-lg font-bold text-gray-900 line-clamp-2">
           {blog.title}
         </h3>
       </div>
