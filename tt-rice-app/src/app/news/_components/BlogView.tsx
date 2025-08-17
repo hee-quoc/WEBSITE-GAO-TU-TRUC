@@ -3,28 +3,38 @@
 import Image from "next/image";
 // import type { JSONValue } from "node_modules/superjson/dist/types";
 
-interface Blog{
+type ContentBlock = {
+  type: string
+  payload: Record<string, unknown>;
+
+}
+
+
+type Blog = {
   title: string;
   slug: string;
-  content: Array<object>;
-  published: boolean;
+  tag: string;
+  content: ContentBlock[];
+  // published: boolean;
   createdAt: Date;
   updatedAt: Date;
+  createdBy: string;
   thumbnailUrl: string | null;
 }
 
 interface BlogViewProps {
-  blog: Blog & { contentImages: { url: string; altText: string | null }[] };
+  blog: Blog ;
   isEditable: boolean;
   onEdit: () => void; // Function to trigger edit mode
 }
-type Block = {
-  type: 'header' | 'image' | 'description';
-  payload: Record<string, unknown>;
-};
+
+// type Block = {
+//   type: 'header' | 'image' | 'description';
+//   payload: Record<string, unknown>;
+// };
 
 export default function BlogView({ blog, isEditable, onEdit }: BlogViewProps) {
-  const blocks: Block[] =[]
+  const blocks: ContentBlock[] = blog.content
   // if(blog.content){
   //   try {
   //     blocks = JSON.parse(blog.content);

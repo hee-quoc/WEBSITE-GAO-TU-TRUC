@@ -5,109 +5,90 @@ import { createTRPCRouter, protectedProcedure, publicProcedure } from "~/server/
 import { db } from "~/server/db";
 import { s3Client } from "~/server/s3";
 import { PutObjectCommand } from "@aws-sdk/client-s3";
+import {deleteS3ObjectByUrl} from "../../s3";
 import {generateUniqueSlug} from "../../utils/utils"
+import { Prisma } from "@prisma/client";
 
 
+const BlockSchema = z.object({
+  type: z.string(),
+  payload: z.record(z.unknown()), // bạn có thể refine payload tuỳ type nếu muốn
+});
+const BlocksSchema = z.array(BlockSchema);
+
+type Block = z.infer<typeof BlockSchema>;
+function toPrismaJson<T>(v: T): Prisma.InputJsonValue {
+        return JSON.parse(JSON.stringify(v)) as Prisma.InputJsonValue;
+}
 
 export const blogRouter = createTRPCRouter({
   create: publicProcedure
     .input(
         z.object({
           title: z.string(),
-          thumbnail: z.string().startsWith('data:image/'),
-          blocks: z.array(
-            z.object({
-              type: z.string(),
-              payload: z.record(z.unknown()),
-            }),
-          ),
+          tag:z.string(),
+          thumbnail: z.string(),
+          blocks: BlocksSchema.optional(),
+          userId: z.string()
         }),
       )
-    // .input(
-    //   z.object({
-    //     title: z.string().min(1),
-    //     content: z.string(),
-    //     bannerImageUrl: z.string().url().optional(), // Expect a URL for the banner
-    //     contentImageUrls: z.array( // Expect an array of URLs for content images
-    //       z.object({
-    //         url: z.string().url(),
-    //         altText: z.string().optional(),
-    //         order: z.number().optional(),
-    //       })
-    //     ).optional(),
-    //   })
-    // )
     .mutation(async ({ ctx, input }) => {
       const uniqueSlug = await generateUniqueSlug(input.title);
-      const { title, thumbnail, blocks } = input;
-      const timestamp = new Date().toISOString();
-      const folderPath = `blogs/${timestamp.substring(0, 10)}/${uniqueSlug}`;
-
-      // Upload thumbnail
-      const [thumbMeta, thumbBase64] = thumbnail.split(',');
-      if (!thumbBase64) throw new Error('Invalid thumbnail image');
-      const thumbExt = thumbMeta?.split('/')[1]?.split(';')[0];
-      const thumbBuffer = Buffer.from(thumbBase64, 'base64');
-      const thumbKey = `${folderPath}/thumbnail.${thumbExt}`;
-      const thumbUrl = `https://${process.env.AWS_S3_BUCKET_NAME}.s3.${process.env.S3_REGION}.amazonaws.com/${thumbKey}`;
-      
-      await s3Client.send(
-        new PutObjectCommand({
-          Bucket: process.env.AWS_S3_BUCKET_NAME,
-          Key: thumbKey,
-          Body: thumbBuffer,
-          ContentEncoding: 'base64',
-          ContentType: `image/${thumbExt}`,
-        }),
-      );
-
+      const { title, tag, thumbnail, blocks, userId } = input;
+    
        const imagesData: {
           url: string;
           altText?: string;
           order: number;
         }[] = [];
+        let processedBlocks: object[] = [];
+        if (blocks){
+          processedBlocks = await Promise.all(
+          blocks.map(async (block, idx) => {
+            if (block.type === 'image' && typeof block.payload.image === 'string') {
+              // const [imgMeta, imgBase64] = block.payload.image.split(',');
+              // if (!imgBase64) throw new Error(`Invalid base64 in block ${idx}`);
+              // const imgExt = imgMeta?.split('/')[1]?.split(';')[0];
+              // const imgBuffer = Buffer.from(imgBase64, 'base64');
+              // const imgKey = `${folderPath}/block-image-${idx}.${imgExt}`;
 
-       const processedBlocks = await Promise.all(
-        blocks.map(async (block, idx) => {
-          if (block.type === 'image' && typeof block.payload.image === 'string') {
-            const [imgMeta, imgBase64] = block.payload.image.split(',');
-            if (!imgBase64) throw new Error(`Invalid base64 in block ${idx}`);
-            const imgExt = imgMeta?.split('/')[1]?.split(';')[0];
-            const imgBuffer = Buffer.from(imgBase64, 'base64');
-            const imgKey = `${folderPath}/block-image-${idx}.${imgExt}`;
+
+              // await s3Client.send(
+              //   new PutObjectCommand({
+              //     Bucket: process.env.AWS_S3_BUCKET_NAME,
+              //     Key: imgKey,
+              //     Body: imgBuffer,
+              //     ContentEncoding: 'base64',
+              //     ContentType: `image/${imgExt}`,
+              //   }),
+              // );
+              // const url = `https://${process.env.AWS_S3_BUCKET_NAME}.s3.${process.env.S3_REGION}.amazonaws.com/${imgKey}`;
+              
+              // block.payload.caption = undefined
+              // block.payload.image = url
+
+              imagesData.push({
+                url: block.payload.image,
+                altText: (block.payload.caption as string),
+                order: idx,
+              });
+            }
+
+            return block;
+          }),
+        );
+      }
 
 
-            await s3Client.send(
-              new PutObjectCommand({
-                Bucket: process.env.AWS_S3_BUCKET_NAME,
-                Key: imgKey,
-                Body: imgBuffer,
-                ContentEncoding: 'base64',
-                ContentType: `image/${imgExt}`,
-              }),
-            );
-            const url = `https://${process.env.AWS_S3_BUCKET_NAME}.s3.${process.env.S3_REGION}.amazonaws.com/${imgKey}`;
-            
-            // block.payload.caption = undefined
-            block.payload.image = url
-
-            imagesData.push({
-              url,
-              altText: (block.payload.caption as string),
-              order: idx,
-            });
-          }
-
-          return block;
-        }),
-      );
+      
 
       return ctx.db.blog.create({
         data: {
           title: title,
           slug: uniqueSlug,
-          content: JSON.stringify(processedBlocks),
-          thumbnailUrl: thumbUrl,
+          tag: tag,
+          content: toPrismaJson(processedBlocks),
+          thumbnailUrl: thumbnail,
           // Use a nested 'create' to add the related images in the same transaction
           contentImages: {
             create: imagesData.map((img) => ({
@@ -116,6 +97,7 @@ export const blogRouter = createTRPCRouter({
               order: img.order,
             })),
           },
+          createdBy: userId
         },
       });
     }),
@@ -124,7 +106,7 @@ export const blogRouter = createTRPCRouter({
   getBySlug: publicProcedure
     .input(z.object({ slug: z.string() }))
     .query(async ({ ctx, input }) => {
-      return ctx.db.blog.findUnique({
+      const blog = await ctx.db.blog.findUnique({
         where: { slug: input.slug },
         include: {
           // Tell Prisma to fetch the related images as well
@@ -135,24 +117,92 @@ export const blogRouter = createTRPCRouter({
           },
         },
       });
+
+      const contentParseBlog = BlocksSchema.safeParse(blog?.content)
+      if (!contentParseBlog.success) {
+        // xử lý dữ liệu không hợp lệ
+        console.warn("Invalid content shape", contentParseBlog.error);
+        return { ...blog!, content: [] as Block[] };
+      }
+      return { ...blog!, content: contentParseBlog.data};
     }),
   update: protectedProcedure
   .input(
-    z.object({
-      slug: z.string(), // We'll use the blog's ID to find it
-      title: z.string().min(1),
-      content: z.string(),
-      // Add other fields you want to update, like bannerImageUrl
-    })
+     z.object({
+          slug:z.string(),
+          title: z.string(),
+          tag:z.string(),
+          thumbnail: z.string(),
+          blocks: BlocksSchema,
+          userId: z.string()
+        }),
   )
   .mutation(async ({ ctx, input }) => {
+    const { slug,title, tag, thumbnail, blocks, userId } = input;
     // Note: We are not updating the slug here to prevent breaking old links.
     // If you want to update the slug, you would need more complex logic.
+    const oldBlogs = await ctx.db.blog.findFirst({
+        where: {slug: slug },
+         select: {
+          thumbnailUrl: true,
+          content: true,
+          slug:true,
+        },
+      });
+    const  newContentImages= blocks.map((block)=>{
+      if(block.type === "image"){
+        return block.payload.image
+      }
+    })
+    const contentParseBlog = BlocksSchema.safeParse(oldBlogs?.content);
+    const oldContentImages = contentParseBlog.data?.map((content)=>{
+      if (content.type === "image"){
+        return content.payload.image
+      }
+    })
+
+    const imagesData: {
+          url: string;
+          altText?: string;
+          order: number;
+        }[] = [];
+
+    const processedBlocks = await Promise.all(
+        blocks.map(async (block, idx) => {
+          if (block.type === 'image' && typeof block.payload.image === 'string') {
+            imagesData.push({
+              url: block.payload.image,
+              altText: (block.payload.caption as string),
+              order: idx,
+            });
+          }
+
+          return block;
+        }),
+      );
+
+    const imagesToDelete = oldContentImages?.filter((url) => !newContentImages.includes(url))
+    // 5. Xóa ảnh trên S3
+    await Promise.all(imagesToDelete!.map((url) => deleteS3ObjectByUrl(url as string)));
+    
     return ctx.db.blog.update({
       where: { slug: input.slug },
       data: {
-        title: input.title,
-        content: input.content,
+        title: title,
+        tag: tag,
+        thumbnailUrl: thumbnail,
+        content: toPrismaJson(processedBlocks),
+        contentImages: {
+          deleteMany: {
+            blogId: oldBlogs?.slug, // đảm bảo chỉ xoá ảnh của blog này
+          },
+          create: imagesData.map((img) => ({
+            url: img.url,
+            altText: img.altText,
+            order: img.order,
+          })),
+        },
+          createdBy: userId
       },
     });
   }),
@@ -174,6 +224,7 @@ export const blogRouter = createTRPCRouter({
           slug: true,
           thumbnailUrl: true,
           createdAt: true,
+          
       }
     });
   }),

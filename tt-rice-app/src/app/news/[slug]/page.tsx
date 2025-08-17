@@ -15,7 +15,7 @@ export default function BlogPage() {
   const { data: session } = useSession();
   const isAdmin = !!session?.user; 
 
-  const [isEditMode, setIsEditMode] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(true);
 
   const { data: blogData, isLoading, error } = api.blog.getBySlug.useQuery(
     { slug },
@@ -30,15 +30,15 @@ export default function BlogPage() {
   if (isAdmin && isEditMode && blogData) {
     return <BlogEditor blog={blogData} />;
   }
-  // if (blogData.content) {
-  const content = JSON.parse(blogData?.content as string) as Array<object>;
-  // }
-  const newBlogData = {...blogData, content:content}
+  // // if (blogData.content) {
+  // const content = JSON.parse(blogData?.content as string) as Array<object>;
+  // // }
+  // const newBlogData = {...blogData, content:content}
   
   if (blogData) {
     return (
       <BlogView
-        blog={newBlogData}
+        blog={blogData}
         isEditable={isAdmin}
         onEdit={() => setIsEditMode(true)}
       />
