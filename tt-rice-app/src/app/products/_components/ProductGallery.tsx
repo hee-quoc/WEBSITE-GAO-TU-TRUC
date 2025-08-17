@@ -4,7 +4,6 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 // Define and export the data structure. This is a best practice.
 export interface ProductImage {

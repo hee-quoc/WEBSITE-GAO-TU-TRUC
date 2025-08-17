@@ -13,6 +13,7 @@ import { api } from "~/trpc/server";
 import { notFound } from "next/navigation";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "~/server/auth";
+import DeleteProductButton from "../_components/utils/DeleteProductButton";
 
 type ProductPageProps = {
   params: Promise<{ slug: string }>;
@@ -35,6 +36,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <Pencil className="h-4 w-4" />
           Chỉnh sửa sản phẩm
         </Link>
+        <DeleteProductButton productId={product.id} />
       </div>)}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mt-20">

@@ -1,11 +1,11 @@
 import { useCallback } from "react";
-import { type Image, type ProductForm } from "../../utils/types";
+import { type ImageType, type ProductForm } from "../../utils/types";
 
 
 export function useProductFormHandlers(setForm: React.Dispatch<React.SetStateAction<ProductForm>>) {
   // 1. Handler cho field primitive (string, number, ...)
 
-  const handleFieldChange = useCallback((key: keyof ProductForm, value: string | number | string[] | number[] | Image |(Image)[] ) => {
+  const handleFieldChange = useCallback((key: keyof ProductForm, value: string | number | string[] | number[] | ImageType |(ImageType)[] ) => {
     setForm(prev => ({
       ...prev,
       [key]: value,

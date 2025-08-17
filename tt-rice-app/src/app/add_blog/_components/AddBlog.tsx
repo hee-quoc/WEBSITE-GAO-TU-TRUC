@@ -24,7 +24,7 @@ import {
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-
+import Image from "next/image";
 type BlockType = "header" | "image" | "description";
 
 type Block = {
@@ -196,7 +196,7 @@ export  function AddBlogPage() {
             style={{ height: thumb.height ? `${(thumb.height / thumb.width!) * 100}%` : 'auto' }}
         >
             {thumb.preview ? (
-            <img
+            <Image
                 src={thumb.preview}
                 alt="thumbnail"
                 className="w-full h-auto object-contain rounded-xl"

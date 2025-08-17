@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import BlogEditor from "../_components/BlogEditor"; // Adjust path if needed
 
 export default function CreateBlogPage() {
-  const { data: session, status } = useSession();
+  const {status } = useSession();
   const router = useRouter();
 
   useEffect(() => {

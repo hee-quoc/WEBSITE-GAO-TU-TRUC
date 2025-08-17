@@ -5,6 +5,7 @@ import {
   protectedProcedure,
   publicProcedure,
 } from "~/server/api/trpc";
+import { TRPCError } from "@trpc/server";
 import {generateUniqueSlug} from "../../utils/utils"
 import {deleteS3ObjectByUrl} from "../../s3";
 import { productFormSchema } from "~/shared/product-schema";
@@ -21,14 +22,14 @@ const CookingInput = z.object({
   description: z.string(),
 });
 
-const CertificateInput = z.array(
-  z.object({
-    name: z.string().optional(),
-    description: z.string().optional(),
-    // image giờ chỉ là string hoặc null (URL)
-    image: z.string().nullable().optional(),
-  })
-)
+// const CertificateInput = z.array(
+//   z.object({
+//     name: z.string().optional(),
+//     description: z.string().optional(),
+//     // image giờ chỉ là string hoặc null (URL)
+//     image: z.string().nullable().optional(),
+//   })
+// )
 
 
 
@@ -257,10 +258,54 @@ export const productRouter = createTRPCRouter({
   delete: protectedProcedure
     .input(z.object({ id: z.number() }))
     .mutation(async ({ ctx, input }) => {
-      void triggerRevalidation();
-      return ctx.db.product.delete({
+      const productToDelete = await ctx.db.product.findUnique({
+        where: { id: input.id },
+        select: {
+          productImages: true,
+          productCertImages: true,
+          certificates: {
+            select: {
+              image: true,
+            },
+          },
+        },
+      });
+
+      // Handle case where product doesn't exist
+      if (!productToDelete) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: `Product with ID ${input.id} not found.`,
+        });
+      }
+
+      // Step 2: Gather all image URLs into a single list.
+      const certificateImageUrls = productToDelete.certificates
+        .map((cert) => cert.image)
+        .filter((image): image is string => !!image); // Filter out null/empty strings
+
+      const allImageUrls = [
+        ...productToDelete.productImages,
+        ...productToDelete.productCertImages,
+        ...certificateImageUrls,
+      ];
+
+      // Step 3: Delete all images from S3 in parallel.
+      
+      if (allImageUrls.length > 0) {
+        await Promise.all(allImageUrls.map(url => deleteS3ObjectByUrl(url)));
+      }
+      await ctx.db.product.delete({
         where: { id: input.id },
       });
+
+      // Step 5: Trigger revalidation to update the static cache.
+      void triggerRevalidation();
+
+      return {
+        success: true,
+        message: "Product and all associated data deleted successfully.",
+      };
     }),
 
   // GET ALL SLUGS
