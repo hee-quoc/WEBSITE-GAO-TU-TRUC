@@ -4,18 +4,19 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import BlogEditor from "../_components/BlogEditor"; // Adjust path if needed
+// import BlogEditor from "../_components/BlogEditor"; // Adjust path if needed
+import { AddBlogPage } from '../_components/AddBlog';
 
 export default function CreateBlogPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  useEffect(() => {
-    // If the session is loaded and the user is not authenticated, redirect
-    if (status === "unauthenticated") {
-      router.push("/login");
-    }
-  }, [status, router]);
+  // useEffect(() => {
+  //   // If the session is loaded and the user is not authenticated, redirect
+  //   if (status === "unauthenticated") {
+  //     router.push("/login");
+  //   }
+  // }, [status, router]);
 
   // While the session is loading, show a loading state
   if (status === "loading") {
@@ -29,9 +30,9 @@ export default function CreateBlogPage() {
   // If the user is authenticated, render the editor
   // The BlogEditor without a `blog` prop is automatically in "create" mode
   if (status === "authenticated") {
-    return <BlogEditor />;
+    return <AddBlogPage />;
   }
 
   // Fallback, in case the redirect hasn't happened yet
-  return null;
+  return <AddBlogPage />;
 }

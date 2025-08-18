@@ -2,6 +2,8 @@
 import React, { useMemo, useRef, useState, useEffect } from "react";
 import { SortableCard } from "./SortableCard";
 import { api } from '../../utils/api';
+import {uploadFileToS3} from "../utils/s3Upload"
+import {type BlockType, type Block, type BlockPayload} from "./types";
 import {
   Save,
   Upload,
@@ -25,35 +27,24 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 
-type BlockType = "header" | "image" | "description";
-
-type Block = {
-  id: string;
-  type: BlockType;
-  header?: { level: 2 | 3 | 4; text: string };
-  image?: { file?: File | null; preview?: string | null; caption?: string };
-  description?: { code: string };
-};
 
 // ---- Helpers ----
 
 const uid = (p = "blk") => `${p}_${Math.random().toString(36).slice(2, 10)}`;
 
-const fileToBase64 = (file: File) =>
-  new Promise<string>((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result as string);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-
 // ---- Page Component ----
+
+const newTypeOptions = [
+        {label:"Tin tức/Thương hiệu",value:"tin-tuc"},
+        {label:"Vào bếp cùng chúng tôi",value:"vao-bep-cung-chung-toi"}
+    ]
 
 export  function AddBlogPage() {
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 6 } }));
-
+  const [popup, setPopup] = useState({ show: false, message: "", type: "success" });
   const [title, setTitle] = useState("");
   const [thumb, setThumb] = useState<{ file: File | null; preview: string | null; width?: number; height?: number  }>({ file: null, preview: null });
+  const [tag, setTag] = useState("");
   const thumbInputRef = useRef<HTMLInputElement | null>(null);
 
   const [blocks, setBlocks] = useState<Block[]>([
@@ -124,29 +115,69 @@ export  function AddBlogPage() {
   // --- Save (demo JSON) ---
 //   const [jsonPreview, setJsonPreview] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  
+  const createPresignedUrl = api.s3.createPresignedUrl.useMutation();
 
   const handleSave = async () => {
-    if (!canSave || submitting) return;
     setSubmitting(true);
+    if (!canSave || submitting) return;
     try {
-      const thumbBase64 = thumb.file ? await fileToBase64(thumb.file) : "";
-      const blocksPayload = await Promise.all(
+      const presignedThumbResults = await createPresignedUrl.mutateAsync({
+                fileName:thumb.file!.name,
+                fileType:thumb.file!.type,
+                })
+      await uploadFileToS3(presignedThumbResults.url, thumb.file!)
+      const blocksPayload = (await Promise.all(
         blocks.map(async (b) => {
-          if (b.type === "header") return { type: b.type, payload: b.header ?? {}};
-          if (b.type === "description") return { type: b.type, payload: b.description ?? {}};
+          if (b.type === "header"  && b.header?.text?.trim() ) return { type: b.type, payload: b.header ?? {}};
+          else if (b.type === "description" && b.description?.code?.trim()) {
+            b.description.code = `<p>${b.description.code.replaceAll("\n","<br/>")}</p>`;
+            return { type: b.type, payload: b.description ?? {}};
+          }
           // image
-          const imageBase64 = b.image?.file ? await fileToBase64(b.image.file) : null;
-          return { type: b.type, payload: { caption: b.image?.caption ?? "", image: imageBase64 ?? "" } };
+          else if (b.type === "image"  && b.image?.file){
+            const file = b.image.file;
+          if (!file) return;
+            const presignedResults = await createPresignedUrl.mutateAsync({
+                fileName: file.name,
+                fileType: file.type,
+                })
+            
+            
+            await uploadFileToS3(presignedResults.url, file)
+            return { type: b.type, payload: { caption: b.image?.caption ?? "", image: presignedResults.fileUrl ?? "" } };
+          };
+          return null;
+          // const imageBase64 = b.image?.file ? await fileToBase64(b.image.file) : null;
         })
-      );
+      )).filter((b): b is BlockPayload => b !== null);
 
-      const payload = { title: title.trim(), tag: "vao-bep-cung-chung-toi",thumbnail: thumbBase64, blocks: blocksPayload };
-      // console.log(payload)
-    //   setJsonPreview(JSON.stringify(payload, null, 2));
-      await addBlogMutation.mutateAsync(payload);
+      
+
+      const payload = { title: title.trim(),tag: tag, thumbnail: presignedThumbResults.fileUrl, blocks: blocksPayload , userId: "cmefvo37w0000uv3co1orimfy"}; //TManh to do: thêm hàm lấy thông tin User và gán userId
+
+      const response = await addBlogMutation.mutateAsync(payload);
+      if (response.success) {
+            setPopup({ show: true, message: "Lưu thành công", type: "success" });
+            setSubmitting(false);
+            // Delay 5 giây sau đó reset form và refresh page
+            setTimeout(() => {
+                window.location.reload(); // refresh trang
+            }, 5000);
+        } else {
+            setPopup({ show: true, message: "Có lỗi khi lưu!", type: "error" });
+            setTimeout(() => {
+               setPopup({ show: false, message: "", type: "success" });
+               setSubmitting(false);
+            }, 3000);
+        }
     } catch (e) {
       console.error(e);
-      alert("Có lỗi khi tạo payload.");
+      setPopup({ show: true, message: "Có lỗi khi lưu!", type: "error" });
+      setTimeout(() => {
+          setPopup({ show: false, message: "", type: "success" });
+          setSubmitting(false);
+      }, 3000);
     } finally {
       setSubmitting(false);
     }
@@ -154,13 +185,6 @@ export  function AddBlogPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      {/* <div className="sticky top-0 z-10 border-b bg-white/80 backdrop-blur">
-        <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3">
-          
-          
-        </div>
-      </div> */}
 
       {/* Body */}
       <div className="mx-auto max-w-5xl px-4 py-6">
@@ -176,6 +200,43 @@ export  function AddBlogPage() {
             placeholder="Nhập tiêu đề..."
             className="w-full rounded-xl border px-3 py-2 outline-none focus:ring-2 focus:ring-black/10"
           />
+        </div>
+        <div className="mb-6 rounded-2xl border bg-white p-4 shadow-sm">
+          <label className="mb-2 block text-sm font-medium">
+            Loại tin tức <span className="text-red-500">*</span>
+          </label>
+          <div className="flex flex-col gap-1 w-[150px]">
+            <div className="relative">
+              <select
+                value={tag}
+                onChange={(e)=>{setTag(e.target.value)}}
+                className="w-full appearance-none rounded-lg border border-gray-300 bg-white px-4 py-2 pr-10 text-sm shadow-sm outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 disabled:cursor-not-allowed disabled:bg-gray-100"
+              >
+                <option value="" disabled>
+                  Loại tin tức
+                </option>
+
+                {newTypeOptions.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
+              {/* Icon mũi tên */}
+              <svg
+                className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
         </div>
 
         {/* Thumbnail */}
@@ -260,9 +321,87 @@ export  function AddBlogPage() {
                 onClick={handleSave}
                 className="inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-medium shadow-sm transition hover:shadow disabled:cursor-not-allowed disabled:opacity-50"
             >
-                <Save className="h-4 w-4" /> Lưu
+                <Save className="h-4 w-4" /> {submitting ? "Đang lưu..." : "Lưu"} 
+                {submitting && (
+                <svg
+                    className="animate-spin h-5 w-5 mr-2 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                >
+                    <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    ></circle>
+                    <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                    ></path>
+                </svg>
+                )}
           </button>
         </div>
+         {popup.show && (
+                <div
+                    className={`fixed top-20 right-20 max-w-sm w-full flex items-center gap-3 px-5 py-3 rounded-xl shadow-lg text-black transition-all duration-500 transform ${
+                        popup.type === "success" ? "bg-green-500" : "bg-red-500"
+                    }`}
+                    >
+                    {/* Icon */}
+                    <div className="flex-shrink-0">
+                        {popup.type === "success" ? (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        ) : (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        )}
+                    </div>
+
+                    {/* Text */}
+                    <div className="flex-1">
+                        <p className="font-semibold text-sm">
+                        {popup.type === "success" ? "Thành công" : "Lỗi"}
+                        </p>
+                        <p className="text-sm opacity-90">{popup.message || "Lưu thành công"}</p>
+                    </div>
+
+                    {/* Close button */}
+                    <button
+                        onClick={() => setPopup({ ...popup, message: "" })}
+                        className="text-white opacity-70 hover:opacity-100"
+                    >
+                        <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+             )} 
 
         {/* JSON preview */}
         {/* {jsonPreview && ( */}

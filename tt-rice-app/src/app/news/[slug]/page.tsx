@@ -23,7 +23,7 @@ export default function BlogPage() {
   const { data: session } = useSession();
   const isAdmin = !!session?.user; 
 
-  const [isEditMode, setIsEditMode] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(true);
 
   const { data: blogData, isLoading, error } = api.blog.getBySlug.useQuery(
     { slug },
@@ -31,27 +31,27 @@ export default function BlogPage() {
 
   // Safely parse the blog content only when blogData changes.
   // This is efficient and prevents runtime errors.
-  const parsedContent = useMemo((): ContentBlock[] => {
-    if (!blogData?.content) {
-      return [];
-    }
+  // const parsedContent = useMemo((): ContentBlock[] => {
+  //   if (!blogData?.content) {
+  //     return [];
+  //   }
 
-    try {
-      const parsed = JSON.parse(blogData.content) as unknown;
+  //   try {
+  //     const parsed = JSON.parse(blogData.content) as unknown;
 
-      if (Array.isArray(parsed)) {
-        // THE FIX: We've confirmed it's an array.
-        // Now we assert that its contents match our ContentBlock type.
-        return parsed as ContentBlock[]; 
-      }
+  //     if (Array.isArray(parsed)) {
+  //       // THE FIX: We've confirmed it's an array.
+  //       // Now we assert that its contents match our ContentBlock type.
+  //       return parsed as ContentBlock[]; 
+  //     }
 
-      console.warn("Parsed blog content was not an array.");
-      return [];
-    } catch (e) {
-      console.error("Failed to parse blog content JSON:", e);
-      return [];
-    }
-  }, [blogData]); // Only re-run this logic when blogData changes.
+  //     console.warn("Parsed blog content was not an array.");
+  //     return [];
+  //   } catch (e) {
+  //     console.error("Failed to parse blog content JSON:", e);
+  //     return [];
+  //   }
+  // }, [blogData]); // Only re-run this logic when blogData changes.
 
   
   if (isLoading) {
@@ -68,14 +68,15 @@ export default function BlogPage() {
     return <BlogEditor blog={blogData} />;
   }
   
-  // Create the new data object with the parsed content for the view component.
-  const newBlogData = { ...blogData, content: parsedContent };
+  if (blogData) {
+    return (
+      <BlogView
+        blog={blogData}
+        isEditable={isAdmin}
+        onEdit={() => setIsEditMode(true)}
+      />
+    );
+  }
 
-  return (
-    <BlogView
-      blog={newBlogData}
-      isEditable={isAdmin}
-      onEdit={() => setIsEditMode(true)}
-    />
-  );
+  return <div className="text-center py-20">Something went wrong.</div>;
 }
