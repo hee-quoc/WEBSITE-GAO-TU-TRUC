@@ -26,12 +26,6 @@ export function FilteredProductList({ allProducts, categories }: FilteredProduct
     if (!activeTag) {
       return allProducts;
     }
-    allProducts.map(product => {
-
-      // console.log(`Product Title: ${product.title}, Tag: ${product.tag}`);
-    })
-    const products=allProducts.filter(product => product.tag.includes(activeTag));
-    
     return allProducts.filter(product => product.tag.includes(activeTag));
   }, [activeTag, allProducts]);
 

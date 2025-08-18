@@ -6,7 +6,7 @@ import Link from "next/link";
 import Button from "~/app/_components/ui/Button"; // Make sure this path is correct
 
 export default function AuthButton() {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
 
   if (status === "loading") {
     return (
@@ -18,12 +18,12 @@ export default function AuthButton() {
     return (
       <div className="flex items-center gap-4">
         <Button
-          onClick={() => signOut({ callbackUrl: "/" })} // Redirect to homepage after sign out
+          onClick={() => signOut()} // Redirect to homepage after sign out
           variant="secondary"
               size="medium"
               className=" group flex items-center rounded-full bg-red-500 text-red-500  hover:bg-red-500 hover:text-white"
         >
-          Sign Out
+          Đăng xuất
         </Button>
       </div>
     );
@@ -37,7 +37,7 @@ export default function AuthButton() {
         size="medium"
         className=" group flex items-center gap-2 border-green-normal rounded-full text-green-normal hover:bg-green-dark hover:text-white"
       >
-        Sign In
+        Admin
       </Button>
     </Link>
   );

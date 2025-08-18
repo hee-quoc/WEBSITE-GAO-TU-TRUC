@@ -1,8 +1,6 @@
-// import { type Image, type ProductForm, } from "../AddProductPage";
-
 export interface BaseFieldProps {
   title?: string;
-  value?: string | string[] | number | Image | unknown[] | undefined;
+  value?: string | string[] | number | ImageType | unknown[] | undefined;
   index?: number | null;
   disabled?: boolean;
   error?: string;
@@ -13,26 +11,25 @@ export interface ImageUploadFieldProps extends BaseFieldProps {
   subField:  string;
   type: 'image' | 'logo';
   onSetImageFile: (index: number | null, f: File | null ,field: keyof ProductForm, subField:  string) => void;
-  form: ProductForm
-  setForm: React.Dispatch<React.SetStateAction<ProductForm>>
+  onRemove: (index: number | undefined) => void;
 }
 
 export interface TextFieldProps extends BaseFieldProps {
-  field: string | number | Image | unknown[];
+  field: string | number | ImageType | unknown[];
   isArea?: boolean;
   onUpdateField?: (field: keyof ProductForm, value: string) => void;
 }
  
 
 export interface NumberArrayFieldProps extends BaseFieldProps {
-  field: string | number | Image | unknown[];
+  field: string | number | ImageType | unknown[];
   section: string
   onChange: (section: keyof ProductForm, field: string, index: number, value: number|string) => void;
 }
 
 
 export interface TextCardObjectProps extends BaseFieldProps {
-  field: string | number | Image | unknown[];
+  field: string | number | ImageType | unknown[];
   section: string
   isArea: boolean
   onChange: (section: keyof ProductForm, field: string, index: number, value: string) => void;
@@ -40,7 +37,7 @@ export interface TextCardObjectProps extends BaseFieldProps {
 
 
 export interface TextAreaFieldProps extends BaseFieldProps {
-  field: string | number | Image | unknown[];
+  field: string | number | ImageType | unknown[];
   onUpdateField?: (field: keyof ProductForm, value: string) => void;
 }
 
@@ -50,7 +47,7 @@ interface DropdownOption {
 }
 
 export interface DropdownProps extends BaseFieldProps {
-  field: string | number | Image | unknown[];
+  field: string | number | ImageType | unknown[];
   options: DropdownOption[];
   onChange: (field: keyof ProductForm,  value: string | number , index:number ) => void;
   disabled?: boolean;
@@ -67,7 +64,7 @@ export interface MultiSelectDropdownProps extends BaseFieldProps {
   setForm: React.Dispatch<React.SetStateAction<ProductForm>>
 }
 
-export type Image = {
+export type ImageType = {
   file?: File | null;
   preview?: string | null;
   width?: number;
@@ -83,7 +80,7 @@ export type Guide = {
 
 export type ProductForm = {
   title: string;
-  productImages: (Image)[];
+  productImages: (ImageType)[];
   tag: string[];
   description: string;
   price: string;
@@ -96,6 +93,6 @@ export type ProductForm = {
   grow: string;
   cooking: { step: string[]; description: string };
   wrapProcess: string;
-  certificates: { name: string; image: Image; description: string }[];
-  productCertImages: (Image)[];
+  certificates: { name: string; image: ImageType; description: string }[];
+  productCertImages: (ImageType)[];
 };

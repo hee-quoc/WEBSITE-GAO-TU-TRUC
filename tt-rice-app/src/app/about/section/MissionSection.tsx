@@ -134,7 +134,7 @@ export function MissionSection() {
             {/* Pagination Dots as images */}
             <div className="flex gap-2">
               {backgroundImages.map((_, i) => (
-                <img
+                <Image
                   key={i}
                   src={i === index ? '/Pagination_current.svg' : '/Pagination.svg'}
                   alt={`dot-${i}`}

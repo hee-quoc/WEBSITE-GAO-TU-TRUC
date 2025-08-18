@@ -27,7 +27,6 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 
-
 // ---- Helpers ----
 
 const uid = (p = "blk") => `${p}_${Math.random().toString(36).slice(2, 10)}`;

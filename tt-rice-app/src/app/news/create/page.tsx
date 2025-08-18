@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { AddBlogPage } from '../_components/AddBlog';
 
 export default function CreateBlogPage() {
-  const { data: session, status } = useSession();
+  const {status } = useSession();
   const router = useRouter();
 
   // useEffect(() => {

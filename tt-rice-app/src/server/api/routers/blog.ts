@@ -1,8 +1,8 @@
 // src/server/api/routers/blog.ts (or wherever you create blogs)
 import { z } from "zod";
-import slugify from "slugify";
+// import slugify from "slugify";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "~/server/api/trpc";
-import { db } from "~/server/db";
+// import { db } from "~/server/db";
 import { s3Client } from "~/server/s3";
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import {deleteS3ObjectByUrl} from "../../s3";
@@ -22,6 +22,18 @@ function toPrismaJson<T>(v: T): Prisma.InputJsonValue {
 }
 
 export const blogRouter = createTRPCRouter({
+  // getAll: publicProcedure
+  //     .input(z.object({ tag: z.string().optional() }))
+  //     .query(({ ctx, input }) => {
+  //       const { tag } = input;
+  
+  //       return ctx.db.blog.findMany({
+  //         where: tag
+  //           ? { tag: {equals: tag} } // tag is now a String
+  //           : {},
+  //         orderBy: { createdAt: "asc" },
+  //       });
+  //     }),
   create: protectedProcedure //TManh to do: thêm crediential 
     .input(
         z.object({
@@ -201,19 +213,19 @@ export const blogRouter = createTRPCRouter({
         where: { slug: input.slug },
       });
     }),
-    getAll: publicProcedure.query(({ ctx }) => {
+  getAll: publicProcedure.query(({ ctx }) => {
     return ctx.db.blog.findMany({
       // Show the newest posts first
       orderBy: { createdAt: 'desc' },
       // Select only the fields needed for the card view to be efficient
-      select: {
-          // id: true,
-          title: true,
-          slug: true,
-          thumbnailUrl: true,
-          createdAt: true,
-          
-      }
+      // select: {
+      //     // id: true,
+      //     title: true,
+      //     slug: true,
+      //     thumbnailUrl: true,
+      //     createdAt: true,
+      //     tag: true,
+      // }
     });
   }),
 });

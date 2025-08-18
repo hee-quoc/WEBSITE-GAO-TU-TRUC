@@ -3,7 +3,9 @@ import { Suspense } from "react";
 import { FilteredProductList } from '~/app/products/_components/FilteredProductList';
 import { FilterButton } from "./_components/FilterButton";
 import { ProductHero } from "./_components/ProductHero";
-
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "~/server/auth";
+import Link from "next/link";
 export interface CategoryData {
   name: string;
   description: string;
@@ -64,6 +66,7 @@ export default async function ProductsPage(
 // }
 ) {
   const allProducts = await api.product.getAll({});
+  const session = await getServerSession(authOptions);
   return (
     <main>
       <ProductHero />
@@ -78,6 +81,14 @@ export default async function ProductsPage(
         <FilteredProductList allProducts={allProducts} categories={CATEGORY_DATA} />
         <div className="h-20" />
       </div>
+      {session?.user &&(<div className="mt-20 justify-center items-center">
+        <Link
+          href={`/products/create`}
+          className="inline-flex justify-center items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          Thêm sản phẩm mới
+        </Link>
+      </div>)}
     </main>
   );
 }

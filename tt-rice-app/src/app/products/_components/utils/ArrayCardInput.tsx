@@ -40,7 +40,7 @@ export function ArrayCardInput({
       onChange(section as keyof ProductForm, field as string, index ?? 0, inputValue);
     }
     },
-    [numericOnly, onChange, field, index]
+    [numericOnly, onChange, field, index,section]
   );
 
   return (

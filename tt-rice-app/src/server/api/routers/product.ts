@@ -5,9 +5,10 @@ import {
   protectedProcedure,
   publicProcedure,
 } from "~/server/api/trpc";
+import { TRPCError } from "@trpc/server";
 import {generateUniqueSlug} from "../../utils/utils"
 import {deleteS3ObjectByUrl} from "../../s3";
-
+import { productFormSchema } from "~/shared/product-schema";
 
 const GuideInput = z.object({
   water: z.array(z.number()),
@@ -21,14 +22,14 @@ const CookingInput = z.object({
   description: z.string(),
 });
 
-const CertificateInput = z.array(
-  z.object({
-    name: z.string().optional(),
-    description: z.string().optional(),
-    // image giờ chỉ là string hoặc null (URL)
-    image: z.string().nullable().optional(),
-  })
-)
+// const CertificateInput = z.array(
+//   z.object({
+//     name: z.string().optional(),
+//     description: z.string().optional(),
+//     // image giờ chỉ là string hoặc null (URL)
+//     image: z.string().nullable().optional(),
+//   })
+// )
 
 
 
@@ -97,37 +98,7 @@ export const productRouter = createTRPCRouter({
   create: protectedProcedure
     .input(
       z.object({
-        form: z.object({
-          title: z.string().min(1, "Title is required"),
-          description: z.string().min(1, "Description is required"),
-          price: z.string().min(1, "Price is required"),
-          detail: z.string(),
-          properties: z.array(z.number()),
-          tag: z.array(z.string()),
-
-          // Thay vì mảng object { file: any }, giờ là mảng string key/url
-          productImages: z.array(z.string()),
-          package: z.string(),
-          parts: z.string(),
-          ingredients: z.string(),
-          grow: z.string(),
-          wrapProcess: z.string(),
-
-          productCertImages: z.array(z.string()),
-          guide: GuideInput.optional(),
-          cooking: CookingInput.optional(),
-
-          certificates: z
-            .array(
-              z.object({
-                name: z.string().optional(),
-                description: z.string().optional(),
-                // image giờ chỉ là string hoặc null (URL)
-                image: z.string().nullable().optional(),
-              })
-            )
-            .optional(),
-        }),
+        form: productFormSchema,
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -245,33 +216,36 @@ export const productRouter = createTRPCRouter({
       // 5. Xóa ảnh trên S3
       await Promise.all(imagesToDelete.map((url) => deleteS3ObjectByUrl(url)));
 
-      await ctx.db.product.update({
-        where: { id },
-        data: {
-           ...rest,
-          ...(productImages && { productImages: { set: productImages } }),
-          ...(productCertImages && { productCertImages: { set: productCertImages } }),
-          ...(guide !== undefined && {
+      await ctx.db.$transaction(async (prisma) => {
+        // Step 1: Delete all existing certificates for this product.
+        // This is safe because it's inside a transaction.
+        await prisma.certificate.deleteMany({
+          where: { productId: id },
+        });
+
+        // Step 2: Update the product and create the new certificates.
+        await prisma.product.update({
+          where: { id },
+          data: {
+            ...rest,
+            productImages: { set: productImages },
+            productCertImages: { set: productCertImages },
             guide: guide
               ? { upsert: { create: guide, update: guide } }
-              : { delete: true },
-          }),
-          ...(cooking !== undefined && {
+              : undefined, // Let upsert handle it
             cooking: cooking
               ? { upsert: { create: cooking, update: cooking } }
-              : { delete: true },
-          }),
-          ...(certificates !== undefined && {
+              : undefined, // Let upsert handle it
+            // Now, we only need to 'create' the new certificates.
             certificates: {
-              set: [],
-              create: certificates.map((c) => ({
+              create: certificates?.map((c) => ({
                 name: c.name ?? "",
                 description: c.description ?? "",
                 image: c.image ?? "",
               })),
             },
-          }),
-        },
+          },
+        });
       });
 
       // 6. Update DB
@@ -284,10 +258,54 @@ export const productRouter = createTRPCRouter({
   delete: protectedProcedure
     .input(z.object({ id: z.number() }))
     .mutation(async ({ ctx, input }) => {
-      void triggerRevalidation();
-      return ctx.db.product.delete({
+      const productToDelete = await ctx.db.product.findUnique({
+        where: { id: input.id },
+        select: {
+          productImages: true,
+          productCertImages: true,
+          certificates: {
+            select: {
+              image: true,
+            },
+          },
+        },
+      });
+
+      // Handle case where product doesn't exist
+      if (!productToDelete) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: `Product with ID ${input.id} not found.`,
+        });
+      }
+
+      // Step 2: Gather all image URLs into a single list.
+      const certificateImageUrls = productToDelete.certificates
+        .map((cert) => cert.image)
+        .filter((image): image is string => !!image); // Filter out null/empty strings
+
+      const allImageUrls = [
+        ...productToDelete.productImages,
+        ...productToDelete.productCertImages,
+        ...certificateImageUrls,
+      ];
+
+      // Step 3: Delete all images from S3 in parallel.
+      
+      if (allImageUrls.length > 0) {
+        await Promise.all(allImageUrls.map(url => deleteS3ObjectByUrl(url)));
+      }
+      await ctx.db.product.delete({
         where: { id: input.id },
       });
+
+      // Step 5: Trigger revalidation to update the static cache.
+      void triggerRevalidation();
+
+      return {
+        success: true,
+        message: "Product and all associated data deleted successfully.",
+      };
     }),
 
   // GET ALL SLUGS

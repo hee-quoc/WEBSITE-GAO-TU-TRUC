@@ -1,6 +1,6 @@
 // ProductFeatures.tsx
 "use client";
-import { useMediaQuery } from "~/app/hooks/useMediaQuery";
+//import { useMediaQuery } from "~/app/hooks/useMediaQuery";
 import Image from "next/image";
 
 const StarRating = ({ rating, totalStars = 5 }: { rating: number; totalStars?: number }) => {
@@ -33,7 +33,7 @@ export function ProductFeatures({ features }: { features: number[] }) {
     { label: "Độ mềm", rating: features[2] ?? 0 },
     { label: "Độ nở", rating: features[3] ?? 0 },
   ];
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  //const isMobile = useMediaQuery("(max-width: 768px)");
   return (
     <section className="bg-[url('/images/products/img_features_background.svg')] rounded-xl shadow overflow-hidden mt-12 bg-no-repeat bg-right-bottom bg-contain mb-8">
       <h2 className="text-white text-center py-3 text-xl font-alegreya-sans bg-[#6C9126]">

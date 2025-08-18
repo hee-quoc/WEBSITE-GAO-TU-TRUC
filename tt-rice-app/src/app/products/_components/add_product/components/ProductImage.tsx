@@ -1,13 +1,15 @@
 import { ImageCard } from "../../utils/ImageCard";
-import { type Image, type ProductForm } from "../../utils/types";
+import { type ImageType } from "../../utils/types";
 
 interface ProductImageSectionProps {
-  images: Image[];
+  images: ImageType[];
   onAdd: () => void;
   onSetImageFile: (index: number, file: File | null ) => void;
+  onRemove: (index: number | undefined) => void; 
 }
 
-export function ProductImageSection({ images, onAdd, onSetImageFile }: ProductImageSectionProps) {
+export function ProductImageSection({ images, onAdd, onSetImageFile, onRemove }: ProductImageSectionProps) {
+  
   return (
     <section>
       <div className="text-[20px] font-bold w-full px-4 mt-5">Ảnh sản phẩm</div>
@@ -21,8 +23,7 @@ export function ProductImageSection({ images, onAdd, onSetImageFile }: ProductIm
               value={img}
               index={idx}
               onSetImageFile={(i, file) => onSetImageFile(i!, file)}
-              setForm={() => {return}}
-              form={{} as ProductForm}
+              onRemove={onRemove}
             />
           </div>
         ))}

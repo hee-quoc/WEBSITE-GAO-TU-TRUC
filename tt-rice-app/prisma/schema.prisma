@@ -85,7 +85,7 @@ model Guide {
   rice      String[]
   finger    String[]
   step      String[]
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id],onDelete: Cascade)
   productId Int     @unique
 }
 
@@ -93,7 +93,7 @@ model Cooking {
   id          Int     @id @default(autoincrement())
   step        String[]
   description String
-  product     Product @relation(fields: [productId], references: [id])
+  product     Product @relation(fields: [productId], references: [id],onDelete: Cascade)
   productId   Int     @unique
 }
 
@@ -102,7 +102,7 @@ model Certificate {
   name        String
   image       String
   description String
-  product     Product @relation(fields: [productId], references: [id])
+  product     Product @relation(fields: [productId], references: [id],onDelete: Cascade)
   productId   Int
 }
 

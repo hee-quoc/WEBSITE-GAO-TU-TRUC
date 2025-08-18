@@ -52,7 +52,7 @@ export const s3Router = createTRPCRouter({
       });
 
       // Generate a unique key for the S3 object
-      const uniqueKey = `public/uploads/${randomUUID()}-${input.fileName}`;
+      const uniqueKey = `private/uploads/${randomUUID()}-${input.fileName}`;
       
       // 4. Create the Presigned URL for a PUT request
       const putObjectCommand = new PutObjectCommand({

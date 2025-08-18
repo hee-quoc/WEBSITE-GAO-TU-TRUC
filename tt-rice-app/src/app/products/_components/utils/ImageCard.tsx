@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { Upload, X } from "lucide-react";
-import { type ImageUploadFieldProps, type Image, type ProductForm } from "./types";
-
+import { type ImageUploadFieldProps, type ImageType } from "./types";
 
 export function ImageCard({
   type,
@@ -9,12 +8,11 @@ export function ImageCard({
   subField,
   value,
   index,
-  form,
-  setForm,
   onSetImageFile,
+  onRemove
 }: ImageUploadFieldProps) {
   const [inputKey, setInputKey] = useState<number>(Date.now());
-  const image = value as Image;
+  const image = value as ImageType;
 
   const handleFileChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,36 +23,41 @@ export function ImageCard({
       }
       onSetImageFile(index ?? null, file, field, subField);
     },
-    [onSetImageFile, index]
+    [onSetImageFile, index,field,subField]
   );
 
   
-  const removeImage = (index: number | null, field: keyof ProductForm) => {
-          setForm(prev => {
-              const currentValue = prev[field];
+  // const removeImage = (index: number | null, field: keyof ProductForm) => {
+  //         setForm(prev => {
+  //             const currentValue = prev[field];
   
-              // Chỉ xử lý khi field là mảng
-              if (Array.isArray(currentValue)) {
-                  const updatedArray = currentValue.filter((_, i) => i !== index);
-                  return { ...prev, [field]: updatedArray as ProductForm[keyof ProductForm] };
-              }
+  //             // Chỉ xử lý khi field là mảng
+  //             if (Array.isArray(currentValue)) {
+  //                 const updatedArray = currentValue.filter((_, i) => i !== index);
+  //                 return { ...prev, [field]: updatedArray as ProductForm[keyof ProductForm] };
+  //             }
   
-              console.warn(`removeImage: Field "${String(field)}" không phải là mảng`);
-              return prev;
-          });
-          console.log(form)
-      };
+  //             console.warn(`removeImage: Field "${String(field)}" không phải là mảng`);
+  //             return prev;
+  //         });
+  //         console.log(form)
+  //     };
 
   
-  const handleRemoveBlock = useCallback(() =>{
-    removeImage(index ?? null,field);
-  },[removeImage,index])
+  // const handleRemoveBlock = useCallback(() =>{
+  //   removeImage(index ?? null,field);
+  // },[removeImage,index])
 
   const handleRemove = useCallback(() => {
     onSetImageFile(index ?? null, null,field,subField);
     setInputKey(Date.now());
-  }, [onSetImageFile,index]);
+  }, [onSetImageFile,index,field, subField]);
 
+  const handleRemoveClick = useCallback(() => {
+    if (index !== null) {
+      onRemove(index);
+    }
+  }, [onRemove, index]);
   return (
     <div className={`flex flex-col mr-4 gap-3 sm:flex-row ${type === "image" ? "w-[400px]" : "w-[200px]"}`}>
       <div className="sm:w-full">
@@ -88,7 +91,7 @@ export function ImageCard({
             className="absolute inset-0 cursor-pointer opacity-0"
           />
           
-          {value && (value as Image).preview && (
+          {value && (value as ImageType).preview && (
             <button
               onClick={handleRemove}
               className="absolute right-2 top-2 rounded-lg bg-white/80 p-1 text-red-600 shadow hover:bg-white"
@@ -100,7 +103,7 @@ export function ImageCard({
             <div></div>
            ):(
             <button
-              onClick={handleRemoveBlock}
+              onClick={handleRemoveClick}
               className="absolute right-2 top-2 rounded-lg bg-white/80 p-1 text-red-600 shadow hover:bg-white"
             >
               <X className="h-4 w-4" />

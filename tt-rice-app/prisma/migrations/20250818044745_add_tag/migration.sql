@@ -16,12 +16,8 @@ ALTER TABLE "BlogImage" DROP CONSTRAINT "BlogImage_blogId_fkey";
 
 -- AlterTable
 ALTER TABLE "Blog" DROP CONSTRAINT "Blog_pkey",
-DROP COLUMN "bannerImageUrl",
-DROP COLUMN "id",
 DROP COLUMN "published",
 ADD COLUMN     "createdBy" TEXT NOT NULL,
-ADD COLUMN     "tag" TEXT NOT NULL,
-ADD COLUMN     "thumbnailUrl" TEXT,
 DROP COLUMN "content",
 ADD COLUMN     "content" JSONB NOT NULL,
 ADD CONSTRAINT "Blog_pkey" PRIMARY KEY ("slug");

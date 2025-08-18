@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { use, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import type { Testimonial } from "~/app/types/Types"
 import { useMediaQuery } from "~/app/hooks/useMediaQuery";
 import { motion, AnimatePresence , type Variants } from 'framer-motion';

@@ -75,21 +75,24 @@ export const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
     if (!disabled) setOpen((prev:boolean) => !prev);
   };
 
-  const handleMultiTagChange = (field: keyof ProductForm, newTags: string[]) => {
-          setForm(prev => ({
-              ...prev,
-              [field]: newTags
-          }));
-          };
+  // const handleMultiTagChange = (field: keyof ProductForm, newTags: string[]) => {
+  //         setForm(prev => ({
+  //             ...prev,
+  //             [field]: newTags
+  //         }));
+  //         };
 
   const handleOptionChange = useCallback(
     (optionValue: string) => {
       const newValue = value.includes(optionValue)
         ? value.filter(v => v !== optionValue)
         : [...value, optionValue];
-      handleMultiTagChange(field, newValue);
+      setForm(prev => ({
+          ...prev,
+          [field]: newValue
+      }));
     },
-    [value, handleMultiTagChange, field]
+    [value, setForm, field]
   );
 
   useEffect(() => {
