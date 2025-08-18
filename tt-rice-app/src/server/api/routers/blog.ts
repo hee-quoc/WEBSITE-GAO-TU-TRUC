@@ -8,6 +8,10 @@ import { PutObjectCommand } from "@aws-sdk/client-s3";
 import {deleteS3ObjectByUrl} from "../../s3";
 import {generateUniqueSlug} from "../../utils/utils"
 import { Prisma } from "@prisma/client";
+import { triggerRevalidation } from "../../utils/utils";
+import { TRPCError } from "@trpc/server";
+
+
 
 
 const BlockSchema = z.object({
@@ -207,11 +211,50 @@ export const blogRouter = createTRPCRouter({
       };
   }),
   delete: protectedProcedure
-    .input(z.object({ slug: z.string() }))
+    .input(z.object({ id: z.number() }))
     .mutation(async ({ ctx, input }) => {
-      return ctx.db.blog.delete({
-        where: { slug: input.slug },
+      const blogToDelete = await ctx.db.blog.findUnique({
+        where: { id: input.id },
+        select: {
+          contentImages: true,
+          thumbnailUrl: true,
+        },
       });
+
+      // Handle case where product doesn't exist
+      if (!blogToDelete) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: `Product with ID ${input.id} not found.`,
+        });
+      }
+
+      // Step 2: Gather all image URLs into a single list.
+      const ImageUrls = blogToDelete.contentImages
+        .map((cert) => cert.url)
+        .filter((url): url is string => !!url); // Filter out null/empty strings
+
+      const allImageUrls = [
+        ...(blogToDelete.thumbnailUrl ? [blogToDelete.thumbnailUrl] : []),
+        ...ImageUrls,
+      ];
+
+      // Step 3: Delete all images from S3 in parallel.
+      
+      if (allImageUrls.length > 0) {
+        await Promise.all(allImageUrls.map(url => deleteS3ObjectByUrl(url)));
+      }
+      await ctx.db.blog.delete({
+        where: { id: input.id },
+      });
+
+      // Step 5: Trigger revalidation to update the static cache.
+      void triggerRevalidation("news");
+
+      return {
+        success: true,
+        message: "Blog and all associated data deleted successfully.",
+      };
     }),
   getAll: publicProcedure.query(({ ctx }) => {
     return ctx.db.blog.findMany({

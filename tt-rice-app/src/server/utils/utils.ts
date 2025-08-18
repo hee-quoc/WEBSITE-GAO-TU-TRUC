@@ -18,3 +18,23 @@ export async function generateUniqueSlug(title: string): Promise<string> {
     count++; // It's not unique, increment counter and try again
   }
 }
+
+export async function triggerRevalidation(path:string) {
+  const revalidateUrl = new URL('/api/revalidate', process.env.NEXT_PUBLIC_APP_URL);
+  
+  try {
+    await fetch(revalidateUrl.toString(), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-revalidate-secret': process.env.REVALIDATE_SECRET_TOKEN!,
+      },
+      body: JSON.stringify({
+        path: `/${path}`, // The path we want to rebuild
+      }),
+    });
+    console.log('Successfully triggered revalidation for /products');
+  } catch (err) {
+    console.error('Failed to trigger revalidation:', err);
+  }
+}
