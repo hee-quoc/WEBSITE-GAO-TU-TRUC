@@ -9,7 +9,7 @@ import { TRPCError } from "@trpc/server";
 import {generateUniqueSlug} from "../../utils/utils"
 import {deleteS3ObjectByUrl} from "../../s3";
 import { productFormSchema } from "~/shared/product-schema";
-
+import { triggerRevalidation } from "../../utils/utils";
 const GuideInput = z.object({
   water: z.array(z.number()),
   rice: z.array(z.string()),
@@ -33,25 +33,7 @@ const CookingInput = z.object({
 
 
 
-async function triggerRevalidation() {
-  const revalidateUrl = new URL('/api/revalidate', process.env.NEXT_PUBLIC_APP_URL);
-  
-  try {
-    await fetch(revalidateUrl.toString(), {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-revalidate-secret': process.env.REVALIDATE_SECRET_TOKEN!,
-      },
-      body: JSON.stringify({
-        path: '/products', // The path we want to rebuild
-      }),
-    });
-    console.log('Successfully triggered revalidation for /products');
-  } catch (err) {
-    console.error('Failed to trigger revalidation:', err);
-  }
-}
+
 export const productRouter = createTRPCRouter({
   // INFINITE FETCHING
   getInfinite: publicProcedure
@@ -300,7 +282,7 @@ export const productRouter = createTRPCRouter({
       });
 
       // Step 5: Trigger revalidation to update the static cache.
-      void triggerRevalidation();
+      void triggerRevalidation("products");
 
       return {
         success: true,
