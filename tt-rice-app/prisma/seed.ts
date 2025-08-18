@@ -106,10 +106,10 @@ async function main() {
   international: true,
   productImages: [
     "/images/products/img_st25.svg",
-    "/images/products/img_st25_2.svg",
+    //"/images/products/img_st25_2.svg",
     "/images/products/img_st25_3.svg",
     "/images/products/img_st25_4.svg",
-    "/images/products/img_st25_5.svg"
+    //"/images/products/img_st25_5.svg"
   ],
   tags: ['gao-an'],
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
@@ -163,11 +163,11 @@ async function main() {
   ],
   international: true,
   productImages: [
-    "/images/products/img_st25.svg",
-    "/images/products/img_st25_2.svg",
+    "/images/products/lua_tom.png",
+    //"/images/products/img_st25_2.svg",
     "/images/products/img_st25_3.svg",
     "/images/products/img_st25_4.svg",
-    "/images/products/img_st25_5.svg"
+    //"/images/products/img_st25_5.svg"
   ],
   tags: ['gao-an'],
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
@@ -221,11 +221,11 @@ async function main() {
   ],
   international: true,
   productImages: [
-    "/images/products/img_st25.svg",
-    "/images/products/img_st25_2.svg",
+    "/images/products/lai_hoa.png",
+    //"/images/products/img_st25_2.svg",
     "/images/products/img_st25_3.svg",
     "/images/products/img_st25_4.svg",
-    "/images/products/img_st25_5.svg"
+    //"/images/products/img_st25_5.svg"
   ],
   tags: ['gao-an'],
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
@@ -279,11 +279,11 @@ async function main() {
   ],
   international: true,
   productImages: [
-    "/images/products/img_st25.svg",
-    "/images/products/img_st25_2.svg",
+    "/images/products/lai_sua.png",
+    //"/images/products/img_st25_2.svg",
     "/images/products/img_st25_3.svg",
     "/images/products/img_st25_4.svg",
-    "/images/products/img_st25_5.svg"
+    //"/images/products/img_st25_5.svg"
   ],
   tags: ['gao-an'],
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
@@ -337,11 +337,11 @@ async function main() {
   ],
   international: true,
   productImages: [
-    "/images/products/img_st25.svg",
-    "/images/products/img_st25_2.svg",
+    "/images/products/huong_sen.png",
+    //"/images/products/img_st25_2.svg",
     "/images/products/img_st25_3.svg",
     "/images/products/img_st25_4.svg",
-    "/images/products/img_st25_5.svg"
+    //"/images/products/img_st25_5.svg"
   ],
   tags: ['gao-an'],
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
@@ -399,9 +399,9 @@ async function main() {
     "/images/products/img_st25_2.svg",
     "/images/products/img_st25_3.svg",
     "/images/products/img_st25_4.svg",
-    "/images/products/img_st25_5.svg"
+    //"/images/products/img_st25_5.svg"
   ],
-  tags: ['gao-an'],
+  tags: ['gao-thong-dung'],
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
 },
 {
@@ -453,13 +453,13 @@ async function main() {
   ],
   international: true,
   productImages: [
-    "/images/products/img_st25.svg",
-    "/images/products/img_st25_2.svg",
+    "/images/products/te_504.png",
+    //"/images/products/img_st25_2.svg",
     "/images/products/img_st25_3.svg",
     "/images/products/img_st25_4.svg",
-    "/images/products/img_st25_5.svg"
+    //"/images/products/img_st25_5.svg"
   ],
-  tags: ['gao-thong-dung'],
+  tags: ['gao-nguyen-lieu'],
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
 },
 {
@@ -512,12 +512,12 @@ async function main() {
   international: true,
   productImages: [
     "/images/products/img_st25.svg",
-    "/images/products/img_st25_2.svg",
+    //"/images/products/img_st25_2.svg",
     "/images/products/img_st25_3.svg",
     "/images/products/img_st25_4.svg",
-    "/images/products/img_st25_5.svg"
+    //"/images/products/img_st25_5.svg"
   ],
-  tags: ['gao-an'],
+  tags: ['phu-pham'],
   productCertImages:["/images/products/icon_ocop.svg", "/images/products/icon_iso.svg"],
 },
 ];

@@ -56,7 +56,7 @@ export function CertificateSection({
             />
             <div className="text-[20px] font-bold w-full px-4 mt-5">Tên chứng nhận</div>
             <TextCardObject
-              section="certificate"
+              section="certificates"
               field="name"
               value={cer.name}
               index={idx}
@@ -66,7 +66,7 @@ export function CertificateSection({
             />
             <div className="text-[20px] font-bold w-full px-4 mt-5">Chi tiết chứng nhận</div>
             <TextCardObject
-              section="certificate"
+              section="certificates"
               field="description"
               value={cer.description}
               index={idx}
@@ -78,7 +78,7 @@ export function CertificateSection({
               onClick={() =>
                 setForm((prev) => ({
                   ...prev,
-                  certificate: prev.certificates.filter((_, i) => i !== idx),
+                  certificates: prev.certificates.filter((_, i) => i !== idx),
                 }))
               }
               className="absolute right-2 top-2 rounded-lg bg-white/80 p-1 text-red-600 shadow hover:bg-white"
@@ -94,7 +94,7 @@ export function CertificateSection({
             onClick={() =>
               setForm((prev) => ({
                 ...prev,
-                certificate: [
+                certificates: [
                   ...prev.certificates,
                   {
                     name: "",

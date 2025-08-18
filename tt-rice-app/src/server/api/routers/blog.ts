@@ -25,8 +25,8 @@ export const blogRouter = createTRPCRouter({
   create: protectedProcedure //TManh to do: thêm crediential 
     .input(
         z.object({
+          tag: z.string(),
           title: z.string(),
-          tag:z.string(),
           thumbnail: z.string(),
           blocks: BlocksSchema.optional(),
           userId: z.string()
@@ -61,9 +61,9 @@ export const blogRouter = createTRPCRouter({
 
       const newBlog = await ctx.db.blog.create({
         data: {
+          tag:tag, 
           title: title,
           slug: uniqueSlug,
-          tag: tag,
           content: toPrismaJson(processedBlocks),
           thumbnailUrl: thumbnail,
           // Use a nested 'create' to add the related images in the same transaction
@@ -87,12 +87,11 @@ export const blogRouter = createTRPCRouter({
 
   // Your getBySlug would now need to include the images
   getBySlug: publicProcedure
-    .input(z.object({ slug: z.string() }))
+    .input(z.object({ slug: z.string()}))
     .query(async ({ ctx, input }) => {
       const blog = await ctx.db.blog.findUnique({
         where: { slug: input.slug },
         include: {
-          // Tell Prisma to fetch the related images as well
           contentImages: {
             orderBy: {
               order: 'asc', // Ensure they are in the correct order

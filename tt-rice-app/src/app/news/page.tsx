@@ -1,119 +1,139 @@
-// // src/app/news/page.tsx
-// "use client";
-
-// import Link from "next/link";
-// import { useSession } from "next-auth/react";
-// import { api } from "~/trpc/react";
-// import BlogCard from "./_components/BlogCard";
-// import Button from "../_components/ui/Button";
-
-// export default function NewsIndexPage() {
-//   const { data: session } = useSession();
-//   const { data: blogs, isLoading, error } = api.blog.getAll.useQuery();
-
-//   return (
-//     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-//       <div className="flex items-center justify-between border-b border-gray-200 pb-6">
-//         <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-//           News & Updates
-//         </h1>
-//         {/* Conditionally render the "Create" button for admins */}
-//         {session?.user && (
-//           <Link href="/news/create">
-//             <Button size="large">Create New Post</Button>
-//           </Link>
-//         )}
-//       </div>
-
-//       {isLoading && <p className="mt-8 text-center">Loading posts...</p>}
-//       {error && <p className="mt-8 text-center text-red-500">Failed to load posts.</p>}
-
-//       <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-//         {blogs?.map((blog) => (
-//           <BlogCard key={blog.id} blog={blog} />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
-// src/app/news/page.tsx
-// app/news/page.tsx
-
-// "use client"; // This can now be a Server Component if you fetch data!
-
-import BlogCard from "./_components/BlogCard";
-
+import { Suspense } from "react";
+import { BlogFilterButton } from "./_components/BlogFilterButton";
+import { BlogFilteredList } from "./_components/BlogFilteredList";
+import Image from "next/image";
 // Corrected mock data to match the visual design
 const blogs = [
   {
-    id: "1",
+    id: 1,
     slug: "cau-chuyen-san-pham-gao-sach-thom-ngon",
     title: "Câu chuyện sản phẩm - Gạo sạch thơm ngon từ Tư Trúc",
-    bannerImageUrl: "/images/news/img_news_banner1.svg", // Replace with your actual image paths
-    category: "TIN TỨC / THƯƠNG HIỆU",
+    tag: "tin-tuc",
+    content: "Đây là nội dung chi tiết cho bài viết về câu chuyện sản phẩm gạo sạch thơm ngon từ Tư Trúc. Nội dung này sẽ được hiển thị trên trang chi tiết của blog.",
+    published: true,
+    createdAt: new Date("2023-10-26T10:00:00Z"),
+    updatedAt: new Date("2023-10-26T10:00:00Z"),
+    thumbnailUrl: "/images/news/img_news_banner1.svg",
+    contentImages: [], // Matches the BlogImage[] relation
   },
   {
-    id: "2",
+    id: 2,
     slug: "hat-kim-cuong-giua-dong-ruong",
     title: "“Hạt kim cương” giữa đồng ruộng",
-    bannerImageUrl: "/images/news/img_news_banner1.svg",
-    category: "TIN TỨC / THƯƠG HIỆU",
+    tag: "tin-tuc",
+    content: "Nội dung chi tiết về 'Hạt kim cương' giữa đồng ruộng. Khám phá giá trị và chất lượng đặc biệt của sản phẩm.",
+    published: true,
+    createdAt: new Date("2023-10-25T11:30:00Z"),
+    updatedAt: new Date("2023-10-25T11:30:00Z"),
+    thumbnailUrl: "/images/news/img_news_banner1.svg",
+    contentImages: [],
   },
   {
-    id: "3",
+    id: 3,
     slug: "cong-thuc-com-rang-dua-bo",
     title: "Công thức: Cơm rang dừa bò",
-    bannerImageUrl: "/images/news/img_news_banner1.svg",
-    category: "CƠM NHÀ HÔM NAY CÓ GÌ",
+    tag: "vao-bep-cung-chung-toi",
+    content: "Hướng dẫn từng bước để làm món cơm rang dừa bò thơm ngon, lạ miệng cho cả gia đình thưởng thức.",
+    published: true,
+    createdAt: new Date("2023-10-24T09:00:00Z"),
+    updatedAt: new Date("2023-10-24T09:00:00Z"),
+    thumbnailUrl: "/images/news/img_news_banner1.svg",
+    contentImages: [],
   },
   {
-    id: "4",
+    id: 4,
     slug: "cong-thuc-com-chien-toi-trung",
     title: "Công thức: Cơm chiên tỏi trứng",
-    bannerImageUrl: "/images/news/img_news_banner1.svg",
-    category: "CƠM NHÀ HÔM NAY CÓ GÌ",
+    tag: "vao-bep-cung-chung-toi",
+    content: "Một công thức cơm chiên tỏi trứng đơn giản nhưng không kém phần hấp dẫn, phù hợp cho bữa ăn nhanh gọn.",
+    published: true,
+    createdAt: new Date("2023-10-23T14:00:00Z"),
+    updatedAt: new Date("2023-10-23T14:00:00Z"),
+    thumbnailUrl: "/images/news/img_news_banner1.svg",
+    contentImages: [],
   },
   {
-    id: "5",
+    id: 5,
     slug: "cong-thuc-com-ga-hoi-an",
     title: "Công thức: Cơm gà Hội An",
-    bannerImageUrl: "/images/news/img_news_banner1.svg",
-    category: "CƠM NHÀ HÔM NAY CÓ GÌ",
+    tag: "vao-bep-cung-chung-toi",
+    content: "Mang hương vị đặc sản Hội An vào căn bếp của bạn với công thức chuẩn vị cho món cơm gà trứ danh.",
+    published: true,
+    createdAt: new Date("2023-10-22T08:45:00Z"),
+    updatedAt: new Date("2023-10-22T08:45:00Z"),
+    thumbnailUrl: "/images/news/img_news_banner1.svg",
+    contentImages: [],
   },
   {
-    id: "6",
+    id: 6,
     slug: "tu-truc-va-dong-gop-cho-xa-hoi",
     title: "Tư Trúc và những đóng góp cho xã hội & cộng đồng",
-    bannerImageUrl: "/images/news/img_news_banner1.svg",
-    category: "TIN TỨC / THƯƠNG HIỆU",
+    tag: "tin-tuc",
+    content: "Tìm hiểu về các hoạt động xã hội và những đóng góp ý nghĩa của thương hiệu Tư Trúc cho cộng đồng.",
+    published: true,
+    createdAt: new Date("2023-10-21T16:20:00Z"),
+    updatedAt: new Date("2023-10-21T16:20:00Z"),
+    thumbnailUrl: "/images/news/img_news_banner1.svg",
+    contentImages: [],
   },
 ];
 
+export interface BlogCategoryData {
+  name: string;
+  id: number;
+}
 
-export default function NewsIndexPage() {
+const CATEGORY_DATA: Record<string, BlogCategoryData> = {
+  "tin-tuc":{name:"Tin tức/Thương hiệu", id:1},
+  "vao-bep-cung-chung-toi":{name:"Vào bếp cùng chúng tôi",id:2},
+}
+function FilterButtonsFallback() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-      {/* Optional: Add a page title */}
-      <div className="mb-10 text-center">
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Tin Tức & Công Thức
-        </h1>
-        <p className="mt-3 text-lg text-gray-600">
-          Khám phá những câu chuyện và công thức nấu ăn ngon từ Tư Trúc.
-        </p>
-      </div>
+    <div className="mt-8 flex flex-wrap animate-pulse items-center justify-center gap-4 md:justify-start">
+      <div className="h-9 w-24 rounded-full bg-gray-200"></div>
+      <div className="h-9 w-28 rounded-full bg-gray-200"></div>
+    </div>
+  );
+}
 
-      {/* The Grid Layout */}
-      <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-        {/*
-          - The data structure was [{id, blog: {...}}]. We pass `item.blog` to the card.
-          - If you simplify your data to be [{id, title, ...}], you can just pass `item`.
-        */}
-        {blogs.map((item) => (
-          <BlogCard key={item.id} blog={item} />
-        ))}
+export default async  function NewsIndexPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ tag?: string }>;
+  
+}) {
+  const resolvedSearchParams = await searchParams;
+  const activeTag = resolvedSearchParams?.tag;
+  const filteredBlogs = activeTag
+    ? blogs.filter((blog) => blog.tag === activeTag)
+    : blogs;
+  return (
+    <div>
+      <div className="relative w-full h-[200px] sm:h-[250px] md:h-[400px]">
+        <Image
+          src="/faq/thumbnail.svg"
+          alt="banner"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg flex items-center justify-center px-4">
+          <h1 className="text-white text-2xl sm:text-3xl md:text-5xl font-bold font-alegreya-sans text-center leading-snug">
+            Tin Tức
+          </h1>
+        </div>
       </div>
+      <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      
+      <div className={`mt-[43px] flex flex-col items-center mb-5`}>
+        <div className="relative z-10 w-full">
+          <Suspense fallback={<FilterButtonsFallback />}>
+            <BlogFilterButton categories={CATEGORY_DATA} />
+          </Suspense>
+        </div>
+      </div>
+      <BlogFilteredList blogs={filteredBlogs} categories={CATEGORY_DATA}/>
+    </main>
     </div>
   );
 }

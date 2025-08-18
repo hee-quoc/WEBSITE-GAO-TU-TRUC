@@ -118,14 +118,12 @@ export function ProductAccordion({ product }: { product: ProductWithDetails}) {
           </AccordionItem>
         </>
       )}
-
-      {/* --- Item 7: Chứng nhận (certificates is an array) --- */}
       {product.productCertImages && product.productCertImages.length > 0 && (
         <>
           <Divider />
           <button
             onClick={() => handleToggle(6)}
-            className="w-full flex items-center justify-between px-4 py-3 bg-white text-left"
+            className="w-full flex items-center justify-between px-4 py-3 text-left"
             aria-expanded={openSet.has(6)}
           >
             <div className="flex items-center gap-2">

@@ -35,7 +35,7 @@ export function ProductFeatures({ features }: { features: number[] }) {
   ];
   const isMobile = useMediaQuery("(max-width: 768px)");
   return (
-    <section className="bg-[url('/images/products/img_features_background.svg')] rounded-xl shadow overflow-hidden mt-12 bg-no-repeat bg-right-bottom bg-contain">
+    <section className="bg-[url('/images/products/img_features_background.svg')] rounded-xl shadow overflow-hidden mt-12 bg-no-repeat bg-right-bottom bg-contain mb-8">
       <h2 className="text-white text-center py-3 text-xl font-alegreya-sans bg-[#6C9126]">
         Đặc tính sản phẩm
       </h2>

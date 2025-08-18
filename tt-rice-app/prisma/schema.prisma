@@ -108,9 +108,10 @@ model Certificate {
 
 
 model Blog {
-  title       String
-  slug        String   @id @unique
+  id          Int    @id @default(autoincrement())
+  title       String 
   tag         String
+  slug        String  @unique
   content     Json   
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
