@@ -22,7 +22,7 @@ function toPrismaJson<T>(v: T): Prisma.InputJsonValue {
 }
 
 export const blogRouter = createTRPCRouter({
-  create: publicProcedure
+  create: protectedProcedure //TManh to do: thêm crediential 
     .input(
         z.object({
           title: z.string(),
@@ -46,27 +46,6 @@ export const blogRouter = createTRPCRouter({
           processedBlocks = await Promise.all(
           blocks.map(async (block, idx) => {
             if (block.type === 'image' && typeof block.payload.image === 'string') {
-              // const [imgMeta, imgBase64] = block.payload.image.split(',');
-              // if (!imgBase64) throw new Error(`Invalid base64 in block ${idx}`);
-              // const imgExt = imgMeta?.split('/')[1]?.split(';')[0];
-              // const imgBuffer = Buffer.from(imgBase64, 'base64');
-              // const imgKey = `${folderPath}/block-image-${idx}.${imgExt}`;
-
-
-              // await s3Client.send(
-              //   new PutObjectCommand({
-              //     Bucket: process.env.AWS_S3_BUCKET_NAME,
-              //     Key: imgKey,
-              //     Body: imgBuffer,
-              //     ContentEncoding: 'base64',
-              //     ContentType: `image/${imgExt}`,
-              //   }),
-              // );
-              // const url = `https://${process.env.AWS_S3_BUCKET_NAME}.s3.${process.env.S3_REGION}.amazonaws.com/${imgKey}`;
-              
-              // block.payload.caption = undefined
-              // block.payload.image = url
-
               imagesData.push({
                 url: block.payload.image,
                 altText: (block.payload.caption as string),
@@ -80,9 +59,7 @@ export const blogRouter = createTRPCRouter({
       }
 
 
-      
-
-      return ctx.db.blog.create({
+      const newBlog = await ctx.db.blog.create({
         data: {
           title: title,
           slug: uniqueSlug,
@@ -100,6 +77,12 @@ export const blogRouter = createTRPCRouter({
           createdBy: userId
         },
       });
+
+      return {
+        success: true,
+        message: "Blog created successfully",
+        slug: newBlog.slug,
+      };
     }),
 
   // Your getBySlug would now need to include the images
@@ -126,7 +109,7 @@ export const blogRouter = createTRPCRouter({
       }
       return { ...blog!, content: contentParseBlog.data};
     }),
-  update: protectedProcedure
+  update: protectedProcedure //TManh to do: thêm crediential 
   .input(
      z.object({
           slug:z.string(),
@@ -184,8 +167,8 @@ export const blogRouter = createTRPCRouter({
     const imagesToDelete = oldContentImages?.filter((url) => !newContentImages.includes(url))
     // 5. Xóa ảnh trên S3
     await Promise.all(imagesToDelete!.map((url) => deleteS3ObjectByUrl(url as string)));
-    
-    return ctx.db.blog.update({
+
+    const newUpdateBlog = await ctx.db.blog.update({
       where: { slug: input.slug },
       data: {
         title: title,
@@ -205,6 +188,12 @@ export const blogRouter = createTRPCRouter({
           createdBy: userId
       },
     });
+    
+    return {
+        success: true,
+        message: "Blog updated successfully",
+        slug: newUpdateBlog.slug,
+      };
   }),
   delete: protectedProcedure
     .input(z.object({ slug: z.string() }))

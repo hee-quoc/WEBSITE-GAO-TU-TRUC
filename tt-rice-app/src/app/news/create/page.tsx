@@ -11,12 +11,12 @@ export default function CreateBlogPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  useEffect(() => {
-    // If the session is loaded and the user is not authenticated, redirect
-    if (status === "unauthenticated") {
-      router.push("/login");
-    }
-  }, [status, router]);
+  // useEffect(() => {
+  //   // If the session is loaded and the user is not authenticated, redirect
+  //   if (status === "unauthenticated") {
+  //     router.push("/login");
+  //   }
+  // }, [status, router]);
 
   // While the session is loading, show a loading state
   if (status === "loading") {
@@ -34,5 +34,5 @@ export default function CreateBlogPage() {
   }
 
   // Fallback, in case the redirect hasn't happened yet
-  return null;
+  return <AddBlogPage />;
 }

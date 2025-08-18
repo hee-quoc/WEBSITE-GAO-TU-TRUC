@@ -92,9 +92,13 @@ export default function BlogEditor({ blog }: BlogEditorProps) {
           const base: Block = { id, type:content.type } as Block;
           if (content.type === "header")  base.header = { level: 2, text: content.payload.text as string};
           else if (content.type === "image") base.image = { file: null, preview: content.payload.image as string , caption: content.payload.caption as string };
-          else if (content.type === "description")  base.description = { code: content.payload.code as string };
+          else if (content.type === "description")  base.description = { code: (content.payload.code as string)
+                                                                        .replace("<p>","")
+                                                                        .replace("</p>","")
+                                                                        .replaceAll("<br/>","\n")};
           return base;
         })
+  const [popup, setPopup] = useState({ show: false, message: "", type: "success" });
   const [title, setTitle] = useState(blog.title);
   const [thumb, setThumb] = useState<{ file: File | null; preview: string | null; width?: number; height?: number  }>({ file : null, preview : blog.thumbnailUrl , width: undefined, height: undefined  });
   const [tag, setTag] = useState(blog.tag);
@@ -166,21 +170,31 @@ export default function BlogEditor({ blog }: BlogEditorProps) {
 
 
   const handleSave = async () => {
-      if (!canSave || submitting) return;
       setSubmitting(true);
+      if (!canSave || submitting) return;
       try {
-        if (!thumb.file){
-          throw new Error("No thumbnail image");
-        }
-        const presignedThumbResults = await createPresignedUrl.mutateAsync({
+        let presignedThumbResults: {url:string, fileUrl:string, key?:string} = {url:"",fileUrl:"",key:""}
+        if (!thumb.file ){
+          if (thumb.preview){
+            presignedThumbResults = {url:"",fileUrl:thumb.preview}
+          }else{
+            throw new Error("No thumbnail image");
+          }
+        }else{
+            presignedThumbResults = await createPresignedUrl.mutateAsync({
                   fileName:thumb.file.name,
                   fileType:thumb.file.type,
                   })
-        await uploadFileToS3(presignedThumbResults.url, thumb.file)
+            await uploadFileToS3(presignedThumbResults.url, thumb.file)
+        }
+        
         const blocksPayload = (await Promise.all(
           blocks.map(async (b) => {
             if (b.type === "header"  && b.header?.text?.trim() ) return { type: b.type, payload: b.header ?? {}};
-            else if (b.type === "description" && b.description?.code?.trim()) return { type: b.type, payload: b.description ?? {}};
+            else if (b.type === "description" && b.description?.code?.trim()){
+              b.description.code = `<p>${b.description.code.replaceAll("\n","<br/>")}</p>`;
+              return { type: b.type, payload: b.description ?? {}};
+            }
             // image
             else if (b.type === "image"  && b.image?.file){
               const file = b.image.file;
@@ -193,6 +207,8 @@ export default function BlogEditor({ blog }: BlogEditorProps) {
               
               await uploadFileToS3(presignedResults.url, file)
               return { type: b.type, payload: { caption: b.image.caption ?? "", image: presignedResults.fileUrl ?? "" } };
+            }else if (b.type === "image"  && !b.image?.file && b.image?.preview){
+              return { type: b.type, payload: { caption: b.image.caption ?? "", image: b.image?.preview ?? "" } };
             }
             // const imageBase64 = b.image?.file ? await fileToBase64(b.image.file) : null;
           })
@@ -201,13 +217,32 @@ export default function BlogEditor({ blog }: BlogEditorProps) {
   
         
   
-        const payload = {slug: blog.slug, title: title.trim(),tag: tag, thumbnail: presignedThumbResults.fileUrl, blocks: blocksPayload , userId: "cmefggzc20000uv8kom0k3lng"};
+        const payload = {slug: blog.slug, title: title.trim(),tag: tag, thumbnail: presignedThumbResults.fileUrl, blocks: blocksPayload , userId: "cmefvo37w0000uv3co1orimfy"}; //TManh to do: thêm hàm lấy thông tin User và gán userId
         // console.log(payload)
       //   setJsonPreview(JSON.stringify(payload, null, 2));
-        await updateBlogMutation.mutateAsync(payload);
+        const response = await updateBlogMutation.mutateAsync(payload);
+
+        if (response.success) {
+            setPopup({ show: true, message: "Lưu thành công", type: "success" });
+            setSubmitting(false);
+            // Delay 5 giây sau đó reset form và refresh page
+            setTimeout(() => {
+                window.location.reload(); // refresh trang
+            }, 5000);
+        } else {
+            setPopup({ show: true, message: "Có lỗi khi lưu!", type: "error" });
+            setTimeout(() => {
+               setPopup({ show: false, message: "", type: "success" });
+               setSubmitting(false);
+            }, 3000);
+        }
       } catch (e) {
         console.error(e);
-        alert("Có lỗi khi tạo payload.");
+        setPopup({ show: true, message: "Có lỗi khi lưu!", type: "error" });
+        setTimeout(() => {
+            setPopup({ show: false, message: "", type: "success" });
+            setSubmitting(false);
+        }, 3000);
       } finally {
         setSubmitting(false);
       }
@@ -360,8 +395,86 @@ export default function BlogEditor({ blog }: BlogEditorProps) {
                 onClick={handleSave}
                 className="inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-medium shadow-sm transition hover:shadow disabled:cursor-not-allowed disabled:opacity-50"
             >
-                <Save className="h-4 w-4" /> Lưu
+                <Save className="h-4 w-4" /> {submitting ? "Đang lưu..." : "Lưu"} 
+                {submitting && (
+                <svg
+                    className="animate-spin h-5 w-5 mr-2 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                >
+                    <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    ></circle>
+                    <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                    ></path>
+                </svg>
+                )}
           </button>
+           {popup.show && (
+                <div
+                    className={`fixed top-20 right-20 max-w-sm w-full flex items-center gap-3 px-5 py-3 rounded-xl shadow-lg text-black transition-all duration-500 transform ${
+                        popup.type === "success" ? "bg-green-500" : "bg-red-500"
+                    }`}
+                    >
+                    {/* Icon */}
+                    <div className="flex-shrink-0">
+                        {popup.type === "success" ? (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        ) : (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        )}
+                    </div>
+
+                    {/* Text */}
+                    <div className="flex-1">
+                        <p className="font-semibold text-sm">
+                        {popup.type === "success" ? "Thành công" : "Lỗi"}
+                        </p>
+                        <p className="text-sm opacity-90">{popup.message || "Cập nhật thành công"}</p>
+                    </div>
+
+                    {/* Close button */}
+                    <button
+                        onClick={() => setPopup({ ...popup, message: "" })}
+                        className="text-white opacity-70 hover:opacity-100"
+                    >
+                        <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+             )} 
         </div>
       </div>
     </div>

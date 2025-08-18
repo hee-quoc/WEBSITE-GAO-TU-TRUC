@@ -110,8 +110,8 @@ export default function BlogView({ blog, isEditable, onEdit }: BlogViewProps) {
               );
             case 'description':
               return (
-                <p key={index} className="text-base leading-relaxed">
-                  {block.payload.code as string}
+                <p key={index} className="text-base leading-relaxed" dangerouslySetInnerHTML={{ __html: block.payload.code as string }}>
+                  {/* {block.payload.code as string} */}
                 </p>
               );
             default:
