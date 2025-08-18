@@ -3,6 +3,7 @@ import React, { useMemo, useRef, useState, useEffect } from "react";
 import { SortableCard } from "./SortableCard";
 import { api } from '../../utils/api';
 import {uploadFileToS3} from "../utils/s3Upload"
+import {type BlockType, type Block, type BlockPayload} from "./types";
 import {
   Save,
   Upload,
@@ -26,31 +27,10 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 
-type BlockType = "header" | "image" | "description";
 
-type Block = {
-  id: string;
-  type: BlockType;
-  header?: { level: 2 | 3 | 4; text: string };
-  image?: { file?: File | null; preview?: string | null; caption?: string };
-  description?: { code: string };
-};
-
-type BlockPayload =
-  | { type: "header"; payload: { level: 2 | 3 | 4; text: string } }
-  | { type: "description"; payload: { code: string } }
-  | { type: "image"; payload: { caption: string; image: string } };
 // ---- Helpers ----
 
 const uid = (p = "blk") => `${p}_${Math.random().toString(36).slice(2, 10)}`;
-
-const fileToBase64 = (file: File) =>
-  new Promise<string>((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result as string);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
 
 // ---- Page Component ----
 

@@ -10,9 +10,9 @@ import toast from "react-hot-toast";
 import { api } from "~/trpc/react";
 import Button from "~/app/_components/ui/Button";
 import { useQuill } from "~/app/hooks/useQuill"; // <-- Import the custom hook
-import {uploadFileToS3} from "../../add_blog/utils/s3Upload"
-import { SortableCard } from "../../add_blog/_components/SortableCard";
-import { AddBlogPage } from '../../add_blog/_components/AddBlog';
+import {uploadFileToS3} from "../utils/s3Upload"
+import { SortableCard } from "./SortableCard";
+import { AddBlogPage } from './AddBlog';
 
 import {
   Save,
@@ -116,31 +116,6 @@ export default function BlogEditor({ blog }: BlogEditorProps) {
   };
 
   const updateBlogMutation = api.blog.update.useMutation();
-
-  // useEffect(() => {
-  //   if (blog) {
-  //     console.log(blog)
-  //     setBlocks((prev)=>{
-  //       const blocks= blog.content.map((content)=>{
-  //         const id = uid();
-  //         const base: Block = { id, type:content.type } as Block;
-  //         if (content.type === "header")  base.header = { level: 2, text: content.payload.text as string};
-  //         else if (content.type === "image") base.image = { file: null, preview: content.payload.image as string , caption: content.payload.caption as string };
-  //         else if (content.type === "description")  base.description = { code: content.payload.code as string };
-  //         return base;
-  //       })
-  //       return [...prev,...blocks]
-  //     })
-  //     // blog.content.map((content)=>{
-  //     //   addBlock(content.type as BlockType,content.payload)
-  //     // })
-      
-  //     // if (quill && blog.content) {
-  //     //   // quill.clipboard.dangerouslyPasteHTML(blog.content);
-  //     // }
-  //   }
-  // }, []); // quill
-  
 
   // --- Thumbnail ---
     const onPickThumb = (e: React.ChangeEvent<HTMLInputElement>) => {

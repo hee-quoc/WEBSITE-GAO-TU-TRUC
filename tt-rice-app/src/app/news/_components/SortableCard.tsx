@@ -11,17 +11,18 @@ import {
 } from "@dnd-kit/sortable";
 
 import { CSS } from '@dnd-kit/utilities';
+import {type BlockType, type Block, type BlockPayload} from "./types";
 
 // ---- Sortable card ----
-type BlockType = "header" | "image" | "description";
+// type BlockType = "header" | "image" | "description";
 
-type Block = {
-  id: string;
-  type: BlockType;
-  header?: { level: 2 | 3 | 4; text: string };
-  image?: { file?: File | null; preview?: string | null; caption?: string  ;width?: number; height?: number;};
-  description?: { code: string };
-};
+// type Block = {
+//   id: string;
+//   type: BlockType;
+//   header?: { level: 2 | 3 | 4; text: string };
+//   image?: { file?: File | null; preview?: string | null; caption?: string  ;width?: number; height?: number;};
+//   description?: { code: string };
+// };
 
 
 export function SortableCard({
