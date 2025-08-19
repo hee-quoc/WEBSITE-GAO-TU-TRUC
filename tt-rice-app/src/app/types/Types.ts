@@ -5,6 +5,11 @@ export type ProductWithDetails = NonNullable<
   inferRouterOutputs<AppRouter>["product"]["getBySlug"]
 >;
 
+export type BlogWithDetails = NonNullable<
+  inferRouterOutputs<AppRouter>["blog"]["getBySlug"]
+>;
+
+
 export interface ProductCategory {
   id: string;
   name: string;

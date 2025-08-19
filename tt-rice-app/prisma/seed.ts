@@ -52,6 +52,8 @@ async function main() {
     create: {
       username: username,
       hashedPassword: hashedPassword,
+      name:"Phạm Quỳnh",
+      image:"/chi_mai_story.png",
     },
   });
   const username1 = 'admin1'; 
@@ -67,6 +69,8 @@ async function main() {
     create: {
       username: username1,
       hashedPassword: hashedPassword1,
+      name:"Phạm Quỳnh",
+      image:"/chi_mai_story.png",
     },
   });
 

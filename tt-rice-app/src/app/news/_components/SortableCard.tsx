@@ -98,7 +98,7 @@ export function SortableCard({
             style={{ height: (block.image?.height && block.image?.width) ? `${(block.image?.height / block.image.width) * 100}%` : 'auto' }}
             >
               {block.image?.preview ? (
-                <Image src={block.image.preview} alt="block" className="h-full w-full rounded-xl object-contain" />
+                <img src={block.image.preview} alt="block" className="h-full w-full rounded-xl object-contain" />
               ) : (
                 <div className="place-content-center text-center text-gray-500 h-48">
                   <Upload className="mx-auto mb-2 h-6 w-6" />
