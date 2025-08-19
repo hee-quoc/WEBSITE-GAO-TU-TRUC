@@ -42,7 +42,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
             className="inline-flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             <Pencil className="h-4 w-4" />
-            Chỉnh sửa sản phẩm
+            Chỉnh sửa tin tức
           </Link>
           <DeleteBlogButton blogId={blogData.id} />
         </div>)}

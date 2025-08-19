@@ -43,7 +43,7 @@ export default function DeleteBlogButton({ blogId }: DeleteBlogButtonProps) {
         className="inline-flex items-center gap-2 border-red-500 text-red-500 hover:bg-red-50 hover:border-red-600"
       >
         <Trash2 className="h-4 w-4" />
-        Xoá sản phẩm
+        Xoá tin tức
       </Button>
 
       {isModalOpen && (
@@ -51,7 +51,7 @@ export default function DeleteBlogButton({ blogId }: DeleteBlogButtonProps) {
           <div className="relative w-full max-w-md rounded-lg bg-white p-6 shadow-xl">
             <h3 className="text-lg font-semibold text-gray-900">Xác nhận xoá</h3>
             <p className="mt-2 text-sm text-gray-600">
-              Bạn có chắc chắn muốn xoá sản phẩm này không? Hành động này không thể hoàn tác.
+              Bạn có chắc chắn muốn xoá tin tức này không? Hành động này không thể hoàn tác.
             </p>
             <div className="mt-6 flex justify-end space-x-3">
               <Button
