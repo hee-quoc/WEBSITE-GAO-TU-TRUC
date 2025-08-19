@@ -298,27 +298,38 @@ export  function AddBlogPage() {
         </DndContext>)}
 
         {/* Add content buttons (bottom) */}
-        <div className="mt-6 border-t pt-4 flex flex-row justify-between">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-sm text-gray-600">Thêm nội dung:</span>
-            <button onClick={() => addBlock("image")} className="inline-flex items-center gap-2 rounded-xl border bg-white px-3 py-2 text-sm shadow-sm">
+        <div className="mt-6 border-t pt-4 flex flex-col md:flex-row justify-between">
+          <div className="flex flex-wrap items-center gap-2 mb-2">
+            <span className="text-[10px] md:text-sm text-gray-600">Thêm nội dung:</span>
+            <button
+              onClick={() => addBlock("image")}
+              className="inline-flex items-center gap-2 rounded-xl border bg-white px-3 py-2 text-[10px] md:text-sm shadow-sm hover:bg-gray-100 cursor-pointer"
+            >
               <ImageIcon className="h-4 w-4" /> Ảnh
             </button>
-            <button onClick={() => addBlock("header")} className="inline-flex items-center gap-2 rounded-xl border bg-white px-3 py-2 text-sm shadow-sm">
+
+            <button
+              onClick={() => addBlock("header")}
+              className="inline-flex items-center gap-2 rounded-xl border bg-white px-3 py-2 text-[10px] md:text-sm shadow-sm hover:bg-gray-100 cursor-pointer"
+            >
               <Heading className="h-4 w-4" /> Header
             </button>
-            <button onClick={() => addBlock("description")} className="inline-flex items-center gap-2 rounded-xl border bg-white px-3 py-2 text-sm shadow-sm">
+
+            <button
+              onClick={() => addBlock("description")}
+              className="inline-flex items-center gap-2 rounded-xl border bg-white px-3 py-2 text-[10px] md:text-sm shadow-sm hover:bg-gray-100 cursor-pointer"
+            >
               <LetterText className="h-4 w-4" /> Description
             </button>
-            <button onClick={() => addBlock("header")} className="inline-flex items-center gap-2 rounded-xl border bg-white px-3 py-2 text-sm shadow-sm">
+            {/* <button onClick={() => addBlock("header")} className="inline-flex items-center gap-2 rounded-xl border bg-white px-3 py-2 text-sm shadow-sm">
               <Plus className="h-4 w-4" /> Block mặc định
-            </button>
+            </button> */}
           
           </div>
             <button
                 disabled={!canSave || submitting}
                 onClick={handleSave}
-                className="inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-medium shadow-sm transition hover:shadow disabled:cursor-not-allowed disabled:opacity-50"
+                className="inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-[10px] md:text-sm font-medium shadow-sm transition hover:shadow disabled:cursor-not-allowed disabled:opacity-50 hover:bg-gray-100 cursor-pointer"
             >
                 <Save className="h-4 w-4" /> {submitting ? "Đang lưu..." : "Lưu"} 
                 {submitting && (

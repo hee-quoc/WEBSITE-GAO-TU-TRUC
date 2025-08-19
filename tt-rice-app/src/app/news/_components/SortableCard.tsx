@@ -5,6 +5,7 @@ import {
   Trash2,
   X,
   GripVertical,
+  ChevronsUpDown
 } from "lucide-react";
 
 import {
@@ -37,15 +38,16 @@ export function SortableCard({
   return (
     <div ref={setNodeRef} style={style} className="rounded-2xl border bg-white p-4 shadow-sm">
       <div className="mb-3 flex items-center justify-between">
-        <div className="flex items-center gap-2 text-sm text-gray-700">
-          <button
-            className="inline-flex items-center gap-2 rounded-lg px-2 py-1 text-xs text-gray-600 hover:bg-gray-100"
+        <button
+            className="inline-flex  items-center gap-2 rounded-lg px-2 py-1 text-xs text-gray-600 hover:bg-gray-100 w-full"
             title="Giữ và kéo để sắp xếp"
             {...attributes}
             {...listeners}
           >
-            <GripVertical className="h-4 w-4" /> Kéo thả
-          </button>
+            <ChevronsUpDown className="h-4 w-4" /> Sắp xếp
+        </button>
+        <div className="flex items-center gap-2 text-sm text-gray-700">
+          
           <span className="inline-flex items-center gap-1 rounded-lg bg-gray-100 px-2 py-1 text-xs font-medium">
             {block.type.toUpperCase()}
           </span>
@@ -59,7 +61,7 @@ export function SortableCard({
       {/* Body per type */}
       {block.type === "header" && (
         <div className="flex flex-col gap-3 sm:flex-row">
-          <div className="sm:w-1/3">
+          {/* <div className="sm:w-1/3">
             <label className="mb-1 block text-sm font-medium">Cấp header</label>
             <select
               value={block.header?.level ?? 2}
@@ -74,8 +76,8 @@ export function SortableCard({
               <option value={3}>H3</option>
               <option value={4}>H4</option>
             </select>
-          </div>
-          <div className="sm:w-2/3">
+          </div> */}
+          <div className="sm:w-full">
             <label className="mb-1 block text-sm font-medium">Nội dung header</label>
             <input
               value={block.header?.text ?? ""}
