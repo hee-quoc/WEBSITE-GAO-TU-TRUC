@@ -22,9 +22,6 @@ const CATEGORY_DATA: Record<string, BlogCategoryData> = {
 }
 export default async function BlogPage({ params }: BlogPageProps) {
   const session = await getServerSession(authOptions);
-  if (!session?.user) {
-      notFound();
-  }
   const { slug } = await params;
   const blogData = await api.blog.getBySlug(
     { slug },
