@@ -153,7 +153,7 @@ export  function AddBlogPage() {
 
       
 
-      const payload = { title: title.trim(),tag: tag, thumbnail: presignedThumbResults.fileUrl, blocks: blocksPayload , userId: "cmefvo37w0000uv3co1orimfy"}; //TManh to do: thêm hàm lấy thông tin User và gán userId
+      const payload = { title: title.trim(),tag: tag, thumbnail: presignedThumbResults.fileUrl, blocks: blocksPayload}; //TManh to do: thêm hàm lấy thông tin User và gán userId
 
       const response = await addBlogMutation.mutateAsync(payload);
       if (response.success) {

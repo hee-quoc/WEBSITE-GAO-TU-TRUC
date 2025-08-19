@@ -6,14 +6,13 @@ import React, { useMemo, useRef, useState, useEffect } from "react";
 // import { type Blog } from "@prisma/client";
 import { Prisma } from "@prisma/client"
 import toast from "react-hot-toast";
-
 import { api } from "~/trpc/react";
 import Button from "~/app/_components/ui/Button";
 import { useQuill } from "~/app/hooks/useQuill"; // <-- Import the custom hook
 import {uploadFileToS3} from "../utils/s3Upload"
 import { SortableCard } from "./SortableCard";
 import { AddBlogPage } from './AddBlog';
-
+import { type BlogWithDetails } from "~/app/types/Types";
 import {
   Save,
   Upload,
@@ -44,20 +43,20 @@ type ContentBlock = {
 
 }
 
-type Blog = {
-  title: string;
-  slug: string;
-  tag: string;
-  content: ContentBlock[];
-  // published: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-  createdBy: string;
-  thumbnailUrl: string | null;
-}
+// type Blog = {
+//   title: string;
+//   slug: string;
+//   tag: string;
+//   content: ContentBlock[];
+//   // published: boolean;
+//   createdAt: Date;
+//   updatedAt: Date;
+//   createdBy: string;
+//   thumbnailUrl: string | null;
+// }
 
 interface BlogEditorProps {
-  blog: Blog;
+  blog: BlogWithDetails;
 }
 
 type BlockType = "header" | "image" | "description";
@@ -87,7 +86,7 @@ export default function BlogEditor({ blog }: BlogEditorProps) {
   const router = useRouter();
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 6 } }));
   const uid = (p = "blk") => `${p}_${Math.random().toString(36).slice(2, 10)}`;
-  const blockData= blog.content.map((content)=>{
+  const blockData= blog?.content?.map((content)=>{
           const id = uid();
           const base: Block = { id, type:content.type } as Block;
           if (content.type === "header")  base.header = { level: 2, text: content.payload.text as string};
@@ -217,7 +216,7 @@ export default function BlogEditor({ blog }: BlogEditorProps) {
   
         
   
-        const payload = {slug: blog.slug, title: title.trim(),tag: tag, thumbnail: presignedThumbResults.fileUrl, blocks: blocksPayload , userId: "cmefvo37w0000uv3co1orimfy"}; //TManh to do: thêm hàm lấy thông tin User và gán userId
+        const payload = {slug: blog.slug, title: title.trim(),tag: tag, thumbnail: presignedThumbResults.fileUrl, blocks: blocksPayload}; //TManh to do: thêm hàm lấy thông tin User và gán userId
         // console.log(payload)
       //   setJsonPreview(JSON.stringify(payload, null, 2));
         const response = await updateBlogMutation.mutateAsync(payload);

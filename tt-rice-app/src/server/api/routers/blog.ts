@@ -45,12 +45,11 @@ export const blogRouter = createTRPCRouter({
           title: z.string(),
           thumbnail: z.string(),
           blocks: BlocksSchema.optional(),
-          userId: z.string()
         }),
       )
     .mutation(async ({ ctx, input }) => {
       const uniqueSlug = await generateUniqueSlug(input.title);
-      const { title, tag, thumbnail, blocks, userId } = input;
+      const { title, tag, thumbnail, blocks } = input;
     
        const imagesData: {
           url: string;
@@ -74,7 +73,7 @@ export const blogRouter = createTRPCRouter({
         );
       }
 
-
+      const userId = ctx.session.user.id;
       const newBlog = await ctx.db.blog.create({
         data: {
           tag:tag, 
@@ -113,16 +112,22 @@ export const blogRouter = createTRPCRouter({
               order: 'asc', // Ensure they are in the correct order
             },
           },
+          user: true,
         },
       });
-
+      if (!blog) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+          message: `Blog with slug '${input.slug}' not found.`,
+        });
+      }
       const contentParseBlog = BlocksSchema.safeParse(blog?.content)
       if (!contentParseBlog.success) {
         // xử lý dữ liệu không hợp lệ
         console.warn("Invalid content shape", contentParseBlog.error);
-        return { ...blog!, content: [] as Block[] };
+        return { ...blog, content: [] as Block[] };
       }
-      return { ...blog!, content: contentParseBlog.data};
+      return { ...blog, content: contentParseBlog.data};
     }),
   update: protectedProcedure //TManh to do: thêm crediential 
   .input(
@@ -132,11 +137,11 @@ export const blogRouter = createTRPCRouter({
           tag:z.string(),
           thumbnail: z.string(),
           blocks: BlocksSchema,
-          userId: z.string()
         }),
   )
   .mutation(async ({ ctx, input }) => {
-    const { slug,title, tag, thumbnail, blocks, userId } = input;
+    const { slug,title, tag, thumbnail, blocks } = input;
+    const userId = ctx.session.user.id;
     // Note: We are not updating the slug here to prevent breaking old links.
     // If you want to update the slug, you would need more complex logic.
     const oldBlogs = await ctx.db.blog.findFirst({
@@ -271,4 +276,39 @@ export const blogRouter = createTRPCRouter({
       // }
     });
   }),
+  getLatestByTag: publicProcedure
+    .input(
+      z.object({
+        tag: z.string(),
+        id: z.number(),
+      }),
+    )
+    .query(async ({ ctx, input }) => {
+      const blogs = await ctx.db.blog.findMany({
+        // 1. Filter by the provided tag
+        where: {
+          tag: input.tag,
+          // id: {
+          //   not: input.id, // <-- THIS IS THE ADDED LOGIC
+          // },
+        },
+        // 2. Order by creation date, newest first
+        orderBy: {
+          createdAt: 'desc',
+        },
+        // 3. Limit the result to only 2 records
+        take: 2,
+        // 4. Select only the necessary fields for a preview card
+        // This is more performant and secure than fetching everything.
+        select: {
+          title: true,
+          slug: true,
+          thumbnailUrl: true,
+          createdAt: true,
+          tag: true,
+        },
+      });
+
+      return blogs;
+    }),
 });

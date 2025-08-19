@@ -3,6 +3,10 @@ import { BlogFilterButton } from "./_components/BlogFilterButton";
 import { BlogFilteredList } from "./_components/BlogFilteredList";
 import Image from "next/image";
 import { api } from "~/trpc/server";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "~/server/auth";
+import { notFound } from 'next/navigation';
+import Link from "next/link";
 // Corrected mock data to match the visual design
 // const blogs = [
 //   {
@@ -103,6 +107,7 @@ export default async  function NewsIndexPage({
   searchParams: Promise<{ tag?: string }>;
   
 }) {
+  const session = await getServerSession(authOptions);
   const blogs=await api.blog.getAll();
   const resolvedSearchParams = await searchParams;
   const activeTag = resolvedSearchParams?.tag;
@@ -136,6 +141,14 @@ export default async  function NewsIndexPage({
       </div>
       <BlogFilteredList blogs={filteredBlogs} categories={CATEGORY_DATA}/>
     </main>
+    {session?.user &&(<div className="mt-20 justify-center items-center">
+      <Link
+        href={`/news/create`}
+        className="inline-flex justify-center items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      >
+        Thêm tin tức mới
+      </Link>
+    </div>)}
     </div>
   );
 }
