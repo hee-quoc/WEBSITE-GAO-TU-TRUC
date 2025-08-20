@@ -39,7 +39,7 @@ export default function BlogView({ blog }: BlogViewProps) {
     // }
     
     return (
-      <article className="mx-auto max-w-4xl py-12">
+      <article className="mx-auto max-w-4xl py-12 px-4">
 
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight text-gray-900 md:text-5xl">
           {blog.title}
@@ -53,10 +53,10 @@ export default function BlogView({ blog }: BlogViewProps) {
             className="rounded-full"
           />
           <div className="text-left">
-            <h4 className="text-[20px] sm:text-[20px] md:text-[20px] font-[500] font-alegreya-sans leading-[140%]  mb-1" style={{color:"#0A5B89"}}>
+            <h4 className="text-[36px] md:text-[20px] md:text-[20px] font-[500] font-alegreya-sans leading-[140%]  mb-1" style={{color:"#0A5B89"}}>
               {blog.user.name}
             </h4>
-            <p className="text-[16px] sm:text-[16px] font-fz-poppins font-[400] text-gray-500">
+            <p className="text-[14px] sm:text-[16px] font-fz-poppins font-[400] text-gray-500">
               Published on {new Date(blog.createdAt).toLocaleDateString()}
             </p>
           </div>
@@ -70,13 +70,14 @@ export default function BlogView({ blog }: BlogViewProps) {
         
 
         {blog.thumbnailUrl && (
-          <div className="relative mb-8 h-96 w-full">
+          <div className="relative mb-8 h-96 md:w-full ">
             <Image
               src={blog.thumbnailUrl}
               alt={blog.title}
               layout="fill"
               objectFit="cover"
-              className="rounded-lg"
+              objectPosition="left"
+              className="rounded-lg md:object-center"
             />
           </div>
         )}
@@ -87,24 +88,24 @@ export default function BlogView({ blog }: BlogViewProps) {
           dangerouslySetInnerHTML={{ __html: blog.content }}
         /> */}
         {blocks && (
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-2">
           {blocks.map((block, index) => {
             switch (block.type) {
               case 'header':
                 return (
-                  <h3 key={index} className="text-2xl font-semibold">
+                  <h3 key={index} className="text-[18px] md:text-[20px] font-semibold font-alegreya-sans leading-[120%]">
                     {block.payload.text as string}
                   </h3>
                 );
               case 'image':
                 return (
-                  <div key={index} className="w-full">
+                  <div key={index} className="relative md:w-full my-4 overflow-hidden rounded-lg">
                     <Image
                       src={block.payload.image as string}
                       alt={block.payload.caption as string ?? 'Blog Image'}
                       width={800}
                       height={450}
-                      className="rounded-lg object-contain"
+                      className="rounded-lg object-contain max-w-[800px]"
                     />
                     {block.payload.caption as string && (
                       <p className="text-sm text-center mt-2 text-gray-600">
@@ -114,8 +115,11 @@ export default function BlogView({ blog }: BlogViewProps) {
                   </div>
                 );
               case 'description':
+                // block.payload.code = `<p>${block.payload.code.replaceAll("\n","<br/>")}</p>`;
+    
+                const content=`<p>${(block.payload.code as string).replaceAll("\n","<br/>")}</p>`;
                 return (
-                  <p key={index} className="text-base leading-relaxed" dangerouslySetInnerHTML={{ __html: block.payload.code as string }}>
+                  <p key={index} className="text-base leading-relaxed" dangerouslySetInnerHTML={{ __html: content }}>
                     {/* {block.payload.code as string} */}
                   </p>
                 );
