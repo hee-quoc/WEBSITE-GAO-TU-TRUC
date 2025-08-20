@@ -114,8 +114,11 @@ export default function BlogView({ blog }: BlogViewProps) {
                   </div>
                 );
               case 'description':
+                // block.payload.code = `<p>${block.payload.code.replaceAll("\n","<br/>")}</p>`;
+    
+                const content=`<p>${(block.payload.code as string).replaceAll("\n","<br/>")}</p>`;
                 return (
-                  <p key={index} className="text-base leading-relaxed" dangerouslySetInnerHTML={{ __html: block.payload.code as string }}>
+                  <p key={index} className="text-base leading-relaxed" dangerouslySetInnerHTML={{ __html: content }}>
                     {/* {block.payload.code as string} */}
                   </p>
                 );
