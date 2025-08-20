@@ -130,7 +130,7 @@ export  function AddBlogPage() {
         blocks.map(async (b) => {
           if (b.type === "header"  && b.header?.text?.trim() ) return { type: b.type, payload: b.header ?? {}};
           else if (b.type === "description" && b.description?.code?.trim()) {
-            b.description.code = `<p>${b.description.code.replaceAll("\n","<br/>")}</p>`;
+            // b.description.code = `<p>${b.description.code.replaceAll("\n","<br/>")}</p>`;
             return { type: b.type, payload: b.description ?? {}};
           }
           // image
