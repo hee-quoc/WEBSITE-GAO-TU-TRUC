@@ -99,13 +99,13 @@ export default function BlogView({ blog }: BlogViewProps) {
                 );
               case 'image':
                 return (
-                  <div key={index} className="relative md:w-full my-4 overflow-hidden rounded-lg">
+                  <div key={index} className="relative md:w-full my-4 overflow-hidden rounded-lg md:w-[740px]">
                     <Image
                       src={block.payload.image as string}
                       alt={block.payload.caption as string ?? 'Blog Image'}
                       width={800}
                       height={450}
-                      className="rounded-lg object-contain max-w-[800px]"
+                      className="rounded-lg object-contain max-w-[740px] md:max-w-full md:w-full  object-cover "
                     />
                     {block.payload.caption as string && (
                       <p className="text-sm text-center mt-2 text-gray-600">

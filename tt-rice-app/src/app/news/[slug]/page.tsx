@@ -49,15 +49,18 @@ export default async function BlogPage({ params }: BlogPageProps) {
         <BlogView
           blog={blogData}
         />
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-12">
-          <h2 className="text-center text-3xl font-bold tracking-tight text-steel-blue sm:text-4xl">
-            Bài viết liên quan
-          </h2>
-          
-          <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="flex flex-col md:items-center">
+          <div className=" w-0 md:w-[740px] h-[0px] rounded-[1px] border-[1px] border-[#EFF0F2] mb-5"></div>
+            <h2 className="text-[28px] md:text-center md:text-[32px] font-[400] tracking-tight text-[#272A32] sm:text-[32px]">
+              Các bài viết khác
+            </h2>
+        </div>
+        <div className="mx-auto max-w-7xl px-4 pt-2 pb-6 sm:px-6 lg:px-12 flex flex-col items-center  overflow-auto">
+          {/* grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 */}
+          <div className="mt-5 flex flex-col md:flex-row items-center"> 
             {blogs.map((blog) => blog.thumbnailUrl && (
-              <Link href={`/news/${blog.slug}`} key={blog.slug} className="group block">
-                <div className="overflow-hidden rounded-lg">
+              <Link href={`/news/${blog.slug}`} key={blog.slug} className="group block mx-4">
+                <div className="overflow-hidden rounded-lg w-[360px] h-[203px]">
                   <Image
                     src={blog.thumbnailUrl}
                     alt={blog.title}
@@ -67,10 +70,10 @@ export default async function BlogPage({ params }: BlogPageProps) {
                   />
                 </div>
                 <div className="mt-4">
-                  <p className="text-sm text-green-dark">
-                    {CATEGORY_DATA[blog.tag]?.name ?? 'Uncategorized'}
+                  <p className="text-[16px] font-[500] text-[#6C9126] font-fz-poppins">
+                    {CATEGORY_DATA[blog.tag]?.name.toUpperCase() ?? 'Uncategorized'}
                   </p>
-                  <h3 className="mt-1 text-xl font-bold text-steel-blue group-hover:text-green-dark">
+                  <h3 className="mt-1 text-[24px] font-[500] text-[#272A32] group-hover:text-green-dark font-alegreya-sans">
                     {blog.title}
                   </h3>
                 </div>
