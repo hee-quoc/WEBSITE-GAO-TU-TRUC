@@ -116,10 +116,7 @@ export const blogRouter = createTRPCRouter({
         },
       });
       if (!blog) {
-        throw new TRPCError({
-          code: 'NOT_FOUND',
-          message: `Blog with slug '${input.slug}' not found.`,
-        });
+        return null;
       }
       const contentParseBlog = BlocksSchema.safeParse(blog?.content)
       if (!contentParseBlog.success) {
