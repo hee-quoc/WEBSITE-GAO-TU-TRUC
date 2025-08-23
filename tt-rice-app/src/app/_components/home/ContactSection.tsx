@@ -6,6 +6,8 @@ import Input from "../ui/Input";
 import Textarea from "../ui/Textarea";
 import React, { useState } from "react";
 import type { ContactFormData } from "~/app/types/Types";
+import toast from "react-hot-toast"; 
+import { api } from "~/trpc/react";
 
 export function ContactSection() {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -14,7 +16,15 @@ export function ContactSection() {
     phone: "",
     message: "",
   });
-
+  const sendEmailMutation = api.email.sendContactForm.useMutation({
+    onSuccess: () => {
+      toast.success("Thông tin của bạn đã được gửi thành công!");
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    },
+    onError: (error) => {
+      toast.error(error.message || "Đã có lỗi xảy ra. Vui lòng thử lại.");
+    },
+  });
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -24,21 +34,12 @@ export function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    const subject = encodeURIComponent("Liên hệ đặt hàng & tư vấn từ website");
-    const body = encodeURIComponent(
-      `Họ và tên: ${formData.name}\nEmail: ${formData.email}\nĐiện thoại: ${formData.phone}\nGhi chú: ${formData.message}`
-    );
-
-    window.location.href = `mailto:contact@tutruc.com?subject=${subject}&body=${body}`;
-
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    sendEmailMutation.mutate(formData);
   };
 
   return (
     <section className="w-full bg-white py-20">
       <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row px-4 sm:px-6 lg:px-0 gap-8">
-        {/* Left Box - Form */}
         <div className="w-full lg:w-1/2 lg:pl-[110px] flex flex-col items-center lg:items-start order-1 lg:order-none">
           <h2
             className="text-[32px] sm:text-[40px] lg:text-[48px] leading-tight font-bold text-blue-dark mb-8 lg:mb-12 text-center lg:text-left"
@@ -82,12 +83,14 @@ export function ContactSection() {
               className="shadow-[0_1px_2px_rgba(16,24,40,0.05)] border border-[#D0D5DD]"
             />
             <Button
+              disabled={sendEmailMutation.isPending}
               type="submit"
               size="small"
               className="w-full lg:w-auto bg-green-normal hover:bg-green-dark text-white transition-all duration-300 rounded-full px-5 py-3.5"
             >
+              
               <span className="flex items-center justify-center gap-2">
-                Gửi Thông Tin
+                {sendEmailMutation.isPending ? "Đang gửi..." : "Gửi Thông Tin"}
                 <Image
                   src="/icon_wheat_white.svg"
                   alt="icon"

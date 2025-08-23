@@ -17,6 +17,7 @@ export const env = createEnv({
     AWS_ROLE_ARN:z.string().min(1),
     AWS_S3_BUCKET_NAME:z.string().min(1),
     AWS_REGION:z.string().min(1),
+    RESEND_API_KEY: z.string().min(1),
   },
 
   client: {
@@ -35,6 +36,7 @@ export const env = createEnv({
     AWS_REGION:process.env.AWS_REGION,
     NEXT_PUBLIC_REGION:process.env.AWS_REGION,
     NEXT_PUBLIC_AWS_S3_BUCKET_NAME:process.env.AWS_S3_BUCKET_NAME,
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
   emptyStringAsUndefined: true,
