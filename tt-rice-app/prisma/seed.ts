@@ -40,7 +40,7 @@ async function main() {
   console.log('Start seeding ...');
 
   const username = 'admin'; 
-  const plainPassword = 'gkjK"0C,v^%x$P_{9K)4'; 
+  const plainPassword = 'Gaotutruc@dmin@!23'; 
 
   const hashedPassword = await hash(plainPassword, 10);
 
@@ -57,7 +57,7 @@ async function main() {
     },
   });
   const username1 = 'admin1'; 
-  const plainPassword1 = 'xID9E5)p£.9Xr-P{Mn;2'; 
+  const plainPassword1 = 'GaotutrucMarket@!23'; 
 
   const hashedPassword1 = await hash(plainPassword1, 10);
 
