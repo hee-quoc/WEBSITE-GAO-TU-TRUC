@@ -1,8 +1,39 @@
+'use client';
 import React from "react";
 import Button from "../../../app/_components/ui/Button";
 import Image from 'next/image';
+import { useState } from "react";
+import type { ContactFormData } from "~/app/types/Types";
+import toast from "react-hot-toast"; 
+import { api } from "~/trpc/react";
 
 export function ContactPage() {
+  const [formData, setFormData] = useState<ContactFormData>({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    });
+    const sendEmailMutation = api.email.sendContactForm.useMutation({
+      onSuccess: () => {
+        toast.success("Thông tin của bạn đã được gửi thành công!");
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      },
+      onError: (error) => {
+        toast.error(error.message || "Đã có lỗi xảy ra. Vui lòng thử lại.");
+      },
+    });
+    const handleInputChange = (
+      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+      const { name, value } = e.target;
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    };
+  
+    const handleSubmit = (e: React.FormEvent) => {
+      e.preventDefault();
+      sendEmailMutation.mutate(formData);
+    };
   return (
     <div className="flex flex-col items-center">
       <div className=" bg-white px-4 py-30 md:px-16 lg:px-42 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -12,15 +43,17 @@ export function ContactPage() {
           <p className="text-[28px] md:text-[32px] text-[#667085] font-[400] mb-4 font-alegreya-sans ">
             Bạn cần hỗ trợ? Hãy gửi thông tin cho <br className="hidden md:inline"/> chúng tôi
           </p>
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="fullName" className="block md:text-[400] md:text-[16px] text-[#344054] md:leading-[140%] font-fz-poppins ">
                 Họ và tên
               </label>
               <input
                 type="text"
-                id="fullName"
-                name="fullName"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
                 className="w-full md:h-[40px] rounded-md border border-[#D0D5DD] bg-white px-4 py-2 shadow-[0_1px_2px_0_rgba(16,24,40,0.05)] focus:ring-blue-500 focus:border-blue-500"
                 required
               />
@@ -34,6 +67,8 @@ export function ContactPage() {
                 type="tel"
                 id="phone"
                 name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
                 className="w-full md:h-[40px] rounded-md border border-[#D0D5DD] bg-white px-4 py-2 shadow-[0_1px_2px_0_rgba(16,24,40,0.05)] focus:ring-blue-500 focus:border-blue-500"
                 required
               />
@@ -47,6 +82,8 @@ export function ContactPage() {
                 type="email"
                 id="email"
                 name="email"
+                value={formData.email}
+                onChange={handleInputChange}
                 className="w-full md:h-[40px] rounded-md border border-[#D0D5DD] bg-white px-4 py-2 shadow-[0_1px_2px_0_rgba(16,24,40,0.05)] focus:ring-blue-500 focus:border-blue-500"
                 required
               />
@@ -59,6 +96,8 @@ export function ContactPage() {
               <textarea
                 id="message"
                 name="message"
+                value={formData.message}
+                onChange={handleInputChange}
                 rows={4}
                 className="w-full md:h-[91px] rounded-md border border-[#D0D5DD] bg-white px-4 py-2 shadow-[0_1px_2px_0_rgba(16,24,40,0.05)] focus:ring-blue-500 focus:border-blue-500"
               ></textarea>
@@ -66,11 +105,12 @@ export function ContactPage() {
 
             <Button
               size="large"
-                className="w-[153px] h-[48px] bg-[#6C9126] text-[#FFFFFF] text-[16px] font-bold rounded-[32px] px-[20px] py-[14px] shadow-[0_1px_2px_0_rgba(16,24,40,0.05)] hover:bg-green-700 transition duration-300 flex flex-row"
-              // onClick={}
+              disabled={sendEmailMutation.isPending}
+              className="w-[153px] h-[48px] bg-[#6C9126] text-[#FFFFFF] text-[16px] font-bold rounded-[32px] px-[20px] py-[14px] shadow-[0_1px_2px_0_rgba(16,24,40,0.05)] hover:bg-green-700 transition duration-300 flex flex-row"
+              type="submit"
             >
               <span className="pt-0.5 text-center font-alegreya-sans font-[700] text-[16px] leading-[100%] tracking-[0%] ">
-                Gửi Thông Tin 
+                {sendEmailMutation.isPending ? "Đang gửi..." : "Gửi Thông Tin"}
               </span>
               <Image src="/icontact_icon.svg" alt="contact" width={20} height={20}/>
             </Button>
