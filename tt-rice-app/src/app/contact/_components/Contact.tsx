@@ -14,8 +14,10 @@ export function ContactPage() {
       phone: "",
       message: "",
     });
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const sendEmailMutation = api.email.sendContactForm.useMutation({
       onSuccess: () => {
+        setIsModalOpen(true);
         toast.success("Thông tin của bạn đã được gửi thành công!");
         setFormData({ name: "", email: "", phone: "", message: "" });
       },
@@ -172,6 +174,26 @@ export function ContactPage() {
             </div>
           </div>
         </div>
+        {isModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-50 transition-opacity">
+            <div className="relative w-full max-w-md rounded-lg bg-white p-6 shadow-xl">
+              <h3 className="text-lg font-semibold text-gray-900">Gửi thành công</h3>
+              <p className="mt-2 text-sm text-gray-600">
+                Thông tin của bạn đã được gửi. Chúng tôi sẽ sớm liên lạc với bạn.
+              </p>
+              <div className="mt-6 flex justify-end space-x-3">
+                <Button
+                  variant="outline"
+                  onClick={() => setIsModalOpen(false)}
+                  
+                >
+                  OK
+                </Button>
+                
+              </div>
+            </div>
+          </div>
+        )}
     </div>
   )
 }
