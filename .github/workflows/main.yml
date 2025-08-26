@@ -54,7 +54,9 @@ jobs:
           printf "%s" "$DOT_ENV_CONTENT" > .env
           echo "\nDATABASE_URL=${DATABASE_URL}" >> .env
           npm run build
-
+      - name: Create production .env file for deployment
+        run: |
+          echo "${{ secrets.DOT_ENV }}" > .env
       - name: Sync files to Droplet
         uses: easingthemes/ssh-deploy@main
         with:
