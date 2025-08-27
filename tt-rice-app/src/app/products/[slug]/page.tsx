@@ -51,7 +51,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <ProductInfo product={product}/>
             <ProductTabs  descriptionHtml={product.detail}/>
             <ProductFeatures features={product.properties}/>
-            <ProductCertificates productCertificates={product.certificates}/>
             <ProductUsageGuide guide={product.guide} />
             <ProductAccordion product={product} />
           </div>
