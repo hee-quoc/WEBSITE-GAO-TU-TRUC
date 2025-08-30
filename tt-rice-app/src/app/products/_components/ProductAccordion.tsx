@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { type ProductWithDetails } from "~/app/types/Types";
 import { AccordionItem } from "./AccorditionItem";
+import { ProductCertificates } from "../_components/ProductCertificates";
 // (Paste the AccordionItem helper component from Step 1 here)
 // ...
 
@@ -118,7 +119,7 @@ export function ProductAccordion({ product }: { product: ProductWithDetails}) {
           </AccordionItem>
         </>
       )}
-      {product.productCertImages && product.productCertImages.length > 0 && (
+      {product.certificates && product.certificates.length > 0 && (
         <>
           <Divider />
           <button
@@ -146,20 +147,10 @@ export function ProductAccordion({ product }: { product: ProductWithDetails}) {
                 openSet.has(6) ? "rotate-180" : ""
               }`}
             />
+            
           </button>
           {openSet.has(6) && (
-            <div className="flex flex-wrap items-center gap-4 px-6 pt-1 pb-4">
-              {product.productCertImages.map((certImage, index) => (
-                <Image
-                  key={index}
-                  src={certImage}
-                  alt={`Certificate ${index + 1}`}
-                  width={88}
-                  height={88}
-                  className="flex-shrink-0" 
-                />
-              ))}
-            </div>
+            <ProductCertificates productCertificates={product.certificates}/>
           )}
         </>
       )}

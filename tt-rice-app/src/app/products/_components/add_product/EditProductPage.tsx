@@ -1,6 +1,9 @@
 "use client";
 import React, { useState, useEffect} from "react";
+import { useRouter } from "next/navigation"; 
 import { TextCard} from  "../utils/TextCard";
+import Link from "next/link";
+import { Pencil } from "lucide-react";
 import {type ImageType, type ProductForm} from "../utils/types";
 import { api } from "~/trpc/react";
 import {ProductImageSection} from "./components/ProductImage"
@@ -68,6 +71,7 @@ export function EditProductPage({ productSlug }: { productSlug: string }) {
         certificates: [{name:"",image:{ file: null, preview: null, width: undefined, height: undefined },description:""}],
             productCertImages: [{ file: null, preview: null, width: undefined, height: undefined }] as ImageType[],
       }
+    const router = useRouter();
     const [form, setForm] = useState<ProductForm>(initialFormState);
     //const [loading, setLoading] = useState(true);
     const [popup, setPopup] = useState({ show: false, message: "", type: "success" });
@@ -199,7 +203,8 @@ export function EditProductPage({ productSlug }: { productSlug: string }) {
                 setPopup({ show: true, message: "Cập nhật sản phẩm thành công", type: "success" });
                 setSave(false);
                 setTimeout(() => {
-                    window.location.reload(); 
+                    window.location.reload();
+                    // router.push(`/products/${productData!.slug}`);  
                 }, 3000);
             } else {
                 setPopup({ show: true, message: "Có lỗi khi cập nhật sản phẩm!", type: "error" });
@@ -226,9 +231,17 @@ export function EditProductPage({ productSlug }: { productSlug: string }) {
   if (isLoading || !form) return ( <div className="flex flex-col items-center"><div className="pt-20 text-[32px]">Đang tải dữ liệu sản phẩm...</div>;</div>)
   return(
       <div className="flex flex-col items-center">
+        
           <div className="flex flex-col max-w-[1440px]  pt-8">
               <div className="mx-auto max-w-5xl px-4 py-6">
               <h1 className="text-[56px] font-semibold">Chỉnh sửa sản phẩm</h1>
+              <Link
+                    href={`/products/${productData!.slug}`}
+                    className="inline-flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                >
+                    <Pencil className="h-4 w-4" />
+                    Xem sản phẩm
+                </Link>
               </div>
               <ProductInfoSection
                   form={form}
@@ -249,13 +262,13 @@ export function EditProductPage({ productSlug }: { productSlug: string }) {
                   onSetImageFile={(idx, file) => handleImageFileChange("productImages",idx, file)}
                   onRemove={(idx) => handleRemoveImage("productImages", idx)}
               />
-               <CertificateSection
+               {/* <CertificateSection
                   certificates={form.certificates}
                   setForm={setForm}
                   setImageFile={(idx, file, field, subField) => handleImageFileChange(field, idx!, file!, subField)}
                   handleArrayObjectFieldChange={handleArrayObjectFieldChange}
                   onRemove={(idx) => handleRemoveImage("productImages", idx)}
-                  />
+                  /> */}
               <GuideSection
                   guide={form.guide}
                   handleNestedChange={handleNestedArrayFieldChange}
@@ -315,7 +328,7 @@ export function EditProductPage({ productSlug }: { productSlug: string }) {
                       onUpdateField={(field, value) => handleFieldChange(field, value)}
                       />
               </div>
-              <ProductCertImageSection
+              {/* <ProductCertImageSection
                   images={form.productCertImages}
                   onAdd={() =>
                       handleFieldChange("productCertImages", [
@@ -324,6 +337,13 @@ export function EditProductPage({ productSlug }: { productSlug: string }) {
                       ])
                   }
                   onSetImageFile={(idx, file) => handleImageFileChange("productCertImages", idx, file)}
+                  onRemove={(idx) => handleRemoveImage("productImages", idx)}
+                  /> */}
+                <CertificateSection
+                  certificates={form.certificates}
+                  setForm={setForm}
+                  setImageFile={(idx, file, field, subField) => handleImageFileChange(field, idx!, file!, subField)}
+                  handleArrayObjectFieldChange={handleArrayObjectFieldChange}
                   onRemove={(idx) => handleRemoveImage("productImages", idx)}
                   />
               <div className="w-full flex justify-center mt-10">
