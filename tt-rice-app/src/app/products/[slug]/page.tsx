@@ -3,7 +3,7 @@ import { ProductInfo } from "../_components/ProductInfo";
 import { ProductTabs } from "../_components/ProductTabs";
 import { ProductUsageGuide } from "../_components/ProductUsageGuide";
 import { ProductAccordion } from "../_components/ProductAccordion";
-import { ProductCertificates } from "../_components/ProductCertificates";
+
 import { ProductFeatures } from "../_components/ProductFeatures";
 import { ProductGallery } from "../_components/ProductGallery";
 import Breadcrumb from "../_components/BreadCrumb";
@@ -35,6 +35,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
         >
           <Pencil className="h-4 w-4" />
           Chỉnh sửa sản phẩm
+        </Link>
+        <Link
+          href={`/products/create`}
+          className="inline-flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          <Pencil className="h-4 w-4" />
+          Thêm sản phẩm mới
         </Link>
         <DeleteProductButton productId={product.id} />
       </div>)}
