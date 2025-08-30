@@ -331,13 +331,7 @@ export function AddProductPage(){
                 onSetImageFile={(idx, file) => handleImageFileChange("productImages",idx, file)}
                 onRemove={(idx) => handleRemoveImage("productImages", idx)}
             />
-             <CertificateSection
-                certificates={form.certificates}
-                setForm={setForm}
-                setImageFile={(idx, file, field, subField) => handleImageFileChange(field, idx!, file!, subField)}
-                handleArrayObjectFieldChange={handleArrayObjectFieldChange}
-                onRemove={(idx) => handleRemoveImage("productImages", idx)}
-                />
+             
             <GuideSection
                 guide={form.guide}
                 handleNestedChange={handleNestedArrayFieldChange}
@@ -397,7 +391,7 @@ export function AddProductPage(){
                     onUpdateField={(field, value) => handleFieldChange(field, value)}
                     />
             </div>
-            <ProductCertImageSection
+            {/* <ProductCertImageSection
                 images={form.productCertImages}
                 onAdd={() =>
                     handleFieldChange("productCertImages", [
@@ -407,6 +401,13 @@ export function AddProductPage(){
                 }
                 onSetImageFile={(idx, file) => handleImageFileChange("productCertImages", idx, file)}
                 onRemove={(idx) => handleRemoveImage("productCertImages", idx)}
+                /> */}
+            <CertificateSection
+                certificates={form.certificates}
+                setForm={setForm}
+                setImageFile={(idx, file, field, subField) => handleImageFileChange(field, idx!, file!, subField)}
+                handleArrayObjectFieldChange={handleArrayObjectFieldChange}
+                onRemove={(idx) => handleRemoveImage("productImages", idx)}
                 />
             <div className="w-full flex justify-center mt-10">
                 <button
