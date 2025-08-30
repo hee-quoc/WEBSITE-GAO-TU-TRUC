@@ -37,7 +37,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
     const blogs= await api.blog.getLatestByTag({tag: blogData.tag, id:blogData.id})
     return (
       <>
-        <div className="mt-10 mb-10">
+        <div className=" mb-5 pl-10 pt-25 lg:pl-[159px]">
           <Breadcrumb title={blogData.title} category={CATEGORY_DATA[blogData.tag]?.name ?? 'Uncategorized'}/>
         </div>
         {session?.user &&(<div className="max-w-7xl mt-20 justify-end">

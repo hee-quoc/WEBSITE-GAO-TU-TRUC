@@ -4,17 +4,10 @@ import Link from 'next/link';
 
 // In a real application, you would pass the breadcrumb items as props.
 // For this example, we'll hardcode them to match your image.
-const breadcrumbData = {
-  category: {
-    name: "Danh sách sản phẩm",
-    href: "/products",
-  },
-  productName: "Gạo ST25 Lúa Tôm",
-};
 
 export default function Breadcrumb({title, category}:{title:string, category:string}) {
   return (
-    <nav aria-label="Breadcrumb">
+    <nav aria-label="Breadcrumb" className="font-fz-poppins">
       <ol className="flex items-center gap-2 text-sm">
         <li>
           <Link href="/" className="text-gray-500 transition-colors hover:text-gray-700">
