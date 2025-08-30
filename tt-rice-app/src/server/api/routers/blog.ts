@@ -282,21 +282,16 @@ export const blogRouter = createTRPCRouter({
     )
     .query(async ({ ctx, input }) => {
       const blogs = await ctx.db.blog.findMany({
-        // 1. Filter by the provided tag
         where: {
           tag: input.tag,
-          // id: {
-          //   not: input.id, // <-- THIS IS THE ADDED LOGIC
-          // },
+          id: {
+            not: input.id,
+          },
         },
-        // 2. Order by creation date, newest first
         orderBy: {
           createdAt: 'desc',
         },
-        // 3. Limit the result to only 2 records
         take: 2,
-        // 4. Select only the necessary fields for a preview card
-        // This is more performant and secure than fetching everything.
         select: {
           title: true,
           slug: true,
