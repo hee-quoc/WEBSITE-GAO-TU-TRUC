@@ -8,6 +8,7 @@ import { authOptions } from "~/server/auth";
 import { notFound } from 'next/navigation';
 import DeleteBlogButton from "../_components/DeleteBlogButton";
 import Image from "next/image";
+import Breadcrumb from "../_components/BreadCrumb";
 type BlogPageProps = {
   params: Promise<{ slug: string }>;
 };
@@ -36,6 +37,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
     const blogs= await api.blog.getLatestByTag({tag: blogData.tag, id:blogData.id})
     return (
       <>
+        <div className="mt-10 mb-10">
+          <Breadcrumb title={blogData.title} category={CATEGORY_DATA[blogData.tag]?.name ?? 'Uncategorized'}/>
+        </div>
         {session?.user &&(<div className="max-w-7xl mt-20 justify-end">
           <Link
             href={`/news/edit/${slug}`}
