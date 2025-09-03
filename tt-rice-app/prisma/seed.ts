@@ -48,6 +48,8 @@ async function main() {
     where: { username: username },
     update: {
         hashedPassword: hashedPassword,
+        name: "Tư Trúc", 
+        image: "/chi_mai_story.png",
     },
     create: {
       username: username,
@@ -65,6 +67,8 @@ async function main() {
     where: { username: username1 },
     update: {
         hashedPassword: hashedPassword1,
+        name: "Tư Trúc", 
+        image: "/chi_mai_story.png",
     },
     create: {
       username: username1,
