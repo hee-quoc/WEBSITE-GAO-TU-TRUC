@@ -20,16 +20,16 @@ export default function BlogCard({ blog }: BlogCardProps) {
     // The `group` class allows us to apply styles to children on hover of the parent
     <Link
       href={`/news/${blog.slug}`}
-      className="block group overflow-hidden rounded-xl shadow-sm transition-all duration-300 hover:shadow-lg"
+      className="block group overflow-hidden rounded-xl shadow-sm transition-all duration-300 hover:shadow-lg max-w-[400px]"
     >
       {/* Image Container */}
-      <div className="relative aspect-video w-full overflow-hidden">
+      <div className="overflow-hidden rounded-lg w-[400px] h-[250px]">
         <Image
           src={blog.bannerImageUrl}
           alt={blog.title}
-          fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          width={400}
+          height={250}
+          className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>
 
