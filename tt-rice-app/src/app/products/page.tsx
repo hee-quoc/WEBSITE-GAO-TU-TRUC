@@ -71,6 +71,14 @@ export default async function ProductsPage(
     <main>
       <ProductHero />
       <div className="relative mx-auto max-w-screen-xl overflow-hidden px-4 sm:px-6 lg:px-8">
+        {session?.user &&(<div className="mt-20 justify-center items-center">
+        <Link
+          href={`/products/create`}
+          className="inline-flex justify-center items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          Thêm sản phẩm mới
+        </Link>
+      </div>)}
         <div className={`mt-[43px] flex flex-col items-center`}>
           <div className="relative z-10 w-full">
             <Suspense fallback={<FilterButtonsFallback />}>
@@ -81,14 +89,7 @@ export default async function ProductsPage(
         <FilteredProductList allProducts={allProducts} categories={CATEGORY_DATA} />
         <div className="h-20" />
       </div>
-      {session?.user &&(<div className="mt-20 justify-center items-center">
-        <Link
-          href={`/products/create`}
-          className="inline-flex justify-center items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        >
-          Thêm sản phẩm mới
-        </Link>
-      </div>)}
+      
     </main>
   );
 }
