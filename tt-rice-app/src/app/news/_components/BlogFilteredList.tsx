@@ -30,7 +30,7 @@ export function BlogFilteredList({ blogs, categories }: BlogFilteredListProps) {
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
       {blogs.map((blog) => blog.thumbnailUrl&&(
         <Link href={`/news/${blog.slug}`} key={blog.id} className="group block">
-          <div className="overflow-hidden rounded-lg">
+          <div className="overflow-hidden rounded-lg w-[360px] h-[203px]">
             <Image
               src={blog.thumbnailUrl}
               alt={blog.title}

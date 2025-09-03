@@ -57,7 +57,7 @@ export default function BlogView({ blog }: BlogViewProps) {
               {blog.user.name}
             </h4>
             <p className="text-[14px] sm:text-[16px] font-fz-poppins font-[400] text-gray-500">
-              Published on {new Date(blog.createdAt).toLocaleDateString()}
+              Đăng ngày {new Date(blog.createdAt).toLocaleDateString()}
             </p>
           </div>
         </div>

@@ -116,6 +116,7 @@ export default async  function NewsIndexPage({
     : blogs;
   return (
     <div>
+      
       <div className="relative w-full h-[200px] sm:h-[250px] md:h-[400px]">
         <Image
           src="/faq/thumbnail.svg"
@@ -131,7 +132,14 @@ export default async  function NewsIndexPage({
         </div>
       </div>
       <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-      
+      {session?.user &&(<div className="mt-20 justify-center items-center">
+      <Link
+        href={`/news/create`}
+        className="inline-flex justify-center items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      >
+        Thêm tin tức mới
+      </Link>
+    </div>)}
       <div className={`mt-[43px] flex flex-col items-center mb-5`}>
         <div className="relative z-10 w-full">
           <Suspense fallback={<FilterButtonsFallback />}>
@@ -141,14 +149,7 @@ export default async  function NewsIndexPage({
       </div>
       <BlogFilteredList blogs={filteredBlogs} categories={CATEGORY_DATA}/>
     </main>
-    {session?.user &&(<div className="mt-20 justify-center items-center">
-      <Link
-        href={`/news/create`}
-        className="inline-flex justify-center items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-      >
-        Thêm tin tức mới
-      </Link>
-    </div>)}
+    
     </div>
   );
 }
