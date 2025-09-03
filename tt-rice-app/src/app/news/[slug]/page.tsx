@@ -61,9 +61,9 @@ export default async function BlogPage({ params }: BlogPageProps) {
         </div>
         <div className="mx-auto max-w-7xl px-4 pt-2 pb-6 sm:px-6 lg:px-12 flex flex-col items-center  overflow-auto">
           {/* grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 */}
-          <div className="mt-5 flex flex-col md:flex-row items-center max-w-[360px]"> 
+          <div className="mt-5 flex flex-col md:flex-row flex-wrap justify-center items-center"> 
             {blogs.map((blog) => blog.thumbnailUrl && (
-              <Link href={`/news/${blog.slug}`} key={blog.slug} className="group block mx-4">
+              <Link href={`/news/${blog.slug}`} key={blog.slug} className="group block mx-4 max-w-[360px]">
                 <div className="overflow-hidden rounded-lg w-[360px] h-[203px]">
                   <Image
                     src={blog.thumbnailUrl}
