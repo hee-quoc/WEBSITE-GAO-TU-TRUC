@@ -23,7 +23,7 @@ export const emailRouter = createTRPCRouter({
       try {
         await resend.emails.send({
           from: "Gao Tu Truc<contact@nhamaygaotutruc.com>",
-          to: ["dangtienmanh264@gmail.com"],
+          to: ["contact@tutruc.com"],
           subject: `Liên hệ từ người dùng website: ${name}`,
           react: ContactFormEmail({ name, email, phone, message }) as ReactElement,
         });
