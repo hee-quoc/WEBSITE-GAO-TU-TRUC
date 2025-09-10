@@ -94,16 +94,16 @@ export function StatisticSection(){
               <div className="bg-[#6D9127] rounded-[16px] px-6 sm:px-10 py-6 text-white w-full lg:w-[605px] h-[318px] lg:h-[311px]">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <div className="text-[56px] sm:text-[82px] font-bold font-alegreya-sans leading-none">&gt;100</div>
+                    <div className="text-[56px] sm:text-[82px] font-bold font-alegreya-sans leading-none">&gt;150ha</div>
                     <p className="text-[14px] sm:text-[16px] font-fz-poppins">
-                      ha diện tích được áp dụng quy<br className="hidden sm:inline"/> trình canh tác sạch, không hóa<br className="hidden sm:inline"/> chất độc hại,... để cho ra dòng<br className="hidden sm:inline"/> sản phẩm sạch mỗi năm
+                      diện tích chủ sở hữu được áp dụng quy trình canh tác sạch, không dư lượng thuốc bảo vệ thực vật, để cho ra dòng sản phẩm gạo đặt sản mỗi năm
                     </p>
                   </div>
                   <div>
                     <div className="text-[56px] sm:text-[82px] font-bold font-alegreya-sans leading-none"><svg className="inline-block w-16 h-16 sm:w-16 sm:h-18 align-middle mr-1" viewBox="0 2 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     {/* Added stroke and stroke-width for border */}
                     <path d="M12 18L5 11H19L12 18Z" fill="#FFB000" stroke="#FFB000" strokeWidth="2" strokeLinejoin="round"/>
-                  </svg>70%</div>
+                  </svg>60%</div>
                     <p className="text-[14px] sm:text-[16px] font-fz-poppins">
                       lượng thuốc bảo vệ thực vật<br className="hidden sm:inline"/> so với <br className=" sm:hidden"/> phương pháp canh tác<br className="hidden sm:inline"/> truyền thống
                     </p>
