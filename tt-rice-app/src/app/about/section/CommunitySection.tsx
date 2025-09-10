@@ -27,7 +27,7 @@ function MobileCard(){
                 />
               <div className="relative z-10 py-5 sm:py-5 px-6 w-full pt-2"> 
                 <div className=" mb-6 sm:mb-4"> 
-                  <div className="text-[82px] font-bold font-alegreya-sans leading-[1] p-0 m-0" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>30</div> 
+                  <div className="text-[82px] font-bold font-alegreya-sans leading-[1] p-0 m-0" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>300</div> 
                   <p className="text-[16px]  font-fz-poppins opacity-80" style={{ color: "#667085" }}> 
                     Hộ nông dân địa phương <br /> đồng hành lâu dài
                   </p>
@@ -73,7 +73,7 @@ function MobileCard(){
                         className="object-contain z-0"
                       />
                       <p className="font-alegreya-sans font-bold text-[82px] leading-[1] tracking-normal ml-2">
-                        70%
+                        60%
                       </p>
                     </div>
                       <p className="pl-[20px] text-[16px] font-fz-poppins opacity-80"style={{ color: "#EFF0F2" }} >
@@ -83,13 +83,13 @@ function MobileCard(){
                 </div>
                 <div className="gap-4 mt-6 bg-[#F4F3EA] rounded-[16px] px-5  flex flex-col pt-4 md:justify-around h-[352px]">
                   <div>
-                    <div className="text-[82px] sm:text-7xl md:text-7xl font-bold  font-alegreya-sans leading-[100%] tracking-[0%]" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>100 ha</div> 
+                    <div className="text-[82px] sm:text-7xl md:text-7xl font-bold  font-alegreya-sans leading-[100%] tracking-[0%]" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>150 ha</div> 
                     <p className="w-[295px] text-gray-700 font-fz-poppins" style={{ color: "#7D8493" }}> 
-                      ha diện tích canh tác không hóa chất độc hại
+                      diện tích chủ sở hữu được áp dụng quy trình canh tác sạch, không dư lượng thuốc bảo vệ thực vật.
                     </p>
                   </div>
                   <p className=" w-[295px] md:w-[235px] text-gray-700 font-fz-poppins" style={{ color: "#7D8493" }}> {/* Adjusted font sizes and margin-top */}
-                    Tư Trúc kiên trì mô hình canh tác sạch, không hóa chất độc hại, giúp giảm lượng thuốc bảo vệ thực vật đáng kể, giúp bảo vệ được sức khỏe đất đai, người trồng và mang đến những mùa vụ gạo sạch, an toàn.
+                    Tư Trúc kiên trì mô hình canh tác sạch, giúp giảm lượng thuốc bảo vệ thực vật đáng kể, giúp bảo vệ được sức khỏe đất đai, người trồng và mang đến những mùa vụ gạo sạch, an toàn.
                   </p>
                 </div>
               </div>
@@ -144,7 +144,7 @@ export function CommunitySection() {
                 />
               <div className="relative z-10 py-5 sm:py-5 px-6 w-full pt-2"> 
                 <div className="max-w-[194px] mb-6 sm:mb-4"> 
-                  <div className="text-4xl sm:text-5xl md:text-6xl font-bold font-alegreya-sans" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>30</div> 
+                  <div className="text-4xl sm:text-5xl md:text-6xl font-bold font-alegreya-sans" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>300</div> 
                   <p className="text-[16px] sm:text-[16px] font-fz-poppins opacity-80" style={{ color: "#667085" }}> 
                     Hộ nông dân địa phương đồng hành lâu dài
                   </p>
@@ -183,7 +183,7 @@ export function CommunitySection() {
                     <div className="text-7xl sm:text-7xl font-[700] font-alegreya-sans"> <svg className="inline-block w-16 h-16 sm:w-16 sm:h-16 align-middle mr-1" viewBox="0 3 21 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     {/* Added stroke and stroke-width for border */}
                     <path d="M12 18L5 11H19L12 18Z" fill="#FFB000" stroke="#FFB000" strokeWidth="2" strokeLinejoin="round"/>
-                  </svg>70%</div>
+                  </svg>60%</div>
                     <p className="text-sm font-fz-poppins opacity-80"style={{ color: "#EFF0F2" }} >
                       lượng thuốc bảo <br /> vệ thực vật
                     </p>
@@ -191,13 +191,13 @@ export function CommunitySection() {
                 </div>
                 <div className="w-1/2 bg-[#F4F3EA] rounded-[16px] px-4 sm:px-8 flex flex-col justify-around">
                   <div>
-                    <div className="text-7xl sm:text-7xl md:text-7xl font-bold  font-alegreya-sans" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>100 ha</div> {/* Adjusted font sizes */}
+                    <div className="text-7xl sm:text-7xl md:text-7xl font-bold  font-alegreya-sans" style={{ color: "#6D9127" }}><span style={{ color: "#FFB000" }}>&gt;</span>150 ha</div> {/* Adjusted font sizes */}
                     <p className="text-xs sm:text-sm text-gray-700 font-fz-poppins" style={{ color: "#7D8493" }}> {/* Adjusted font sizes */}
-                      ha diện tích canh tác không hóa chất độc hại
+                      diện tích chủ sở hữu được áp dụng quy trình canh tác sạch, không dư lượng thuốc bảo vệ thực vật.
                     </p>
                   </div>
                   <p className="text-xs sm:text-sm text-gray-700 font-fz-poppins mt-4" style={{ color: "#7D8493" }}> {/* Adjusted font sizes and margin-top */}
-                    Tư Trúc kiên trì mô hình canh tác sạch, không hóa chất độc hại, giúp giảm lượng thuốc bảo vệ thực vật đáng kể, giúp bảo vệ được sức khỏe đất đai, người trồng và mang đến những mùa vụ gạo sạch, an toàn.
+                    Tư Trúc kiên trì mô hình canh tác sạch, giúp giảm lượng thuốc bảo vệ thực vật đáng kể, giúp bảo vệ được sức khỏe đất đai, người trồng và mang đến những mùa vụ gạo sạch, an toàn.
                   </p>
                 </div>
               </div>

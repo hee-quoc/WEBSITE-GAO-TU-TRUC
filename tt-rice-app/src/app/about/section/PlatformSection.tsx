@@ -109,7 +109,7 @@ export function PlatformSection() {
             Nền tảng chủ động <br /> năng lực vững vàng
           </h2>
           <p className="text-[28px] text-[#667085] leading-[1] font-alegreya">
-            Thế mạnh sản phẩm & sản xuất của thương hiệu trong suốt 3 thập kỷ
+            Thế mạnh sản phẩm & sản xuất của thương hiệu trong suốt 4 thập kỷ
           </p>
         </div>
 

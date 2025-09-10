@@ -69,7 +69,7 @@ export function AboutSection() {
 
           <p className="text-[14px] leading-[1.4] text-[#525A6A] mb-10 max-w-[340px] font-fz-poppins">
 
-            Câu chuyện của Tư Trúc bắt đầu từ <b>hơn 30 năm trước</b>,{" "}
+            Câu chuyện của Tư Trúc bắt đầu từ <b>hơn 40 năm trước</b>,{" "}
             <b>nơi vùng đất Hòa Long màu mỡ</b>, tại một <b> nhà máy xay xát lúa nhỏ bé</b> nhưng mang trong mình một {" "}
             <b>sứ mệnh lớn lao – nâng tầm và lan tỏa giá trị “hạt ngọc thực”</b> đến với mỗi người con đất Việt.{" "}
           </p>
@@ -162,7 +162,7 @@ export function AboutSection() {
             <Image src="/Group 930.svg" alt="Tu Truc Story" width={249} height={249} className="mb-5" />
             <div className="text-[#525A6A] text-[16px] leading-[1.4] max-w-[530px] font-fz-poppins font-[400]">
               <p>
-                Câu chuyện của Tư Trúc bắt đầu từ <b>hơn 30 năm trước</b>, nơi vùng đất{" "}
+                Câu chuyện của Tư Trúc bắt đầu từ <b>hơn 40 năm trước</b>, nơi vùng đất{" "}
                 <b>Hòa Long màu mỡ</b>, tại một <b>nhà máy xay xát lúa nhỏ bé</b> mang sứ mệnh{" "}
                 <b>nâng tầm và lan tỏa giá trị “hạt ngọc thực”</b>.
               </p>

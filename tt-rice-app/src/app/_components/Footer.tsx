@@ -11,7 +11,7 @@ export default function Footer() {
           width={20} 
           height={20} 
         />,
-      text: 'Đường số 14, Xã Hoà Long, Thành phố Bà Rịa, Tỉnh Bà Rịa Vũng Tàu',
+      text: 'Đường số 14, Khu Phố Bắc 2 Hoà Long, phường Tam Long, TP Hồ Chí Minh',
     },
     { icon: <Image
           src="/google_map.svg"
@@ -42,7 +42,6 @@ export default function Footer() {
   const infoLinks = [
     { href: '/faq/privacy-policy', label: 'Chính sách bảo mật' },
     { href: '/faq/payment-methods', label: 'Hình thức thanh toán' },
-    { href: '/faq/warranty-policy', label: 'Chính sách bảo hành' },
     { href: '/faq/return-policy', label: 'Chính sách đổi trả dịch vụ' },
     { href: '/faq/terms-of-service', label: 'Điều khoản & điều kiện sử dụng' },
   ];

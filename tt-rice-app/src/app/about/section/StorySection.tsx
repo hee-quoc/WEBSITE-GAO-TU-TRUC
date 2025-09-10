@@ -61,7 +61,7 @@ export function StorySection() {
         >
           <div className="md:pt-[112px] pb-16">
             <h2 className={`${isMobile ? 'text-[42px]' : 'text-[56px]'} font-bold text-steel-blue leading-[96%] "`}>
-              Ba thập kỉ gắn liền 
+              Bốn thập kỷ gắn liền 
             </h2>
             <h2 className={`${isMobile ? 'text-[42px]' : 'text-[56px]'} mb-0 font-bold text-steel-blue leading-[96%] -mt-2"`}>
               với đồng ruộng
@@ -79,7 +79,7 @@ export function StorySection() {
               Từ năm 1988, với khởi nguồn từ nhà máy xay xát nhỏ tại Bà Rịa - Vũng Tàu, Tư Trúc đã đặt những viên gạch đầu tiên trên hành trình xây dựng thương hiệu gạo mang đậm giá trị Việt. Việc chủ động vùng nguyên liệu, đầu tư xây dựng nhà máy và quy trình trồng trọt - sản xuất nghiêm ngặt ngay từ những ngày đầu đã trở thành nền tảng vững chắc đưa doanh nghiệp đến với vị thế là đơn vị cung cấp gạo lớn nhất Bà Rịa - Vũng Tàu.
             </p>
             <p className="text-[14px] md:text-[16px] text-blue-normal-active leading-7 font-fz-poppins">
-              Sau hơn 30 năm, Tư Trúc tiếp tục mở rộng quy mô, hoàn thiện công nghệ, đào tạo đội ngũ và nâng tầm giá trị &quot;hạt ngọc thực&quot; đất Việt - kết tinh giữa thiên nhiên, bàn tay con người và bản sắc văn hóa Việt Nam.
+              Sau gần 40 năm, Tư Trúc tiếp tục mở rộng quy mô, hoàn thiện công nghệ, đào tạo đội ngũ và nâng tầm giá trị &quot;hạt ngọc thực&quot; đất Việt - kết tinh giữa thiên nhiên, bàn tay con người và bản sắc văn hóa Việt Nam.
             </p>
             <div className="w-full md:w-[531px] h-auto md:h-[691px] rounded-lg flex flex-col justify-between mt-8">
               <div>
