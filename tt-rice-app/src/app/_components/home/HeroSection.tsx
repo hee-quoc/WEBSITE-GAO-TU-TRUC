@@ -86,6 +86,20 @@ export function HeroSection() {
             />
           </div>
         ))}
+        {/* <div
+            className="flex-shrink-0"
+            style={{ width: `${100 / slides.length}%` }} // e.g., 33.33% width for 3 slides
+          >
+            <Image
+              src="/images/home/img_hero_background2.svg"
+              alt={`Hero Background`}
+              width={1440}
+              height={915}
+              quality={85}
+              sizes="100vw"
+              className="w-full h-auto"
+            />
+          </div> */}
       </div>
         <div id="hero-slogan" className="absolute inset-0 flex top-[116px] z-10 text-center ">
             <div className="relative inline-block mx-auto w-full max-w-[1020px] px-4">
@@ -124,7 +138,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="absolute left-4 top-[425px] md:top-2/5 transform -translate-y-1/2 z-20">
+          {/* <div className="absolute left-4 top-[425px] md:top-2/5 transform -translate-y-1/2 z-20">
             <button
               onClick={handlePrev}
               className="w-9 h-9 bg-white-transparent border border-green-light-2 rounded-full flex items-center justify-center shadow-lg hover:bg-green-normal transition-colors"
@@ -139,8 +153,8 @@ export function HeroSection() {
             >
               <Image src="/img_arrowright.svg" alt="Next" width={16} height={16} />
             </button>
-          </div>
-          <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20 flex items-center justify-center gap-1">
+          </div> */}
+          {/* <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20 flex items-center justify-center gap-1">
             {slides.map((_, index) => (
               <button
                 key={index}
@@ -161,7 +175,7 @@ export function HeroSection() {
                 />
               </button>
             ))}
-          </div>
+          </div> */}
     </section>
   );
 }
