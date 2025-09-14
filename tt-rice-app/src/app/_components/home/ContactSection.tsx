@@ -109,11 +109,12 @@ export function ContactSection() {
           {/* PC giữ absolute, mobile = relative */}
           <div className="relative w-full flex justify-center lg:static">
             <Image
-              src="/Group 7.svg"
+              src="/images/home/Home_Contact_ST25.jpg"
               alt="Contact Illustration"
               width={900}
               height={646}
-              className="w-full max-w-[500px] h-auto lg:w-auto lg:max-w-none lg:absolute lg:top-[134px] lg:right-[100px]"
+              className=""
+              //className="w-full max-w-[500px] h-auto lg:w-auto lg:max-w-none lg:absolute lg:top-[134px] lg:right-[100px]"
             />
           </div>
         </div>
