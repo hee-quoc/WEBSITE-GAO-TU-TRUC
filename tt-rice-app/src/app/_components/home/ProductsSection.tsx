@@ -33,8 +33,8 @@ export function ProductsSection(){
          <div className="mt-16 flex flex-col items-center text-center overflow-x-auto scrollbar-hide rounded-[16px] px-0 sm:px-8 max-w-full sm:max-w-full relative h-[112px]">
           <div className="relative w-[375px] sm:w-full h-full flex flex-col items-center">
             {/* Item 1 */}
-            <h3 className="absolute left-[35%] sm:left-[44%] text-[20px] font-[500] font-alegreya-sans " style={{color:"#0A5B89"}}>Các chứng nhận</h3>
-            <div className="absolute left-[-3%] sm:left-[30%] top-1/2 -translate-y-1/2">
+            <h3 className="absolute left-[35%] sm:left-[43%] text-[20px] font-[500] font-alegreya-sans " style={{color:"#0A5B89"}}>Các chứng nhận</h3>
+            <div className="absolute left-[-3%] sm:left-[22%] top-1/2 -translate-y-1/2">
               <Image
                 src="/img_group_928.svg"
                 alt="Certification"
@@ -56,9 +56,20 @@ export function ProductsSection(){
             </div>
 
             {/* Item 3 */}
-            <div className="absolute left-[61%] sm:left-[51%] top-[55%] -translate-y-1/2 w-[70px] h-[58px] rounded-full flex items-center justify-center">
+            <div className="absolute left-[22%]  sm:left-[30%] top-[55%] -translate-y-1/2 w-[92px] h-[80px] rounded-full flex items-center justify-center">
               <Image
-                src="/ISO.png"
+                src="/HACCP_logo.png"
+                alt="Certification"
+                width={92}
+                height={36}
+                className="w-full h-full"
+              />
+            </div>
+
+            {/* Item 4 */}
+            <div className="absolute left-[61%] sm:left-[52%] top-[55%] -translate-y-1/2 w-[70px] h-[58px] rounded-full flex items-center justify-center">
+              <Image
+                src="/iso.png"
                 alt="Certification"
                 width={70}
                 height={58}
@@ -66,8 +77,19 @@ export function ProductsSection(){
               />
             </div>
 
-            {/* Item 4 */}
-            <div className="absolute left-[75%] sm:left-[56%] top-1/2 -translate-y-1/2">
+            {/* Item 5 */}
+            <div className="absolute left-[61%] sm:left-[60%] top-[49%] -translate-y-1/2 w-[98px] h-[68px] rounded-full flex items-center justify-center">
+              <Image
+                src="/vietgap_logo.png"
+                alt="Certification"
+                width={70}
+                height={58}
+                className="w-full h-full"
+              />
+            </div>
+
+            {/* Item 6 */}
+            <div className="absolute left-[75%] sm:left-[64%] top-1/2 -translate-y-1/2">
               <Image
                 src="/img_group_929_light_green_a700.svg"
                 alt="Certification"
