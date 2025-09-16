@@ -34,18 +34,18 @@ export function ProductsSection(){
           <div className="relative w-[375px] sm:w-full h-full flex flex-col items-center">
             {/* Item 1 */}
             <h3 className="absolute left-[35%] sm:left-[43%] text-[20px] font-[500] font-alegreya-sans " style={{color:"#0A5B89"}}>Các chứng nhận</h3>
-            <div className="absolute left-[-3%] sm:left-[22%] top-1/2 -translate-y-1/2">
+            <div className="absolute left-[-5%] sm:left-[22%] top-1/2 -translate-y-1/2">
               <Image
                 src="/img_group_928.svg"
                 alt="Certification"
                 width={132}
                 height={107}
-                className="h-[107px]"
+                className="h-[87px] md:h-[107px]"
               />
             </div>
 
             {/* Item 2 */}
-            <div className="absolute left-[22%]  sm:left-[40%] top-[55%] -translate-y-1/2 w-[92px] h-[36px] rounded-full flex items-center justify-center">
+            <div className="absolute left-[36%]  sm:left-[40%] top-[55%] -translate-y-1/2 w-[56px] h-[28px] md:w-[92px] md:h-[36px] rounded-full flex items-center justify-center">
               <Image
                 src="/ocop.png"
                 alt="Certification"
@@ -56,7 +56,7 @@ export function ProductsSection(){
             </div>
 
             {/* Item 3 */}
-            <div className="absolute left-[22%]  sm:left-[30%] top-[55%] -translate-y-1/2 w-[92px] h-[80px] rounded-full flex items-center justify-center">
+            <div className="absolute left-[18%]  sm:left-[30%] top-[55%] -translate-y-1/2 w-[56px] h-[50px] md:w-[92px] md:h-[80px] rounded-full flex items-center justify-center">
               <Image
                 src="/HACCP_logo.png"
                 alt="Certification"
@@ -67,7 +67,7 @@ export function ProductsSection(){
             </div>
 
             {/* Item 4 */}
-            <div className="absolute left-[61%] sm:left-[52%] top-[55%] -translate-y-1/2 w-[70px] h-[58px] rounded-full flex items-center justify-center">
+            <div className="absolute left-[56%] sm:left-[52%] top-[55%] -translate-y-1/2 w-[45px] h-[39px] md:w-[70px] md:h-[58px] rounded-full flex items-center justify-center">
               <Image
                 src="/iso.png"
                 alt="Certification"
@@ -78,7 +78,7 @@ export function ProductsSection(){
             </div>
 
             {/* Item 5 */}
-            <div className="absolute left-[61%] sm:left-[60%] top-[49%] -translate-y-1/2 w-[98px] h-[68px] rounded-full flex items-center justify-center">
+            <div className="absolute left-[72%] sm:left-[60%] top-[49%] -translate-y-1/2 w-[59px] h-[44px] md:w-[98px] md:h-[68px] rounded-full flex items-center justify-center">
               <Image
                 src="/vietgap_logo.png"
                 alt="Certification"
@@ -89,13 +89,13 @@ export function ProductsSection(){
             </div>
 
             {/* Item 6 */}
-            <div className="absolute left-[75%] sm:left-[64%] top-1/2 -translate-y-1/2">
+            <div className="absolute left-[77%] sm:left-[64%] top-1/2 -translate-y-1/2">
               <Image
                 src="/img_group_929_light_green_a700.svg"
                 alt="Certification"
                 width={115}
                 height={107}
-                className="h-[107px]"
+                className="h-[87px] md:h-[107px]"
               />
             </div>
           </div>
