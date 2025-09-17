@@ -58,7 +58,7 @@ export function ProductsSection(){
             {/* Item 3 */}
             <div className="absolute left-[18%]  sm:left-[30%] top-[55%] -translate-y-1/2 w-[56px] h-[50px] md:w-[92px] md:h-[80px] rounded-full flex items-center justify-center">
               <Image
-                src="/HACCP_logo.png"
+                src="/HACCP_Logo.png"
                 alt="Certification"
                 width={92}
                 height={36}
@@ -69,7 +69,7 @@ export function ProductsSection(){
             {/* Item 4 */}
             <div className="absolute left-[56%] sm:left-[52%] top-[55%] -translate-y-1/2 w-[45px] h-[39px] md:w-[70px] md:h-[58px] rounded-full flex items-center justify-center">
               <Image
-                src="/iso.png"
+                src="/ISO.png"
                 alt="Certification"
                 width={70}
                 height={58}
