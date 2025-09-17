@@ -7,13 +7,13 @@ import Button from '../ui/Button';
 import { useMediaQuery } from '~/app/hooks/useMediaQuery';
 
 const slidesDesktop = [
-  { id: 0, imageSrc: "/images/home/img_hero_background2.svg" , width: 1440, height: 915},
+  { id: 0, imageSrc: "/images/home/img_hero_desktop.jpg" , width: 1440, height: 915},
   { id: 1, imageSrc: "/images/home/img_hero_background2.svg" , width: 1440, height: 915},
   { id: 2, imageSrc: "/images/home/img_hero_background2.svg" , width: 1440, height: 915},
   { id: 3, imageSrc: "/images/home/img_hero_background2.svg" , width: 1440, height: 915},
 ];
 const slidesMobile = [
-  { id: 0, imageSrc: "/images/home/img_hero_background_mobile.png", width: 375, height: 798 },
+  { id: 0, imageSrc: "/images/home/img_hero_mobile.jpg", width: 375, height: 798 },
   { id: 1, imageSrc: "/images/home/img_hero_background_mobile.png", width: 375, height: 798 },
   { id: 2, imageSrc: "/images/home/img_hero_background_mobile.png", width: 375, height: 798 },
   { id: 3, imageSrc: "/images/home/img_hero_background_mobile.png", width: 375, height: 798 },
