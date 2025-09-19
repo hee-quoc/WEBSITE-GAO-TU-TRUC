@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useState , useEffect} from "react";
 const backgroundImages = [
   '/vision_background.png',
-  '/vision_background_2.png',
+  '/About_Us_Mission.jpg',
   // '/vision_background.png',
 ]; // Add your actual image paths here (place in public folder)
 
