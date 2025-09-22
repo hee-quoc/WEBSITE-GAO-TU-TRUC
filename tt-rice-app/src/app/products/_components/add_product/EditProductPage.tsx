@@ -232,7 +232,7 @@ export function EditProductPage({ productSlug }: { productSlug: string }) {
   return(
       <div className="flex flex-col items-center">
         
-          <div className="flex flex-col max-w-[1440px]  pt-8">
+          <div className="flex flex-col max-w-[1440px]  pt-8 md:w-[1080px]">
               <div className="mx-auto max-w-5xl px-4 py-6">
               <h1 className="text-[56px] font-semibold">Chỉnh sửa sản phẩm</h1>
               <Link
