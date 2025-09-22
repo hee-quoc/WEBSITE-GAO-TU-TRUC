@@ -50,7 +50,7 @@ export function AddProductPage(){
         {label:"5",value:"5"}
     ]
     const riceTypeOptions = [
-        {label:"Gạo ăn",value:"gao-dac-san"},
+        {label:"Gạo đặc sản",value:"gao-dac-san"},
         {label:"Gạo thông dụng",value:"gao-thong-dung"},
         {label:"Gạo nguyên liệu",value:"gao-nguyen-lieu"},
         {label:"Phụ phẩm",value:"phu-pham"},
