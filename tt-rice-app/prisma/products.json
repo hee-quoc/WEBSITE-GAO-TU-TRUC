@@ -60,7 +60,7 @@
     `,
     imageFilename: 'img_eat_rice.png',
     imageType: 'image/png',
-    tags: ['gao-an'],
+    tags: ['gao-dac-san'],
     companyBrand: "Thương hiệu",
     SKU:"VN09",
     imageUrl:"https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/images/products/lua_tom.png"
@@ -126,7 +126,7 @@
     `,
     imageFilename: 'lai_hoa.png',
     imageType: 'image/png',
-    tags: ['gao-an'],
+    tags: ['gao-dac-san'],
     companyBrand: "Thương hiệu",
     SKU:"M8S4",
     imageUrl:"https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/images/products/lai_hoa.png"
@@ -192,7 +192,7 @@
     `,
     imageFilename: 'lai_sua.png',
     imageType: 'image/png',
-    tags: ['gao-an'],
+    tags: ['gao-dac-san'],
     companyBrand: "Thương hiệu",
     SKU:"GGX4",
     imageUrl:"https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/images/products/lai_sua.png"
@@ -258,7 +258,7 @@
     `,
     imageFilename: 'huong_sen.png',
     imageType: 'image/png',
-    tags: ['gao-an'],
+    tags: ['gao-dac-san'],
     companyBrand: "Thương hiệu",
     SKU:"9J0Z",
     imageUrl:"https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/images/products/huong_sen.png"
@@ -292,7 +292,7 @@
     `,
     imageFilename: 'img_st25.png',
     imageType: 'image/png',
-    tags: ['gao-an'],
+    tags: ['gao-dac-san'],
     companyBrand: "Khác",
     SKU:"RZUXB",
     imageUrl:"https://nhamaygaotutruc-images.s3.ap-southeast-2.amazonaws.com/public/images/products/img_st25.png"

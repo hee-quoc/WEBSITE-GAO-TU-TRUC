@@ -95,7 +95,7 @@ export function ProductAccordion({ product }: { product: ProductWithDetails}) {
             onToggle={() => handleToggle(4)}
           >
             <div className="space-y-3">
-              {product.tag.includes('gao-an')&& <>
+              {product.tag.includes('gao-dac-san')&& <>
                 <ol className="list-decimal list-inside space-y-2 text-blue-800 font-small">
                   {product.cooking.step.map((s, i) => <p key={i}>{s}</p>)}
                 </ol>

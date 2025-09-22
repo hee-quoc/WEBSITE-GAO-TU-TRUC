@@ -122,7 +122,7 @@ export function PlatformSection() {
             height={30}
           />
           <p className="text-[#0A5B89] text-[18px] font-alegreya-sans font-[500] leading-[1.2]">
-            Suốt hơn 3 thập kỷ, Tư Trúc bền bỉ xây dựng nền tảng sản xuất chủ động, kiểm soát toàn diện từ chất lượng đến sản lượng, luôn sẵn sàng đồng hành lâu dài cùng các đối tác chiến lược
+            Suốt hơn 4 thập kỷ, Tư Trúc bền bỉ xây dựng nền tảng sản xuất chủ động, kiểm soát toàn diện từ chất lượng đến sản lượng, luôn sẵn sàng đồng hành lâu dài cùng các đối tác chiến lược
           </p>
         </div>
 
@@ -195,7 +195,7 @@ export function PlatformSection() {
                     </h2>
                     <p className="text-[32px] text-[#888888] leading-relaxed font-alegreya">
                       Thế mạnh sản phẩm & sản xuất của <br />
-                      thương hiệu trong suốt 3 thập kỷ
+                      thương hiệu trong suốt 4 thập kỷ
                     </p>
                   </div>
                   <div className="space-y-3 pt-6">
@@ -206,7 +206,7 @@ export function PlatformSection() {
                       height={39}
                     />
                     <p className="text-[#005B94] text-[20px] leading-relaxed font-medium font-fz">
-                      Suốt hơn 3 thập kỷ, Tư Trúc bền bỉ xây dựng nền tảng sản xuất <br className="hidden sm:inline"/> chủ động,
+                      Suốt hơn 4 thập kỷ, Tư Trúc bền bỉ xây dựng nền tảng sản xuất <br className="hidden sm:inline"/> chủ động,
                       kiểm soát toàn diện từ chất lượng đến sản lượng,<br className="hidden sm:inline"/> luôn sẵn sàng đồng hành lâu dài
                       cùng các đối tác chiến lược
                     </p>

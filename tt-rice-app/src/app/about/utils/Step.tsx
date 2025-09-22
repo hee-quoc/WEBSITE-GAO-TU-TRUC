@@ -23,14 +23,14 @@ const steps = [
     desc: 'Áp dụng công nghệ sấy hiện đại để kiểm soát độ ẩm tối ưu, bảo toàn \n chất lượng hạt gạo',
   },
   {
-    img: '/gao_step5.svg',
-    title: 'Đóng gói & Phân phối',
-    desc: 'Thành phẩm được đóng \n gói tự động với quy trình \n hiện đại, và vận chuyển \n đến khắp đất nước',
-  },
-  {
     img: '/gao_step4.svg',
     title: 'Xay xát & Sàng lọc',
     desc: 'Tiến hành xay xát, tách tạp chất và sàng lọc, đảm bảo từng hạt gạo đạt chuẩn \n đồng đều',
+  },
+  {
+    img: '/gao_step5.svg',
+    title: 'Đóng gói & Phân phối',
+    desc: 'Thành phẩm được đóng \n gói tự động với quy trình \n hiện đại, và vận chuyển \n đến khắp đất nước',
   },
 ];
 
@@ -59,7 +59,7 @@ export default function StepSectionResponsive() {
           ))}
         </div>
         <div className="flex gap-24 z-10">
-          {steps.slice(3).map((step, i) => (
+          {steps.slice(-2).reverse().map((step, i) => (
             <CustomStepCard key={i + 3} step={step} />
           ))}
         </div>

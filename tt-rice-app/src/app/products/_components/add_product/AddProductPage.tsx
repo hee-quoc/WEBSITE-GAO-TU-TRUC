@@ -50,7 +50,7 @@ export function AddProductPage(){
         {label:"5",value:"5"}
     ]
     const riceTypeOptions = [
-        {label:"Gạo ăn",value:"gao-an"},
+        {label:"Gạo ăn",value:"gao-dac-san"},
         {label:"Gạo thông dụng",value:"gao-thong-dung"},
         {label:"Gạo nguyên liệu",value:"gao-nguyen-lieu"},
         {label:"Phụ phẩm",value:"phu-pham"},
@@ -376,7 +376,7 @@ export function AddProductPage(){
             </div>
             <CookingSection
                 cooking={form.cooking}
-                showStep={form.tag.includes("gao-an")}
+                showStep={form.tag.includes("gao-dac-san")}
                 setForm={setForm}
                 handleNestedArrayFieldChange={handleNestedArrayFieldChange}
                 handleNestedFieldChange={handleNestedFieldChange}

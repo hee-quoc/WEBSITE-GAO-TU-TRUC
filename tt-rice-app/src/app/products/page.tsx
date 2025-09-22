@@ -14,8 +14,8 @@ export interface CategoryData {
 }
 
 const CATEGORY_DATA: Record<string, CategoryData> = {
-  'gao-an': {
-    name: 'Gạo ăn',
+  'gao-dac-san': {
+    name: 'Gạo đặc sản',
     description: `<p>Tư Trúc tin rằng gạo không chỉ là lương thực để no bụng, mà còn là thức quà để thưởng, để nghiệm, và để tự hào. </p>
     <p>Mỗi hạt gạo Tư Trúc đều được tinh chọn từ giống lúa chất lượng, canh tác theo quy trình nghiêm ngặt, thu hoạch đúng vụ, và được sàng lọc kỹ lưỡng từ đội ngũ công nhân nhiều năm kinh nghiệm bằng cả chuyên môn lẫn tâm huyết - để đem chất lượng hạt gạo ổn định, hương vị thuần khiết và ngọt lành từ đồng nội đến mỗi bữa cơm Việt. </p>`,
     image: '/images/products/category/img_gao_an.svg',
