@@ -34,8 +34,8 @@ export function ProductCard({ product }: ProductCardProps) {
           src={product.productImages[0] ?? '/default-image.png'}
           alt={product.title}
           width={278} 
-          height={302}
-          className="h-auto w-full rounded-md object-cover"
+          height={278}
+          className="w-[278px] h-[278px] rounded-md object-cover"
           loading="lazy" 
         />
       <h3 className="text-[20px] text-center font-medium text-steel-blue pb-1 hover:underline font-fz-poppins">{product.title}</h3>

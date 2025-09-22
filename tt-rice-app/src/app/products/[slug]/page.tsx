@@ -57,9 +57,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <div className="flex flex-col ">
             <ProductInfo product={product}/>
             <ProductTabs  descriptionHtml={product.detail}/>
+            {!product.tag.includes("phu-pham")&&<>
             <ProductFeatures features={product.properties}/>
             <ProductUsageGuide guide={product.guide} />
             <ProductAccordion product={product} />
+            </>}
+            
           </div>
         </div>
       </div>

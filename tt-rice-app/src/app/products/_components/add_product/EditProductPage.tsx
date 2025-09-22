@@ -269,83 +269,88 @@ export function EditProductPage({ productSlug }: { productSlug: string }) {
                   handleArrayObjectFieldChange={handleArrayObjectFieldChange}
                   onRemove={(idx) => handleRemoveImage("productImages", idx)}
                   /> */}
-              <GuideSection
-                  guide={form.guide}
-                  handleNestedChange={handleNestedArrayFieldChange}
-                  />
-              <div className="w-full mb-5">
-                  <div className="text-[20px] font-bold w-full px-4">Quy cách đóng gói</div>
-                  <TextCard
-                      field="package"
-                      value={form.package}
-                      title=""
-                      onUpdateField={(field, value) => handleFieldChange(field, value)}
-                      />
-              </div>
-              <div className="w-full mb-5">
-                  <div className="text-[20px] font-bold w-full px-4">Thành phần</div>
-                  <TextCard
-                      field="parts"
-                      value={form.parts}
-                      title=""
-                      onUpdateField={(field, value) => handleFieldChange(field, value)}
-                      />
-              </div>
-              <div className="w-full mb-5">
-                  <div className="text-[20px] font-bold w-full px-4">Vùng ngyên liệu</div>
-                  <TextCard
-                      field="ingredients"
-                      value={form.ingredients}
-                      title=""
-                      onUpdateField={(field, value) => handleFieldChange(field, value)}
-                      />
-              </div>
-              <div className="w-full mb-5">
-                  <div className="text-[20px] font-bold w-full px-4">Quy trình canh tác</div>
-                  <div className="mb-2 text-sm text-gray-600 px-4">Mô tả cách quy trình canh tác</div>
-                      <TextCard
-                      field="grow"
-                      value={form.grow}
-                      title=""
-                      isArea={true}
-                      onUpdateField={(field, value) => handleFieldChange(field, value)}
-                      />
-              </div>
-              <CookingSection
-                  cooking={form.cooking}
-                  showStep={form.tag.includes("gao-dac-san")}
-                  setForm={setForm}
-                  handleNestedArrayFieldChange={handleNestedArrayFieldChange}
-                  handleNestedFieldChange={handleNestedFieldChange}
-                  />
-              <div className="w-full mb-5">
-                  <div className="text-[20px] font-bold w-full px-4">Quy trình đóng gói</div>
-                  <TextCard
-                      field="wrapProcess"
-                      value={form.wrapProcess}
-                      title=""
-                      isArea={true}
-                      onUpdateField={(field, value) => handleFieldChange(field, value)}
-                      />
-              </div>
-              {/* <ProductCertImageSection
-                  images={form.productCertImages}
-                  onAdd={() =>
-                      handleFieldChange("productCertImages", [
-                      ...form.productCertImages,
-                      { file: null, preview: null, width: undefined, height: undefined },
-                      ])
-                  }
-                  onSetImageFile={(idx, file) => handleImageFileChange("productCertImages", idx, file)}
-                  onRemove={(idx) => handleRemoveImage("productImages", idx)}
-                  /> */}
-                <CertificateSection
-                  certificates={form.certificates}
-                  setForm={setForm}
-                  setImageFile={(idx, file, field, subField) => handleImageFileChange(field, idx!, file!, subField)}
-                  handleArrayObjectFieldChange={handleArrayObjectFieldChange}
-                  onRemove={(idx) => handleRemoveImage("productImages", idx)}
-                  />
+                {!form.tag.includes("phu-pham")&&(
+                    <>
+                        <GuideSection
+                            guide={form.guide}
+                            handleNestedChange={handleNestedArrayFieldChange}
+                            />
+                        <div className="w-full mb-5">
+                            <div className="text-[20px] font-bold w-full px-4">Quy cách đóng gói</div>
+                            <TextCard
+                                field="package"
+                                value={form.package}
+                                title=""
+                                onUpdateField={(field, value) => handleFieldChange(field, value)}
+                                />
+                        </div>
+                        <div className="w-full mb-5">
+                            <div className="text-[20px] font-bold w-full px-4">Thành phần</div>
+                            <TextCard
+                                field="parts"
+                                value={form.parts}
+                                title=""
+                                onUpdateField={(field, value) => handleFieldChange(field, value)}
+                                />
+                        </div>
+                        <div className="w-full mb-5">
+                            <div className="text-[20px] font-bold w-full px-4">Vùng ngyên liệu</div>
+                            <TextCard
+                                field="ingredients"
+                                value={form.ingredients}
+                                title=""
+                                onUpdateField={(field, value) => handleFieldChange(field, value)}
+                                />
+                        </div>
+                        <div className="w-full mb-5">
+                            <div className="text-[20px] font-bold w-full px-4">Quy trình canh tác</div>
+                            <div className="mb-2 text-sm text-gray-600 px-4">Mô tả cách quy trình canh tác</div>
+                                <TextCard
+                                field="grow"
+                                value={form.grow}
+                                title=""
+                                isArea={true}
+                                onUpdateField={(field, value) => handleFieldChange(field, value)}
+                                />
+                        </div>
+                        <CookingSection
+                            cooking={form.cooking}
+                            showStep={form.tag.includes("gao-dac-san")}
+                            setForm={setForm}
+                            handleNestedArrayFieldChange={handleNestedArrayFieldChange}
+                            handleNestedFieldChange={handleNestedFieldChange}
+                            />
+                        <div className="w-full mb-5">
+                            <div className="text-[20px] font-bold w-full px-4">Quy trình đóng gói</div>
+                            <TextCard
+                                field="wrapProcess"
+                                value={form.wrapProcess}
+                                title=""
+                                isArea={true}
+                                onUpdateField={(field, value) => handleFieldChange(field, value)}
+                                />
+                        </div>
+                        {/* <ProductCertImageSection
+                            images={form.productCertImages}
+                            onAdd={() =>
+                                handleFieldChange("productCertImages", [
+                                ...form.productCertImages,
+                                { file: null, preview: null, width: undefined, height: undefined },
+                                ])
+                            }
+                            onSetImageFile={(idx, file) => handleImageFileChange("productCertImages", idx, file)}
+                            onRemove={(idx) => handleRemoveImage("productImages", idx)}
+                            /> */}
+                            <CertificateSection
+                            certificates={form.certificates}
+                            setForm={setForm}
+                            setImageFile={(idx, file, field, subField) => handleImageFileChange(field, idx!, file!, subField)}
+                            handleArrayObjectFieldChange={handleArrayObjectFieldChange}
+                            onRemove={(idx) => handleRemoveImage("productImages", idx)}
+                            />
+                    </>
+                )}
+              
               <div className="w-full flex justify-center mt-10">
                   <button
                   type="button"

@@ -72,23 +72,28 @@ export function ProductInfoSection({
           onUpdateField={onChange}
         />
       </div>
-      <div className="text-[20px] font-bold w-full px-4">Đặc tính sản phẩm</div>
-      <div className="w-full flex justify-around rounded-2xl border border-gray-300 shadow-sm bg-white p-4 m">
-        {["Độ thơm", "Độ dẻo", "Độ mềm", "Độ nở"].map((label, idx) => (
-          <div className="flex" key={label}>
-            <div className="text-[20px] font-bold w-full px-2">{label}</div>
-            <Dropdown
-              field="properties"
-              options={scoreOptions}
-              index={idx}
-              value={form.properties[idx]}
-              onChange={(field, value, index: number) =>
-                onArrayChange(field, Number(value), index)
-              }
-            />
+      {!form.tag.includes("phu-pham")&&(
+        <>
+          <div className="text-[20px] font-bold w-full px-4">Đặc tính sản phẩm</div>
+          <div className="w-full flex justify-around rounded-2xl border border-gray-300 shadow-sm bg-white p-4 m">
+            {["Độ thơm", "Độ dẻo", "Độ mềm", "Độ nở"].map((label, idx) => (
+              <div className="flex" key={label}>
+                <div className="text-[20px] font-bold w-full px-2">{label}</div>
+                <Dropdown
+                  field="properties"
+                  options={scoreOptions}
+                  index={idx}
+                  value={form.properties[idx]}
+                  onChange={(field, value, index: number) =>
+                    onArrayChange(field, Number(value), index)
+                  }
+                />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </>
+      )}
+      
     </section>
   );
 }
