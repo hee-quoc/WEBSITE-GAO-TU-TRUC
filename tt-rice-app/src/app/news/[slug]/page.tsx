@@ -68,8 +68,8 @@ export default async function BlogPage({ params }: BlogPageProps) {
                   <Image
                     src={blog.thumbnailUrl}
                     alt={blog.title}
-                    width={400}
-                    height={250}
+                    width={360}
+                    height={203}
                     className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>

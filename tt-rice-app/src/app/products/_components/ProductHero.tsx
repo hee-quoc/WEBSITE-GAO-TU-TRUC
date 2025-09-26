@@ -6,7 +6,7 @@ import { useMediaQuery } from '~/app/hooks/useMediaQuery';
 
 export function ProductHero() {
     const isMobile = useMediaQuery('(max-width: 768px)');
-    const imageSrc = isMobile ? '/images/products/img_product_background_mobile.svg' : '/images/products/img_product_background.svg';
+    const imageSrc = isMobile ? '/images/products/img_product_background_mobile.svg' : '/images/products/img_product_banner.png';
     const imageWidth = isMobile ? 375 : 1440;
     const imageHeight = isMobile ? 400 : 357; 
   return (

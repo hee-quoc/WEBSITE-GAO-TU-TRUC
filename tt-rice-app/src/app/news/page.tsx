@@ -119,7 +119,7 @@ export default async  function NewsIndexPage({
       
       <div className="relative w-full h-[200px] sm:h-[250px] md:h-[400px]">
         <Image
-          src="/faq/thumbnail.svg"
+          src="/images/news/img_banner.png"
           alt="banner"
           fill
           priority
